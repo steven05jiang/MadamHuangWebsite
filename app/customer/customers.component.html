@@ -1,0 +1,70 @@
+<my-menu></my-menu>
+
+<div class="container">
+<div class="page-header"><h2>Customers</h2></div>
+<div *ngIf="message" class="alert alert-warning">
+  {{ message }}
+</div>
+<div class="panel panel-default">
+  <!-- Table -->
+  <button (click)="add()" class="btn btn-primary btn-md"><span class="glyphicon glyphicon-plus" aria-hidden=true></span> Add a new Customer</button>
+  <div *ngIf="apiResponse">
+  Total Records: {{ apiResponse.totalElements }}
+  <my-pagination [page]="0" [size]="size" [total]="apiResponse.totalPages" (pageChanged)="selectObjects($event)"></my-pagination>
+  </div>
+  <table class="table table-bordered table-hover table-condensed">
+    <tr>
+      <th>Customer</th>
+      <th>Email</th>
+      <th>Phone</th>
+      <th>Address</th>
+      <th>View</th>
+      <th>Edit</th>
+      <th>Delete</th>
+      <th>Invoice</th>
+    </tr>
+    <tr *ngFor="let object of objects"
+      [class.selected]="object == selectedObject"
+      (click)="onSelect(object)">
+      <td>
+        <span class="badge">{{object.id}}</span> {{object.firstName}} {{object.lastName}}
+      </td>
+
+      <td>
+        {{object.email}}
+      </td>
+      <td>
+        {{object.phone1}} {{object.phone2}}
+      </td>
+      <td>
+        <div *ngIf="object.company"> {{object.company}} </div>
+        {{object.addrLine1}}
+        {{object.addrLine2}}
+        {{object.addrCity}}, {{object.addrState}}, {{object.addrCountry}}, {{object.addrZip}}
+      </td>
+
+
+      <td align="center">
+        <button (click)="view(object)" class="btn btn-default"><img src="image/view.png" width="15" height="15"/></button>
+      </td>
+      <td align="center">
+        <button (click)="edit(object)" class="btn btn-default"><img src="image/edit.png" width="15" height="15"/></button>
+      </td>
+      <td align="center">
+        <button (click)="delete(object)" class="btn btn-default"><img src="image/delete.png" width="15" height="15"/></button>
+      </td>
+      <!--
+      <td align="center">
+        <img src="image/delete.png" width="15" height="15" (click)="delete(object)"/>
+      </td>
+    -->
+       <td>
+        <button (click)="invoices(object)" class="btn btn-default"><span class="glyphicon glyphicon-th-list" aria-hidden=true></span> View Invoices</button>
+        <button (click)="invoiceAdd(object)" class="btn btn-default"><span class="glyphicon glyphicon-th-list" aria-hidden=true></span> Add Invoice</button>
+      </td>
+    </tr>
+  </table>
+
+</div>
+
+</div>

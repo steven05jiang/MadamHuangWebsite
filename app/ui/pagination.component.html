@@ -1,0 +1,26 @@
+
+<ul *ngIf="total > 0" class="pagination" >
+    <li class="pagination-first page-item"
+          [class.disabled]="page == 0">
+      <a class="page-link" href (click)="selectPage(0, $event)">First</a>
+    </li>
+
+    <li *ngIf="page > 0" class="pagination-prev page-item"
+          [class.disabled]="page == 0">
+      <a class="page-link" href (click)="selectPage(page - 1, $event)">Prev</a>
+    </li>
+
+
+    <li *ngFor="let pg of pages"
+      class="pagination-page page-item" [class.disabled]="pg != null && page == pg.page">
+      <a *ngIf="pg" class="page-link" href (click)="selectPage(pg.page, $event)">{{ pg.page + 1 }}</a>
+    </li>
+
+    <li *ngIf="page < (total - 1)" class="pagination-next page-item"
+          [class.disabled]="page == (total - 1)">
+      <a class="page-link" href (click)="selectPage(page + 1, $event)">Next</a></li>
+
+    <li class="pagination-last page-item"
+          [class.disabled]="page == (total - 1)">
+      <a class="page-link" href (click)="selectPage(total - 1, $event)">Last</a></li>
+  </ul>

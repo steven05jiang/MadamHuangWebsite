@@ -1,0 +1,16 @@
+
+@media print
+{
+    .no-print, .no-print *
+    {
+        display: none !important;
+    }
+
+    .print {
+      display:inline;
+    }
+
+    table, tr, th, td {
+        font-size: 14pt;
+    }
+}

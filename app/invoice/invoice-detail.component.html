@@ -1,0 +1,115 @@
+<my-menu></my-menu>
+
+<div class="container">
+<div class="page-header">
+  <div class="print">
+    <div class="row" align="center">
+      <div class="col-sm-12" align="center">
+      <img src="image/gallopglobal.png" height="50"/>
+      <br/>
+      http://www.gallopglobal.net | info@gallopglobal.net
+      </div>
+    </div>
+    <p class="divider"></p>
+    <div class="row" align="center">
+      <div class="col-sm-6" align="left">
+        <b>Quicy Office:</b><br/>
+        54 Billings Rd, Quincy, MA 02171<br/>
+        Tel: 617-845-5190 Fax: 617-405-4761
+        </div>
+      <div class="col-sm-6" align="left">
+        <b>Allston Office:</b><br/>
+        1216B Commonwealth Ave Boston, MA 02134
+        <br/>Tel: 617-505-5887 Fax: 617-405-4761
+      </div>
+    </div>
+
+  </div>
+  <h2>Invoice Detail</h2></div>
+  <div *ngIf="message" class="alert alert-warning">
+    {{ message }}
+  </div>
+
+<div *ngIf="object">
+  <div class="panel panel-default">
+    <table class="table table-striped table-bordered table-condensed">
+      <tr>
+        <td><B>Invoice #</B></td>
+        <td><B># {{object.id}}</B></td>
+      </tr>
+      <tr>
+        <td><B>Invoice Date</B></td>
+        <td>{{object.invoiceDate}}</td>
+      </tr>
+      <tr>
+        <td><B>Agent Name</B></td>
+        <td>{{object.agent}}</td>
+      </tr>
+      <tr>
+      <td><B>Customer</B></td>
+      <td>
+        <div *ngIf="object.customer.company"> <b>{{object.customer.company}}</b> </div>
+        {{object.customer.lastName}} {{object.customer.firstName}}
+        <br/>
+        {{object.customer.addrLine1}}<br/>
+        <p *ngIf="object.customer.addrLine2">{{object.customer.addrLine2}}</p>
+        {{object.customer.addrCity}}, {{object.customer.addrState}}<br/>
+        {{object.customer.addrCountry}} {{object.customer.addrZip}}<br/>
+      </td>
+    </tr>
+    <tr class="no-print">
+      <td><B>Created By</B></td>
+      <td>{{object.creator}}</td>
+    </tr>
+    <tr class="no-print">
+      <td><B>Created On</B></td>
+      <td>{{object.createdOn | date:'MM/dd/yyyy hh:mm a' }}</td>
+    </tr>
+    <tr class="no-print">
+      <td><B>Updated By</B></td>
+      <td>{{object.updator}}</td>
+    </tr>
+    <tr class="no-print">
+      <td><B>Updated On</B></td>
+      <td>{{ object.updatedOn | date:'MM/dd/yyyy hh:mm a' }}</td>
+    </tr>
+    <tr>
+      <td><B>Description</B></td>
+      <td>{{object.description}}</td>
+    </tr>
+  </table>
+  <p class="divider"></p>
+
+  <table class="table table-striped table-bordered table-condensed">
+    <tr><th>#</th><th>Item</th><th>Price</th></tr>
+    <tr *ngFor="let item of object.invoiceItems">
+      <td>
+        <!-- <span class="badge">{{item.invoiceId}} </span> -->
+        <span class="badge">{{item.itemId}}</span>
+      </td>
+      <td>
+        <b>{{item.name}}</b>
+        <br>
+        {{ item.description }}
+      </td>
+      <td>
+        {{ item.price | currency:'USD':true:'1.2-2'}}
+      </td>
+    </tr>
+    <tr>
+      <td></td>
+      <td align="right">
+        <b>Total</b>
+      </td>
+      <td>{{ object.total | currency:'USD':true:'1.2-2'}}</td>
+    </tr>
+  </table>
+</div>
+  <div class="no-print">
+  <button (click)="edit()" class="btn btn-success btn-md"><span class="glyphicon glyphicon-edit" aria-hidden=true></span> Edit</button>
+  <button (click)="goBack()" class="btn btn-warning btn-md"><span class="glyphicon glyphicon-transfer" aria-hidden=true></span> Back</button>
+  <button (click)="print()" class="btn btn-primary btn-md"><span class="glyphicon glyphicon-print" aria-hidden=true></span> Print</button>
+  <button (click)="send()" class="btn btn-primary btn-md"><span class="glyphicon glyphicon-envelope" aria-hidden=true></span> Send</button>  </div>
+</div>
+
+</div>

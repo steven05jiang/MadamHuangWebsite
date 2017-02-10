@@ -1,0 +1,72 @@
+<nav class="navbar navbar-custom" role="navigation">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" routerLink="/home">Madam Huang</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+
+
+        <li><a routerLink="/home"><span class="glyphicon glyphicon-th-list" aria-hidden=true></span> Home </a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            <span class="glyphicon glyphicon-user" aria-hidden=true></span> About Us <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a routerLink="/customers">List Customers</a></li>
+            <li class="divider"></li>
+            <li><a routerLink="/customer-edit/-1">Create New Customer</a></li>
+          </ul>
+        </li>
+
+        <li><a routerLink="/beauty"><span class="glyphicon glyphicon-th-list" aria-hidden=true></span> Beauty </a></li>
+        <li><a routerLink="/activity"><span class="glyphicon glyphicon-th-list" aria-hidden=true></span> Activity </a></li>
+        <li><a routerLink="/product"><span class="glyphicon glyphicon-cog" aria-hidden=true></span> Product </a></li>
+        <li><a routerLink="/test"><span class="glyphicon glyphicon-cog" aria-hidden=true></span> Test </a></li>
+
+      </ul>
+      <form (submit)="search($event)" class="navbar-form navbar-left" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search">
+        </div>
+        <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search" aria-hidden=true></span> Submit</button>
+      </form>
+
+
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-globe" aria-hidden=true></span> Login <span class="caret"></span></a>
+      <ul id="login-dp" class="dropdown-menu">
+        <li>
+           <div class="row">
+              <div class="col-md-12">
+                 <div *ngIf="user" class="card">
+                    <div class="card-block">
+                      <h4 class="card-title"><span class="glyphicon glyphicon-user" aria-hidden=true></span> Welcome</h4>
+                      <p class="card-text">
+                     You login as {{ user.username }}
+                     <br/>
+                     Since: {{ user.lastlogOn | date:'MM/dd/yyyy hh:mm a' }}. <br/>
+                      <button (click)="signout($event)" class="btn btn-danger">Logout</button>
+                    </p>
+                  </div>
+                 </div>
+              </div>
+           </div>
+        </li>
+      </ul>
+        </li>
+        <li><a routerLink="/about"><span class="glyphicon glyphicon-leaf" aria-hidden=true></span> About</a></li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>

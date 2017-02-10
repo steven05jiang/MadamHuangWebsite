@@ -1,0 +1,69 @@
+<my-menu></my-menu>
+
+<div class="container">
+<div class="page-header"><h2>Invoices</h2></div>
+<div *ngIf="message" class="alert alert-warning">
+  {{ message }}
+</div>
+<div class="panel panel-default">
+  <!-- Table -->
+
+    <div *ngIf="customer" class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Customer: {{ customer.firstName }} {{ customer.lastName }}</h3>
+      </div>
+      <div class="panel-body">
+      <button (click)="invoiceAdd(customer)"  class="btn btn-primary btn-md"><span class="glyphicon glyphicon-plus" aria-hidden=true></span> Create Invoice</button>
+      </div>
+    </div>
+
+  <div *ngIf="apiResponse">
+  Total Records: {{ apiResponse.totalElements }}
+  <my-pagination [page]="0" [size]="size" [total]="apiResponse.totalPages" (pageChanged)="selectObjects($event)"></my-pagination>
+  </div>
+  <table class="table table-bordered table-hover table-condensed">
+    <tr>
+      <th>Invoice#</th>
+      <th>Customer</th>
+      <th>Total</th>
+      <th>Description</th>
+      <th>View</th>
+      <th>Edit</th>
+      <th>Delete</th>
+    </tr>
+    <tr *ngFor="let object of objects"
+      [class.selected]="object == selectedObject"
+      (click)="onSelect(object)">
+      <td>
+        <span class="badge">{{object.id}}</span>
+      </td>
+      <td>
+        {{object.customer.lastName}} {{object.customer.firstName}}
+        <br/>
+        {{object.customer.addrLine1}}<br/>
+        <p *ngIf="object.customer.addrLine2">{{object.customer.addrLine2}}</p>
+        {{object.customer.addrCity}}, {{object.customer.addrState}}<br/>
+        {{object.customer.addrCountry}} {{object.customer.addrZip}}<br/>
+      </td>
+      <td>
+        ${{object.total}}
+      </td>
+      <td>
+        {{object.description}}
+      </td>
+      <td align="center">
+        <button (click)="view(object)"><img src="image/view.png" width="15" height="15"/></button>
+      </td>
+      <td align="center">
+        <button (click)="edit(object)"><img src="image/edit.png" width="15" height="15"/></button>
+      </td>
+      <td align="center">
+        <button (click)="delete(object)" class="btn btn-default"><img src="image/delete.png" width="15" height="15"/></button>
+      </td>
+    </tr>
+  </table>
+
+</div>
+
+
+</div>

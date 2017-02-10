@@ -1,0 +1,40 @@
+<my-menu></my-menu>
+
+<div class="container">
+  <div class="page-header"><h2>Edit User</h2></div>
+  <div *ngIf="message" class="alert alert-warning">
+    {{ message }}
+  </div>
+
+<div *ngIf="object">
+  <div class="panel panel-default">
+    <table class="table table-striped table-bordered table-condensed">
+      <tr>
+        <th>Attribute</th>
+        <th>Value</th>
+      </tr>
+      <tr>
+        <td>id</td>
+        <td>{{object.id}}</td>
+      </tr>
+      <tr>
+        <td>username</td>
+        <td>
+          <input [(ngModel)]="object.username" placeholder="username"/>
+        </td>
+      </tr>
+      <tr>
+        <td>password</td>
+        <td>
+          <input type="password" [(ngModel)]="object.password" placeholder="password"/>
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <button (click)="save()" class="btn btn-success btn-md"><span class="glyphicon glyphicon-save" aria-hidden=true></span> save</button>
+  <button (click)="goBack()" class="btn btn-warning btn-md"><span class="glyphicon glyphicon-transfer" aria-hidden=true></span> Back</button>
+
+</div>
+
+</div>

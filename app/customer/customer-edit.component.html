@@ -1,0 +1,155 @@
+<my-menu></my-menu>
+
+<div class="container">
+  <div class="page-header"><h2>Edit Customer</h2></div>
+  <div *ngIf="message" class="alert alert-warning">
+    {{ message }}
+  </div>
+
+  <div *ngIf="object">
+    <div class="panel panel-default">
+      <table class="table table-striped table-bordered table-condensed">
+        <tr>
+          <th>Attribute</th>
+          <th>Value</th>
+        </tr>
+        <tr>
+          <td>id</td>
+          <td>{{object.id}}</td>
+        </tr>
+        <tr>
+          <td>First Name</td>
+          <td>
+            <input [(ngModel)]="object.firstName" placeholder="First Name" required />
+          </td>
+        </tr>
+        <tr>
+          <td>Last Name</td>
+          <td>
+            <input [(ngModel)]="object.lastName" placeholder="Last Name" required />
+          </td>
+        </tr>
+        <tr>
+          <td>Company</td>
+          <td>
+            <input [(ngModel)]="object.company" placeholder="Company" />
+          </td>
+        </tr>
+        <tr>
+          <td>Date of Birth</td>
+          <td>
+            <my-date-picker [options]="myDatePickerOptions" [selDate]="object.birthday" (dateChanged)="onBirthdayChanged($event)"></my-date-picker>
+          </td>
+        </tr>
+        <!--
+        <tr>
+          <td>Country</td>
+          <td>
+            <select name="">
+              <option *ngFor="let country of countries" value="{{ country.code }}">
+                {{ country.name }}
+              </option>
+            </select>
+          </td>
+        </tr>
+        -->
+        <tr>
+          <th colspan="2">Contact Information</th>
+        </tr>
+        <tr>
+          <td>Primary Phone</td>
+          <td>
+            <input [(ngModel)]="object.phone1" placeholder="Primary Phone"/>
+          </td>
+        </tr>
+        <tr>
+          <td>Secondary Phone</td>
+          <td>
+            <input [(ngModel)]="object.phone2" placeholder="Secondary Phone"/>
+          </td>
+        </tr>
+        <tr>
+          <td>Email</td>
+          <td>
+            <input [(ngModel)]="object.email" placeholder="Email"/>
+          </td>
+        </tr>
+        <tr>
+          <td>Address Line 1</td>
+          <td>
+            <input [(ngModel)]="object.addrLine1" placeholder="Address Line 1"/>
+          </td>
+        </tr>
+        <tr>
+          <td>Address Line 2</td>
+          <td>
+            <input [(ngModel)]="object.addrLine2" placeholder="Address Line 2"/>
+          </td>
+        </tr>
+        <tr>
+          <td>City</td>
+          <td>
+            <input [(ngModel)]="object.addrCity" placeholder="City"/>
+          </td>
+        </tr>
+        <tr>
+          <td>State</td>
+          <td>
+            <input [(ngModel)]="object.addrState" placeholder="State/Providence"/>
+          </td>
+        </tr>
+        <tr>
+          <td>Country</td>
+          <td>
+            <input [(ngModel)]="object.addrCountry" placeholder="Country"/>
+          </td>
+        </tr>
+        <tr>
+          <td>Zip Code</td>
+          <td>
+            <input [(ngModel)]="object.addrZip" placeholder="Zip Code"/>
+          </td>
+        </tr>
+        <tr>
+          <th colspan="2">Passport Information</th>
+        </tr>
+        <tr>
+          <td>Passport Number</td>
+          <td><input [(ngModel)]="object.pNum" placeholder="Passport Number"/></td>
+        </tr>
+        <tr>
+          <td>Passport Issue Country</td>
+          <td><input [(ngModel)]="object.pIssueCountry" placeholder="Issued Country"/></td>
+        </tr>
+        <tr>
+          <td>Passport Resident Country</td>
+          <td><input [(ngModel)]="object.pResidentCountry" placeholder="Resident Country"/></td>
+        </tr>
+        <tr>
+          <td>Passport Issued Date</td>
+          <td>
+          <my-date-picker [options]="myDatePickerOptions" [selDate]="object.pIssueDate"
+          (dateChanged)="onpIssuedDateChanged($event)"></my-date-picker>
+        </td>
+      </tr>
+      <tr>
+        <td>Passport Expired Date</td>
+        <td>
+        <my-date-picker [options]="myDatePickerOptions" [selDate]="object.pExpDate"
+        (dateChanged)="onpExpDateChanged($event)"></my-date-picker>
+      </td>
+    </tr>
+    <tr>
+      <td>Description</td>
+      <td>
+        <textarea [(ngModel)]="object.description" placeholder="Description"></textarea>
+      </td>
+    </tr>
+  </table>
+</div>
+
+<button (click)="save()" class="btn btn-success btn-md"><span class="glyphicon glyphicon-save" aria-hidden=true></span> save</button>
+<button (click)="goBack()" class="btn btn-warning btn-md"><span class="glyphicon glyphicon-transfer" aria-hidden=true></span> Back</button>
+</div>
+
+</div>
