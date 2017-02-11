@@ -29,7 +29,7 @@ var invoice_edit_component_1 = require("./invoice/invoice-edit.component");
 var invoices_component_1 = require("./invoice/invoices.component");
 var routes = [
     { path: '', redirectTo: '/home', pathMatch: 'full' },
-    { path: 'login/:code', component: login_component_1.LoginComponent },
+    { path: 'login', component: login_component_1.LoginComponent },
     { path: 'home', component: home_component_1.HomeComponent },
     { path: 'about', component: about_component_1.AboutComponent },
     { path: 'activity', component: activity_component_1.ActivityComponent },

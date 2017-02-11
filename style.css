@@ -1,47 +1,10 @@
 ﻿
 <style>
 
-body {
-	padding:20px;
-	font-size: 12pt;
-	color: #666666;
-}
+
+
 .print {
 	display: none;
-}
-
-.navbar-custom {
-	background-color:#483D8B;
-  color:#ffffff;
-  border-radius:0;
-	font-size: 12pt;
-}
-
-.navbar-custom .navbar-nav > li > a {
-  	color:#fff;
-}
-.navbar-custom .navbar-nav > .active > a, .navbar-nav > .active > a:hover, .navbar-nav > .active > a:focus {
-  color: #ffffff;
-	/** background-color:transparent; **/
-}
-
-.navbar-custom .navbar-nav > li > a:hover, .nav > li > a:focus {
-    text-decoration: none;
-    background-color: #BBBBBB;
-}
-
-.dropdown-menu {
-		color: #eeeeee;
-}
-
-.navbar-custom .navbar-brand {
-  	color:#eeeeee;
-}
-.navbar-custom .navbar-toggle {
-  	background-color:#eeeeee;
-}
-.navbar-custom .icon-bar {
-  	background-color:#1e90ff;
 }
 
 a, a:link, a:visited,.small {
@@ -84,13 +47,6 @@ table, th, tr, td {
 table th {
 font-weight: bold;
 font-size: 10pt;
-}
-
-div.footer {
-float: center;
-font-size:6pt;
-color: #666666;
-background:#ffffff;
 }
 
 .submit, input.submit {

@@ -24,6 +24,8 @@ export class MenuComponent implements OnInit {
       .subscribe(($event:any) => {
         if($event.user) {
           this.user = $event.user;
+          }else{
+            this.user = null;
           }
           // TODO: message is not used for now.
           //this.message = $event.message;
@@ -31,22 +33,14 @@ export class MenuComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
   }
+
   ngOnDestroy() {
     this.subscription.unsubscribe();
   }
 
-  signin(): void {
-    alert('sign in');
-  }
-
   signout(event: any): void {
-    //alert('sign out');
     this.loginService.signout();
   }
 
-  search(event: any): void {
-    alert('not implement');
-  }
 }

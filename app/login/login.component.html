@@ -1,8 +1,6 @@
-
-<div style="margin-top:20px; "></div>
-
+<div class="container">
 <div *ngIf="user" class="login">
-   <h4 align="center"><span color="green" class="glyphicon glyphicon-leaf" aria-hidden=true></span> Pure i Customer<sup>TM</sup></h4>
+   <h4 align="center"><span color="green" class="glyphicon glyphicon-leaf" aria-hidden=true></span> Madam Huang Membership</h4>
    <div class="form-group">
      <label for="username">Username</label>
      <input type="text" class="form-control" [(ngModel)]="user.username" placeholder="Username"
@@ -18,4 +16,5 @@
    </div>
    <button (click)="login()" class="btn btn-success btn-md btn-block">Submit</button>
      &copy; All Rights Reserved.
+</div>
 </div>

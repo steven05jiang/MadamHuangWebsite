@@ -54,12 +54,10 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log('loginComponent: OnInit() called');
-    //this.message = '';
-    this.activatedRoute.params.forEach((params: Params) => {
-      let code = +params['code'];
-      this.message = Text.val(code); //code.toString();
-    });
+    // this.activatedRoute.params.forEach((params: Params) => {
+    //   let code = +params['code'];
+    //   this.message = Text.val(code); //code.toString();
+    // });
   }
 
   ngOnDestroy() {

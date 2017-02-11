@@ -27,7 +27,7 @@ export class LoginService {
 
     console.log('API Host: ' + Config.api_host);
 
-    const url = Config.api_host + '/sign-in';
+    const url = Config.api_host + '/login';
     let apiRequest = <APIRequest>({
         apiKey: '',
         operator: '',
@@ -49,6 +49,7 @@ export class LoginService {
             this.user = response.json().body as User;
             console.log('last log on: ' + this.user.lastlogOn + '  Token: ' + token);
             this.router.navigate(['home']);
+            this.emitStatusChangeEvent(this.user, '');
             // response.json().body;
           } else {
             localStorage.setItem('token', '');
@@ -64,9 +65,10 @@ export class LoginService {
 
   signout() {
     localStorage.setItem('token', '');
+    this.user = null;
     //this.emitStatusChangeEvent('You have successfully logged out!');
     this.message = "You have succesfully logged out!";
-    this.router.navigate(['login', 300]);
+    this.emitStatusChangeEvent(null, this.message);
   }
 
   refreshToken(myToken: string) {

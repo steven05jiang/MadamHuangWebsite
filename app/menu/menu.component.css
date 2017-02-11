@@ -1,28 +1,54 @@
-#login-dp{
-    min-width: 250px;
-    padding: 14px 14px 0;
-    overflow:hidden;
-    color: #000;
-    background-color:rgba(255,255,255,.8);
+.navbar-custom {
+    background: rgba(128,0,30,0.91);
+    background: -moz-linear-gradient(left, rgba(128,0,30,0.91) 0%, rgba(143,2,34,0.86) 43%, rgba(181,0,45,0.79) 100%);
+    background: -webkit-gradient(left top, right top, color-stop(0%, rgba(128,0,30,0.91)), color-stop(43%, rgba(143,2,34,0.86)), color-stop(100%, rgba(181,0,45,0.79)));
+    background: -webkit-linear-gradient(left, rgba(128,0,30,0.91) 0%, rgba(143,2,34,0.86) 43%, rgba(181,0,45,0.79) 100%);
+    background: -o-linear-gradient(left, rgba(128,0,30,0.91) 0%, rgba(143,2,34,0.86) 43%, rgba(181,0,45,0.79) 100%);
+    background: -ms-linear-gradient(left, rgba(128,0,30,0.91) 0%, rgba(143,2,34,0.86) 43%, rgba(181,0,45,0.79) 100%);
+    background: linear-gradient(to right, rgba(128,0,30,0.91) 0%, rgba(143,2,34,0.86) 43%, rgba(181,0,45,0.79) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#80001e', endColorstr='#b5002d', GradientType=1 );
+    color:#ffffff;
+    border-radius:0;
+    font-size: 12pt;
 }
-#login-dp .help-block{
-    font-size:12px
+
+.navbar-custom .navbar-nav > li > a {
+    color:#fff;
+    background-color: rgba(0,0,0,0);
 }
-#login-dp .bottom{
-    background-color:rgba(255,255,255,.8);
-    border-top:1px solid #ddd;
-    clear:both;
-    padding:14px;
+
+.navbar-custom .navbar-nav > li > a:hover, .nav .open > a:hover, .nav .open > a:focus{
+    color: #c7b585;
+    background-color: rgba(0,0,0,0);
 }
-#login-dp .social-buttons{
-    margin:12px 0
+
+.navbar-custom .navbar-header {
+    margin-right: 3em;
 }
-#login-dp .social-buttons a{
-    width: 49%;
+
+.navbar-custom .navbar-brand {
+    color:#efefdc;
+    font-family: "Courier New", Courier, monospace;
 }
-#login-dp .form-group {
-    margin-bottom: 10px;
+.navbar-custom .navbar-toggle {
+    background-color:#efefdc;
 }
+.navbar-custom .icon-bar {
+    background-color:rgb(128,0,30);
+}
+
+.navbar-custom .dropdown-menu .card {
+    color:#000000;
+    width: 15em;
+    padding: 10px;
+}
+
+.navbar-custom .dropdown-menu .card .list-group .list-group-item{
+    background-color: rgba(0,0,0,0);
+    border:none;
+}
+
+
 .btn-fb{
     color: #fff;
     background-color:#3b5998;
@@ -40,12 +66,33 @@
     background-color:#59b5fa;
 }
 @media(max-width:768px){
-    #login-dp{
-        background-color: inherit;
-        color: #000;
+    .navbar-custom .navbar-header {
+        margin-right: 0em;
     }
-    #login-dp .bottom{
-        background-color: inherit;
-        border-top:0 none;
+
+    .navbar-custom .dropdown-menu > li > a {
+        color: #fff;
+    }
+
+    .navbar-custom .dropdown-menu > li > a:hover {
+        color: #c7b585;
+        background-color: rgba(0,0,0,0);
+    }
+
+    .navbar-custom .dropdown-menu .divider {
+        display: none;
+    }
+
+    .navbar-custom .dropdown-menu .card {
+        color:#ffffff;
+    }
+
+    .navbar-custom .dropdown-menu .card .list-group .list-group-item > a {
+        text-decoration : none;
+        color: #fff;
+    }
+
+    .navbar-custom .dropdown-menu .card .list-group .list-group-item > li > a :hover {
+        color: #c7b585;
     }
 }

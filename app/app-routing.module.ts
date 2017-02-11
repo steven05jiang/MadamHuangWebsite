@@ -24,7 +24,7 @@ import { InvoicesComponent }       from './invoice/invoices.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full'},
-  { path: 'login/:code', component: LoginComponent },
+  { path: 'login', component: LoginComponent },
   { path: 'home', component: HomeComponent},
   { path: 'about', component: AboutComponent},
   { path: 'activity', component: ActivityComponent},

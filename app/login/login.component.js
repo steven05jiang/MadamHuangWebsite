@@ -12,7 +12,6 @@ var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
 var router_2 = require("@angular/router");
 var http_1 = require("@angular/http");
-var config_1 = require("../common/config");
 var login_service_1 = require("./login.service");
 var LoginComponent = (function () {
     function LoginComponent(loginService, router, activatedRoute, http) {
@@ -42,13 +41,10 @@ var LoginComponent = (function () {
         this.message = '';
     };
     LoginComponent.prototype.ngOnInit = function () {
-        var _this = this;
-        console.log('loginComponent: OnInit() called');
-        //this.message = '';
-        this.activatedRoute.params.forEach(function (params) {
-            var code = +params['code'];
-            _this.message = config_1.Text.val(code); //code.toString();
-        });
+        // this.activatedRoute.params.forEach((params: Params) => {
+        //   let code = +params['code'];
+        //   this.message = Text.val(code); //code.toString();
+        // });
     };
     LoginComponent.prototype.ngOnDestroy = function () {
         this.subscription.unsubscribe();

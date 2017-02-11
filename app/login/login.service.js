@@ -23,7 +23,7 @@ var LoginService = (function () {
     LoginService.prototype.signin = function (user) {
         var _this = this;
         console.log('API Host: ' + config_1.Config.api_host);
-        var url = config_1.Config.api_host + '/sign-in';
+        var url = config_1.Config.api_host + '/login';
         var apiRequest = ({
             apiKey: '',
             operator: '',
@@ -41,6 +41,7 @@ var LoginService = (function () {
                 _this.user = response.json().body;
                 console.log('last log on: ' + _this.user.lastlogOn + '  Token: ' + token);
                 _this.router.navigate(['home']);
+                _this.emitStatusChangeEvent(_this.user, '');
             }
             else {
                 localStorage.setItem('token', '');
@@ -54,9 +55,10 @@ var LoginService = (function () {
     };
     LoginService.prototype.signout = function () {
         localStorage.setItem('token', '');
+        this.user = null;
         //this.emitStatusChangeEvent('You have successfully logged out!');
         this.message = "You have succesfully logged out!";
-        this.router.navigate(['login', 300]);
+        this.emitStatusChangeEvent(null, this.message);
     };
     LoginService.prototype.refreshToken = function (myToken) {
         var _this = this;

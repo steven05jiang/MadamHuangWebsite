@@ -21,6 +21,9 @@ var MenuComponent = (function () {
             if ($event.user) {
                 _this.user = $event.user;
             }
+            else {
+                _this.user = null;
+            }
             // TODO: message is not used for now.
             //this.message = $event.message;
         });
@@ -30,15 +33,8 @@ var MenuComponent = (function () {
     MenuComponent.prototype.ngOnDestroy = function () {
         this.subscription.unsubscribe();
     };
-    MenuComponent.prototype.signin = function () {
-        alert('sign in');
-    };
     MenuComponent.prototype.signout = function (event) {
-        //alert('sign out');
         this.loginService.signout();
-    };
-    MenuComponent.prototype.search = function (event) {
-        alert('not implement');
     };
     return MenuComponent;
 }());

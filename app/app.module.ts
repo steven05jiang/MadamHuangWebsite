@@ -30,6 +30,7 @@ import { InvoicesComponent }       from './invoice/invoices.component';
 import { InvoiceService }          from './invoice/invoice.service';
 
 import { MenuComponent }          from './menu/menu.component';
+import { FooterComponent }          from './footer/footer.component';
 
 import { CustomerDetailComponent }  from './customer/customer-detail.component';
 import { CustomerEditComponent }  from './customer/customer-edit.component';
@@ -68,6 +69,7 @@ const WINDOW_PROVIDER: ValueProvider = {
     ProductComponent,
     TestAPIComponent,
     MenuComponent,
+    FooterComponent,
     CustomerDetailComponent,
     CustomerEditComponent,
     CustomersComponent,

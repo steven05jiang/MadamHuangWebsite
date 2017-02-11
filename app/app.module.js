@@ -32,6 +32,7 @@ var invoice_edit_component_1 = require("./invoice/invoice-edit.component");
 var invoices_component_1 = require("./invoice/invoices.component");
 var invoice_service_1 = require("./invoice/invoice.service");
 var menu_component_1 = require("./menu/menu.component");
+var footer_component_1 = require("./footer/footer.component");
 var customer_detail_component_1 = require("./customer/customer-detail.component");
 var customer_edit_component_1 = require("./customer/customer-edit.component");
 var customers_component_1 = require("./customer/customers.component");
@@ -67,6 +68,7 @@ AppModule = __decorate([
             product_component_1.ProductComponent,
             testAPI_component_1.TestAPIComponent,
             menu_component_1.MenuComponent,
+            footer_component_1.FooterComponent,
             customer_detail_component_1.CustomerDetailComponent,
             customer_edit_component_1.CustomerEditComponent,
             customers_component_1.CustomersComponent,

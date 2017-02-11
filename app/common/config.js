@@ -14,7 +14,7 @@ var Config = (function () {
     };
     return Config;
 }());
-Config.api_host = 'http://127.0.0.1:9000';
+Config.api_host = 'http://127.0.0.1:9000/api';
 //public static api_host: string = 'http://10.7.40.108:9000';
 //public static api_host: string = 'http://api.pureilab.com:9000';
 Config.PAGE_NUM = 50;
