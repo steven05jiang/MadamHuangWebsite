@@ -1,1 +1,21 @@
-product.component.html
+<div class="main">
+	<div class="jumbotron jumbotron-fluid">
+		<div class="container">
+			<h1 class="display-3">Products</h1>
+			<p class="lead">精心為您挑選的美麗產品</p>
+		</div>
+	</div>
+	<div class="container" *ngIf="objects">
+		<div class="card-columns card-custom">
+			<div class="card" *ngFor="let product of objects">
+			<img *ngIf="product.imageLink" class="card-img-top img-fluid" src="{{activity.imageLink}}" alt="Card image cap">
+				<div class="card-block">
+					<h4 class="card-title">{{product.title}}</h4>
+					<p class="card-text">{{product.description}}</p>
+					<button *ngIf="product.article" class="btn btn-sm btn-confirm" (click)="openArticle(product)">Learn More</button>
+					<p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

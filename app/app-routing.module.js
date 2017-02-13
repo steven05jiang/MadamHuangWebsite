@@ -18,12 +18,12 @@ var activity_component_1 = require("./activity/activity.component");
 var beauty_component_1 = require("./beauty/beauty.component");
 var product_component_1 = require("./product/product.component");
 var testAPI_component_1 = require("./testAPI/testAPI.component");
+var article_component_1 = require("./article/article.component");
+var classroom_component_1 = require("./classroom/classroom.component");
+var user_profile_component_1 = require("./user/user-profile.component");
 var customer_detail_component_1 = require("./customer/customer-detail.component");
 var customer_edit_component_1 = require("./customer/customer-edit.component");
 var customers_component_1 = require("./customer/customers.component");
-var user_detail_component_1 = require("./user/user-detail.component");
-var user_edit_component_1 = require("./user/user-edit.component");
-var users_component_1 = require("./user/users.component");
 var invoice_detail_component_1 = require("./invoice/invoice-detail.component");
 var invoice_edit_component_1 = require("./invoice/invoice-edit.component");
 var invoices_component_1 = require("./invoice/invoices.component");
@@ -36,12 +36,12 @@ var routes = [
     { path: 'beauty', component: beauty_component_1.BeautyComponent },
     { path: 'product', component: product_component_1.ProductComponent },
     { path: 'test', component: testAPI_component_1.TestAPIComponent },
+    { path: 'article/:id', component: article_component_1.ArticleComponent },
+    { path: 'classroom/:name', component: classroom_component_1.ClassroomComponent },
+    { path: 'profile', component: user_profile_component_1.UserProfileComponent, canActivate: [auth_guard_1.AuthGuard] },
     { path: 'customer-detail/:id', component: customer_detail_component_1.CustomerDetailComponent, canActivate: [auth_guard_1.AuthGuard] },
     { path: 'customer-edit/:id', component: customer_edit_component_1.CustomerEditComponent, canActivate: [auth_guard_1.AuthGuard] },
     { path: 'customers', component: customers_component_1.CustomersComponent, canActivate: [auth_guard_1.AuthGuard] },
-    { path: 'user-detail/:id', component: user_detail_component_1.UserDetailComponent, canActivate: [auth_guard_1.AuthGuard] },
-    { path: 'user-edit/:id', component: user_edit_component_1.UserEditComponent, canActivate: [auth_guard_1.AuthGuard] },
-    { path: 'users', component: users_component_1.UsersComponent, canActivate: [auth_guard_1.AuthGuard] },
     { path: 'invoice-detail/:id', component: invoice_detail_component_1.InvoiceDetailComponent, canActivate: [auth_guard_1.AuthGuard] },
     { path: 'invoice-edit/:id/:customer_id', component: invoice_edit_component_1.InvoiceEditComponent, canActivate: [auth_guard_1.AuthGuard] },
     { path: 'invoices/:customer_id', component: invoices_component_1.InvoicesComponent, canActivate: [auth_guard_1.AuthGuard] }

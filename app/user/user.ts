@@ -1,16 +1,18 @@
-
 export class User {
-  id:           number;
-  username:     string;
-  password:     string;
-  lastlogOn:    string;
+	id:	number;
+	email:	string;
+	username: string;
+	password: string;
+	firstName: string;
+	lastName: string;
+	tel: string;
+	addressLine1: string;
+	addressLine2: string;
+	city: string;
+	country: string;
+	zipCode: string;
 
-  constructor() {
-
-    this.id = -1;
-    this.username = '';
-    this.password = '';
-    this.lastlogOn = (new Date().getTime()).toString();
-
-  }
+	constructor(){
+		this.id = -1;
+	}
 }

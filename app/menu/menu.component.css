@@ -1,12 +1,12 @@
 .navbar-custom {
-    background: rgba(128,0,30,0.91);
-    background: -moz-linear-gradient(left, rgba(128,0,30,0.91) 0%, rgba(143,2,34,0.86) 43%, rgba(181,0,45,0.79) 100%);
-    background: -webkit-gradient(left top, right top, color-stop(0%, rgba(128,0,30,0.91)), color-stop(43%, rgba(143,2,34,0.86)), color-stop(100%, rgba(181,0,45,0.79)));
-    background: -webkit-linear-gradient(left, rgba(128,0,30,0.91) 0%, rgba(143,2,34,0.86) 43%, rgba(181,0,45,0.79) 100%);
-    background: -o-linear-gradient(left, rgba(128,0,30,0.91) 0%, rgba(143,2,34,0.86) 43%, rgba(181,0,45,0.79) 100%);
-    background: -ms-linear-gradient(left, rgba(128,0,30,0.91) 0%, rgba(143,2,34,0.86) 43%, rgba(181,0,45,0.79) 100%);
-    background: linear-gradient(to right, rgba(128,0,30,0.91) 0%, rgba(143,2,34,0.86) 43%, rgba(181,0,45,0.79) 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#80001e', endColorstr='#b5002d', GradientType=1 );
+background: rgba(138,0,35,1);
+background: -moz-linear-gradient(45deg, rgba(138,0,35,1) 0%, rgba(143,2,34,0.97) 44%, rgba(194,0,49,0.93) 100%);
+background: -webkit-gradient(left bottom, right top, color-stop(0%, rgba(138,0,35,1)), color-stop(44%, rgba(143,2,34,0.97)), color-stop(100%, rgba(194,0,49,0.93)));
+background: -webkit-linear-gradient(45deg, rgba(138,0,35,1) 0%, rgba(143,2,34,0.97) 44%, rgba(194,0,49,0.93) 100%);
+background: -o-linear-gradient(45deg, rgba(138,0,35,1) 0%, rgba(143,2,34,0.97) 44%, rgba(194,0,49,0.93) 100%);
+background: -ms-linear-gradient(45deg, rgba(138,0,35,1) 0%, rgba(143,2,34,0.97) 44%, rgba(194,0,49,0.93) 100%);
+background: linear-gradient(45deg, rgba(138,0,35,1) 0%, rgba(143,2,34,0.97) 44%, rgba(194,0,49,0.93) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#8a0023', endColorstr='#c20031', GradientType=1 );
     color:#ffffff;
     border-radius:0;
     font-size: 12pt;
@@ -22,7 +22,7 @@
     background-color: rgba(0,0,0,0);
 }
 
-.navbar-custom .navbar-header {
+.navbar-custom .navbar-brand {
     margin-right: 3em;
 }
 
@@ -30,17 +30,20 @@
     color:#efefdc;
     font-family: "Courier New", Courier, monospace;
 }
-.navbar-custom .navbar-toggle {
+
+.navbar-custom .navbar-toggler {
     background-color:#efefdc;
 }
-.navbar-custom .icon-bar {
-    background-color:rgb(128,0,30);
+
+.navbar-custom .navbar-toggler-icon{
+    color: rgb(128,0,30);
 }
 
 .navbar-custom .dropdown-menu .card {
     color:#000000;
     width: 15em;
     padding: 10px;
+    border:none;
 }
 
 .navbar-custom .dropdown-menu .card .list-group .list-group-item{
@@ -49,33 +52,22 @@
 }
 
 
-.btn-fb{
-    color: #fff;
-    background-color:#3b5998;
-}
-.btn-fb:hover{
-    color: #fff;
-    background-color:#496ebc
-}
-.btn-tw{
-    color: #fff;
-    background-color:#55acee;
-}
-.btn-tw:hover{
-    color: #fff;
-    background-color:#59b5fa;
-}
 @media(max-width:768px){
-    .navbar-custom .navbar-header {
-        margin-right: 0em;
-    }
-
-    .navbar-custom .dropdown-menu > li > a {
+    .navbar-custom .dropdown-menu > a {
         color: #fff;
     }
 
-    .navbar-custom .dropdown-menu > li > a:hover {
+    .navbar-custom .dropdown-menu > a:hover {
         color: #c7b585;
+        background-color: rgba(0,0,0,0);
+    }
+
+    .navbar-custom .dropdown-menu {
+        background-color: rgba(0,0,0,0);
+        border:none;
+    }
+
+    .navbar-custom .dropdown-item {
         background-color: rgba(0,0,0,0);
     }
 
@@ -84,7 +76,9 @@
     }
 
     .navbar-custom .dropdown-menu .card {
+        border:none;
         color:#ffffff;
+        background-color: rgba(0,0,0,0);
     }
 
     .navbar-custom .dropdown-menu .card .list-group .list-group-item > a {

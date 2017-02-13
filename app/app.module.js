@@ -13,20 +13,23 @@ var platform_browser_1 = require("@angular/platform-browser");
 var forms_1 = require("@angular/forms");
 var http_1 = require("@angular/http");
 var angular2_jwt_1 = require("angular2-jwt");
+var ng_bootstrap_1 = require("@ng-bootstrap/ng-bootstrap");
 var app_component_1 = require("./app.component");
 var login_component_1 = require("./login/login.component");
 var login_service_1 = require("./login/login.service");
 var auth_guard_1 = require("./common/auth.guard");
 var home_component_1 = require("./home/home.component");
 var about_component_1 = require("./about/about.component");
-var activity_component_1 = require("./activity/activity.component");
 var beauty_component_1 = require("./beauty/beauty.component");
-var product_component_1 = require("./product/product.component");
 var testAPI_component_1 = require("./testAPI/testAPI.component");
-var user_detail_component_1 = require("./user/user-detail.component");
-var user_edit_component_1 = require("./user/user-edit.component");
-var users_component_1 = require("./user/users.component");
-var user_service_1 = require("./user/user.service");
+var activity_component_1 = require("./activity/activity.component");
+var activity_service_1 = require("./activity/activity.service");
+var product_component_1 = require("./product/product.component");
+var product_service_1 = require("./product/product.service");
+var article_component_1 = require("./article/article.component");
+var article_service_1 = require("./article/article.service");
+var classroom_component_1 = require("./classroom/classroom.component");
+var user_profile_component_1 = require("./user/user-profile.component");
 var invoice_detail_component_1 = require("./invoice/invoice-detail.component");
 var invoice_edit_component_1 = require("./invoice/invoice-edit.component");
 var invoices_component_1 = require("./invoice/invoices.component");
@@ -56,7 +59,8 @@ AppModule = __decorate([
             forms_1.FormsModule,
             http_1.HttpModule,
             app_routing_module_1.AppRoutingModule,
-            my_date_picker_module_1.MyDatePickerModule
+            ng_bootstrap_1.NgbModule.forRoot(),
+            my_date_picker_module_1.MyDatePickerModule,
         ],
         declarations: [
             app_component_1.AppComponent,
@@ -64,17 +68,17 @@ AppModule = __decorate([
             home_component_1.HomeComponent,
             about_component_1.AboutComponent,
             activity_component_1.ActivityComponent,
+            article_component_1.ArticleComponent,
             beauty_component_1.BeautyComponent,
             product_component_1.ProductComponent,
             testAPI_component_1.TestAPIComponent,
+            classroom_component_1.ClassroomComponent,
             menu_component_1.MenuComponent,
             footer_component_1.FooterComponent,
             customer_detail_component_1.CustomerDetailComponent,
             customer_edit_component_1.CustomerEditComponent,
             customers_component_1.CustomersComponent,
-            user_detail_component_1.UserDetailComponent,
-            user_edit_component_1.UserEditComponent,
-            users_component_1.UsersComponent,
+            user_profile_component_1.UserProfileComponent,
             invoice_detail_component_1.InvoiceDetailComponent,
             invoice_edit_component_1.InvoiceEditComponent,
             invoices_component_1.InvoicesComponent,
@@ -84,9 +88,11 @@ AppModule = __decorate([
             auth_guard_1.AuthGuard,
             angular2_jwt_1.AUTH_PROVIDERS,
             login_service_1.LoginService,
+            article_service_1.ArticleService,
+            product_service_1.ProductService,
             customer_service_1.CustomerService,
-            user_service_1.UserService,
             invoice_service_1.InvoiceService,
+            activity_service_1.ActivityService,
             WINDOW_PROVIDER
         ],
         bootstrap: [

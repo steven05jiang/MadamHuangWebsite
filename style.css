@@ -1,8 +1,6 @@
 ﻿
 <style>
 
-
-
 .print {
 	display: none;
 }
@@ -66,6 +64,24 @@ input.submit:hover {
 select {
 border: 1;
 color: #990033;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+ button.btn-confirm{
+  background-color: rgb(138,0,35);
+  color: #fff;
+}
+ button.btn-confirm:hover{
+  background-color: #c7b585;
+}
+
+.main {
+  margin-top: 3em;
 }
 
 

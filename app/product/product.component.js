@@ -9,10 +9,37 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
+var router_1 = require("@angular/router");
+var router_2 = require("@angular/router");
+var event_1 = require("../common/event");
+var product_service_1 = require("./product.service");
 var ProductComponent = (function () {
-    function ProductComponent() {
+    function ProductComponent(router, activatedRoute, service) {
+        var _this = this;
+        this.router = router;
+        this.activatedRoute = activatedRoute;
+        this.service = service;
+        this.message = this.service.message;
+        this.subscription = this.service.getStatusChangeEmitter()
+            .subscribe(function ($event) {
+            if ($event.object instanceof event_1.Event && $event.object.type == event_1.Event.RELOAD) {
+                _this.ngOnInit();
+            }
+            _this.message = $event.message;
+        });
     }
     ProductComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.page = 0;
+        this.size = 1000;
+        this.service.getObjects(this.page, this.size).then(function (apiResponse) {
+            _this.apiResponse = apiResponse;
+            _this.objects = apiResponse.body;
+        });
+    };
+    ProductComponent.prototype.openArticle = function (product) {
+        console.log('Ready to nav to article ' + product.article.id);
+        this.router.navigate(['/article', product.article.id]);
     };
     return ProductComponent;
 }());
@@ -23,7 +50,9 @@ ProductComponent = __decorate([
         templateUrl: 'product.component.html',
         styleUrls: ['product.component.css']
     }),
-    __metadata("design:paramtypes", [])
+    __metadata("design:paramtypes", [router_1.Router,
+        router_2.ActivatedRoute,
+        product_service_1.ProductService])
 ], ProductComponent);
 exports.ProductComponent = ProductComponent;
 //# sourceMappingURL=product.component.js.map

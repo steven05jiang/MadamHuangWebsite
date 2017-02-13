@@ -1,1 +1,21 @@
-activity.component.html
+<div class="main">
+	<div class="jumbotron jumbotron-fluid">
+		<div class="container">
+			<h1 class="display-3">美麗聚會</h1>
+			<p class="lead">結識美麗的人，結識美麗的知識。我們定期舉行美麗聚會活動，讓愛美的人不錯過每個更美麗的機會。</p>
+		</div>
+	</div>
+	<div class="container" *ngIf="objects">
+		<div class="card-columns card-custom">
+			<div class="card" *ngFor="let activity of objects">
+			<img *ngIf="activity.imageLink" class="card-img-top img-fluid" src="{{activity.imageLink}}" alt="Image">
+				<div class="card-block">
+					<h4 class="card-title">{{activity.title}}</h4>
+					<p class="card-text">{{activity.description}}</p>
+					<button *ngIf="activity.article" class="btn btn-sm btn-confirm" (click)="openArticle(activity)">Learn More</button>
+					<p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

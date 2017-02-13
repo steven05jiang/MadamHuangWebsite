@@ -33,7 +33,7 @@ var AuthGuard = (function () {
             return true;
         }
         else {
-            this.router.navigate(['/login', 200]);
+            this.router.navigate(['/login']);
             return false;
         }
     };

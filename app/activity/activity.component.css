@@ -1,1 +1,18 @@
-activity.component.css
+.jumbotron {
+  background: url('image/bga.jpg') no-repeat center center;
+  color: #fff;
+}
+
+.card-columns {
+	column-count: 3;
+}
+
+.card-custom .card{
+	margin-top: 1em;
+}
+
+@media (max-width:768px) {
+	.card-columns {
+		column-count: 1;
+	}
+}

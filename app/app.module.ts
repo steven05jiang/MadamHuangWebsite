@@ -4,6 +4,7 @@ import { FormsModule }            from '@angular/forms';
 import { RouterModule }           from '@angular/router';
 import { HttpModule }             from '@angular/http';
 import { AUTH_PROVIDERS }         from 'angular2-jwt';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 import { AppComponent }           from './app.component';
 
@@ -14,15 +15,22 @@ import { AuthGuard }            from './common/auth.guard';
 
 import { HomeComponent }       from './home/home.component';
 import { AboutComponent }       from './about/about.component';
-import { ActivityComponent }            from './activity/activity.component';
 import { BeautyComponent }            from './beauty/beauty.component';
-import { ProductComponent }            from './product/product.component';
+
 import { TestAPIComponent }            from './testAPI/testAPI.component';
 
-import { UserDetailComponent }  from './user/user-detail.component';
-import { UserEditComponent }  from './user/user-edit.component';
-import { UsersComponent }       from './user/users.component';
-import { UserService }          from './user/user.service';
+import { ActivityComponent }            from './activity/activity.component';
+import { ActivityService }            from './activity/activity.service';
+
+import { ProductComponent }            from './product/product.component';
+import { ProductService }            from './product/product.service';
+
+import { ArticleComponent }            from './article/article.component';
+import { ArticleService }            from './article/article.service';
+
+import { ClassroomComponent }            from './classroom/classroom.component';
+
+import { UserProfileComponent }  from './user/user-profile.component';
 
 import { InvoiceDetailComponent }  from './invoice/invoice-detail.component';
 import { InvoiceEditComponent }  from './invoice/invoice-edit.component';
@@ -43,7 +51,8 @@ import { AppRoutingModule }         from './app-routing.module';
 
 import { MyDatePickerModule } from 'mydatepicker/dist/my-date-picker.module';
 
-import { ValueProvider} from '@angular/core'
+
+import { ValueProvider} from '@angular/core';
 
 const WINDOW_PROVIDER: ValueProvider = {
   provide: Window,
@@ -57,7 +66,8 @@ const WINDOW_PROVIDER: ValueProvider = {
     FormsModule,
     HttpModule,
     AppRoutingModule,
-    MyDatePickerModule
+    NgbModule.forRoot(),
+    MyDatePickerModule,
   ],
   declarations: [
     AppComponent,
@@ -65,17 +75,17 @@ const WINDOW_PROVIDER: ValueProvider = {
     HomeComponent,
     AboutComponent,
     ActivityComponent,
+    ArticleComponent,
     BeautyComponent,
     ProductComponent,
     TestAPIComponent,
+    ClassroomComponent,
     MenuComponent,
     FooterComponent,
     CustomerDetailComponent,
     CustomerEditComponent,
     CustomersComponent,
-    UserDetailComponent,
-    UserEditComponent,
-    UsersComponent,
+    UserProfileComponent,
     InvoiceDetailComponent,
     InvoiceEditComponent,
     InvoicesComponent,
@@ -85,9 +95,11 @@ const WINDOW_PROVIDER: ValueProvider = {
     AuthGuard,
     AUTH_PROVIDERS,
     LoginService,
+    ArticleService,
+    ProductService,
     CustomerService,
-    UserService,
     InvoiceService,
+    ActivityService,
     WINDOW_PROVIDER
   ],
   bootstrap: [

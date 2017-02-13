@@ -10,13 +10,15 @@ import { BeautyComponent }            from './beauty/beauty.component';
 import { ProductComponent }            from './product/product.component';
 import { TestAPIComponent }            from './testAPI/testAPI.component';
 
+import { ArticleComponent }            from './article/article.component';
+
+import { ClassroomComponent }            from './classroom/classroom.component';
+
+import { UserProfileComponent }  from './user/user-profile.component';
+
 import { CustomerDetailComponent }  from './customer/customer-detail.component';
 import { CustomerEditComponent }  from './customer/customer-edit.component';
 import { CustomersComponent }       from './customer/customers.component';
-
-import { UserDetailComponent }  from './user/user-detail.component';
-import { UserEditComponent }  from './user/user-edit.component';
-import { UsersComponent }       from './user/users.component';
 
 import { InvoiceDetailComponent }  from './invoice/invoice-detail.component';
 import { InvoiceEditComponent }  from './invoice/invoice-edit.component';
@@ -32,14 +34,13 @@ const routes: Routes = [
   { path: 'product', component: ProductComponent},
   { path: 'test', component: TestAPIComponent},
 
+  { path: 'article/:id', component: ArticleComponent},
+  { path: 'classroom/:name', component: ClassroomComponent},
+  { path: 'profile', component: UserProfileComponent, canActivate: [AuthGuard]},
 
   { path: 'customer-detail/:id', component: CustomerDetailComponent, canActivate: [AuthGuard] },
   { path: 'customer-edit/:id', component: CustomerEditComponent, canActivate: [AuthGuard] },
   { path: 'customers', component: CustomersComponent, canActivate: [AuthGuard] },
-
-  { path: 'user-detail/:id', component: UserDetailComponent, canActivate: [AuthGuard] },
-  { path: 'user-edit/:id', component: UserEditComponent, canActivate: [AuthGuard] },
-  { path: 'users', component: UsersComponent, canActivate: [AuthGuard] },
 
   { path: 'invoice-detail/:id', component: InvoiceDetailComponent, canActivate: [AuthGuard] },
   { path: 'invoice-edit/:id/:customer_id', component: InvoiceEditComponent, canActivate: [AuthGuard] },
