@@ -1,21 +1,21 @@
 <div class="main">
 <div class="container">
 <div *ngIf="user" class="login">
-   <h4 align="center"><span color="green" class="glyphicon glyphicon-leaf" aria-hidden=true></span> Madam Huang Membership</h4>
+   <h2 align="center">會員登陸</h2>
    <div class="form-group">
-     <label for="username">Username</label>
+     <label for="username">用戶名</label>
      <input type="text" class="form-control" [(ngModel)]="user.username" placeholder="Username"
      (input)="clearMessage()"/>
    </div>
    <div class="form-group">
-     <label for="password">Password</label>
+     <label for="password">密碼</label>
      <input type="password" class="form-control" [(ngModel)]="user.password" placeholder="Password"
      (input)="clearMessage()"/>
    </div>
    <div *ngIf="message" class="alert alert-danger">
      {{ message }}
    </div>
-   <button (click)="login()" class="btn btn-success btn-md btn-block">Submit</button>
+   <button (click)="login()" class="btn btn-confirm btn-md btn-block">Submit</button>
      &copy; All Rights Reserved.
 </div>
 </div>

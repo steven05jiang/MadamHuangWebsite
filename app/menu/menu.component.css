@@ -51,6 +51,18 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#8a0023', end
     border:none;
 }
 
+.dropdown-menu-in {
+    left: -10em;
+}
+
+.dropdown-menu-out {
+    left: -5em;
+}
+
+.dropdown-item {
+    color: rgb(138,0,35);
+}
+
 
 @media(max-width:768px){
     .navbar-custom .dropdown-menu > a {

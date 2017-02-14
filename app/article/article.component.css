@@ -1,3 +1,5 @@
-.main {
-	margin-top: 5em;
+.jumbotron {
+  background: url('image/bgb.jpg') no-repeat center center;
+  background-size: 100% auto;
+  color: #fff;
 }

@@ -1,4 +1,6 @@
-
+.main {
+	margin-top: 8em;
+}
 .login {
   background-color: rgba(0,0,0,0);
   max-width: 50%;

@@ -1,7 +1,14 @@
 <div class="main">
-	<div class="container">
-	<div *ngIf="article">
-		<h1>{{article.title}}</h1>
+
+<div class="jumbotron jumbotron-fluid" *ngIf="article">
+  <div class="container">
+    <h1 class="display-3">{{article.title}}</h1>
+    <p class="lead" *ngIf="article.createdDate">Created on {{article.createdDate | date:"MM/dd/yy"}}</p>
+  </div>
+</div>
+
+<div class="container">
+	<div *ngIf="article.content">
 		<p>{{article.content}}</p>
 		</div>
 	</div>

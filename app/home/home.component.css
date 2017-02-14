@@ -51,6 +51,15 @@ section .title-center{
     height: 100%;
 }
 
+.image-qr > img{
+  width: 100%;
+  height: auto;
+}
+
+#contactInfo > ul > li {
+  margin: 1em;
+}
+
 
 @media(max-width:1024px){
   .carousel-inner {
