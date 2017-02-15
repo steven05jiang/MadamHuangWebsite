@@ -53,6 +53,45 @@ var LoginService = (function () {
         })
             .catch(function (ex) { return _this.handleError(ex); });
     };
+    LoginService.prototype.signup = function (user) {
+        var _this = this;
+        console.log('API Host: ' + config_1.Config.api_host);
+        var url = config_1.Config.api_host + '/signup';
+        var apiRequest = ({
+            apiKey: '',
+            operator: '',
+            token: '',
+            body: user
+        });
+        console.log(JSON.stringify(apiRequest));
+        this.http.post(url, JSON.stringify(apiRequest), { headers: this.headers })
+            .toPromise()
+            .then(function (response) {
+            console.log(response);
+            if (response.json().code == '200') {
+                var token = response.json().token;
+                localStorage.setItem('token', token);
+                _this.user = response.json().body;
+                console.log('last log on: ' + _this.user.lastlogOn + '  Token: ' + token);
+                _this.router.navigate(['home']);
+                _this.emitStatusChangeEvent(_this.user, '');
+            }
+            else {
+                localStorage.setItem('token', '');
+                //this.status = new Status();
+                _this.message = config_1.Text.val(100); //'Failed - invalid user name or password!';
+                //this.message = 'Failed - invalid user name or password!';
+                _this.emitStatusChangeEvent(null, _this.message);
+            }
+        })
+            .catch(function (ex) { return _this.handleError(ex); });
+    };
+    LoginService.prototype.onSubmit = function () {
+        this.user = null;
+        //this.emitStatusChangeEvent('You have successfully logged out!');
+        this.message = "You have succesfully logged out!";
+        this.emitStatusChangeEvent(null, this.message);
+    };
     LoginService.prototype.signout = function () {
         localStorage.setItem('token', '');
         this.user = null;

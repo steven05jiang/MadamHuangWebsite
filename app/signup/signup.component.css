@@ -1,1 +1,12 @@
-signup.component.css
+.main {
+	margin-top: 8em;
+}
+.signup {
+  background-color: rgba(0,0,0,0);
+  max-width: 50%;
+  padding: 15px;
+  margin: 0 auto;
+}
+
+@media(max-width:768px){
+}

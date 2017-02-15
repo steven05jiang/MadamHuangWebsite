@@ -20,6 +20,7 @@ import { User }           from '../user/user';
 export class LoginComponent implements OnInit {
 
   user: User;
+  loginUser: User;
   message: string;
   subscription: any;
 
@@ -29,7 +30,7 @@ export class LoginComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private http: Http) {
 
-      this.user = <User>({
+      this.loginUser = new User({
         username: '',
         password: ''
       });
@@ -40,13 +41,14 @@ export class LoginComponent implements OnInit {
         .subscribe(($event:any) => {
           if($event.user) {
             this.user = $event.user;
+            this.loginUser = this.user;
           }
           this.message = $event.message;
         } );
   }
 
   login() {
-    this.loginService.signin(this.user);
+    this.loginService.signin(this.loginUser);
   }
 
   clearMessage() {

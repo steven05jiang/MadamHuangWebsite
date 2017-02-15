@@ -12,12 +12,12 @@ var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
 var auth_guard_1 = require("./common/auth.guard");
 var login_component_1 = require("./login/login.component");
+var signup_component_1 = require("./signup/signup.component");
 var home_component_1 = require("./home/home.component");
 var about_component_1 = require("./about/about.component");
 var activity_component_1 = require("./activity/activity.component");
 var beauty_component_1 = require("./beauty/beauty.component");
 var product_component_1 = require("./product/product.component");
-var testAPI_component_1 = require("./testAPI/testAPI.component");
 var article_component_1 = require("./article/article.component");
 var classroom_component_1 = require("./classroom/classroom.component");
 var user_profile_component_1 = require("./user/user-profile.component");
@@ -30,12 +30,12 @@ var invoices_component_1 = require("./invoice/invoices.component");
 var routes = [
     { path: '', redirectTo: '/home', pathMatch: 'full' },
     { path: 'login', component: login_component_1.LoginComponent },
+    { path: 'signup', component: signup_component_1.SignupComponent },
     { path: 'home', component: home_component_1.HomeComponent },
     { path: 'about', component: about_component_1.AboutComponent },
     { path: 'activity', component: activity_component_1.ActivityComponent },
     { path: 'beauty', component: beauty_component_1.BeautyComponent },
     { path: 'product', component: product_component_1.ProductComponent },
-    { path: 'test', component: testAPI_component_1.TestAPIComponent },
     { path: 'article/:id', component: article_component_1.ArticleComponent },
     { path: 'classroom/:name', component: classroom_component_1.ClassroomComponent },
     { path: 'profile', component: user_profile_component_1.UserProfileComponent, canActivate: [auth_guard_1.AuthGuard] },

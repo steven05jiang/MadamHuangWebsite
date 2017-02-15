@@ -13,6 +13,7 @@ var router_1 = require("@angular/router");
 var router_2 = require("@angular/router");
 var http_1 = require("@angular/http");
 var login_service_1 = require("./login.service");
+var user_1 = require("../user/user");
 var LoginComponent = (function () {
     function LoginComponent(loginService, router, activatedRoute, http) {
         var _this = this;
@@ -20,7 +21,7 @@ var LoginComponent = (function () {
         this.router = router;
         this.activatedRoute = activatedRoute;
         this.http = http;
-        this.user = ({
+        this.loginUser = new user_1.User({
             username: '',
             password: ''
         });
@@ -30,12 +31,13 @@ var LoginComponent = (function () {
             .subscribe(function ($event) {
             if ($event.user) {
                 _this.user = $event.user;
+                _this.loginUser = _this.user;
             }
             _this.message = $event.message;
         });
     }
     LoginComponent.prototype.login = function () {
-        this.loginService.signin(this.user);
+        this.loginService.signin(this.loginUser);
     };
     LoginComponent.prototype.clearMessage = function () {
         this.message = '';

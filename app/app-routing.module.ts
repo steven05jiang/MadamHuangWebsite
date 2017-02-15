@@ -3,12 +3,12 @@ import { RouterModule, Routes }     from '@angular/router';
 
 import { AuthGuard }                from './common/auth.guard';
 import { LoginComponent }           from './login/login.component';
+import { SignupComponent }       from './signup/signup.component';
 import { HomeComponent }            from './home/home.component';
 import { AboutComponent }            from './about/about.component';
 import { ActivityComponent }            from './activity/activity.component';
 import { BeautyComponent }            from './beauty/beauty.component';
 import { ProductComponent }            from './product/product.component';
-import { TestAPIComponent }            from './testAPI/testAPI.component';
 
 import { ArticleComponent }            from './article/article.component';
 
@@ -27,12 +27,12 @@ import { InvoicesComponent }       from './invoice/invoices.component';
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full'},
   { path: 'login', component: LoginComponent },
+  { path: 'signup', component: SignupComponent },
   { path: 'home', component: HomeComponent},
   { path: 'about', component: AboutComponent},
   { path: 'activity', component: ActivityComponent},
   { path: 'beauty', component: BeautyComponent},
   { path: 'product', component: ProductComponent},
-  { path: 'test', component: TestAPIComponent},
 
   { path: 'article/:id', component: ArticleComponent},
   { path: 'classroom/:name', component: ClassroomComponent},

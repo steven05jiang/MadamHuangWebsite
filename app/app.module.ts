@@ -11,13 +11,13 @@ import { AppComponent }           from './app.component';
 import { LoginComponent }       from './login/login.component';
 import { LoginService }          from './login/login.service';
 
+import { SignupComponent }       from './signup/signup.component';
+
 import { AuthGuard }            from './common/auth.guard';
 
 import { HomeComponent }       from './home/home.component';
 import { AboutComponent }       from './about/about.component';
 import { BeautyComponent }            from './beauty/beauty.component';
-
-import { TestAPIComponent }            from './testAPI/testAPI.component';
 
 import { ActivityComponent }            from './activity/activity.component';
 import { ActivityService }            from './activity/activity.service';
@@ -72,13 +72,13 @@ const WINDOW_PROVIDER: ValueProvider = {
   declarations: [
     AppComponent,
     LoginComponent,
+    SignupComponent,
     HomeComponent,
     AboutComponent,
     ActivityComponent,
     ArticleComponent,
     BeautyComponent,
     ProductComponent,
-    TestAPIComponent,
     ClassroomComponent,
     MenuComponent,
     FooterComponent,

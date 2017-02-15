@@ -17,11 +17,11 @@ var ng_bootstrap_1 = require("@ng-bootstrap/ng-bootstrap");
 var app_component_1 = require("./app.component");
 var login_component_1 = require("./login/login.component");
 var login_service_1 = require("./login/login.service");
+var signup_component_1 = require("./signup/signup.component");
 var auth_guard_1 = require("./common/auth.guard");
 var home_component_1 = require("./home/home.component");
 var about_component_1 = require("./about/about.component");
 var beauty_component_1 = require("./beauty/beauty.component");
-var testAPI_component_1 = require("./testAPI/testAPI.component");
 var activity_component_1 = require("./activity/activity.component");
 var activity_service_1 = require("./activity/activity.service");
 var product_component_1 = require("./product/product.component");
@@ -65,13 +65,13 @@ AppModule = __decorate([
         declarations: [
             app_component_1.AppComponent,
             login_component_1.LoginComponent,
+            signup_component_1.SignupComponent,
             home_component_1.HomeComponent,
             about_component_1.AboutComponent,
             activity_component_1.ActivityComponent,
             article_component_1.ArticleComponent,
             beauty_component_1.BeautyComponent,
             product_component_1.ProductComponent,
-            testAPI_component_1.TestAPIComponent,
             classroom_component_1.ClassroomComponent,
             menu_component_1.MenuComponent,
             footer_component_1.FooterComponent,
