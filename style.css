@@ -80,9 +80,16 @@ ul {
   background-color: #c7b585;
 }
 
+button.btn-cancel{
+  background-color: #0581a3;
+  color: #fff;
+}
+ button.btn-cancel:hover{
+  background-color: #9b9bbd;
+}
+
 .main {
   margin-top: 3em;
 }
-
 
 </style>

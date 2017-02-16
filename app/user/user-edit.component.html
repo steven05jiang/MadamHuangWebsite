@@ -1,1 +1,127 @@
-user_edit.component.html
+<div class="main" *ngIf="user">
+	<div class="jumbotron jumbotron-fluid">
+		<div class="container">
+			<h1 class="display-3">{{user.username}}</h1>
+			<p class="lead">請更改您的信息</p>
+		</div>
+	</div>
+	<div class="container">
+		<form>
+		<div class="row">
+			<div class="col-md-5 col-sm-12">
+				<div class="card card-profile">
+					<img class="card-img-top" src="image/carsl5.jpg" alt="Card image cap">
+					<div class="card-block">
+						<h4 class="card-title">{{user.username}}</h4>
+						<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+
+						<div class="btn-group" role="group">
+							<div><button type="submit" (click)="onSubmit()" class="btn btn-md btn-confirm btn-row">確認更改</button></div>
+							<div><button type="button" (click)="onCancel()" class="btn btn-md btn-cancel">取消更改</button></div>
+						</div>
+					</div>
+				</div>
+				<div *ngIf="message" class="alert alert-danger">
+     				{{ message }}
+   				</div>
+			</div>
+			<div class="col-md-7 col-sm-12">
+				<div class="card-columns">
+					<div class="card card-entry">
+						<div class="card-block">
+							<h4 class="card-title">First Name</h4>
+							<div class="form-group card-text">
+    						 <input type="text" class="form-control" name="firstName" [(ngModel)]="updatedUser.firstName" placeholder="Enter your first name"/>
+   							</div>
+						</div>
+					</div>
+					<div class="card">
+						<div class="card-block">
+							<h4 class="card-title">Last Name</h4>
+							<div class="form-group card-text">
+    						 <input type="text" class="form-control" name="lastName" [(ngModel)]="updatedUser.lastName" placeholder="Enter your last name"/>
+   							</div>
+						</div>
+					</div>
+					<div class="card">
+						<div class="card-block">
+							<h4 class="card-title">Email</h4>
+							<div class="form-group card-text">
+    						 <input type="email" class="form-control" name="email" [(ngModel)]="updatedUser.email" placeholder="Enter email" required/>
+   							</div>
+						</div>
+					</div>
+					<div class="card">
+						<div class="card-block">
+							<h4 class="card-title">Telephone</h4>
+							<div class="form-group card-text">
+    						 <input type="tel" class="form-control" name="tel" [(ngModel)]="updatedUser.tel" placeholder="Enter telephone"/>
+   							</div>
+						</div>
+					</div>
+					<div class="card">
+						<div class="card-block">
+							<h4 class="card-title">Address Line 1</h4>
+							<div class="form-group card-text">
+    						 <input type="text" class="form-control" name="addr1" [(ngModel)]="updatedUser.addressLine1" placeholder="Enter Address Line 1"/>
+   							</div>
+						</div>
+					</div>
+					<div class="card">
+						<div class="card-block">
+							<h4 class="card-title">Address Line 2</h4>
+							<div class="form-group card-text">
+    						 <input type="text" class="form-control" name="addr2" [(ngModel)]="updatedUser.addressLine2" placeholder="Enter Address Line 2"/>
+   							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6 col-sm-12">
+							<div class="card">
+								<div class="card-block">
+									<h4 class="card-title">City</h4>
+									<div class="form-group card-text">
+		    						 <input type="text" class="form-control" name="city" [(ngModel)]="updatedUser.city" placeholder="Enter city"/>
+		   							</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-6 col-sm-12">
+							<div class="card">
+								<div class="card-block">
+									<h4 class="card-title">State</h4>
+									<div class="form-group card-text">
+		    						 <input type="text" class="form-control" name="state" [(ngModel)]="updatedUser.state" placeholder="Enter State"/>
+		   							</div>
+								</div>
+							</div>
+						</div>
+						</div>
+						<div class="row">
+						<div class="col-md-6 col-sm-12">
+							<div class="card">
+								<div class="card-block">
+									<h4 class="card-title">Zip Code</h4>
+									<div class="form-group card-text">
+		    						 <input type="text" class="form-control" name="zipCode" [(ngModel)]="updatedUser.zipCode" placeholder="Enter Zip Code"/>
+		   							</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-6 col-sm-12">
+							<div class="card">
+								<div class="card-block">
+									<h4 class="card-title">Country</h4>
+									<div class="form-group card-text">
+		    						 <input type="text" class="form-control" name="country" [(ngModel)]="updatedUser.country" placeholder="Enter Country"/>
+		   							</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		</form>
+	</div>
+</div>

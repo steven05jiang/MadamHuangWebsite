@@ -6,6 +6,5 @@ export class Article {
 
 	constructor(){
 		this.id = -1;
-		this.createdDate = (new Date().getTime()).toString();
 	}
 }

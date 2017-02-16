@@ -30,11 +30,12 @@ export class ArticleComponent implements OnInit {
 		private activatedRoute: ActivatedRoute,
 		private service: ArticleService,
 		) {
+		this.article = new Article();
 		this.message = this.service.message;
 		this.subscription = this.service.getStatusChangeEmitter()
 		.subscribe(($event:any) => {
-			if($event.object instanceof Event && $event.object.type == Event.RELOAD) {
-				this.ngOnInit();
+			if($event.article) {
+				this.article = $even.article;
 			}
 			this.message = $event.message;
 		} );
@@ -43,13 +44,19 @@ export class ArticleComponent implements OnInit {
 		this.activatedRoute.params.forEach((params: Params) => {
 	        this.id = +params['id'];
 	    })
-		this.service.getObject(this.id).then(
-			apiResponse => {
-				this.apiResponse = apiResponse;
-				this.article = apiResponse.body as Article;
-				console.log(this.article);
-			}
-		);
+		this.getArticle();
 	}
+
+	getArticle(): void {
+		this.service.getArticle(this.id).then(
+		article => {
+			this.article = article;
+			console.log(this.article);
+		});
+	}
+
+	  ngOnDestroy() {
+    this.subscription.unsubscribe();
+  }
 
 }

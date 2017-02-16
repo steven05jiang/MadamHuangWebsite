@@ -1,1 +1,23 @@
-contact.component.css
+.jumbotron {
+  background: url('image/bgb.jpg') no-repeat center center;
+  background-size: 100% auto;
+  color: #fff;
+}
+
+#contactInfo > ul > li {
+  margin: 1em;
+}
+
+.image-qr > img{
+  width: 100%;
+  height: auto;
+}
+
+
+@media(max-width:768px){
+  #contactInfo {
+    margin-top: 3em;
+  }
+
+}
+

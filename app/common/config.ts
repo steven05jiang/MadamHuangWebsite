@@ -48,9 +48,9 @@ export class Text {
     let value = '';
 
     TEXTS.forEach((text: Text) => {
-      console.log("Got text: " + text.val);
       if(isGoing) {
         if(id == text.id) {
+          console.log(text.val);
           value = text.val;
           isGoing = false;
         }

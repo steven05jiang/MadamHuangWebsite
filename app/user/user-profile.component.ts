@@ -32,7 +32,7 @@ export class UserProfileComponent implements OnInit {
         if($event.user) {
           this.user = $event.user;
           }else{
-            this.user = null;
+          	this.router.navigate(['login']);
           }
           // TODO: message is not used for now.
           //this.message = $event.message;
@@ -40,5 +40,9 @@ export class UserProfileComponent implements OnInit {
 	}
 	ngOnInit(): void {
 	}
+
+	ngOnDestroy() {
+    this.subscription.unsubscribe();
+  }
 
 }

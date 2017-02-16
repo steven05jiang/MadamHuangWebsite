@@ -1,75 +1,75 @@
 <div class="main" *ngIf="user">
-<div class="jumbotron jumbotron-fluid">
-  <div class="container">
-    <h1 class="display-3">{{user.username}}</h1>
-    <p class="lead">歡迎來到您的信息中心，在這裡您可以隨時更改您的相關信息</p>
-  </div>
-</div>
+	<div class="jumbotron jumbotron-fluid">
+		<div class="container">
+			<h1 class="display-3">{{user.username}}</h1>
+			<p class="lead">歡迎來到您的信息中心，在這裡您可以隨時更改您的相關信息</p>
+		</div>
+	</div>
 	<div class="container">
 		<div class="row">
 			<div class="col-md-5 col-sm-12">
 				<div class="card card-profile">
-				  <img class="card-img-top" src="image/carsl5.jpg" alt="Card image cap">
-				  <div class="card-block">
-				    <h4 class="card-title">{{user.username}}</h4>
-				    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-				    <div class="btn-group" role="group">
-				    <div><button href="/user-edit" class="btn btn-md btn-confirm btn-row">修改資料</button></div>
-				    <div><button href="/user-edit" class="btn btn-md btn-primary">修改密碼</button></div>
-				    </div>
-				  </div>
+					<img class="card-img-top" src="image/carsl5.jpg" alt="Card image cap">
+					<div class="card-block">
+						<h4 class="card-title">{{user.username}}</h4>
+						<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+						<div class="btn-group" role="group">
+							<div><button routerLink="/user-edit" class="btn btn-md btn-confirm btn-row">修改資料</button></div>
+							<div><button routerLink="/user-change-password" class="btn btn-md btn-cancel">修改密碼</button></div>
+						</div>
+					</div>
 				</div>
 			</div>
 			<div class="col-md-7 col-sm-12">
 				<div class="card-columns">
 					<div class="card card-entry">
-					    <div class="card-block">
-					      <h4 class="card-title">First Name</h4>
-					      <p class="card-text">{{user.firstName}}</p>
-					    </div>
+						<div class="card-block">
+							<h4 class="card-title">First Name</h4>
+							<p class="card-text">{{user.firstName}}</p>
+						</div>
 					</div>
 					<div class="card">
-					    <div class="card-block">
-					      <h4 class="card-title">Last Name</h4>
-					      <p class="card-text">{{user.lastName}}</p>
-					    </div>
+						<div class="card-block">
+							<h4 class="card-title">Last Name</h4>
+							<p class="card-text">{{user.lastName}}</p>
+						</div>
 					</div>
 					<div class="card">
-					    <div class="card-block">
-					      <h4 class="card-title">Email</h4>
-					      <p class="card-text">{{user.email}}</p>
-					    </div>
+						<div class="card-block">
+							<h4 class="card-title">Email</h4>
+							<p class="card-text">{{user.email}}</p>
+						</div>
 					</div>
 					<div class="card">
-					    <div class="card-block">
-					      <h4 class="card-title">Telephone</h4>
-					      <p class="card-text">{{user.tel}}</p>
-					    </div>
+						<div class="card-block">
+							<h4 class="card-title">Telephone</h4>
+							<p class="card-text">{{user.tel}}</p>
+						</div>
 					</div>
 					<div class="card">
-					    <div class="card-block">
-					      <h4 class="card-title">Address</h4>
-					      <p class="card-text">
-						      <span *ngIf="user.addressLine1">
-						      {{user.addressLine1}}<br>
-						      </span>
-						      <span *ngIf="user.addressLine2">
-						      {{user.addressLine2}}<br>
-						      </span>
-						      <span *ngIf="user.city">
-						      {{user.city}}, 
-						      </span>
-						      <span *ngIf="user.state">
-						      {{user.state}} 
-						      </span>
-						      <span *ngIf="user.zipCode">
-						      {{user.zipCode}}, 
-						      </span>
-						      <span *ngIf="user.country">
-						      {{user.country}}
-						      </span>
-					     	</p>
-					    </div>
+						<div class="card-block">
+							<h4 class="card-title">Address</h4>
+							<p class="card-text">
+								<span *ngIf="user.addressLine1">
+									{{user.addressLine1}}<br>
+								</span>
+								<span *ngIf="user.addressLine2">
+									{{user.addressLine2}}<br>
+								</span>
+								<span *ngIf="user.city">
+									{{user.city}}
+								</span>
+								<span *ngIf="user.state">
+									{{user.state}} 
+								</span>
+								<span *ngIf="user.zipCode">
+									{{user.zipCode}} 
+								</span>
+								<span *ngIf="user.country">
+									{{user.country}}
+								</span>
+							</p>
+						</div>
 					</div>
 				</div>
 			</div>

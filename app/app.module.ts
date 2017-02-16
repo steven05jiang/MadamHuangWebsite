@@ -18,6 +18,8 @@ import { AuthGuard }            from './common/auth.guard';
 import { HomeComponent }       from './home/home.component';
 import { AboutComponent }       from './about/about.component';
 import { BeautyComponent }            from './beauty/beauty.component';
+import { ContactComponent }            from './contact/contact.component';
+
 
 import { ActivityComponent }            from './activity/activity.component';
 import { ActivityService }            from './activity/activity.service';
@@ -31,6 +33,8 @@ import { ArticleService }            from './article/article.service';
 import { ClassroomComponent }            from './classroom/classroom.component';
 
 import { UserProfileComponent }  from './user/user-profile.component';
+import { UserEditComponent }  from './user/user-edit.component';
+import { ChangePasswordComponent }  from './user/user-change-password.component';
 
 import { InvoiceDetailComponent }  from './invoice/invoice-detail.component';
 import { InvoiceEditComponent }  from './invoice/invoice-edit.component';
@@ -75,6 +79,7 @@ const WINDOW_PROVIDER: ValueProvider = {
     SignupComponent,
     HomeComponent,
     AboutComponent,
+    ContactComponent,
     ActivityComponent,
     ArticleComponent,
     BeautyComponent,
@@ -86,6 +91,8 @@ const WINDOW_PROVIDER: ValueProvider = {
     CustomerEditComponent,
     CustomersComponent,
     UserProfileComponent,
+    UserEditComponent,
+    ChangePasswordComponent,
     InvoiceDetailComponent,
     InvoiceEditComponent,
     InvoicesComponent,

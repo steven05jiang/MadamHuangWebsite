@@ -48,7 +48,6 @@ export class LoginService {
 
             this.user = response.json().body as User;
             console.log('last log on: ' + this.user.lastlogOn + '  Token: ' + token);
-            this.router.navigate(['home']);
             this.emitStatusChangeEvent(this.user, '');
             // response.json().body;
           } else {
@@ -88,7 +87,6 @@ export class LoginService {
 
             this.user = response.json().body as User;
             console.log('last log on: ' + this.user.lastlogOn + '  Token: ' + token);
-            this.router.navigate(['home']);
             this.emitStatusChangeEvent(this.user, '');
             // response.json().body;
           } else {
@@ -103,6 +101,95 @@ export class LoginService {
       .catch((ex) => this.handleError(ex));
   }
 
+  updateProfile(user: User): Promise<User> {
+
+    console.log('API Host: ' + Config.api_host);
+
+    const url = Config.api_host + '/user-update';
+    let apiRequest = <APIRequest>({
+        apiKey: '',
+        operator: '',
+        token: Config.getToken(),
+        body: user
+    });
+
+    console.log(JSON.stringify(apiRequest));
+
+    return this.http.post(url, JSON.stringify(apiRequest), {headers: this.headers})
+      .toPromise()
+      .then(
+        response => {
+        console.log(response);
+          if(response.json().code == '200') {
+            let token = response.json().token;
+            localStorage.setItem('token', token);
+
+            this.user = response.json().body as User;
+            console.log('last log on: ' + this.user.lastlogOn + '  Token: ' + token);
+            //this.emitStatusChangeEvent(this.user, '');
+            return this.user;
+            // response.json().body;
+          } else if(response.json().code == '403'){
+            localStorage.setItem('token', '');
+            //this.status = new Status();
+            this.user = null;
+            this.message = Text.val(200); //'Failed - invalid user name or password!';
+            //this.message = 'Failed - invalid user name or password!';
+            this.emitStatusChangeEvent(null, this.message);
+          } else {
+             this.message = Text.val(500); //'Failed - invalid user name or password!';
+            //this.message = 'Failed - invalid user name or password!';
+            this.emitStatusChangeEvent(this.user, this.message);
+          }
+        }
+      )
+      .catch((ex) => this.handleError(ex));
+  }
+
+  changePassword(passwordHelper: any): Promise<User> {
+
+    console.log('API Host: ' + Config.api_host);
+
+    const url = Config.api_host + '/user-update-password';
+    let apiRequest = <APIRequest>({
+        apiKey: '',
+        operator: '',
+        token: Config.getToken(),
+        body: passwordHelper
+    });
+
+    console.log(JSON.stringify(apiRequest));
+
+    return this.http.post(url, JSON.stringify(apiRequest), {headers: this.headers})
+      .toPromise()
+      .then(
+        response => {
+        console.log(response);
+          if(response.json().code == '200') {
+            let token = response.json().token;
+            localStorage.setItem('token', token);
+
+            this.user = response.json().body as User;
+            console.log('last log on: ' + this.user.lastlogOn + '  Token: ' + token);
+            //this.emitStatusChangeEvent(this.user, '');
+            return this.user;
+            // response.json().body;
+          } else if(response.json().code == '403'){
+            localStorage.setItem('token', '');
+            //this.status = new Status();
+            this.user = null;
+            this.message = Text.val(200); //'Failed - invalid user name or password!';
+            //this.message = 'Failed - invalid user name or password!';
+            this.emitStatusChangeEvent(null, this.message);
+          } else {
+             this.message = Text.val(500); //'Failed - invalid user name or password!';
+            //this.message = 'Failed - invalid user name or password!';
+            this.emitStatusChangeEvent(this.user, this.message);
+          }
+        }
+      )
+      .catch((ex) => this.handleError(ex));
+  }
 
   onSubmit() {
      this.user = null;

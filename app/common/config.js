@@ -36,9 +36,9 @@ var Text = (function () {
         var isGoing = true;
         var value = '';
         exports.TEXTS.forEach(function (text) {
-            console.log("Got text: " + text.val);
             if (isGoing) {
                 if (id == text.id) {
+                    console.log(text.val);
                     value = text.val;
                     isGoing = false;
                 }

@@ -12,60 +12,69 @@ var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
 var router_2 = require("@angular/router");
 var http_1 = require("@angular/http");
-var login_service_1 = require("./login.service");
-var user_1 = require("../user/user");
-var LoginComponent = (function () {
-    function LoginComponent(loginService, router, activatedRoute, http) {
+var login_service_1 = require("../login/login.service");
+var ChangePasswordComponent = (function () {
+    function ChangePasswordComponent(loginService, router, activatedRoute, http) {
         var _this = this;
         this.loginService = loginService;
         this.router = router;
         this.activatedRoute = activatedRoute;
         this.http = http;
-        this.loginUser = new user_1.User({
-            username: '',
-            password: ''
-        });
         console.log('loginComponent: constructor called');
+        this.passwordHelper = {};
+        this.passwordHelper.oldPassword = '';
+        this.passwordHelper.confirmPassword = '';
+        this.passwordHelper.newPassword = '';
         this.message = this.loginService.message;
         this.subscription = this.loginService.getStatusChangeEmitter()
             .subscribe(function ($event) {
             if ($event.user) {
                 _this.user = $event.user;
-                console.log('User exists');
-                _this.loginUser = _this.user;
-                _this.router.navigate(['home']);
+                _this.passwordHelper.username = _this.user.username;
+            }
+            else {
+                _this.router.navigate(['login']);
             }
             _this.message = $event.message;
         });
     }
-    LoginComponent.prototype.login = function () {
-        this.loginService.signin(this.loginUser);
+    ChangePasswordComponent.prototype.onSubmit = function () {
+        var _this = this;
+        if (this.passwordHelper.newPassword != this.passwordHelper.confirmPassword) {
+            this.messgae = '輸入密碼不一致';
+        }
+        else {
+            this.loginService.changePassword(this.passwordHelper).then(function (user) { return _this.router.navigate(['/profile']); });
+        }
     };
-    LoginComponent.prototype.clearMessage = function () {
+    ChangePasswordComponent.prototype.onCancel = function () {
+        this.router.navigate(['/profile']);
+    };
+    ChangePasswordComponent.prototype.clearMessage = function () {
         this.message = '';
     };
-    LoginComponent.prototype.ngOnInit = function () {
+    ChangePasswordComponent.prototype.ngOnInit = function () {
         // this.activatedRoute.params.forEach((params: Params) => {
         //   let code = +params['code'];
         //   this.message = Text.val(code); //code.toString();
         // });
     };
-    LoginComponent.prototype.ngOnDestroy = function () {
+    ChangePasswordComponent.prototype.ngOnDestroy = function () {
         this.subscription.unsubscribe();
     };
-    return LoginComponent;
+    return ChangePasswordComponent;
 }());
-LoginComponent = __decorate([
+ChangePasswordComponent = __decorate([
     core_1.Component({
         moduleId: module.id,
-        selector: 'my-login',
-        templateUrl: 'login.component.html',
-        styleUrls: ['login.component.css']
+        selector: 'my-change-password',
+        templateUrl: 'user-change-password.component.html',
+        styleUrls: ['user-change-password.component.css']
     }),
     __metadata("design:paramtypes", [login_service_1.LoginService,
         router_1.Router,
         router_2.ActivatedRoute,
         http_1.Http])
-], LoginComponent);
-exports.LoginComponent = LoginComponent;
-//# sourceMappingURL=login.component.js.map
+], ChangePasswordComponent);
+exports.ChangePasswordComponent = ChangePasswordComponent;
+//# sourceMappingURL=user-change-password.component.js.map

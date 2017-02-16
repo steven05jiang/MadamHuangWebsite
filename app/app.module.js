@@ -22,6 +22,7 @@ var auth_guard_1 = require("./common/auth.guard");
 var home_component_1 = require("./home/home.component");
 var about_component_1 = require("./about/about.component");
 var beauty_component_1 = require("./beauty/beauty.component");
+var contact_component_1 = require("./contact/contact.component");
 var activity_component_1 = require("./activity/activity.component");
 var activity_service_1 = require("./activity/activity.service");
 var product_component_1 = require("./product/product.component");
@@ -30,6 +31,8 @@ var article_component_1 = require("./article/article.component");
 var article_service_1 = require("./article/article.service");
 var classroom_component_1 = require("./classroom/classroom.component");
 var user_profile_component_1 = require("./user/user-profile.component");
+var user_edit_component_1 = require("./user/user-edit.component");
+var user_change_password_component_1 = require("./user/user-change-password.component");
 var invoice_detail_component_1 = require("./invoice/invoice-detail.component");
 var invoice_edit_component_1 = require("./invoice/invoice-edit.component");
 var invoices_component_1 = require("./invoice/invoices.component");
@@ -68,6 +71,7 @@ AppModule = __decorate([
             signup_component_1.SignupComponent,
             home_component_1.HomeComponent,
             about_component_1.AboutComponent,
+            contact_component_1.ContactComponent,
             activity_component_1.ActivityComponent,
             article_component_1.ArticleComponent,
             beauty_component_1.BeautyComponent,
@@ -79,6 +83,8 @@ AppModule = __decorate([
             customer_edit_component_1.CustomerEditComponent,
             customers_component_1.CustomersComponent,
             user_profile_component_1.UserProfileComponent,
+            user_edit_component_1.UserEditComponent,
+            user_change_password_component_1.ChangePasswordComponent,
             invoice_detail_component_1.InvoiceDetailComponent,
             invoice_edit_component_1.InvoiceEditComponent,
             invoices_component_1.InvoicesComponent,

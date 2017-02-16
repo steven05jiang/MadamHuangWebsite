@@ -11,17 +11,16 @@ import { User }           from '../user/user';
 
 @Component({
   moduleId: module.id,
-  selector: 'my-signup',
-  templateUrl: 'signup.component.html',
-  styleUrls: [ 'signup.component.css' ]
+  selector: 'my-change-password',
+  templateUrl: 'user-change-password.component.html',
+  styleUrls: [ 'user-change-password.component.css' ]
 })
 
 
-export class SignupComponent implements OnInit {
+export class ChangePasswordComponent implements OnInit {
 
   user: User;
-  newUser: User;
-  passwordHelper:	any;
+  passwordHelper:  any;
   message: string;
   subscription: any;
 
@@ -31,32 +30,35 @@ export class SignupComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private http: Http) {
 
-      this.newUser = <User>({
-        username: '',
-        password: ''
-      });
-
-      this.passwordHelper = {};
-      this.passwordHelper.confirmPassword = '';
-
       console.log('loginComponent: constructor called');
+      this.passwordHelper = {};
+      this.passwordHelper.oldPassword = '';
+      this.passwordHelper.confirmPassword = '';
+      this.passwordHelper.newPassword = '';
+      this.message = this.loginService.message;
       this.subscription = this.loginService.getStatusChangeEmitter()
         .subscribe(($event:any) => {
           if($event.user) {
             this.user = $event.user;
-            this.newUser = this.user;
-            this.router.navigate(['home']);
+            this.passwordHelper.username = this.user.username;
+          }else{
+            this.router.navigate(['login']);
           }
           this.message = $event.message;
         } );
   }
 
-  signup() {
-  	if(this.newUser.password != this.passwordHelper.confirmPassword) {
-  		this.messgae = '輸入密碼不一致';
-  	}else {
-    	this.loginService.signup(this.newUser);
+  onSubmit() {
+    if(this.passwordHelper.newPassword != this.passwordHelper.confirmPassword) {
+      this.messgae = '輸入密碼不一致';
+    }else {
+      this.loginService.changePassword(this.passwordHelper).then(
+        user => this.router.navigate(['/profile'])
+      );
     }
+  }
+  onCancel() {
+    this.router.navigate(['/profile'])
   }
 
   clearMessage() {

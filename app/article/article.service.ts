@@ -15,7 +15,7 @@ export class ArticleService {
 
   message: string;
   size: number = Config.PAGE_NUM;
-  statusChange: EventEmitter<({object:any, message:string})> = new EventEmitter();
+  statusChange: EventEmitter<({article:Article, message:string})> = new EventEmitter();
 
   private headers = new Headers({'Content-Type': 'application/json'});
 
@@ -24,7 +24,7 @@ export class ArticleService {
 
   // TODO: change get request to POST request using APIRequest
   // TODO: add token to the request
-  getObject(id: number): Promise<APIResponse> {
+  getArticle(id: number): Promise<Article> {
       let apiRequest = <APIRequest>({
           apiKey: '',
           operator: '',
@@ -38,7 +38,9 @@ export class ArticleService {
       .toPromise()
       .then(response => {
           if(response.json().code == '200') {
-            return response.json() as APIResponse;
+            let article = response.json().body as Article;
+            this.emitStatusChangeEvent(article, this.message);
+            return article;
           } else {
             this.message = Text.val(500);
             this.emitStatusChangeEvent(null, this.message);

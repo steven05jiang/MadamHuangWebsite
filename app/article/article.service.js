@@ -21,7 +21,7 @@ var ArticleService = (function () {
     }
     // TODO: change get request to POST request using APIRequest
     // TODO: add token to the request
-    ArticleService.prototype.getObject = function (id) {
+    ArticleService.prototype.getArticle = function (id) {
         var _this = this;
         var apiRequest = ({
             apiKey: '',
@@ -35,7 +35,9 @@ var ArticleService = (function () {
             .toPromise()
             .then(function (response) {
             if (response.json().code == '200') {
-                return response.json();
+                var article = response.json().body;
+                _this.emitStatusChangeEvent(article, _this.message);
+                return article;
             }
             else {
                 _this.message = config_1.Text.val(500);

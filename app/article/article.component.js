@@ -11,7 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
 var router_2 = require("@angular/router");
-var event_1 = require("../common/event");
+var article_1 = require("./article");
 var article_service_1 = require("./article.service");
 var ArticleComponent = (function () {
     function ArticleComponent(router, activatedRoute, service) {
@@ -19,11 +19,12 @@ var ArticleComponent = (function () {
         this.router = router;
         this.activatedRoute = activatedRoute;
         this.service = service;
+        this.article = new article_1.Article();
         this.message = this.service.message;
         this.subscription = this.service.getStatusChangeEmitter()
             .subscribe(function ($event) {
-            if ($event.object instanceof event_1.Event && $event.object.type == event_1.Event.RELOAD) {
-                _this.ngOnInit();
+            if ($event.article) {
+                _this.article = $even.article;
             }
             _this.message = $event.message;
         });
@@ -33,11 +34,17 @@ var ArticleComponent = (function () {
         this.activatedRoute.params.forEach(function (params) {
             _this.id = +params['id'];
         });
-        this.service.getObject(this.id).then(function (apiResponse) {
-            _this.apiResponse = apiResponse;
-            _this.article = apiResponse.body;
+        this.getArticle();
+    };
+    ArticleComponent.prototype.getArticle = function () {
+        var _this = this;
+        this.service.getArticle(this.id).then(function (article) {
+            _this.article = article;
             console.log(_this.article);
         });
+    };
+    ArticleComponent.prototype.ngOnDestroy = function () {
+        this.subscription.unsubscribe();
     };
     return ArticleComponent;
 }());

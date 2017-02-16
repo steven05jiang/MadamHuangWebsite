@@ -9,17 +9,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
-var angular2_jwt_1 = require("angular2-jwt");
 var AboutComponent = (function () {
     function AboutComponent() {
-        this.jwtHelper = new angular2_jwt_1.JwtHelper();
-        this.jwt = localStorage.getItem('token');
-        //console.log(
-        //  this.jwtHelper.decodeToken(this.jwt).sub,
-        //  this.jwtHelper.getTokenExpirationDate(this.jwt),
-        //  this.jwtHelper.isTokenExpired(this.jwt)
-        //);
     }
+    AboutComponent.prototype.ngOnInit = function () {
+    };
     return AboutComponent;
 }());
 AboutComponent = __decorate([

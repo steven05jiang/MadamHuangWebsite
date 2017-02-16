@@ -2,7 +2,7 @@
 <div class="container">
 <div *ngIf="!user" class="login">
    <h2 align="center">會員登陸</h2>
-   <form (ngSubmit)="login()">
+   <form>
    <div class="form-group">
      <label for="username">用戶名</label>
      <input type="text" class="form-control" [(ngModel)]="loginUser.username" name="username" placeholder="Username" required 
@@ -16,7 +16,7 @@
    <div *ngIf="message" class="alert alert-danger">
      {{ message }}
    </div>
-   <button type="submit" class="btn btn-confirm btn-md btn-block">Submit</button>
+   <button type="submit" class="btn btn-confirm btn-md btn-block" (click)="login()">Submit</button>
    </form>
      &copy; All Rights Reserved.
 </div>

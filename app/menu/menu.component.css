@@ -59,28 +59,25 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#8a0023', end
     left: -5em;
 }
 
-.dropdown-item {
-    color: rgb(138,0,35);
+.dropdown-item-custom {
+    color: rgb(138,0,35) !important;
+    text-decoration: none;
 }
 
-
 @media(max-width:768px){
-    .navbar-custom .dropdown-menu > a {
-        color: #fff;
+    .dropdown-item-custom {
+        color: #fff !important;
+        background-color: rgba(0,0,0,0);
     }
 
     .navbar-custom .dropdown-menu > a:hover {
-        color: #c7b585;
+        color: #c7b585 !important;
         background-color: rgba(0,0,0,0);
     }
 
     .navbar-custom .dropdown-menu {
         background-color: rgba(0,0,0,0);
         border:none;
-    }
-
-    .navbar-custom .dropdown-item {
-        background-color: rgba(0,0,0,0);
     }
 
     .navbar-custom .dropdown-menu .divider {
@@ -91,14 +88,5 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#8a0023', end
         border:none;
         color:#ffffff;
         background-color: rgba(0,0,0,0);
-    }
-
-    .navbar-custom .dropdown-menu .card .list-group .list-group-item > a {
-        text-decoration : none;
-        color: #fff;
-    }
-
-    .navbar-custom .dropdown-menu .card .list-group .list-group-item > li > a :hover {
-        color: #c7b585;
     }
 }

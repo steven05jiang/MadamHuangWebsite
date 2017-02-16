@@ -27,12 +27,12 @@ var SignupComponent = (function () {
         this.passwordHelper = {};
         this.passwordHelper.confirmPassword = '';
         console.log('loginComponent: constructor called');
-        this.message = this.loginService.message;
         this.subscription = this.loginService.getStatusChangeEmitter()
             .subscribe(function ($event) {
             if ($event.user) {
                 _this.user = $event.user;
                 _this.newUser = _this.user;
+                _this.router.navigate(['home']);
             }
             _this.message = $event.message;
         });

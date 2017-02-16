@@ -15,14 +15,15 @@
         <a class="nav-link dropdown-toggle" data-toggle="dropdown"> 美麗課堂 <span class="caret"></span>
         </a>
         <div class="dropdown-menu" role="menu">
-          <a class="dropdown-item" routerLink="/classroom/taste">審美課堂</a>
-          <a class="dropdown-item" routerLink="/classroom/insight">心美課堂</a>
-          <a class="dropdown-item" routerLink="/classroom/figure">體美課堂</a>
-          <a class="dropdown-item" routerLink="/classroom/skin">膚美課堂</a>
+          <a class="dropdown-item dropdown-item-custom" routerLink="/classroom/taste">審美課堂</a>
+          <a class="dropdown-item dropdown-item-custom" routerLink="/classroom/insight">心美課堂</a>
+          <a class="dropdown-item dropdown-item-custom" routerLink="/classroom/figure">體美課堂</a>
+          <a class="dropdown-item dropdown-item-custom" routerLink="/classroom/skin">膚美課堂</a>
         </div>
       </li>
       <li class="nav-item"><a class="nav-link" routerLink="/activity"> 美麗聚會 </a></li>
       <li class="nav-item"><a class="nav-link" routerLink="/product"> 美麗產品 </a></li>
+      <li class="nav-item"><a class="nav-link" routerLink="/contact"> 聯繫我們 </a></li>
     </ul>
 
     <ul class="navbar-nav">
@@ -30,8 +31,8 @@
         <a class="nav-link dropdown-toggle" data-toggle="dropdown"> 會員 <span class="caret"></span>
         </a>
         <div class="dropdown-menu dropdown-menu-out" role="menu" *ngIf="!user">
-          <a class="dropdown-item" routerLink="/login">登錄</a>
-          <a class="dropdown-item" routerLink="/signup">註冊</a>
+          <a class="dropdown-item dropdown-item-custom" routerLink="/login">登錄</a>
+          <a class="dropdown-item dropdown-item-custom" routerLink="/signup">註冊</a>
         </div>
         <div class="dropdown-menu dropdown-menu-in" role="menu" *ngIf="user">
          <div class="card">
@@ -41,11 +42,9 @@
              歡迎登陸黃夫人俱樂部
            </p>
          </div>
-         <ul class="list-group">
-          <li class="list-group-item"><a routerLink="/profile">我的信息</a></li>
-          <li class="list-group-item"><a (click)="signout($event)">登出</a></li>
-        </ul>
       </div>
+          <a routerLink="/profile" class="dropdown-item dropdown-item-custom">我的信息</a>
+         <a (click)="signout($event)" class="dropdown-item dropdown-item-custom">登出</a>
     </div>
   </li>
     </ul>

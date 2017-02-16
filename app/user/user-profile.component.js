@@ -25,13 +25,16 @@ var UserProfileComponent = (function () {
                 _this.user = $event.user;
             }
             else {
-                _this.user = null;
+                _this.router.navigate(['login']);
             }
             // TODO: message is not used for now.
             //this.message = $event.message;
         });
     }
     UserProfileComponent.prototype.ngOnInit = function () {
+    };
+    UserProfileComponent.prototype.ngOnDestroy = function () {
+        this.subscription.unsubscribe();
     };
     return UserProfileComponent;
 }());
