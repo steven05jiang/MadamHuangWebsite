@@ -12,6 +12,7 @@ export class User {
 	state:	string;
 	country: string;
 	zipCode: string;
+	isAdmin: boolean;
 
 	constructor(){
 		this.id = -1;

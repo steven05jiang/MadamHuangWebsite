@@ -39,7 +39,7 @@ var SignupComponent = (function () {
     }
     SignupComponent.prototype.signup = function () {
         if (this.newUser.password != this.passwordHelper.confirmPassword) {
-            this.messgae = '輸入密碼不一致';
+            this.message = '輸入密碼不一致';
         }
         else {
             this.loginService.signup(this.newUser);

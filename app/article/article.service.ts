@@ -54,8 +54,8 @@ export class ArticleService {
     //return Promise.reject(error.message || error);
   }
 
-  emitStatusChangeEvent(object: any, message: string) {
-    this.statusChange.emit({object:object, message:message});
+  emitStatusChangeEvent(article: Article, message: string) {
+    this.statusChange.emit({article:article, message:message});
   }
 
   getStatusChangeEmitter() {

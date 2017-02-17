@@ -23,6 +23,7 @@ export class ActivityComponent implements OnInit {
 	selectedObject: Activity;
 	message: string;
 	subscription: any;
+	defaultImage = 'image/loading.png';
 
 	apiResponse: APIResponse;
 	page: number;

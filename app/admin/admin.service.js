@@ -13,14 +13,14 @@ var http_1 = require("@angular/http");
 var config_1 = require("../common/config");
 var router_1 = require("@angular/router");
 require("rxjs/add/operator/toPromise");
-var LoginService = (function () {
-    function LoginService(router, http) {
+var AdminService = (function () {
+    function AdminService(router, http) {
         this.router = router;
         this.http = http;
         this.statusChange = new core_1.EventEmitter();
         this.headers = new http_1.Headers({ 'Content-Type': 'application/json' });
     }
-    LoginService.prototype.signin = function (user) {
+    AdminService.prototype.signin = function (user) {
         var _this = this;
         console.log('API Host: ' + config_1.Config.api_host);
         var url = config_1.Config.api_host + '/login';
@@ -52,7 +52,7 @@ var LoginService = (function () {
         })
             .catch(function (ex) { return _this.handleError(ex); });
     };
-    LoginService.prototype.signup = function (user) {
+    AdminService.prototype.signup = function (user) {
         var _this = this;
         console.log('API Host: ' + config_1.Config.api_host);
         var url = config_1.Config.api_host + '/signup';
@@ -84,7 +84,7 @@ var LoginService = (function () {
         })
             .catch(function (ex) { return _this.handleError(ex); });
     };
-    LoginService.prototype.updateProfile = function (user) {
+    AdminService.prototype.updateProfile = function (user) {
         var _this = this;
         console.log('API Host: ' + config_1.Config.api_host);
         var url = config_1.Config.api_host + '/user-update';
@@ -123,7 +123,7 @@ var LoginService = (function () {
         })
             .catch(function (ex) { return _this.handleError(ex); });
     };
-    LoginService.prototype.changePassword = function (passwordHelper) {
+    AdminService.prototype.changePassword = function (passwordHelper) {
         var _this = this;
         console.log('API Host: ' + config_1.Config.api_host);
         var url = config_1.Config.api_host + '/user-update-password';
@@ -162,20 +162,20 @@ var LoginService = (function () {
         })
             .catch(function (ex) { return _this.handleError(ex); });
     };
-    LoginService.prototype.onSubmit = function () {
+    AdminService.prototype.onSubmit = function () {
         this.user = null;
         //this.emitStatusChangeEvent('You have successfully logged out!');
         this.message = "You have succesfully logged out!";
         this.emitStatusChangeEvent(null, this.message);
     };
-    LoginService.prototype.signout = function () {
+    AdminService.prototype.signout = function () {
         localStorage.setItem('token', '');
         this.user = null;
         //this.emitStatusChangeEvent('You have successfully logged out!');
         this.message = "You have succesfully logged out!";
         this.emitStatusChangeEvent(null, this.message);
     };
-    LoginService.prototype.refreshToken = function (myToken) {
+    AdminService.prototype.refreshToken = function (myToken) {
         var _this = this;
         var url = config_1.Config.api_host + '/refresh-token';
         var apiRequest = ({
@@ -204,21 +204,21 @@ var LoginService = (function () {
             .catch(function (ex) { return _this.handleError(ex); });
     };
     //private handleError(error: any): Promise<any> {
-    LoginService.prototype.handleError = function (error) {
+    AdminService.prototype.handleError = function (error) {
         this.emitStatusChangeEvent(null, config_1.Text.val(500));
         //return Promise.reject(error.message || error);
     };
-    LoginService.prototype.emitStatusChangeEvent = function (user, message) {
+    AdminService.prototype.emitStatusChangeEvent = function (user, message) {
         this.statusChange.emit({ user: user, message: message });
     };
-    LoginService.prototype.getStatusChangeEmitter = function () {
+    AdminService.prototype.getStatusChangeEmitter = function () {
         return this.statusChange;
     };
-    return LoginService;
+    return AdminService;
 }());
-LoginService = __decorate([
+AdminService = __decorate([
     core_1.Injectable(),
     __metadata("design:paramtypes", [router_1.Router, http_1.Http])
-], LoginService);
-exports.LoginService = LoginService;
-//# sourceMappingURL=login.service.js.map
+], AdminService);
+exports.AdminService = AdminService;
+//# sourceMappingURL=admin.service.js.map

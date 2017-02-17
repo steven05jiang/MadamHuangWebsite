@@ -13,6 +13,10 @@
   height: auto;
 }
 
+.alert {
+	margin-top: 1em;
+}
+
 
 @media(max-width:768px){
   #contactInfo {

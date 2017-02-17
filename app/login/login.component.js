@@ -21,10 +21,9 @@ var LoginComponent = (function () {
         this.router = router;
         this.activatedRoute = activatedRoute;
         this.http = http;
-        this.loginUser = new user_1.User({
-            username: '',
-            password: ''
-        });
+        this.loginUser = new user_1.User();
+        this.loginUser.username = '';
+        this.loginUser.password = '';
         console.log('loginComponent: constructor called');
         this.message = this.loginService.message;
         this.subscription = this.loginService.getStatusChangeEmitter()

@@ -11,6 +11,8 @@ import { BeautyComponent }            from './beauty/beauty.component';
 import { ProductComponent }            from './product/product.component';
 import { ContactComponent }            from './contact/contact.component';
 
+import { AdminComponent }            from './admin/admin.component';
+
 import { ArticleComponent }            from './article/article.component';
 
 import { ClassroomComponent }            from './classroom/classroom.component';
@@ -40,6 +42,7 @@ const routes: Routes = [
 
   { path: 'article/:id', component: ArticleComponent},
   { path: 'classroom/:name', component: ClassroomComponent},
+  { path: 'admin', component: AdminComponent, canActivate: [AuthGuard]},
   { path: 'profile', component: UserProfileComponent, canActivate: [AuthGuard]},
   { path: 'user-edit', component: UserEditComponent, canActivate: [AuthGuard]},
   { path: 'user-change-password', component: ChangePasswordComponent, canActivate: [AuthGuard]},

@@ -47,7 +47,7 @@ export class LoginService {
             localStorage.setItem('token', token);
 
             this.user = response.json().body as User;
-            console.log('last log on: ' + this.user.lastlogOn + '  Token: ' + token);
+            console.log('Token: ' + token);
             this.emitStatusChangeEvent(this.user, '');
             // response.json().body;
           } else {
@@ -86,7 +86,7 @@ export class LoginService {
             localStorage.setItem('token', token);
 
             this.user = response.json().body as User;
-            console.log('last log on: ' + this.user.lastlogOn + '  Token: ' + token);
+            console.log('Token: ' + token);
             this.emitStatusChangeEvent(this.user, '');
             // response.json().body;
           } else {
@@ -125,7 +125,7 @@ export class LoginService {
             localStorage.setItem('token', token);
 
             this.user = response.json().body as User;
-            console.log('last log on: ' + this.user.lastlogOn + '  Token: ' + token);
+            console.log('Token: ' + token);
             //this.emitStatusChangeEvent(this.user, '');
             return this.user;
             // response.json().body;
@@ -170,7 +170,7 @@ export class LoginService {
             localStorage.setItem('token', token);
 
             this.user = response.json().body as User;
-            console.log('last log on: ' + this.user.lastlogOn + '  Token: ' + token);
+            console.log('Token: ' + token);
             //this.emitStatusChangeEvent(this.user, '');
             return this.user;
             // response.json().body;

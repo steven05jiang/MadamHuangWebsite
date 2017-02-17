@@ -56,6 +56,10 @@ section .title-center{
   height: auto;
 }
 
+.alert {
+  margin-top: 1em;
+}
+
 #contactInfo > ul > li {
   margin: 1em;
 }

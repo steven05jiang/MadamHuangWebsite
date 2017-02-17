@@ -22,13 +22,16 @@ var auth_guard_1 = require("./common/auth.guard");
 var home_component_1 = require("./home/home.component");
 var about_component_1 = require("./about/about.component");
 var beauty_component_1 = require("./beauty/beauty.component");
-var contact_component_1 = require("./contact/contact.component");
+var admin_component_1 = require("./admin/admin.component");
+var admin_service_1 = require("./admin/admin.service");
 var activity_component_1 = require("./activity/activity.component");
 var activity_service_1 = require("./activity/activity.service");
 var product_component_1 = require("./product/product.component");
 var product_service_1 = require("./product/product.service");
 var article_component_1 = require("./article/article.component");
 var article_service_1 = require("./article/article.service");
+var contact_component_1 = require("./contact/contact.component");
+var contact_service_1 = require("./contact/contact.service");
 var classroom_component_1 = require("./classroom/classroom.component");
 var user_profile_component_1 = require("./user/user-profile.component");
 var user_edit_component_1 = require("./user/user-edit.component");
@@ -46,6 +49,7 @@ var customer_service_1 = require("./customer/customer.service");
 var pagination_component_1 = require("./ui/pagination.component");
 var app_routing_module_1 = require("./app-routing.module");
 var my_date_picker_module_1 = require("mydatepicker/dist/my-date-picker.module");
+var ng2_lazyload_image_1 = require("ng2-lazyload-image");
 var WINDOW_PROVIDER = {
     provide: Window,
     useValue: window
@@ -64,9 +68,11 @@ AppModule = __decorate([
             app_routing_module_1.AppRoutingModule,
             ng_bootstrap_1.NgbModule.forRoot(),
             my_date_picker_module_1.MyDatePickerModule,
+            ng2_lazyload_image_1.LazyLoadImageModule
         ],
         declarations: [
             app_component_1.AppComponent,
+            admin_component_1.AdminComponent,
             login_component_1.LoginComponent,
             signup_component_1.SignupComponent,
             home_component_1.HomeComponent,
@@ -93,7 +99,9 @@ AppModule = __decorate([
         providers: [
             auth_guard_1.AuthGuard,
             angular2_jwt_1.AUTH_PROVIDERS,
+            admin_service_1.AdminService,
             login_service_1.LoginService,
+            contact_service_1.ContactService,
             article_service_1.ArticleService,
             product_service_1.ProductService,
             customer_service_1.CustomerService,

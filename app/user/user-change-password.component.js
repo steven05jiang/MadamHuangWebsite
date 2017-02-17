@@ -41,7 +41,7 @@ var ChangePasswordComponent = (function () {
     ChangePasswordComponent.prototype.onSubmit = function () {
         var _this = this;
         if (this.passwordHelper.newPassword != this.passwordHelper.confirmPassword) {
-            this.messgae = '輸入密碼不一致';
+            this.message = '輸入密碼不一致';
         }
         else {
             this.loginService.changePassword(this.passwordHelper).then(function (user) { return _this.router.navigate(['/profile']); });

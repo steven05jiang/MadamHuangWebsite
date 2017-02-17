@@ -50,7 +50,7 @@ export class ChangePasswordComponent implements OnInit {
 
   onSubmit() {
     if(this.passwordHelper.newPassword != this.passwordHelper.confirmPassword) {
-      this.messgae = '輸入密碼不一致';
+      this.message = '輸入密碼不一致';
     }else {
       this.loginService.changePassword(this.passwordHelper).then(
         user => this.router.navigate(['/profile'])

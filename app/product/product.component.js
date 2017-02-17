@@ -19,6 +19,7 @@ var ProductComponent = (function () {
         this.router = router;
         this.activatedRoute = activatedRoute;
         this.service = service;
+        this.defaultImage = 'image/loading.png';
         this.message = this.service.message;
         this.subscription = this.service.getStatusChangeEmitter()
             .subscribe(function ($event) {

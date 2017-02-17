@@ -9,10 +9,33 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
+var contact_1 = require("./contact");
+var contact_service_1 = require("./contact.service");
+var http_1 = require("@angular/http");
 var ContactComponent = (function () {
-    function ContactComponent() {
+    function ContactComponent(contactService, http) {
+        var _this = this;
+        this.contactService = contactService;
+        this.http = http;
+        this.msg = new contact_1.Message();
+        this.subscription = this.contactService.getStatusChangeEmitter()
+            .subscribe(function ($event) {
+            if ($event.object != null) {
+                _this.msg = new contact_1.Message();
+            }
+            _this.message = $event.message;
+        });
     }
     ContactComponent.prototype.ngOnInit = function () {
+    };
+    ContactComponent.prototype.ngOnDestroy = function () {
+        this.subscription.unsubscribe();
+    };
+    ContactComponent.prototype.clearMessage = function () {
+        this.message = '';
+    };
+    ContactComponent.prototype.onSubmit = function () {
+        this.contactService.sendMessage(this.msg);
     };
     return ContactComponent;
 }());
@@ -23,7 +46,7 @@ ContactComponent = __decorate([
         templateUrl: 'contact.component.html',
         styleUrls: ['contact.component.css']
     }),
-    __metadata("design:paramtypes", [])
+    __metadata("design:paramtypes", [contact_service_1.ContactService, http_1.Http])
 ], ContactComponent);
 exports.ContactComponent = ContactComponent;
 //# sourceMappingURL=contact.component.js.map

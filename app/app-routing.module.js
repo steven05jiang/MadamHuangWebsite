@@ -19,6 +19,7 @@ var activity_component_1 = require("./activity/activity.component");
 var beauty_component_1 = require("./beauty/beauty.component");
 var product_component_1 = require("./product/product.component");
 var contact_component_1 = require("./contact/contact.component");
+var admin_component_1 = require("./admin/admin.component");
 var article_component_1 = require("./article/article.component");
 var classroom_component_1 = require("./classroom/classroom.component");
 var user_profile_component_1 = require("./user/user-profile.component");
@@ -42,6 +43,7 @@ var routes = [
     { path: 'contact', component: contact_component_1.ContactComponent },
     { path: 'article/:id', component: article_component_1.ArticleComponent },
     { path: 'classroom/:name', component: classroom_component_1.ClassroomComponent },
+    { path: 'admin', component: admin_component_1.AdminComponent, canActivate: [auth_guard_1.AuthGuard] },
     { path: 'profile', component: user_profile_component_1.UserProfileComponent, canActivate: [auth_guard_1.AuthGuard] },
     { path: 'user-edit', component: user_edit_component_1.UserEditComponent, canActivate: [auth_guard_1.AuthGuard] },
     { path: 'user-change-password', component: user_change_password_component_1.ChangePasswordComponent, canActivate: [auth_guard_1.AuthGuard] },

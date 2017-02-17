@@ -35,7 +35,7 @@ export class ArticleComponent implements OnInit {
 		this.subscription = this.service.getStatusChangeEmitter()
 		.subscribe(($event:any) => {
 			if($event.article) {
-				this.article = $even.article;
+				this.article = $event.article;
 			}
 			this.message = $event.message;
 		} );

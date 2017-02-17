@@ -22,6 +22,7 @@ export class ProductComponent implements OnInit {
 	selectedObject: Product;
 	message: string;
 	subscription: any;
+	defaultImage = 'image/loading.png';
 
 	apiResponse: APIResponse;
 	page: number;

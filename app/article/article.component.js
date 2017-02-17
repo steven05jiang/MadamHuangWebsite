@@ -24,7 +24,7 @@ var ArticleComponent = (function () {
         this.subscription = this.service.getStatusChangeEmitter()
             .subscribe(function ($event) {
             if ($event.article) {
-                _this.article = $even.article;
+                _this.article = $event.article;
             }
             _this.message = $event.message;
         });

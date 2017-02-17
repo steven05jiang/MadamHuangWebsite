@@ -44,6 +44,7 @@
          </div>
       </div>
           <a routerLink="/profile" class="dropdown-item dropdown-item-custom">我的信息</a>
+          <a *ngIf="user && user.isAdmin == true" routerLink="/admin" class="dropdown-item dropdown-item-custom">網站管理</a>
          <a (click)="signout($event)" class="dropdown-item dropdown-item-custom">登出</a>
     </div>
   </li>

@@ -18,8 +18,9 @@ import { AuthGuard }            from './common/auth.guard';
 import { HomeComponent }       from './home/home.component';
 import { AboutComponent }       from './about/about.component';
 import { BeautyComponent }            from './beauty/beauty.component';
-import { ContactComponent }            from './contact/contact.component';
 
+import { AdminComponent }            from './admin/admin.component';
+import { AdminService }            from './admin/admin.service';
 
 import { ActivityComponent }            from './activity/activity.component';
 import { ActivityService }            from './activity/activity.service';
@@ -29,6 +30,9 @@ import { ProductService }            from './product/product.service';
 
 import { ArticleComponent }            from './article/article.component';
 import { ArticleService }            from './article/article.service';
+
+import { ContactComponent }            from './contact/contact.component';
+import { ContactService }            from './contact/contact.service';
 
 import { ClassroomComponent }            from './classroom/classroom.component';
 
@@ -54,7 +58,7 @@ import { AppRoutingModule }         from './app-routing.module';
 
 
 import { MyDatePickerModule } from 'mydatepicker/dist/my-date-picker.module';
-
+import { LazyLoadImageModule } from 'ng2-lazyload-image';
 
 import { ValueProvider} from '@angular/core';
 
@@ -66,51 +70,55 @@ const WINDOW_PROVIDER: ValueProvider = {
 
 @NgModule({
   imports: [
-    BrowserModule,
-    FormsModule,
-    HttpModule,
-    AppRoutingModule,
-    NgbModule.forRoot(),
-    MyDatePickerModule,
+  BrowserModule,
+  FormsModule,
+  HttpModule,
+  AppRoutingModule,
+  NgbModule.forRoot(),
+  MyDatePickerModule,
+  LazyLoadImageModule
   ],
   declarations: [
-    AppComponent,
-    LoginComponent,
-    SignupComponent,
-    HomeComponent,
-    AboutComponent,
-    ContactComponent,
-    ActivityComponent,
-    ArticleComponent,
-    BeautyComponent,
-    ProductComponent,
-    ClassroomComponent,
-    MenuComponent,
-    FooterComponent,
-    CustomerDetailComponent,
-    CustomerEditComponent,
-    CustomersComponent,
-    UserProfileComponent,
-    UserEditComponent,
-    ChangePasswordComponent,
-    InvoiceDetailComponent,
-    InvoiceEditComponent,
-    InvoicesComponent,
-    PaginationComponent
+  AppComponent,
+  AdminComponent,
+  LoginComponent,
+  SignupComponent,
+  HomeComponent,
+  AboutComponent,
+  ContactComponent,
+  ActivityComponent,
+  ArticleComponent,
+  BeautyComponent,
+  ProductComponent,
+  ClassroomComponent,
+  MenuComponent,
+  FooterComponent,
+  CustomerDetailComponent,
+  CustomerEditComponent,
+  CustomersComponent,
+  UserProfileComponent,
+  UserEditComponent,
+  ChangePasswordComponent,
+  InvoiceDetailComponent,
+  InvoiceEditComponent,
+  InvoicesComponent,
+  PaginationComponent
   ],
   providers: [
-    AuthGuard,
-    AUTH_PROVIDERS,
-    LoginService,
-    ArticleService,
-    ProductService,
-    CustomerService,
-    InvoiceService,
-    ActivityService,
-    WINDOW_PROVIDER
+  AuthGuard,
+  AUTH_PROVIDERS,
+  AdminService,
+  LoginService,
+  ContactService,
+  ArticleService,
+  ProductService,
+  CustomerService,
+  InvoiceService,
+  ActivityService,
+  WINDOW_PROVIDER
   ],
   bootstrap: [
-    AppComponent
+  AppComponent
   //  ,MenuComponent
   ]
 })

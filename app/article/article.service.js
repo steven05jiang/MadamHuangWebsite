@@ -50,8 +50,8 @@ var ArticleService = (function () {
         this.emitStatusChangeEvent(null, config_1.Text.val(500));
         //return Promise.reject(error.message || error);
     };
-    ArticleService.prototype.emitStatusChangeEvent = function (object, message) {
-        this.statusChange.emit({ object: object, message: message });
+    ArticleService.prototype.emitStatusChangeEvent = function (article, message) {
+        this.statusChange.emit({ article: article, message: message });
     };
     ArticleService.prototype.getStatusChangeEmitter = function () {
         return this.statusChange;

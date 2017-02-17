@@ -30,10 +30,9 @@ export class LoginComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private http: Http) {
 
-      this.loginUser = new User({
-        username: '',
-        password: ''
-      });
+      this.loginUser = new User();
+      this.loginUser.username = '';
+      this.loginUser.password = '';
 
       console.log('loginComponent: constructor called');
       this.message = this.loginService.message;
