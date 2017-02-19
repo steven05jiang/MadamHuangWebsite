@@ -26,7 +26,7 @@ var ActivityService = (function () {
         var apiRequest = ({
             apiKey: '',
             operator: '',
-            token: '',
+            token: config_1.Config.getToken(),
             page: page,
             size: size
         });
@@ -35,6 +35,8 @@ var ActivityService = (function () {
         return this.http.post(url, JSON.stringify(apiRequest), { headers: this.headers })
             .toPromise()
             .then(function (response) {
+            var token = response.json().token;
+            localStorage.setItem('token', token);
             if (response.json().code == '200') {
                 return response.json();
             }

@@ -25,6 +25,7 @@ var ArticleComponent = (function () {
             .subscribe(function ($event) {
             if ($event.article) {
                 _this.article = $event.article;
+                _this.dataContainer.nativeElement.innerHTML = _this.article.content;
             }
             _this.message = $event.message;
         });
@@ -40,7 +41,7 @@ var ArticleComponent = (function () {
         var _this = this;
         this.service.getArticle(this.id).then(function (article) {
             _this.article = article;
-            console.log(_this.article);
+            //console.log(this.article);
         });
     };
     ArticleComponent.prototype.ngOnDestroy = function () {
@@ -48,6 +49,10 @@ var ArticleComponent = (function () {
     };
     return ArticleComponent;
 }());
+__decorate([
+    core_1.ViewChild('dataContainer'),
+    __metadata("design:type", core_1.ElementRef)
+], ArticleComponent.prototype, "dataContainer", void 0);
 ArticleComponent = __decorate([
     core_1.Component({
         moduleId: module.id,

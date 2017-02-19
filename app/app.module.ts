@@ -21,6 +21,7 @@ import { BeautyComponent }            from './beauty/beauty.component';
 
 import { AdminComponent }            from './admin/admin.component';
 import { AdminService }            from './admin/admin.service';
+import { ArticleIdPipe }            from './pipes/date-dscd-pipe';
 
 import { ActivityComponent }            from './activity/activity.component';
 import { ActivityService }            from './activity/activity.service';
@@ -102,7 +103,8 @@ const WINDOW_PROVIDER: ValueProvider = {
   InvoiceDetailComponent,
   InvoiceEditComponent,
   InvoicesComponent,
-  PaginationComponent
+  PaginationComponent,
+  ArticleIdPipe
   ],
   providers: [
   AuthGuard,

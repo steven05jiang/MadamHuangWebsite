@@ -28,7 +28,7 @@ export class ActivityService {
       let apiRequest = <APIRequest>({
           apiKey: '',
           operator: '',
-          token: '',
+          token: Config.getToken(),
           page: page,
           size: size
       });
@@ -38,6 +38,8 @@ export class ActivityService {
       return this.http.post(url, JSON.stringify(apiRequest), {headers: this.headers})
       .toPromise()
       .then(response => {
+        let token = response.json().token;
+        localStorage.setItem('token', token);
           if(response.json().code == '200') {
             return response.json() as APIResponse;
           } else {

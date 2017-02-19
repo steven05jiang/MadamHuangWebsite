@@ -19,14 +19,12 @@ var ArticleService = (function () {
         this.statusChange = new core_1.EventEmitter();
         this.headers = new http_1.Headers({ 'Content-Type': 'application/json' });
     }
-    // TODO: change get request to POST request using APIRequest
-    // TODO: add token to the request
     ArticleService.prototype.getArticle = function (id) {
         var _this = this;
         var apiRequest = ({
             apiKey: '',
             operator: '',
-            token: '',
+            token: config_1.Config.getToken(),
             body: { 'id': id }
         });
         var url = config_1.Config.api_host + '/article';
@@ -35,6 +33,8 @@ var ArticleService = (function () {
             .toPromise()
             .then(function (response) {
             if (response.json().code == '200') {
+                var token = response.json().token;
+                localStorage.setItem('token', token);
                 var article = response.json().body;
                 _this.emitStatusChangeEvent(article, _this.message);
                 return article;
@@ -43,6 +43,24 @@ var ArticleService = (function () {
                 _this.message = config_1.Text.val(500);
                 _this.emitStatusChangeEvent(null, _this.message);
             }
+        })
+            .catch(function (ex) { return _this.handleError(ex); });
+    };
+    ArticleService.prototype.getArticles = function () {
+        var _this = this;
+        var apiRequest = ({
+            apiKey: '',
+            operator: '',
+            token: config_1.Config.getToken()
+        });
+        var url = config_1.Config.api_host + '/articles';
+        console.log(JSON.stringify(apiRequest));
+        return this.http.post(url, JSON.stringify(apiRequest), { headers: this.headers })
+            .toPromise()
+            .then(function (response) {
+            var token = response.json().token;
+            localStorage.setItem('token', token);
+            return response.json();
         })
             .catch(function (ex) { return _this.handleError(ex); });
     };

@@ -109,15 +109,14 @@ var LoginService = (function () {
             }
             else if (response.json().code == '403') {
                 localStorage.setItem('token', '');
-                //this.status = new Status();
-                _this.user = null;
                 _this.message = config_1.Text.val(200); //'Failed - invalid user name or password!';
                 //this.message = 'Failed - invalid user name or password!';
                 _this.emitStatusChangeEvent(null, _this.message);
             }
             else {
-                _this.message = config_1.Text.val(500); //'Failed - invalid user name or password!';
-                //this.message = 'Failed - invalid user name or password!';
+                var token = response.json().token;
+                localStorage.setItem('token', token);
+                _this.message = config_1.Text.val(500);
                 _this.emitStatusChangeEvent(_this.user, _this.message);
             }
         })

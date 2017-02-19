@@ -6,8 +6,10 @@ import { Config, Text } from '../common/config';
 import { Router } from '@angular/router';
 
 import { APIRequest } from '../common/api-request';
+import { APIResponse } from '../common/api-response';
 
 import { User } from '../user/user';
+import { Article} from '../article/article';
 
 import 'rxjs/add/operator/toPromise';
 
@@ -17,49 +19,86 @@ export class AdminService {
   user: User;
   //status: Status;
   message: string;
-  statusChange: EventEmitter<({user:User, message:string})> = new EventEmitter();
+  statusChange: EventEmitter<({object:any, message:string})> = new EventEmitter();
 
   constructor(private router: Router, private http: Http) {}
 
   private headers = new Headers({'Content-Type': 'application/json'});
 
-  signin(user: User): any {
+
+
+  updateArticle(article: Article): Promise<APIResponse> {
 
     console.log('API Host: ' + Config.api_host);
 
-    const url = Config.api_host + '/login';
+    const url = Config.api_host + '/article-update';
     let apiRequest = <APIRequest>({
         apiKey: '',
         operator: '',
-        token: '',
-        body: user
+        token: Config.getToken(),
+        body: article
     });
 
     console.log(JSON.stringify(apiRequest));
 
-    this.http.post(url, JSON.stringify(apiRequest), {headers: this.headers})
+    return this.http.post(url, JSON.stringify(apiRequest), {headers: this.headers})
       .toPromise()
       .then(
         response => {
         console.log(response);
-          if(response.json().code == '200') {
-            let token = response.json().token;
-            localStorage.setItem('token', token);
-
-            this.user = response.json().body as User;
-            console.log('Token: ' + token);
-            this.emitStatusChangeEvent(this.user, '');
-            // response.json().body;
-          } else {
-            localStorage.setItem('token', '');
-            //this.status = new Status();
-            this.message = Text.val(100); //'Failed - invalid user name or password!';
-            //this.message = 'Failed - invalid user name or password!';
-            this.emitStatusChangeEvent(null, this.message);
-          }
+          let token = response.json().token;
+          localStorage.setItem('token', token);
+          return response.json() as APIResponse;
         }
       )
       .catch((ex) => this.handleError(ex));
+  }
+
+   addArticle(article: Article): Promise<APIResponse> {
+
+    console.log('API Host: ' + Config.api_host);
+
+    const url = Config.api_host + '/article-add';
+    let apiRequest = <APIRequest>({
+        apiKey: '',
+        operator: '',
+        token: Config.getToken(),
+        body: article
+    });
+
+    console.log(JSON.stringify(apiRequest));
+
+    return this.http.post(url, JSON.stringify(apiRequest), {headers: this.headers})
+      .toPromise()
+      .then(
+        response => {
+        console.log(response);
+          let token = response.json().token;
+          localStorage.setItem('token', token);
+          return response.json() as APIResponse;
+        }
+      )
+      .catch((ex) => this.handleError(ex));
+  }
+
+   deleteArticle(id:number): Promise<APIResponse> {
+      let apiRequest = <APIRequest>({
+          apiKey: '',
+          operator: '',
+          token: Config.getToken(),
+          body: {'id':id}
+      });
+      const url = Config.api_host + '/article-delete';
+      console.log(JSON.stringify(apiRequest));
+
+      return this.http.post(url, JSON.stringify(apiRequest), {headers: this.headers})
+      .toPromise()
+      .then(response => {
+          let token = response.json().token;
+          localStorage.setItem('token', token);
+          return response.json() as APIResponse;
+        })
+        .catch((ex) => this.handleError(ex));
   }
 
   signup(user: User): any {
@@ -242,8 +281,8 @@ export class AdminService {
     //return Promise.reject(error.message || error);
   }
 
-  emitStatusChangeEvent(user: User, message: string) {
-    this.statusChange.emit({user:user, message:message});
+  emitStatusChangeEvent(object: any, message: string) {
+    this.statusChange.emit({object:object, message:message});
   }
 
   getStatusChangeEmitter() {

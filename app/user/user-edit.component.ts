@@ -9,6 +9,7 @@ import { APIResponse } from '../common/api-response';
 
 import { User } from './user';
 import { LoginService }          from '../login/login.service';
+import { USER_IMAGE } from './user-image'
 
 @Component({
 	moduleId: module.id,
@@ -22,14 +23,21 @@ export class UserEditComponent implements OnInit {
 	updatedUser: User;
 	subscription: any;
 	message: string;
+	defaultImage = 'image/loading.png';
+	headImages: string[];
+	selectedImage: string;
 
 	constructor(
 		private router: Router,
 		private activatedRoute: ActivatedRoute,
 		private loginService:LoginService
 		) {
+	this.headImages = USER_IMAGE;
     this.user = this.loginService.user;
     this.updatedUser=Object.assign({},this.user);
+    if(!this.updatedUser.imageLink){
+    	this.updatedUser.imageLink = Config.user_header_folder+'/book.jpg';
+    }
     this.subscription = this.loginService.getStatusChangeEmitter()
       .subscribe(($event:any) => {
         if($event.user) {
@@ -57,6 +65,14 @@ export class UserEditComponent implements OnInit {
   	}
 	onCancel(): void {
 		this.router.navigate(['/profile']);
+	}
+
+	selectImage(imageLink: string){
+		this.selectedImage = imageLink;
+	}
+
+	onSaveImage() {
+		this.updatedUser.imageLink = this.selectedImage;
 	}
 
 	  ngOnDestroy() {

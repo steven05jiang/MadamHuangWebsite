@@ -22,13 +22,11 @@ export class ArticleService {
   constructor(private http: Http) {}
 
 
-  // TODO: change get request to POST request using APIRequest
-  // TODO: add token to the request
   getArticle(id: number): Promise<Article> {
       let apiRequest = <APIRequest>({
           apiKey: '',
           operator: '',
-          token: '',
+          token: Config.getToken(),
           body: {'id':id}
       });
       const url = Config.api_host + '/article';
@@ -38,6 +36,8 @@ export class ArticleService {
       .toPromise()
       .then(response => {
           if(response.json().code == '200') {
+            let token = response.json().token;
+            localStorage.setItem('token', token);
             let article = response.json().body as Article;
             this.emitStatusChangeEvent(article, this.message);
             return article;
@@ -45,6 +45,25 @@ export class ArticleService {
             this.message = Text.val(500);
             this.emitStatusChangeEvent(null, this.message);
           }
+        })
+        .catch((ex) => this.handleError(ex));
+  }
+
+    getArticles(): Promise<APIResponse> {
+      let apiRequest = <APIRequest>({
+          apiKey: '',
+          operator: '',
+          token: Config.getToken()
+      });
+      const url = Config.api_host + '/articles';
+      console.log(JSON.stringify(apiRequest));
+
+      return this.http.post(url, JSON.stringify(apiRequest), {headers: this.headers})
+      .toPromise()
+      .then(response => {
+          let token = response.json().token;
+          localStorage.setItem('token', token);
+          return response.json() as APIResponse;
         })
         .catch((ex) => this.handleError(ex));
   }

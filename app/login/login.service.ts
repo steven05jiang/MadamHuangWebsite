@@ -131,14 +131,13 @@ export class LoginService {
             // response.json().body;
           } else if(response.json().code == '403'){
             localStorage.setItem('token', '');
-            //this.status = new Status();
-            this.user = null;
             this.message = Text.val(200); //'Failed - invalid user name or password!';
             //this.message = 'Failed - invalid user name or password!';
             this.emitStatusChangeEvent(null, this.message);
           } else {
-             this.message = Text.val(500); //'Failed - invalid user name or password!';
-            //this.message = 'Failed - invalid user name or password!';
+            let token = response.json().token;
+            localStorage.setItem('token', token);
+            this.message = Text.val(500); 
             this.emitStatusChangeEvent(this.user, this.message);
           }
         }

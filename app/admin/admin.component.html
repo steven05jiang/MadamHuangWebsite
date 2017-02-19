@@ -1,6 +1,79 @@
 <div class="main">
 	<div class="container">
 		<h3>Website Management System</h3>
-		<p>Hello world</p>
-	</div>
+		<section>
+			<h4>Articles</h4>
+			<button (click)="newArticle()" class="btn btn-confirm">New Article</button>
+			<div>
+				<table class="table table-bordered table-hover table-condensed">
+					<tr>
+						<th>Article#</th>
+						<th>Updated Date</th>
+						<th>Title</th>
+						<th>Content</th>
+						<th>Edit</th>
+						<th>Delete</th>
+					</tr>
+					<tr *ngIf="adminHelper.articleAddMode">
+						<td align="center">
+							{{articleNew.id}}
+						</td>
+						<td align="center">
+							{{articleNew.updatedDate}}
+						</td>
+						<td>
+							<div class="form-group">
+						     <input type="text" class="form-control" [(ngModel)]="articleNew.title" name="articleTitle" placeholder="Enter Article Title" required/>
+						   </div>
+						</td>
+						<td>
+							<div class="form-group">
+						     <input type="text" class="form-control" [(ngModel)]="articleNew.content" name="articleContent" placeholder="Enter Article Content" required/>
+						   </div>
+						</td>
+						<td align="center">
+							<button (click)="addArticle(articleNew)" class="btn btn-confirm">Add</button>
+						</td>
+						<td align="center">
+							<button (click)="resetNewArticle()" class="btn btn-cancel">Reset</button>
+						</td>
+					</tr>
+					<ng-container *ngIf="articles">
+					<tr *ngFor="let article of (articles | dateDscd)">
+						<td align="center">
+							{{article.id}}
+						</td>
+						<td align="center">
+							{{article.updatedDate | date:"MM/dd/yy"}}
+						</td>
+						<td>
+							<span [hidden]="adminHelper.articleEditMode">{{article.title}}</span>
+							<span [hidden]="!adminHelper.articleEditMode">
+								<div class="form-group">
+							     <input type="text" class="form-control" [(ngModel)]="article.title" name="articleTitle" placeholder="Enter Article Title" required/>
+							   </div>
+							</span>
+						</td>
+						<td>
+							<span [hidden]="adminHelper.articleEditMode">{{article.content}}</span>
+							<span [hidden]="!adminHelper.articleEditMode">
+								<div class="form-group">
+							     <input type="text" class="form-control" [(ngModel)]="article.content" name="articleContent" placeholder="Enter Article Content" required/>
+							   </div>
+							</span>
+						</td>
+						<td align="center">
+							<button (click)="editArticle()" [hidden]="adminHelper.articleEditMode" class="btn btn-confirm">Edit</button>
+							<button (click)="updateArticle(article)" [hidden]="!adminHelper.articleEditMode" class="btn btn-confirm">Update</button>
+						</td>
+						<td align="center">
+							<button (click)="deleteArticle(article)" [hidden]="adminHelper.articleEditMode" class="btn btn-cancel">Delete</button>
+							<button (click)="exitEdit()" [hidden]="!adminHelper.articleEditMode" class="btn btn-cancel">Cancel</button>
+						</td>
+				</tr>
+				</ng-container>
+			</table>
+		</div>
+	</section>
+</div>
 </div>

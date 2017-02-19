@@ -11,15 +11,22 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
 var router_2 = require("@angular/router");
+var config_1 = require("../common/config");
 var login_service_1 = require("../login/login.service");
+var user_image_1 = require("./user-image");
 var UserEditComponent = (function () {
     function UserEditComponent(router, activatedRoute, loginService) {
         var _this = this;
         this.router = router;
         this.activatedRoute = activatedRoute;
         this.loginService = loginService;
+        this.defaultImage = 'image/loading.png';
+        this.headImages = user_image_1.USER_IMAGE;
         this.user = this.loginService.user;
         this.updatedUser = Object.assign({}, this.user);
+        if (!this.updatedUser.imageLink) {
+            this.updatedUser.imageLink = config_1.Config.user_header_folder + '/book.jpg';
+        }
         this.subscription = this.loginService.getStatusChangeEmitter()
             .subscribe(function ($event) {
             if ($event.user) {
@@ -45,6 +52,12 @@ var UserEditComponent = (function () {
     };
     UserEditComponent.prototype.onCancel = function () {
         this.router.navigate(['/profile']);
+    };
+    UserEditComponent.prototype.selectImage = function (imageLink) {
+        this.selectedImage = imageLink;
+    };
+    UserEditComponent.prototype.onSaveImage = function () {
+        this.updatedUser.imageLink = this.selectedImage;
     };
     UserEditComponent.prototype.ngOnDestroy = function () {
         this.subscription.unsubscribe();

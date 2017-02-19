@@ -20,6 +20,7 @@ import { LoginService }          from '../login/login.service';
 export class UserProfileComponent implements OnInit {
 	user: User;
 	subscription: any;
+	defaultImage = 'image/loading.png';
 
 	constructor(
 		private router: Router,
@@ -27,6 +28,9 @@ export class UserProfileComponent implements OnInit {
 		private loginService:LoginService
 		) {
     this.user = this.loginService.user;
+    if(!this.user.imageLink){
+    	this.user.imageLink = Config.user_header_folder+'/book.jpg';
+    }
     this.subscription = this.loginService.getStatusChangeEmitter()
       .subscribe(($event:any) => {
         if($event.user) {

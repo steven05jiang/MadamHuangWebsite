@@ -40,7 +40,6 @@ export class LoginComponent implements OnInit {
         .subscribe(($event:any) => {
           if($event.user) {
             this.user = $event.user;
-            console.log('User exists');
             this.loginUser = this.user;
             this.router.navigate(['home']);
           }

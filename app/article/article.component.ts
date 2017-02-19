@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { ActivatedRoute, Params }   from '@angular/router';
 
@@ -22,8 +22,9 @@ export class ArticleComponent implements OnInit {
 	id: number;
 	message: string;
 	subscription: any;
-
 	apiResponse: APIResponse;
+
+	@ViewChild('dataContainer') dataContainer: ElementRef;
 
 	constructor(
 		private router: Router,
@@ -36,6 +37,7 @@ export class ArticleComponent implements OnInit {
 		.subscribe(($event:any) => {
 			if($event.article) {
 				this.article = $event.article;
+				this.dataContainer.nativeElement.innerHTML = this.article.content;
 			}
 			this.message = $event.message;
 		} );
@@ -51,7 +53,7 @@ export class ArticleComponent implements OnInit {
 		this.service.getArticle(this.id).then(
 		article => {
 			this.article = article;
-			console.log(this.article);
+			//console.log(this.article);
 		});
 	}
 

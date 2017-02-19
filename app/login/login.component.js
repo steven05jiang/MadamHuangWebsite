@@ -30,7 +30,6 @@ var LoginComponent = (function () {
             .subscribe(function ($event) {
             if ($event.user) {
                 _this.user = $event.user;
-                console.log('User exists');
                 _this.loginUser = _this.user;
                 _this.router.navigate(['home']);
             }

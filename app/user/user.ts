@@ -13,6 +13,7 @@ export class User {
 	country: string;
 	zipCode: string;
 	isAdmin: boolean;
+	imageLink: string;
 
 	constructor(){
 		this.id = -1;

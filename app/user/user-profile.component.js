@@ -11,6 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
 var router_2 = require("@angular/router");
+var config_1 = require("../common/config");
 var login_service_1 = require("../login/login.service");
 var UserProfileComponent = (function () {
     function UserProfileComponent(router, activatedRoute, loginService) {
@@ -18,7 +19,11 @@ var UserProfileComponent = (function () {
         this.router = router;
         this.activatedRoute = activatedRoute;
         this.loginService = loginService;
+        this.defaultImage = 'image/loading.png';
         this.user = this.loginService.user;
+        if (!this.user.imageLink) {
+            this.user.imageLink = config_1.Config.user_header_folder + '/book.jpg';
+        }
         this.subscription = this.loginService.getStatusChangeEmitter()
             .subscribe(function ($event) {
             if ($event.user) {

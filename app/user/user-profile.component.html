@@ -9,7 +9,7 @@
 		<div class="row">
 			<div class="col-md-5 col-sm-12">
 				<div class="card card-profile">
-					<img class="card-img-top" src="image/carsl5.jpg" alt="Card image cap">
+					<img class="card-img-top img-fluid" [src]="defaultImage" [lazyLoad]="user.imageLink" alt="Image">
 					<div class="card-block">
 						<h4 class="card-title">{{user.username}}</h4>
 						<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>

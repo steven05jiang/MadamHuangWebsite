@@ -20,35 +20,64 @@ var AdminService = (function () {
         this.statusChange = new core_1.EventEmitter();
         this.headers = new http_1.Headers({ 'Content-Type': 'application/json' });
     }
-    AdminService.prototype.signin = function (user) {
+    AdminService.prototype.updateArticle = function (article) {
         var _this = this;
         console.log('API Host: ' + config_1.Config.api_host);
-        var url = config_1.Config.api_host + '/login';
+        var url = config_1.Config.api_host + '/article-update';
         var apiRequest = ({
             apiKey: '',
             operator: '',
-            token: '',
-            body: user
+            token: config_1.Config.getToken(),
+            body: article
         });
         console.log(JSON.stringify(apiRequest));
-        this.http.post(url, JSON.stringify(apiRequest), { headers: this.headers })
+        return this.http.post(url, JSON.stringify(apiRequest), { headers: this.headers })
             .toPromise()
             .then(function (response) {
             console.log(response);
-            if (response.json().code == '200') {
-                var token = response.json().token;
-                localStorage.setItem('token', token);
-                _this.user = response.json().body;
-                console.log('Token: ' + token);
-                _this.emitStatusChangeEvent(_this.user, '');
-            }
-            else {
-                localStorage.setItem('token', '');
-                //this.status = new Status();
-                _this.message = config_1.Text.val(100); //'Failed - invalid user name or password!';
-                //this.message = 'Failed - invalid user name or password!';
-                _this.emitStatusChangeEvent(null, _this.message);
-            }
+            var token = response.json().token;
+            localStorage.setItem('token', token);
+            return response.json();
+        })
+            .catch(function (ex) { return _this.handleError(ex); });
+    };
+    AdminService.prototype.addArticle = function (article) {
+        var _this = this;
+        console.log('API Host: ' + config_1.Config.api_host);
+        var url = config_1.Config.api_host + '/article-add';
+        var apiRequest = ({
+            apiKey: '',
+            operator: '',
+            token: config_1.Config.getToken(),
+            body: article
+        });
+        console.log(JSON.stringify(apiRequest));
+        return this.http.post(url, JSON.stringify(apiRequest), { headers: this.headers })
+            .toPromise()
+            .then(function (response) {
+            console.log(response);
+            var token = response.json().token;
+            localStorage.setItem('token', token);
+            return response.json();
+        })
+            .catch(function (ex) { return _this.handleError(ex); });
+    };
+    AdminService.prototype.deleteArticle = function (id) {
+        var _this = this;
+        var apiRequest = ({
+            apiKey: '',
+            operator: '',
+            token: config_1.Config.getToken(),
+            body: { 'id': id }
+        });
+        var url = config_1.Config.api_host + '/article-delete';
+        console.log(JSON.stringify(apiRequest));
+        return this.http.post(url, JSON.stringify(apiRequest), { headers: this.headers })
+            .toPromise()
+            .then(function (response) {
+            var token = response.json().token;
+            localStorage.setItem('token', token);
+            return response.json();
         })
             .catch(function (ex) { return _this.handleError(ex); });
     };
@@ -208,8 +237,8 @@ var AdminService = (function () {
         this.emitStatusChangeEvent(null, config_1.Text.val(500));
         //return Promise.reject(error.message || error);
     };
-    AdminService.prototype.emitStatusChangeEvent = function (user, message) {
-        this.statusChange.emit({ user: user, message: message });
+    AdminService.prototype.emitStatusChangeEvent = function (object, message) {
+        this.statusChange.emit({ object: object, message: message });
     };
     AdminService.prototype.getStatusChangeEmitter = function () {
         return this.statusChange;

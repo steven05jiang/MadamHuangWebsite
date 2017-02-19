@@ -19,6 +19,32 @@
 	margin-right: 1em;
 }
 
+.card-columns-custom{
+	column-count: 3 ;
+}
+
+.card-image-button{
+	display: inherit;
+	color: rgba(0,0,0,0);
+	background-color: rgba(0,0,0,0);
+	padding: 0;
+	margin: 0.3em;
+	border:none;
+	max-height: 8em;
+	overflow: hidden;
+}
+
+.card-image-button: focus{
+	border:1em solid blue;
+}
+
+@media (max-width: 991px){
+	.card-image-button{
+		max-height: 5em;
+	}
+}
+
+
 @media (max-width: 768px){
 	.card {
 		margin-top: 1em;

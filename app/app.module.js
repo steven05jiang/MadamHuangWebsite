@@ -24,6 +24,7 @@ var about_component_1 = require("./about/about.component");
 var beauty_component_1 = require("./beauty/beauty.component");
 var admin_component_1 = require("./admin/admin.component");
 var admin_service_1 = require("./admin/admin.service");
+var date_dscd_pipe_1 = require("./pipes/date-dscd-pipe");
 var activity_component_1 = require("./activity/activity.component");
 var activity_service_1 = require("./activity/activity.service");
 var product_component_1 = require("./product/product.component");
@@ -94,7 +95,8 @@ AppModule = __decorate([
             invoice_detail_component_1.InvoiceDetailComponent,
             invoice_edit_component_1.InvoiceEditComponent,
             invoices_component_1.InvoicesComponent,
-            pagination_component_1.PaginationComponent
+            pagination_component_1.PaginationComponent,
+            date_dscd_pipe_1.ArticleIdPipe
         ],
         providers: [
             auth_guard_1.AuthGuard,
