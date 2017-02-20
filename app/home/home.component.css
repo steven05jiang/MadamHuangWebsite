@@ -19,6 +19,7 @@ section .description-center{
 
 #beauty{
   background-color: #fff;
+  min-height: 10em;
 }
 #duty {
   background-color: #F6F6F6;
