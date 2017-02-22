@@ -21,7 +21,34 @@ var ActivityService = (function () {
     }
     // TODO: change get request to POST request using APIRequest
     // TODO: add token to the request
-    ActivityService.prototype.getObjects = function (page, size) {
+    /*
+    getObjects(page: number, size: number): Promise<APIResponse> {
+        let apiRequest = <APIRequest>({
+            apiKey: '',
+            operator: '',
+            token: Config.getToken(),
+            page: page,
+            size: size
+        });
+        const url = Config.api_host + '/activities';
+        console.log(JSON.stringify(apiRequest));
+  
+        return this.http.post(url, JSON.stringify(apiRequest), {headers: this.headers})
+        .toPromise()
+        .then(response => {
+          let token = response.json().token;
+          localStorage.setItem('token', token);
+            if(response.json().code == '200') {
+              return response.json() as APIResponse;
+            } else {
+              this.message = Text.val(500);
+              this.emitStatusChangeEvent(null, this.message);
+            }
+          })
+          .catch((ex) => this.handleError(ex));
+    }
+    */
+    ActivityService.prototype.getActivities = function (page, size) {
         var _this = this;
         var apiRequest = ({
             apiKey: '',
@@ -37,25 +64,28 @@ var ActivityService = (function () {
             .then(function (response) {
             var token = response.json().token;
             localStorage.setItem('token', token);
-            if (response.json().code == '200') {
-                return response.json();
-            }
-            else {
+            if (response.json().code != '200') {
                 _this.message = config_1.Text.val(500);
                 _this.emitStatusChangeEvent(null, _this.message);
             }
+            return response.json();
         })
             .catch(function (ex) { return _this.handleError(ex); });
     };
     // TODO: search/return one record by primary key using service.ts
-    ActivityService.prototype.getObject = function (id) {
-        var _this = this;
-        return this.getObjects(0, 1000)
-            .then(function (objects) { return objects.body.find(function (object) { return object.id == id; }); }).then(function (obj) {
+    /*
+    getObject(id: number): Promise<Activity> {
+      return this.getObjects(0, 1000)
+        .then(
+          objects => (objects.body as Activity[]).find(object => object.id == id)
+        ).then(
+          obj => {
             return obj;
-        })
-            .catch(function (ex) { return _this.handleError(ex); });
-    };
+          }
+        )
+        .catch((ex) => this.handleError(ex));
+    }
+    */
     ActivityService.prototype.handleError = function (error) {
         this.emitStatusChangeEvent(null, config_1.Text.val(500));
         //return Promise.reject(error.message || error);

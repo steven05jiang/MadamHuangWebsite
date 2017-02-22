@@ -5,8 +5,8 @@
 		<section>
 			<h4>Articles</h4>
 			<button (click)="newArticle()" class="btn btn-confirm">New Article</button>
-				<button (click)="preArticlePage()" class="btn btn-confirm">Previous</button>
-				<button (click)="nextArticlePage()" class="btn btn-confirm">Next</button>
+				<button (click)="getArticles(adminHelper.articlePage-1)" class="btn btn-confirm">Previous</button>
+				<button (click)="getArticles(adminHelper.articlePage+1)" class="btn btn-confirm">Next</button>
 				Current Page: {{adminHelper.articlePage+1}} | Total Pages: {{adminHelper.articleTotalPage}}
 			<div>
 				<table class="table table-bordered table-hover table-condensed">
@@ -23,7 +23,7 @@
 							{{articleNew.id}}
 						</td>
 						<td align="center">
-							{{articleNew.updatedDate}}
+							
 						</td>
 						<td>
 							<div class="form-group">
@@ -72,7 +72,7 @@
 						</td>
 						<td align="center">
 							<button (click)="deleteArticle(article)" [hidden]="adminHelper.articleEditMode" class="btn btn-cancel">Delete</button>
-							<button (click)="exitEdit()" [hidden]="!adminHelper.articleEditMode" class="btn btn-cancel">Cancel</button>
+							<button (click)="exitEditArticle()" [hidden]="!adminHelper.articleEditMode" class="btn btn-cancel">Cancel</button>
 						</td>
 				</tr>
 				</ng-container>
@@ -82,8 +82,8 @@
 	<hr>
 		<section>
 			<h4>Messages</h4>
-				<button (click)="preContactPage()" class="btn btn-confirm">Previous</button>
-				<button (click)="nextContactPage()" class="btn btn-confirm">Next</button>
+				<button (click)="getContacts(adminHelper.contactPage-1)" class="btn btn-confirm">Previous</button>
+				<button (click)="getContacts(adminHelper.contactPage+1)" class="btn btn-confirm">Next</button>
 				Current Page: {{adminHelper.contactPage+1}} | Total Pages: {{adminHelper.contactTotalPage}}
 			<div>
 				<table class="table table-bordered table-hover table-condensed">
@@ -114,6 +114,377 @@
 						</td>
 						<td>
 							{{contact.content}}
+						</td>
+				</tr>
+				</ng-container>
+			</table>
+		</div>
+	</section>
+
+	<hr>
+	<section>
+			<h4>Classroom Items</h4>
+			<button (click)="newClassroomItem()" class="btn btn-confirm">New Item</button>
+				<button (click)="getClassroomItems(adminHelper.classroomItemPage-1)" class="btn btn-confirm">Previous</button>
+				<button (click)="getClassroomItems(adminHelper.classroomItemPage+1)" class="btn btn-confirm">Next</button>
+				Current Page: {{adminHelper.classroomItemPage+1}} | Total Pages: {{adminHelper.classroomItemTotalPage}}
+			<div>
+				<table class="table table-bordered table-hover table-condensed">
+					<tr>
+						<th>Item#</th>
+						<th>Updated Date</th>
+						<th>Title</th>
+						<th>Description</th>
+						<th>Image Link</th>
+						<th>Article Id</th>
+						<th>Edit</th>
+						<th>Delete</th>
+					</tr>
+					<tr *ngIf="adminHelper.classroomItemAddMode">
+						<td align="center">
+							{{classroomItemNew.id}}
+						</td>
+						<td align="center">
+							
+						</td>
+						<td>
+							<div class="form-group">
+						     <input type="text" class="form-control" [(ngModel)]="classroomItemNew.title" name="classroomItemTitle" placeholder="Enter classroom Item Title" required/>
+						   </div>
+						</td>
+						<td>
+							<div class="form-group">
+						     <input type="text" class="form-control" [(ngModel)]="classroomItemNew.description" name="classroomItemDescription" placeholder="Enter  classroom Item Description" required/>
+						   </div>
+						</td>
+						<td>
+							<div class="form-group">
+						     <input type="text" class="form-control" [(ngModel)]="classroomItemNew.imageLink" name="classroomItemImage" placeholder="Enter  classroom Item Image Link" required/>
+						   </div>
+						</td>
+						<td>
+							<div class="form-group">
+						     <input type="text" class="form-control" [(ngModel)]="classroomItemNew.articleId" name="classroomItemArticle" placeholder="Enter Article Id" required/>
+						   </div>
+						</td>
+						<td align="center">
+							<button (click)="addClassroomItem(classroomItemNew)" class="btn btn-confirm">Add</button>
+						</td>
+						<td align="center">
+							<button (click)="resetNewClassroomItem()" class="btn btn-cancel">Reset</button>
+						</td>
+					</tr>
+					<ng-container *ngIf="classroomItems">
+					<tr *ngFor="let classroomItem of (classroomItems | idDscd)">
+						<td align="center">
+							{{classroomItem.id}}
+						</td>
+						<td align="center">
+							{{classroomItem.updatedDate | date:"MM/dd/yy"}}
+						</td>
+						<td>
+							<span [hidden]="adminHelper.classroomItemEditMode">{{classroomItem.title}}</span>
+							<span [hidden]="!adminHelper.classroomItemEditMode">
+								<div class="form-group">
+							     <input type="text" class="form-control" [(ngModel)]="classroomItem.title" name="classroomItemTitle" placeholder="Enter classroom Item Title" required/>
+							   </div>
+							</span>
+						</td>
+						<td>
+							<span [hidden]="adminHelper.classroomItemEditMode">{{classroomItem.description}}</span>
+							<span [hidden]="!adminHelper.classroomItemEditMode">
+								<div class="form-group">
+							     <input type="text" class="form-control" [(ngModel)]="classroomItem.description" name="classroomItemDescription" placeholder="Enter classroom item Description" required/>
+							   </div>
+							</span>
+						</td>
+						<td>
+						<span [hidden]="adminHelper.classroomItemEditMode">{{classroomItem.imageLink}}</span>
+							<span [hidden]="!adminHelper.classroomItemEditMode">
+							<div class="form-group">
+						     <input type="text" class="form-control" [(ngModel)]="classroomItem.imageLink" name="classroomItemImage" placeholder="Enter classroom Item Image Link"/>
+						   </div>
+						   </span>
+						</td>
+						<td>
+						<span [hidden]="adminHelper.classroomItemEditMode">{{classroomItem.articleId}}</span>
+							<span [hidden]="!adminHelper.classroomItemEditMode">
+							<div class="form-group">
+						     <input type="text" class="form-control" [(ngModel)]="classroomItem.articleId" name="classroomItemArticle" placeholder="Enter Article Id"/>
+						   </div>
+						   </span>
+						</td>
+						<td align="center">
+							<button (click)="editClassroomItem()" [hidden]="adminHelper.classroomItemEditMode" class="btn btn-confirm">Edit</button>
+							<button (click)="updateClassroomItem(classroomItem)" [hidden]="!adminHelper.classroomItemEditMode" class="btn btn-confirm">Update</button>
+						</td>
+						<td align="center">
+							<button (click)="deleteClassroomItem(classroomItem)" [hidden]="adminHelper.classroomItemEditMode" class="btn btn-cancel">Delete</button>
+							<button (click)="exitEditClassroomItem()" [hidden]="!adminHelper.classroomItemEditMode" class="btn btn-cancel">Cancel</button>
+						</td>
+				</tr>
+				</ng-container>
+			</table>
+		</div>
+	</section>
+
+	<hr>
+	<section>
+			<h4>Activities</h4>
+			<button (click)="newActivity()" class="btn btn-confirm">New Activity</button>
+				<button (click)="getActivities(adminHelper.activityPage-1)" class="btn btn-confirm">Previous</button>
+				<button (click)="getActivities(adminHelper.activityPage+1)" class="btn btn-confirm">Next</button>
+				Current Page: {{adminHelper.activityPage+1}} | Total Pages: {{adminHelper.activityTotalPage}}
+			<div>
+				<table class="table table-bordered table-hover table-condensed">
+					<tr>
+						<th>Activity#</th>
+						<th>Created Date</th>
+						<th>Title</th>
+						<th>Description</th>
+						<th>Image Link</th>
+						<th>Price</th>
+						<th>Start Time</th>
+						<th>End Time</th>
+						<th>Article Id</th>
+						<th>Edit</th>
+						<th>Delete</th>
+					</tr>
+					<tr *ngIf="adminHelper.activityAddMode">
+						<td align="center">
+							{{activityNew.id}}
+						</td>
+						<td align="center">
+							
+						</td>
+						<td>
+							<div class="form-group">
+						     <input type="text" class="form-control" [(ngModel)]="activityNew.title" name="activityTitle" placeholder="Enter Activity Title" required/>
+						   </div>
+						</td>
+						<td>
+							<div class="form-group">
+						     <input type="text" class="form-control" [(ngModel)]="activityNew.description" name="activityDescription" placeholder="Enter Activity Description" required/>
+						   </div>
+						</td>
+						<td>
+							<div class="form-group">
+						     <input type="text" class="form-control" [(ngModel)]="activityNew.imageLink" name="activityImage" placeholder="Enter Activity Image Link" required/>
+						   </div>
+						</td>
+						<td>
+							<div class="form-group">
+						     <input type="text" class="form-control" [(ngModel)]="activityNew.price" name="activityPrice" placeholder="Enter Activity Price" required/>
+						   </div>
+						</td>
+						<td>
+							<div class="form-group">
+						     <input type="text" class="form-control" [(ngModel)]="activityNew.startDate" name="activityStart" placeholder="Enter Activity Start Time" required/>
+						   </div>
+						</td>
+						<td>
+							<div class="form-group">
+						     <input type="text" class="form-control" [(ngModel)]="activityNew.endDate" name="activityEnd" placeholder="Enter Activity End Time" required/>
+						   </div>
+						</td>
+						<td>
+							<div class="form-group">
+						     <input type="text" class="form-control" [(ngModel)]="activityNew.articleId" name="activityArticle" placeholder="Enter Article Id" required/>
+						   </div>
+						</td>
+						<td align="center">
+							<button (click)="addActivity(activityNew)" class="btn btn-confirm">Add</button>
+						</td>
+						<td align="center">
+							<button (click)="resetNewActivity()" class="btn btn-cancel">Reset</button>
+						</td>
+					</tr>
+					<ng-container *ngIf="activities">
+					<tr *ngFor="let activity of (activities | idDscd)">
+						<td align="center">
+							{{activity.id}}
+						</td>
+						<td align="center">
+							{{activity.createdDate | date:"MM/dd/yy"}}
+						</td>
+						<td>
+							<span [hidden]="adminHelper.activityEditMode">{{activity.title}}</span>
+							<span [hidden]="!adminHelper.activityEditMode">
+								<div class="form-group">
+							     <input type="text" class="form-control" [(ngModel)]="activity.title" name="articleTitle" placeholder="Enter Activity Title" required/>
+							   </div>
+							</span>
+						</td>
+						<td>
+							<span [hidden]="adminHelper.activityEditMode">{{activity.description}}</span>
+							<span [hidden]="!adminHelper.activityEditMode">
+								<div class="form-group">
+							     <input type="text" class="form-control" [(ngModel)]="activity.description" name="activityDescription" placeholder="Enter Activity Description" required/>
+							   </div>
+							</span>
+						</td>
+						<td>
+						<span [hidden]="adminHelper.activityEditMode">{{activity.imageLink}}</span>
+							<span [hidden]="!adminHelper.activityEditMode">
+							<div class="form-group">
+						     <input type="text" class="form-control" [(ngModel)]="activity.imageLink" name="activityImage" placeholder="Enter Activity Image Link"/>
+						   </div>
+						   </span>
+						</td>
+						<td>
+						<span [hidden]="adminHelper.activityEditMode">{{activity.price}}</span>
+							<span [hidden]="!adminHelper.activityEditMode">
+							<div class="form-group">
+						     <input type="text" class="form-control" [(ngModel)]="activity.price" name="activityPrice" placeholder="Enter Activity Price"/>
+						   </div>
+						   </span>
+						</td>
+						<td>
+						<span [hidden]="adminHelper.activityEditMode">{{activity.startDate}}</span>
+							<span [hidden]="!adminHelper.activityEditMode">
+							<div class="form-group">
+						     <input type="text" class="form-control" [(ngModel)]="activity.startDate" name="activityStart" placeholder="Enter Activity Start Time"/>
+						   </div>
+						   </span>
+						</td>
+						<td>
+						<span [hidden]="adminHelper.activityEditMode">{{activity.endDate}}</span>
+							<span [hidden]="!adminHelper.activityEditMode">
+							<div class="form-group">
+						     <input type="text" class="form-control" [(ngModel)]="activity.endDate" name="activityEnd" placeholder="Enter Activity End Time"/>
+						   </div>
+						   </span>
+						</td>
+						<td>
+						<span [hidden]="adminHelper.activityEditMode">{{activity.articleId}}</span>
+							<span [hidden]="!adminHelper.activityEditMode">
+							<div class="form-group">
+						     <input type="text" class="form-control" [(ngModel)]="activity.articleId" name="activityArticle" placeholder="Enter Article Id"/>
+						   </div>
+						   </span>
+						</td>
+						<td align="center">
+							<button (click)="editActivity()" [hidden]="adminHelper.activityEditMode" class="btn btn-confirm">Edit</button>
+							<button (click)="updateActivity(activity)" [hidden]="!adminHelper.activityEditMode" class="btn btn-confirm">Update</button>
+						</td>
+						<td align="center">
+							<button (click)="deleteActivity(activity)" [hidden]="adminHelper.activityEditMode" class="btn btn-cancel">Delete</button>
+							<button (click)="exitEditActivity()" [hidden]="!adminHelper.activityEditMode" class="btn btn-cancel">Cancel</button>
+						</td>
+				</tr>
+				</ng-container>
+			</table>
+		</div>
+	</section>
+
+
+	<hr>
+	<section>
+			<h4>Products</h4>
+			<button (click)="newProduct()" class="btn btn-confirm">New Product</button>
+				<button (click)="getProducts(adminHelper.productPage-1)" class="btn btn-confirm">Previous</button>
+				<button (click)="getProducts(adminHelper.productPage+1)" class="btn btn-confirm">Next</button>
+				Current Page: {{adminHelper.productPage+1}} | Total Pages: {{adminHelper.productTotalPage}}
+			<div>
+				<table class="table table-bordered table-hover table-condensed">
+					<tr>
+						<th>Product#</th>
+						<th>Title</th>
+						<th>Description</th>
+						<th>Image Link</th>
+						<th>Price</th>
+						<th>Article Id</th>
+						<th>Edit</th>
+						<th>Delete</th>
+					</tr>
+					<tr *ngIf="adminHelper.productAddMode">
+						<td align="center">
+							{{productNew.id}}
+						</td>
+						<td>
+							<div class="form-group">
+						     <input type="text" class="form-control" [(ngModel)]="productNew.title" name="productTitle" placeholder="Enter product Title" required/>
+						   </div>
+						</td>
+						<td>
+							<div class="form-group">
+						     <input type="text" class="form-control" [(ngModel)]="productNew.description" name="productDescription" placeholder="Enter product Description" required/>
+						   </div>
+						</td>
+						<td>
+							<div class="form-group">
+						     <input type="text" class="form-control" [(ngModel)]="productNew.imageLink" name="productImage" placeholder="Enter product Image Link" required/>
+						   </div>
+						</td>
+						<td>
+							<div class="form-group">
+						     <input type="text" class="form-control" [(ngModel)]="productNew.price" name="productPrice" placeholder="Enter product Price" required/>
+						   </div>
+						</td>
+						<td>
+							<div class="form-group">
+						     <input type="text" class="form-control" [(ngModel)]="productNew.articleId" name="productArticle" placeholder="Enter Article Id" required/>
+						   </div>
+						</td>
+						<td align="center">
+							<button (click)="addProduct(productNew)" class="btn btn-confirm">Add</button>
+						</td>
+						<td align="center">
+							<button (click)="resetNewProduct()" class="btn btn-cancel">Reset</button>
+						</td>
+					</tr>
+					<ng-container *ngIf="products">
+					<tr *ngFor="let product of (products | idDscd)">
+						<td align="center">
+							{{product.id}}
+						</td>
+						<td>
+							<span [hidden]="adminHelper.productEditMode">{{product.title}}</span>
+							<span [hidden]="!adminHelper.productEditMode">
+								<div class="form-group">
+							     <input type="text" class="form-control" [(ngModel)]="product.title" name="productTitle" placeholder="Enter product Title" required/>
+							   </div>
+							</span>
+						</td>
+						<td>
+							<span [hidden]="adminHelper.productEditMode">{{product.description}}</span>
+							<span [hidden]="!adminHelper.productEditMode">
+								<div class="form-group">
+							     <input type="text" class="form-control" [(ngModel)]="product.description" name="productDescription" placeholder="Enter product Description" required/>
+							   </div>
+							</span>
+						</td>
+						<td>
+						<span [hidden]="adminHelper.productEditMode">{{product.imageLink}}</span>
+							<span [hidden]="!adminHelper.productEditMode">
+							<div class="form-group">
+						     <input type="text" class="form-control" [(ngModel)]="product.imageLink" name="productImage" placeholder="Enter product Image Link"/>
+						   </div>
+						   </span>
+						</td>
+						<td>
+						<span [hidden]="adminHelper.productEditMode">{{product.price}}</span>
+							<span [hidden]="!adminHelper.productEditMode">
+							<div class="form-group">
+						     <input type="text" class="form-control" [(ngModel)]="product.price" name="productPrice" placeholder="Enter product Price"/>
+						   </div>
+						   </span>
+						</td>
+						<td>
+						<span [hidden]="adminHelper.productEditMode">{{product.articleId}}</span>
+							<span [hidden]="!adminHelper.productEditMode">
+							<div class="form-group">
+						     <input type="text" class="form-control" [(ngModel)]="product.articleId" name="productArticle" placeholder="Enter Article Id"/>
+						   </div>
+						   </span>
+						</td>
+						<td align="center">
+							<button (click)="editProduct()" [hidden]="adminHelper.productEditMode" class="btn btn-confirm">Edit</button>
+							<button (click)="updateProduct(product)" [hidden]="!adminHelper.productEditMode" class="btn btn-confirm">Update</button>
+						</td>
+						<td align="center">
+							<button (click)="deleteProduct(product)" [hidden]="adminHelper.productEditMode" class="btn btn-cancel">Delete</button>
+							<button (click)="exitEditProduct()" [hidden]="!adminHelper.productEditMode" class="btn btn-cancel">Cancel</button>
 						</td>
 				</tr>
 				</ng-container>

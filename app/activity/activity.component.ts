@@ -34,6 +34,8 @@ export class ActivityComponent implements OnInit {
 		private activatedRoute: ActivatedRoute,
 		private service: ActivityService,
 		) {
+		this.size = 9;
+		this.page = 0;
 		this.message = this.service.message;
 		this.subscription = this.service.getStatusChangeEmitter()
 		.subscribe(($event:any) => {
@@ -44,10 +46,12 @@ export class ActivityComponent implements OnInit {
 		} );
 	}
 	ngOnInit(): void {
-		this.page = 0;
-		this.size = 1000;
-		this.service.getObjects(this.page, this.size).then(
-			apiResponse => {
+		this.getActivities(this.page);
+	}
+
+	getActivities(page: number){
+		this.service.getActivities(page, this.size).then(
+		apiResponse => {
 				this.apiResponse = apiResponse;
 				this.objects = apiResponse.body as Activity[];
 			}

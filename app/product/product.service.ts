@@ -28,7 +28,7 @@ export class ProductService {
       let apiRequest = <APIRequest>({
           apiKey: '',
           operator: '',
-          token: '',
+          token: Config.getToken(),
           page: page,
           size: size
       });
@@ -38,12 +38,13 @@ export class ProductService {
       return this.http.post(url, JSON.stringify(apiRequest), {headers: this.headers})
       .toPromise()
       .then(response => {
-          if(response.json().code == '200') {
-            return response.json() as APIResponse;
-          } else {
-            this.message = Text.val(500);
-            this.emitStatusChangeEvent(null, this.message);
-          }
+          let token = response.json().token;
+        localStorage.setItem('token', token);
+        if(response.json().code != '200') {
+          this.message = Text.val(500);
+          this.emitStatusChangeEvent(null, this.message);
+        }
+        return response.json() as APIResponse;
         })
         .catch((ex) => this.handleError(ex));
   }

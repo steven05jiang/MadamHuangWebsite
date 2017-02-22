@@ -2,7 +2,7 @@
 var Activity = (function () {
     function Activity() {
         this.id = -1;
-        this.createdDate = (new Date().getTime()).toString();
+        //this.createdDate = (new Date().getTime()).toString();
     }
     return Activity;
 }());

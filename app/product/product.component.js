@@ -20,6 +20,8 @@ var ProductComponent = (function () {
         this.activatedRoute = activatedRoute;
         this.service = service;
         this.defaultImage = 'image/loading.png';
+        this.size = 9;
+        this.page = 0;
         this.message = this.service.message;
         this.subscription = this.service.getStatusChangeEmitter()
             .subscribe(function ($event) {
@@ -30,17 +32,18 @@ var ProductComponent = (function () {
         });
     }
     ProductComponent.prototype.ngOnInit = function () {
+        this.getProducts(this.page);
+    };
+    ProductComponent.prototype.getProducts = function (page) {
         var _this = this;
-        this.page = 0;
-        this.size = 1000;
-        this.service.getObjects(this.page, this.size).then(function (apiResponse) {
+        this.service.getObjects(page, this.size).then(function (apiResponse) {
             _this.apiResponse = apiResponse;
             _this.objects = apiResponse.body;
         });
     };
     ProductComponent.prototype.openArticle = function (product) {
-        console.log('Ready to nav to article ' + product.article.id);
-        this.router.navigate(['/article', product.article.id]);
+        console.log('Ready to nav to article ' + product.articleId);
+        this.router.navigate(['/article', product.articleId]);
     };
     return ProductComponent;
 }());

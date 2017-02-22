@@ -10,6 +10,10 @@ import { APIResponse } from '../common/api-response';
 
 import { User } from '../user/user';
 import { Article} from '../article/article';
+import { Product} from '../product/product';
+import { Activity } from '../activity/activity';
+import { ClassroomItem } from '../classroom/classroom-item';
+
 
 import 'rxjs/add/operator/toPromise';
 
@@ -118,6 +122,228 @@ export class AdminService {
         let token = response.json().token;
         localStorage.setItem('token', token);
         return response.json() as APIResponse;
+        })
+        .catch((ex) => this.handleError(ex));
+  }
+
+  updateActivity(activity: Activity): Promise<APIResponse> {
+
+    console.log('API Host: ' + Config.api_host);
+
+    const url = Config.api_host + '/activity-update';
+    let apiRequest = <APIRequest>({
+        apiKey: '',
+        operator: '',
+        token: Config.getToken(),
+        body: activity
+    });
+
+    console.log(JSON.stringify(apiRequest));
+
+    return this.http.post(url, JSON.stringify(apiRequest), {headers: this.headers})
+      .toPromise()
+      .then(
+        response => {
+        console.log(response);
+          let token = response.json().token;
+          localStorage.setItem('token', token);
+          return response.json() as APIResponse;
+        }
+      )
+      .catch((ex) => this.handleError(ex));
+  }
+
+   addActivity(activity: Activity): Promise<APIResponse> {
+
+    console.log('API Host: ' + Config.api_host);
+
+    const url = Config.api_host + '/activity-add';
+    let apiRequest = <APIRequest>({
+        apiKey: '',
+        operator: '',
+        token: Config.getToken(),
+        body: activity
+    });
+
+    console.log(JSON.stringify(apiRequest));
+
+    return this.http.post(url, JSON.stringify(apiRequest), {headers: this.headers})
+      .toPromise()
+      .then(
+        response => {
+        console.log(response);
+          let token = response.json().token;
+          localStorage.setItem('token', token);
+          return response.json() as APIResponse;
+        }
+      )
+      .catch((ex) => this.handleError(ex));
+  }
+
+   deleteActivity(id:number): Promise<APIResponse> {
+      let apiRequest = <APIRequest>({
+          apiKey: '',
+          operator: '',
+          token: Config.getToken(),
+          body: {'id':id}
+      });
+      const url = Config.api_host + '/activity-delete';
+      console.log(JSON.stringify(apiRequest));
+
+      return this.http.post(url, JSON.stringify(apiRequest), {headers: this.headers})
+      .toPromise()
+      .then(response => {
+          let token = response.json().token;
+          localStorage.setItem('token', token);
+          return response.json() as APIResponse;
+        })
+        .catch((ex) => this.handleError(ex));
+  }
+
+  updateClassroomItem(classroomItem: ClassroomItem): Promise<APIResponse> {
+
+    console.log('API Host: ' + Config.api_host);
+
+    const url = Config.api_host + '/classroom-item-update';
+    let apiRequest = <APIRequest>({
+        apiKey: '',
+        operator: '',
+        token: Config.getToken(),
+        body: classroomItem
+    });
+
+    console.log(JSON.stringify(apiRequest));
+
+    return this.http.post(url, JSON.stringify(apiRequest), {headers: this.headers})
+      .toPromise()
+      .then(
+        response => {
+        console.log(response);
+          let token = response.json().token;
+          localStorage.setItem('token', token);
+          return response.json() as APIResponse;
+        }
+      )
+      .catch((ex) => this.handleError(ex));
+  }
+
+   addClassroomItem(classroomItem: ClassroomItem): Promise<APIResponse> {
+
+    console.log('API Host: ' + Config.api_host);
+
+    const url = Config.api_host + '/classroom-item-add';
+    let apiRequest = <APIRequest>({
+        apiKey: '',
+        operator: '',
+        token: Config.getToken(),
+        body: classroomItem
+    });
+
+    console.log(JSON.stringify(apiRequest));
+
+    return this.http.post(url, JSON.stringify(apiRequest), {headers: this.headers})
+      .toPromise()
+      .then(
+        response => {
+        console.log(response);
+          let token = response.json().token;
+          localStorage.setItem('token', token);
+          return response.json() as APIResponse;
+        }
+      )
+      .catch((ex) => this.handleError(ex));
+  }
+
+   deleteClassroomItem(id:number): Promise<APIResponse> {
+      let apiRequest = <APIRequest>({
+          apiKey: '',
+          operator: '',
+          token: Config.getToken(),
+          body: {'id':id}
+      });
+      const url = Config.api_host + '/classroom-item-delete';
+      console.log(JSON.stringify(apiRequest));
+
+      return this.http.post(url, JSON.stringify(apiRequest), {headers: this.headers})
+      .toPromise()
+      .then(response => {
+          let token = response.json().token;
+          localStorage.setItem('token', token);
+          return response.json() as APIResponse;
+        })
+        .catch((ex) => this.handleError(ex));
+  }
+
+    updateProduct(product: Product): Promise<APIResponse> {
+
+    console.log('API Host: ' + Config.api_host);
+
+    const url = Config.api_host + '/product-update';
+    let apiRequest = <APIRequest>({
+        apiKey: '',
+        operator: '',
+        token: Config.getToken(),
+        body: product
+    });
+
+    console.log(JSON.stringify(apiRequest));
+
+    return this.http.post(url, JSON.stringify(apiRequest), {headers: this.headers})
+      .toPromise()
+      .then(
+        response => {
+        console.log(response);
+          let token = response.json().token;
+          localStorage.setItem('token', token);
+          return response.json() as APIResponse;
+        }
+      )
+      .catch((ex) => this.handleError(ex));
+  }
+
+   addProduct(product: Product): Promise<APIResponse> {
+
+    console.log('API Host: ' + Config.api_host);
+
+    const url = Config.api_host + '/product-add';
+    let apiRequest = <APIRequest>({
+        apiKey: '',
+        operator: '',
+        token: Config.getToken(),
+        body: product
+    });
+
+    console.log(JSON.stringify(apiRequest));
+
+    return this.http.post(url, JSON.stringify(apiRequest), {headers: this.headers})
+      .toPromise()
+      .then(
+        response => {
+        console.log(response);
+          let token = response.json().token;
+          localStorage.setItem('token', token);
+          return response.json() as APIResponse;
+        }
+      )
+      .catch((ex) => this.handleError(ex));
+  }
+
+   deleteProduct(id:number): Promise<APIResponse> {
+      let apiRequest = <APIRequest>({
+          apiKey: '',
+          operator: '',
+          token: Config.getToken(),
+          body: {'id':id}
+      });
+      const url = Config.api_host + '/product-delete';
+      console.log(JSON.stringify(apiRequest));
+
+      return this.http.post(url, JSON.stringify(apiRequest), {headers: this.headers})
+      .toPromise()
+      .then(response => {
+          let token = response.json().token;
+          localStorage.setItem('token', token);
+          return response.json() as APIResponse;
         })
         .catch((ex) => this.handleError(ex));
   }

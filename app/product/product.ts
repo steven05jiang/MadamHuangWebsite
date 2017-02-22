@@ -6,7 +6,7 @@ export class Product {
   description:      string;
   imageLink:	string;
   price:	number;
-  article: Article;
+  articleId: number;
 
   constructor() {
     this.id = -1;

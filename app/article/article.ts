@@ -2,8 +2,8 @@ export class Article {
 	id: number;
 	title: string;
 	content: string;
-	createdDate: string;
-	updatedDate: string;
+	createdDate: Date;
+	updatedDate: Date;
 
 	constructor(){
 		this.id = -1;

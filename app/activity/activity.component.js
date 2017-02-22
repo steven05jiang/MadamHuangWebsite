@@ -20,6 +20,8 @@ var ActivityComponent = (function () {
         this.activatedRoute = activatedRoute;
         this.service = service;
         this.defaultImage = 'image/loading.png';
+        this.size = 9;
+        this.page = 0;
         this.message = this.service.message;
         this.subscription = this.service.getStatusChangeEmitter()
             .subscribe(function ($event) {
@@ -30,10 +32,11 @@ var ActivityComponent = (function () {
         });
     }
     ActivityComponent.prototype.ngOnInit = function () {
+        this.getActivities(this.page);
+    };
+    ActivityComponent.prototype.getActivities = function (page) {
         var _this = this;
-        this.page = 0;
-        this.size = 1000;
-        this.service.getObjects(this.page, this.size).then(function (apiResponse) {
+        this.service.getActivities(page, this.size).then(function (apiResponse) {
             _this.apiResponse = apiResponse;
             _this.objects = apiResponse.body;
         });

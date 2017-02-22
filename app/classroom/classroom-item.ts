@@ -3,7 +3,7 @@ export class ClassroomItem {
   title:         string;
   description:      string;
   imageLink:	string;
-  updatedDate: string;
+  updatedDate: Date;
   articleId: number;
 
   constructor() {

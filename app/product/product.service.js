@@ -26,7 +26,7 @@ var ProductService = (function () {
         var apiRequest = ({
             apiKey: '',
             operator: '',
-            token: '',
+            token: config_1.Config.getToken(),
             page: page,
             size: size
         });
@@ -35,13 +35,13 @@ var ProductService = (function () {
         return this.http.post(url, JSON.stringify(apiRequest), { headers: this.headers })
             .toPromise()
             .then(function (response) {
-            if (response.json().code == '200') {
-                return response.json();
-            }
-            else {
+            var token = response.json().token;
+            localStorage.setItem('token', token);
+            if (response.json().code != '200') {
                 _this.message = config_1.Text.val(500);
                 _this.emitStatusChangeEvent(null, _this.message);
             }
+            return response.json();
         })
             .catch(function (ex) { return _this.handleError(ex); });
     };

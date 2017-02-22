@@ -34,6 +34,8 @@ export class ProductComponent implements OnInit {
 		private activatedRoute: ActivatedRoute,
 		private service: ProductService,
 		) {
+		this.size = 9;
+		this.page = 0;
 		this.message = this.service.message;
 		this.subscription = this.service.getStatusChangeEmitter()
 		.subscribe(($event:any) => {
@@ -45,9 +47,11 @@ export class ProductComponent implements OnInit {
 	}
 
   ngOnInit(): void {
-  		this.page = 0;
-		this.size = 1000;
-		this.service.getObjects(this.page, this.size).then(
+  	this.getProducts(this.page);
+  }
+
+  getProducts(page: number){
+		this.service.getObjects(page, this.size).then(
 			apiResponse => {
 				this.apiResponse = apiResponse;
 				this.objects = apiResponse.body as Product[];
@@ -56,8 +60,8 @@ export class ProductComponent implements OnInit {
   }
 
   	openArticle(product: Product): void{
-		console.log('Ready to nav to article '+product.article.id);
-		this.router.navigate(['/article', product.article.id]);
+		console.log('Ready to nav to article '+product.articleId);
+		this.router.navigate(['/article', product.articleId]);
 	}
 
 }

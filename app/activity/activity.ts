@@ -3,14 +3,14 @@ export class Activity {
   title:         string;
   description:      string;
   imageLink:	string;
-  createdDate:        string;
-  startDate:        string;
-  endDate:        string;
+  createdDate:        Date;
+  startDate:        Date;
+  endDate:        Date;
   price:	number;
   articleId: number;
 
   constructor() {
     this.id = -1;
-    this.createdDate = (new Date().getTime()).toString();
+    //this.createdDate = (new Date().getTime()).toString();
   }
 }
