@@ -1,7 +1,7 @@
 <div class="main">
 <div class="jumbotron jumbotron-fluid">
   <div class="container">
-    <h1 class="display-3">聯繫我們</h1>
+    <h1 class="display-3">聯繫我們 「 Contact Us 」</h1>
     <p class="lead">您可以通過填寫下面的表格，或者使用任意的聯繫方式聯繫我們</p>
   </div>
 </div>
@@ -27,7 +27,7 @@
           </div>
           <div class="form-group">
             <label for="content">我們有什麼可以幫助您的嗎？請在下面告訴我們。</label>
-            <textarea class="form-control" id="exampleTextarea" rows="3" [(ngModel)]="msg.content" name="content" (input)="clearMessage()" required></textarea>
+            <textarea class="form-control" id="exampleTextarea" rows="3" [(ngModel)]="msg.content" name="content" (input)="clearMessage()" placeholder="Enter questions here" required></textarea>
           </div>
               <button type="submit" class="btn btn-confirm">提交</button>
         </form>
@@ -44,6 +44,7 @@
             </span>
             <span class="col-md col">
             <p>掃一掃邊上的二維碼了解更多的美麗產品信息. 如果您想獲得其他更多的信息，也可以通過下面的聯繫方式聯繫我們哦！</p>
+            <p class="engFont">Scan QR code to learn more about beautiful product information. If you want to get other more information, you could also contact us through below methods!</p>
             </span>
           </span>
           </li>

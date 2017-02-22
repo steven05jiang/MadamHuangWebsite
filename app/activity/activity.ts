@@ -1,5 +1,3 @@
-import { Article } from '../article/article';
-
 export class Activity {
   id:               number;
   title:         string;
@@ -9,7 +7,7 @@ export class Activity {
   startDate:        string;
   endDate:        string;
   price:	number;
-  article: Article;
+  articleId: number;
 
   constructor() {
     this.id = -1;

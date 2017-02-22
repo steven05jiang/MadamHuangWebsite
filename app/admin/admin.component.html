@@ -1,9 +1,13 @@
 <div class="main">
 	<div class="container">
 		<h3>Website Management System</h3>
+		<hr>
 		<section>
 			<h4>Articles</h4>
 			<button (click)="newArticle()" class="btn btn-confirm">New Article</button>
+				<button (click)="preArticlePage()" class="btn btn-confirm">Previous</button>
+				<button (click)="nextArticlePage()" class="btn btn-confirm">Next</button>
+				Current Page: {{adminHelper.articlePage+1}} | Total Pages: {{adminHelper.articleTotalPage}}
 			<div>
 				<table class="table table-bordered table-hover table-condensed">
 					<tr>
@@ -39,7 +43,7 @@
 						</td>
 					</tr>
 					<ng-container *ngIf="articles">
-					<tr *ngFor="let article of (articles | dateDscd)">
+					<tr *ngFor="let article of (articles | idDscd)">
 						<td align="center">
 							{{article.id}}
 						</td>
@@ -69,6 +73,47 @@
 						<td align="center">
 							<button (click)="deleteArticle(article)" [hidden]="adminHelper.articleEditMode" class="btn btn-cancel">Delete</button>
 							<button (click)="exitEdit()" [hidden]="!adminHelper.articleEditMode" class="btn btn-cancel">Cancel</button>
+						</td>
+				</tr>
+				</ng-container>
+			</table>
+		</div>
+	</section>
+	<hr>
+		<section>
+			<h4>Messages</h4>
+				<button (click)="preContactPage()" class="btn btn-confirm">Previous</button>
+				<button (click)="nextContactPage()" class="btn btn-confirm">Next</button>
+				Current Page: {{adminHelper.contactPage+1}} | Total Pages: {{adminHelper.contactTotalPage}}
+			<div>
+				<table class="table table-bordered table-hover table-condensed">
+					<tr>
+						<th>Message#</th>
+						<th>Received Date</th>
+						<th>Name</th>
+						<th>Email</th>
+						<th>Tel</th>
+						<th>Content</th>
+					</tr>
+					<ng-container *ngIf="contacts">
+					<tr *ngFor="let contact of (contacts | idDscd)">
+						<td align="center">
+							{{contact.id}}
+						</td>
+						<td align="center">
+							{{contact.sentDate | date:"MM/dd/yy"}}
+						</td>
+						<td>
+							{{contact.senderName}}
+						</td>
+						<td>
+							{{contact.senderEmail}}
+						</td>
+						<td>
+							{{contact.senderTel}}
+						</td>
+						<td>
+							{{contact.content}}
 						</td>
 				</tr>
 				</ng-container>

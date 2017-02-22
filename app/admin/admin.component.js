@@ -28,6 +28,13 @@ var AdminComponent = (function () {
         this.adminHelper.articleEditMode = false;
         this.adminHelper.articleAddMode = false;
         this.adminHelper.articleMessage = '';
+        this.adminHelper.articleSize = 10;
+        this.adminHelper.articlePage = 0;
+        this.adminHelper.articleTotalPage = 1;
+        this.adminHelper.contactSize = 10;
+        this.adminHelper.contactPage = 0;
+        this.adminHelper.contactTotalPage = 1;
+        this.adminHelper.contactMessage = '';
         this.subscription = this.loginService.getStatusChangeEmitter()
             .subscribe(function ($event) {
             if (!$event.user) {
@@ -42,13 +49,38 @@ var AdminComponent = (function () {
         });
     }
     AdminComponent.prototype.ngOnInit = function () {
-        var _this = this;
-        this.articleService.getArticles().then(function (response) {
-            _this.articles = response.body;
-        });
+        this.getArticles(this.adminHelper.articlePage);
+        this.getContacts(this.adminHelper.contactPage);
     };
     AdminComponent.prototype.ngOnDestroy = function () {
         this.subscription.unsubscribe();
+    };
+    AdminComponent.prototype.getArticles = function (page) {
+        var _this = this;
+        if (page < 0 || (this.adminHelper.articleTotalPage != null && page >= this.adminHelper.articleTotalPage)) {
+            alert('No more articles.');
+            return;
+        }
+        this.articleService.getArticles(page, this.adminHelper.articleSize).then(function (response) {
+            if (response.token == null) {
+                _this.loginService.signout();
+                return;
+            }
+            if (response.code == '200') {
+                _this.adminHelper.articlePage = page;
+                _this.adminHelper.articleTotalPage = response.totalPages;
+                _this.articles = response.body;
+            }
+            else {
+                _this.adminHelper.articleMessage = response.message;
+            }
+        });
+    };
+    AdminComponent.prototype.preArticlePage = function () {
+        this.getArticles(this.adminHelper.articlePage - 1);
+    };
+    AdminComponent.prototype.nextArticlePage = function () {
+        this.getArticles(this.adminHelper.articlePage + 1);
     };
     AdminComponent.prototype.editArticle = function () {
         this.adminHelper.articleEditMode = true;
@@ -115,6 +147,33 @@ var AdminComponent = (function () {
     };
     AdminComponent.prototype.resetNewArticle = function () {
         this.articleNew = new article_1.Article();
+    };
+    AdminComponent.prototype.getContacts = function (page) {
+        var _this = this;
+        if (page < 0 || (this.adminHelper.contactTotalPage != null && page >= this.adminHelper.contactTotalPage)) {
+            alert('No more messages.');
+            return;
+        }
+        this.adminService.getContacts(page, this.adminHelper.contactSize).then(function (response) {
+            if (response.token == null) {
+                _this.loginService.signout();
+                return;
+            }
+            if (response.code == '200') {
+                _this.adminHelper.contactPage = page;
+                _this.adminHelper.contactTotalPage = response.totalPages;
+                _this.contacts = response.body;
+            }
+            else {
+                _this.adminHelper.contactMessage = response.message;
+            }
+        });
+    };
+    AdminComponent.prototype.preContactPage = function () {
+        this.getContacts(this.adminHelper.contactPage - 1);
+    };
+    AdminComponent.prototype.nextContactPage = function () {
+        this.getContacts(this.adminHelper.contactPage + 1);
     };
     return AdminComponent;
 }());

@@ -24,7 +24,7 @@ var about_component_1 = require("./about/about.component");
 var beauty_component_1 = require("./beauty/beauty.component");
 var admin_component_1 = require("./admin/admin.component");
 var admin_service_1 = require("./admin/admin.service");
-var date_dscd_pipe_1 = require("./pipes/date-dscd-pipe");
+var myPipe_1 = require("./pipes/myPipe");
 var activity_component_1 = require("./activity/activity.component");
 var activity_service_1 = require("./activity/activity.service");
 var product_component_1 = require("./product/product.component");
@@ -34,6 +34,7 @@ var article_service_1 = require("./article/article.service");
 var contact_component_1 = require("./contact/contact.component");
 var contact_service_1 = require("./contact/contact.service");
 var classroom_component_1 = require("./classroom/classroom.component");
+var classroom_service_1 = require("./classroom/classroom.service");
 var user_profile_component_1 = require("./user/user-profile.component");
 var user_edit_component_1 = require("./user/user-edit.component");
 var user_change_password_component_1 = require("./user/user-change-password.component");
@@ -96,7 +97,7 @@ AppModule = __decorate([
             invoice_edit_component_1.InvoiceEditComponent,
             invoices_component_1.InvoicesComponent,
             pagination_component_1.PaginationComponent,
-            date_dscd_pipe_1.ArticleIdPipe
+            myPipe_1.IdDscdPipe
         ],
         providers: [
             auth_guard_1.AuthGuard,
@@ -106,6 +107,7 @@ AppModule = __decorate([
             contact_service_1.ContactService,
             article_service_1.ArticleService,
             product_service_1.ProductService,
+            classroom_service_1.ClassroomService,
             customer_service_1.CustomerService,
             invoice_service_1.InvoiceService,
             activity_service_1.ActivityService,

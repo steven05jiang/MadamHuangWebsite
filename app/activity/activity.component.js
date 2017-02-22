@@ -39,8 +39,8 @@ var ActivityComponent = (function () {
         });
     };
     ActivityComponent.prototype.openArticle = function (activity) {
-        console.log('Ready to nav to article ' + activity.article.id);
-        this.router.navigate(['/article', activity.article.id]);
+        console.log('Ready to nav to article ' + activity.articleId);
+        this.router.navigate(['/article', activity.articleId]);
     };
     return ActivityComponent;
 }());

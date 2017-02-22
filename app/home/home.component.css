@@ -67,8 +67,12 @@ section .description-center{
 }
 
 .carousel-caption-custom > h1 {
-  margin-bottom: 2em;
+  margin-bottom: 0.5em;
   font-size: 3rem;
+}
+.carousel-caption-custom > h2 {
+  margin-bottom: 1.5em;
+  font-size: 2rem;
 }
 
 .carousel-caption-custom > p {

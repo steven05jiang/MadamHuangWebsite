@@ -21,7 +21,7 @@ import { BeautyComponent }            from './beauty/beauty.component';
 
 import { AdminComponent }            from './admin/admin.component';
 import { AdminService }            from './admin/admin.service';
-import { ArticleIdPipe }            from './pipes/date-dscd-pipe';
+import { IdDscdPipe }            from './pipes/myPipe';
 
 import { ActivityComponent }            from './activity/activity.component';
 import { ActivityService }            from './activity/activity.service';
@@ -36,6 +36,9 @@ import { ContactComponent }            from './contact/contact.component';
 import { ContactService }            from './contact/contact.service';
 
 import { ClassroomComponent }            from './classroom/classroom.component';
+import { ClassroomService }            from './classroom/classroom.service';
+
+
 
 import { UserProfileComponent }  from './user/user-profile.component';
 import { UserEditComponent }  from './user/user-edit.component';
@@ -104,7 +107,7 @@ const WINDOW_PROVIDER: ValueProvider = {
   InvoiceEditComponent,
   InvoicesComponent,
   PaginationComponent,
-  ArticleIdPipe
+  IdDscdPipe
   ],
   providers: [
   AuthGuard,
@@ -114,6 +117,7 @@ const WINDOW_PROVIDER: ValueProvider = {
   ContactService,
   ArticleService,
   ProductService,
+  ClassroomService,
   CustomerService,
   InvoiceService,
   ActivityService,

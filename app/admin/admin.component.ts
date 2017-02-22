@@ -4,6 +4,7 @@ import { Router, ActivatedRoute }   from '@angular/router';
 
 import { Article } from '../article/article';
 import { User }           from '../user/user';
+import { Message }           from '../contact/contact';
 
 import { ArticleService }    from '../article/article.service';
 import { LoginService }    from '../login/login.service';
@@ -22,6 +23,7 @@ import { AdminService }    from './admin.service';
 export class AdminComponent implements OnInit {
 	articles: Article[];
 	articleNew: Article;
+	contacts: Message[];
 	adminHelper: any;
 	user: User;
 
@@ -40,6 +42,13 @@ export class AdminComponent implements OnInit {
   	this.adminHelper.articleEditMode = false;
   	this.adminHelper.articleAddMode = false;
   	this.adminHelper.articleMessage = '';
+  	this.adminHelper.articleSize = 10;
+  	this.adminHelper.articlePage = 0;
+  	this.adminHelper.articleTotalPage = 1;
+  	this.adminHelper.contactSize = 10;
+  	this.adminHelper.contactPage = 0;
+  	this.adminHelper.contactTotalPage = 1;
+  	this.adminHelper.contactMessage = '';
 
 	this.subscription = this.loginService.getStatusChangeEmitter()
     .subscribe(($event:any) => {
@@ -56,15 +65,43 @@ export class AdminComponent implements OnInit {
   }
 
   	ngOnInit(): void {
-  		this.articleService.getArticles().then(
-  			response => {
-  				this.articles = response.body as Article[];
-  		});
+  		this.getArticles(this.adminHelper.articlePage);
+  		this.getContacts(this.adminHelper.contactPage);
 	}
 
 	ngOnDestroy() {
     this.subscription.unsubscribe();
   }
+
+
+	getArticles(page: number){
+		if(page < 0 || (this.adminHelper.articleTotalPage != null && page >= this.adminHelper.articleTotalPage)){
+			alert('No more articles.');
+			return;
+		}
+		this.articleService.getArticles(page, this.adminHelper.articleSize).then(
+  			response => {
+  				if(response.token == null) {
+					this.loginService.signout();
+					return;
+				}
+				if(response.code == '200'){
+					this.adminHelper.articlePage = page;
+					this.adminHelper.articleTotalPage = response.totalPages;
+					this.articles = response.body as Article[];
+				}else{
+					this.adminHelper.articleMessage = response.message;
+				}
+
+  		});
+	}
+	preArticlePage(){
+		this.getArticles(this.adminHelper.articlePage-1);
+	}
+
+	nextArticlePage(){
+		this.getArticles(this.adminHelper.articlePage+1);
+	}
 
 	editArticle(){
 		this.adminHelper.articleEditMode = true;
@@ -138,5 +175,34 @@ export class AdminComponent implements OnInit {
 
 	resetNewArticle(){
 		this.articleNew = new Article();
+	}
+
+	getContacts(page: number){
+		if(page < 0 || (this.adminHelper.contactTotalPage != null && page >= this.adminHelper.contactTotalPage)){
+			alert('No more messages.');
+			return;
+		}
+		this.adminService.getContacts(page, this.adminHelper.contactSize).then(
+  			response => {
+  				if(response.token == null) {
+					this.loginService.signout();
+					return;
+				}
+				if(response.code == '200'){
+					this.adminHelper.contactPage = page;
+					this.adminHelper.contactTotalPage = response.totalPages;
+					this.contacts = response.body as Message[];
+				}else{
+					this.adminHelper.contactMessage = response.message;
+				}
+
+  		});
+	}
+	preContactPage(){
+		this.getContacts(this.adminHelper.contactPage-1);
+	}
+
+	nextContactPage(){
+		this.getContacts(this.adminHelper.contactPage+1);
 	}
 }

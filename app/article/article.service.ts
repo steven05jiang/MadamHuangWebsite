@@ -49,11 +49,13 @@ export class ArticleService {
         .catch((ex) => this.handleError(ex));
   }
 
-    getArticles(): Promise<APIResponse> {
+    getArticles(page: number, size: number): Promise<APIResponse> {
       let apiRequest = <APIRequest>({
           apiKey: '',
           operator: '',
-          token: Config.getToken()
+          token: Config.getToken(),
+          page: page,
+          size: size
       });
       const url = Config.api_host + '/articles';
       console.log(JSON.stringify(apiRequest));

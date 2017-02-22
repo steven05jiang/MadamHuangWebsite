@@ -9,11 +9,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
-var ArticleIdPipe = (function () {
-    function ArticleIdPipe() {
+var IdDscdPipe = (function () {
+    function IdDscdPipe() {
     }
-    ArticleIdPipe.prototype.transform = function (array, args) {
-        console.log(array.length);
+    IdDscdPipe.prototype.transform = function (array, args) {
+        //console.log(array.length);
         array.sort(function (a, b) {
             if (a.id < b.id) {
                 return 1;
@@ -27,13 +27,13 @@ var ArticleIdPipe = (function () {
         });
         return array;
     };
-    return ArticleIdPipe;
+    return IdDscdPipe;
 }());
-ArticleIdPipe = __decorate([
+IdDscdPipe = __decorate([
     core_1.Pipe({
-        name: 'dateDscd'
+        name: 'idDscd'
     }),
     __metadata("design:paramtypes", [])
-], ArticleIdPipe);
-exports.ArticleIdPipe = ArticleIdPipe;
-//# sourceMappingURL=date-dscd-pipe.js.map
+], IdDscdPipe);
+exports.IdDscdPipe = IdDscdPipe;
+//# sourceMappingURL=myPipe.js.map

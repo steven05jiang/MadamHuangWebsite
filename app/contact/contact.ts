@@ -1,10 +1,10 @@
 export class Message {
 	id:	number;
-	SenderName: string;
-	SenderEmail: string;
-	SenderTel: string;
-	Content:string;
-	SentDate:string;
+	senderName: string;
+	senderEmail: string;
+	senderTel: string;
+	content:string;
+	sentDate:string;
 
 	constructor(){
 		this.id = -1;

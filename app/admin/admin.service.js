@@ -81,154 +81,23 @@ var AdminService = (function () {
         })
             .catch(function (ex) { return _this.handleError(ex); });
     };
-    AdminService.prototype.signup = function (user) {
+    AdminService.prototype.getContacts = function (page, size) {
         var _this = this;
-        console.log('API Host: ' + config_1.Config.api_host);
-        var url = config_1.Config.api_host + '/signup';
-        var apiRequest = ({
-            apiKey: '',
-            operator: '',
-            token: '',
-            body: user
-        });
-        console.log(JSON.stringify(apiRequest));
-        this.http.post(url, JSON.stringify(apiRequest), { headers: this.headers })
-            .toPromise()
-            .then(function (response) {
-            console.log(response);
-            if (response.json().code == '200') {
-                var token = response.json().token;
-                localStorage.setItem('token', token);
-                _this.user = response.json().body;
-                console.log('Token: ' + token);
-                _this.emitStatusChangeEvent(_this.user, '');
-            }
-            else {
-                localStorage.setItem('token', '');
-                //this.status = new Status();
-                _this.message = config_1.Text.val(100); //'Failed - invalid user name or password!';
-                //this.message = 'Failed - invalid user name or password!';
-                _this.emitStatusChangeEvent(null, _this.message);
-            }
-        })
-            .catch(function (ex) { return _this.handleError(ex); });
-    };
-    AdminService.prototype.updateProfile = function (user) {
-        var _this = this;
-        console.log('API Host: ' + config_1.Config.api_host);
-        var url = config_1.Config.api_host + '/user-update';
         var apiRequest = ({
             apiKey: '',
             operator: '',
             token: config_1.Config.getToken(),
-            body: user
+            page: page,
+            size: size
         });
+        var url = config_1.Config.api_host + '/messages';
         console.log(JSON.stringify(apiRequest));
         return this.http.post(url, JSON.stringify(apiRequest), { headers: this.headers })
             .toPromise()
             .then(function (response) {
-            console.log(response);
-            if (response.json().code == '200') {
-                var token = response.json().token;
-                localStorage.setItem('token', token);
-                _this.user = response.json().body;
-                console.log('Token: ' + token);
-                //this.emitStatusChangeEvent(this.user, '');
-                return _this.user;
-            }
-            else if (response.json().code == '403') {
-                localStorage.setItem('token', '');
-                //this.status = new Status();
-                _this.user = null;
-                _this.message = config_1.Text.val(200); //'Failed - invalid user name or password!';
-                //this.message = 'Failed - invalid user name or password!';
-                _this.emitStatusChangeEvent(null, _this.message);
-            }
-            else {
-                _this.message = config_1.Text.val(500); //'Failed - invalid user name or password!';
-                //this.message = 'Failed - invalid user name or password!';
-                _this.emitStatusChangeEvent(_this.user, _this.message);
-            }
-        })
-            .catch(function (ex) { return _this.handleError(ex); });
-    };
-    AdminService.prototype.changePassword = function (passwordHelper) {
-        var _this = this;
-        console.log('API Host: ' + config_1.Config.api_host);
-        var url = config_1.Config.api_host + '/user-update-password';
-        var apiRequest = ({
-            apiKey: '',
-            operator: '',
-            token: config_1.Config.getToken(),
-            body: passwordHelper
-        });
-        console.log(JSON.stringify(apiRequest));
-        return this.http.post(url, JSON.stringify(apiRequest), { headers: this.headers })
-            .toPromise()
-            .then(function (response) {
-            console.log(response);
-            if (response.json().code == '200') {
-                var token = response.json().token;
-                localStorage.setItem('token', token);
-                _this.user = response.json().body;
-                console.log('Token: ' + token);
-                //this.emitStatusChangeEvent(this.user, '');
-                return _this.user;
-            }
-            else if (response.json().code == '403') {
-                localStorage.setItem('token', '');
-                //this.status = new Status();
-                _this.user = null;
-                _this.message = config_1.Text.val(200); //'Failed - invalid user name or password!';
-                //this.message = 'Failed - invalid user name or password!';
-                _this.emitStatusChangeEvent(null, _this.message);
-            }
-            else {
-                _this.message = config_1.Text.val(500); //'Failed - invalid user name or password!';
-                //this.message = 'Failed - invalid user name or password!';
-                _this.emitStatusChangeEvent(_this.user, _this.message);
-            }
-        })
-            .catch(function (ex) { return _this.handleError(ex); });
-    };
-    AdminService.prototype.onSubmit = function () {
-        this.user = null;
-        //this.emitStatusChangeEvent('You have successfully logged out!');
-        this.message = "You have succesfully logged out!";
-        this.emitStatusChangeEvent(null, this.message);
-    };
-    AdminService.prototype.signout = function () {
-        localStorage.setItem('token', '');
-        this.user = null;
-        //this.emitStatusChangeEvent('You have successfully logged out!');
-        this.message = "You have succesfully logged out!";
-        this.emitStatusChangeEvent(null, this.message);
-    };
-    AdminService.prototype.refreshToken = function (myToken) {
-        var _this = this;
-        var url = config_1.Config.api_host + '/refresh-token';
-        var apiRequest = ({
-            apiKey: '',
-            operator: '',
-            token: myToken,
-            body: {}
-        });
-        this.http.post(url, JSON.stringify(apiRequest), { headers: this.headers })
-            .toPromise()
-            .then(function (response) {
-            if (response.json().code == '200') {
-                var token = response.json().token;
-                localStorage.setItem('token', token);
-                _this.user = response.json().body;
-                // we use this to notify the menu component
-                _this.emitStatusChangeEvent(_this.user, '');
-            }
-            else {
-                localStorage.setItem('token', '');
-                _this.message = config_1.Text.val(100); //'Failed - invalid user name or password!';
-                // TODO - the following logic is not used. Can be improved to handle ...
-                _this.emitStatusChangeEvent(null, _this.message);
-            }
+            var token = response.json().token;
+            localStorage.setItem('token', token);
+            return response.json();
         })
             .catch(function (ex) { return _this.handleError(ex); });
     };

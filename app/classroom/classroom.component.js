@@ -11,19 +11,45 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
 var router_2 = require("@angular/router");
-var classroomType_1 = require("./classroomType");
+var event_1 = require("../common/event");
+var classroom_service_1 = require("./classroom.service");
 var ClassroomComponent = (function () {
-    function ClassroomComponent(router, activatedRoute) {
+    function ClassroomComponent(classroomService, router, activatedRoute) {
+        var _this = this;
+        this.classroomService = classroomService;
         this.router = router;
         this.activatedRoute = activatedRoute;
+        this.size = 9;
+        //this.classroom = new Classroom('', '美麗課堂','','');
+        this.curPage = 0;
+        this.message = this.classroomService.message;
+        this.subscription = this.classroomService.getStatusChangeEmitter()
+            .subscribe(function ($event) {
+            if ($event.object instanceof event_1.Event && $event.object.type == event_1.Event.RELOAD) {
+            }
+            _this.message = $event.message;
+        });
     }
     ClassroomComponent.prototype.ngOnInit = function () {
-        var _this = this;
         // getting parameter from route
-        this.classroomType = new classroomType_1.ClassroomType();
-        this.activatedRoute.params.forEach(function (params) {
-            _this.classroom = _this.classroomType.map[params['name']];
+        /*
+        this.classroomType = new ClassroomType();
+        this.activatedRoute.params.forEach((params: Params) => {
+        this.classroom = this.classroomType.map[params['name']];
+        */
+        //})
+        this.getArticles(this.curPage);
+    };
+    ClassroomComponent.prototype.getArticles = function (page) {
+        var _this = this;
+        this.classroomService.getObjects(page, this.size).then(function (apiResponse) {
+            _this.totalPage = apiResponse.totalPages;
+            _this.items = apiResponse.body;
         });
+    };
+    ClassroomComponent.prototype.openArticle = function (classroomItem) {
+        console.log('Ready to nav to article ' + classroomItem.articleId);
+        this.router.navigate(['/article', classroomItem.articleId]);
     };
     return ClassroomComponent;
 }());
@@ -34,7 +60,8 @@ ClassroomComponent = __decorate([
         templateUrl: 'classroom.component.html',
         styleUrls: ['classroom.component.css']
     }),
-    __metadata("design:paramtypes", [router_1.Router,
+    __metadata("design:paramtypes", [classroom_service_1.ClassroomService,
+        router_1.Router,
         router_2.ActivatedRoute])
 ], ClassroomComponent);
 exports.ClassroomComponent = ClassroomComponent;

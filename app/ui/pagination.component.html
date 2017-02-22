@@ -1,4 +1,5 @@
 
+<!--
 <ul *ngIf="total > 0" class="pagination" >
     <li class="pagination-first page-item"
           [class.disabled]="page == 0">
@@ -24,3 +25,12 @@
           [class.disabled]="page == (total - 1)">
       <a class="page-link" href (click)="selectPage(total - 1, $event)">Last</a></li>
   </ul>
+-->
+
+<div *ngIf="total > 0" class="pagination">
+  <button [class.disabled]="page == 0" class="btn btn-confirm" (click)="selectPage(0, $event)">First</button>
+  <button *ngIf="page > 0" class="btn btn-confirm" [class.disabled]="page == 0" (click)="selectPage(page - 1, $event)">Previous</button>
+  <button *ngIf="page < (total - 1)" class="btn btn-confirm" [class.disabled]="page == (total - 1)" (click)="selectPage(page + 1, $event)">Next</button>
+  <button [class.disabled]="page == (total - 1)" class="btn btn-confirm" (click)="selectPage(total - 1, $event)">Last</button>
+  Current Page: {{page+1}} | Total Pages: {{totoal}}
+</div>

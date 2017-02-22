@@ -2,12 +2,12 @@ import { Pipe, PipeTransform } from '@angular/core';
 import { Article } from '../article/article';
 
 @Pipe({
-  name: 'dateDscd'
+  name: 'idDscd'
 })
-export class ArticleIdPipe implements PipeTransform{
-  transform(array: Article[], args: string): Article[] {
-  	console.log(array.length);
-    array.sort((a: Article, b: Article) => {
+export class IdDscdPipe implements PipeTransform{
+  transform(array: any, args: string): any {
+  	//console.log(array.length);
+    array.sort((a: any, b: any) => {
       if (a.id < b.id) {
         return 1;
       } else if (a.id > b.id) {

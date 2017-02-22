@@ -12,41 +12,16 @@ var core_1 = require("@angular/core");
 var http_1 = require("@angular/http");
 var config_1 = require("../common/config");
 require("rxjs/add/operator/toPromise");
-var ArticleService = (function () {
-    function ArticleService(http) {
+var ClassroomService = (function () {
+    function ClassroomService(http) {
         this.http = http;
         this.size = config_1.Config.PAGE_NUM;
         this.statusChange = new core_1.EventEmitter();
         this.headers = new http_1.Headers({ 'Content-Type': 'application/json' });
     }
-    ArticleService.prototype.getArticle = function (id) {
-        var _this = this;
-        var apiRequest = ({
-            apiKey: '',
-            operator: '',
-            token: config_1.Config.getToken(),
-            body: { 'id': id }
-        });
-        var url = config_1.Config.api_host + '/article';
-        console.log(JSON.stringify(apiRequest));
-        return this.http.post(url, JSON.stringify(apiRequest), { headers: this.headers })
-            .toPromise()
-            .then(function (response) {
-            if (response.json().code == '200') {
-                var token = response.json().token;
-                localStorage.setItem('token', token);
-                var article = response.json().body;
-                _this.emitStatusChangeEvent(article, _this.message);
-                return article;
-            }
-            else {
-                _this.message = config_1.Text.val(500);
-                _this.emitStatusChangeEvent(null, _this.message);
-            }
-        })
-            .catch(function (ex) { return _this.handleError(ex); });
-    };
-    ArticleService.prototype.getArticles = function (page, size) {
+    // TODO: change get request to POST request using APIRequest
+    // TODO: add token to the request
+    ClassroomService.prototype.getObjects = function (page, size) {
         var _this = this;
         var apiRequest = ({
             apiKey: '',
@@ -55,32 +30,39 @@ var ArticleService = (function () {
             page: page,
             size: size
         });
-        var url = config_1.Config.api_host + '/articles';
+        var url = config_1.Config.api_host + '/classroomitems';
         console.log(JSON.stringify(apiRequest));
         return this.http.post(url, JSON.stringify(apiRequest), { headers: this.headers })
             .toPromise()
             .then(function (response) {
             var token = response.json().token;
             localStorage.setItem('token', token);
-            return response.json();
+            if (response.json().code == '200') {
+                //console.log(JSON.stringify(response.json()));
+                return response.json();
+            }
+            else {
+                _this.message = config_1.Text.val(500);
+                _this.emitStatusChangeEvent(null, _this.message);
+            }
         })
             .catch(function (ex) { return _this.handleError(ex); });
     };
-    ArticleService.prototype.handleError = function (error) {
+    ClassroomService.prototype.handleError = function (error) {
         this.emitStatusChangeEvent(null, config_1.Text.val(500));
         //return Promise.reject(error.message || error);
     };
-    ArticleService.prototype.emitStatusChangeEvent = function (article, message) {
-        this.statusChange.emit({ article: article, message: message });
+    ClassroomService.prototype.emitStatusChangeEvent = function (object, message) {
+        this.statusChange.emit({ object: object, message: message });
     };
-    ArticleService.prototype.getStatusChangeEmitter = function () {
+    ClassroomService.prototype.getStatusChangeEmitter = function () {
         return this.statusChange;
     };
-    return ArticleService;
+    return ClassroomService;
 }());
-ArticleService = __decorate([
+ClassroomService = __decorate([
     core_1.Injectable(),
     __metadata("design:paramtypes", [http_1.Http])
-], ArticleService);
-exports.ArticleService = ArticleService;
-//# sourceMappingURL=article.service.js.map
+], ClassroomService);
+exports.ClassroomService = ClassroomService;
+//# sourceMappingURL=classroom.service.js.map

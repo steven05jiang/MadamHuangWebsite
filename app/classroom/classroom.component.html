@@ -1,8 +1,21 @@
 <div class="main">
 	<div class="jumbotron jumbotron-fluid">
 		<div class="container">
-			<h1 class="display-3">{{classroom.title}}</h1>
-			<p class="lead">{{classroom.description}}</p>
+			<h1 class="display-3">美麗課堂 「 Beauty Classroom 」</h1>
+			<p class="lead">與黃夫人分享美麗知識</p>
+		</div>
+	</div>
+	<div class="container" *ngIf="items">
+		<div class="card-columns card-custom">
+			<div class="card" *ngFor="let item of items">
+			<img *ngIf="item.imageLink" class="card-img-top img-fluid" [src]="defaultImage" [lazyLoad]="item.imageLink" alt="Image">
+				<div class="card-block">
+					<h4 class="card-title">{{item.title}}</h4>
+					<p class="card-text">{{item.description}}</p>
+					<button *ngIf="item.articleId" class="btn btn-sm btn-confirm" (click)="openArticle(item)">Learn More</button>
+					<p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+				</div>
+			</div>
 		</div>
 	</div>
 </div>

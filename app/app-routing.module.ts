@@ -41,7 +41,8 @@ const routes: Routes = [
   { path: 'contact', component: ContactComponent},
 
   { path: 'article/:id', component: ArticleComponent},
-  { path: 'classroom/:name', component: ClassroomComponent},
+  //{ path: 'classroom/:name', component: ClassroomComponent},
+  { path: 'classroom', component: ClassroomComponent},
   { path: 'admin', component: AdminComponent, canActivate: [AuthGuard]},
   { path: 'profile', component: UserProfileComponent, canActivate: [AuthGuard]},
   { path: 'user-edit', component: UserEditComponent, canActivate: [AuthGuard]},

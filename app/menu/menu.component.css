@@ -23,12 +23,15 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#8a0023', end
 }
 
 .navbar-custom .navbar-brand {
+    margin-top: -0.5em;
+    margin-bottom: -0.7em;
     margin-right: 3em;
+    margin-left: 2em;
 }
 
-.navbar-custom .navbar-brand {
-    color:#efefdc;
-    font-family: "Courier New", Courier, monospace;
+.navbar-custom .navbar-brand > img{
+    height: 3em;
+    width: auto;
 }
 
 .navbar-custom .navbar-toggler {
