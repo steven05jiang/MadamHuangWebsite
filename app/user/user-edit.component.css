@@ -45,8 +45,15 @@
 }
 
 
-@media (max-width: 768px){
+@media (max-width: 767px){
 	.card {
 		margin-top: 1em;
+	}
+		.display-3 {
+		font-size: 2em;
+	}
+
+	.lead {
+		font-size: 1em;
 	}
 }
