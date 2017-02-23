@@ -71,8 +71,8 @@ section .description-center{
   font-size: 3rem;
 }
 .carousel-caption-custom > h2 {
-  margin-bottom: 1.5em;
-  font-size: 2rem;
+  margin-bottom: 2em;
+  font-size: 1.8rem;
 }
 
 .carousel-caption-custom > p {
@@ -94,25 +94,60 @@ section .description-center{
 
 
 @media(max-width:1024px){
-  .carousel-inner {
-    height: 35em;
+    .carousel-inner {
+      height: 35em;
+  }
 }
-}
+
 
 @media(max-width:860px){
-  .carousel-inner {
-    height: 30em;
-}
-}
-
-
-@media(max-width:768px){
-  #contactInfo {
-    margin-top: 3em;
-  }
-
   .carousel-inner {
     height: 25em;
   }
 
+  .carousel-caption-custom {
+    top:25%;
+  }
+
+  .carousel-caption-custom > h1 {
+    margin-bottom: 0.5em;
+    font-size: 2rem;
+  }
+  .carousel-caption-custom > h2 {
+    margin-bottom: 1.5em;
+    font-size: 1.3rem;
+  }
+
+  .carousel-caption-custom > p {
+    font-size: 1rem;
+  }
+
+}
+
+@media(max-width:767px){
+  #contactInfo {
+    margin-top: 3em;
+  }
+}
+
+@media(max-width:612px){
+  .carousel-inner {
+    height: 15em;
+  }
+
+  .carousel-caption-custom {
+    top:32%;
+  }
+
+  .carousel-caption-custom > h1 {
+    margin-bottom: 1.2em;
+    font-size: 1.8rem;
+  }
+  .carousel-caption-custom > h2 {
+    display: none !important;
+  }
+
+  .carousel-caption-custom > p {
+    display: none !important;
+  }
 }

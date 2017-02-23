@@ -18,9 +18,16 @@
 }
 
 
-@media(max-width:768px){
+@media(max-width:767px){
   #contactInfo {
     margin-top: 3em;
+  }
+  .display-3 {
+    font-size: 2em;
+  }
+
+  .lead {
+    font-size: 1em;
   }
 
 }

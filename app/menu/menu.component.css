@@ -67,7 +67,18 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#8a0023', end
     text-decoration: none;
 }
 
-@media(max-width:768px){
+@media(max-width:860px){
+    #leftNav {
+        margin-right: 0 !important;
+    }
+
+    .navbar-custom .navbar-brand {
+        margin-right: 0;
+        margin-left: 0;
+    }
+}
+
+@media(max-width:767px){
     .dropdown-item-custom {
         color: #fff !important;
         background-color: rgba(0,0,0,0);
