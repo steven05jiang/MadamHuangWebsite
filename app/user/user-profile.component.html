@@ -11,8 +11,8 @@
 				<div class="card card-profile">
 					<img class="card-img-top img-fluid" [src]="defaultImage" [lazyLoad]="user.imageLink" alt="Image">
 					<div class="card-block">
-						<h4 class="card-title">{{user.username}}</h4>
-						<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+						<h4 class="card-title">你好{{user.username}}！</h4>
+						<p class="card-text">您可以點擊「 修改資料 」更新您的信息，或者點擊「 修改密碼 」更改密碼信息</p>
 						<div class="btn-group" role="group">
 							<div><button routerLink="/user-edit" class="btn btn-md btn-confirm btn-row">修改資料</button></div>
 							<div><button routerLink="/user-change-password" class="btn btn-md btn-cancel">修改密碼</button></div>
@@ -24,31 +24,31 @@
 				<div class="card-columns">
 					<div class="card card-entry">
 						<div class="card-block">
-							<h4 class="card-title">First Name</h4>
+							<h4 class="card-title">「 名 」 First Name</h4>
 							<p class="card-text">{{user.firstName}}</p>
 						</div>
 					</div>
 					<div class="card">
 						<div class="card-block">
-							<h4 class="card-title">Last Name</h4>
+							<h4 class="card-title">「 姓 」 Last Name</h4>
 							<p class="card-text">{{user.lastName}}</p>
 						</div>
 					</div>
 					<div class="card">
 						<div class="card-block">
-							<h4 class="card-title">Email</h4>
+							<h4 class="card-title">「 電子郵件 」 Email</h4>
 							<p class="card-text">{{user.email}}</p>
 						</div>
 					</div>
 					<div class="card">
 						<div class="card-block">
-							<h4 class="card-title">Telephone</h4>
+							<h4 class="card-title">「 電話號碼 」 Telephone</h4>
 							<p class="card-text">{{user.tel}}</p>
 						</div>
 					</div>
 					<div class="card">
 						<div class="card-block">
-							<h4 class="card-title">Address</h4>
+							<h4 class="card-title">「 地址 」 Address</h4>
 							<p class="card-text">
 								<span *ngIf="user.addressLine1">
 									{{user.addressLine1}}<br>
