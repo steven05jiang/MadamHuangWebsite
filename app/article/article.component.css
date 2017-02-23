@@ -4,7 +4,16 @@
   color: #fff;
 }
 
+@media(max-width:860px){
+    .main {
+        margin-top: 3.3em;
+    }
+}
+
 @media (max-width:767px) {
+	.main {
+        margin-top: 3.2em;
+    }
 	.display-3 {
 		font-size: 2em;
 	}

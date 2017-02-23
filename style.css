@@ -89,7 +89,14 @@ button.btn-cancel{
 }
 
 .main {
-  margin-top: 3em;
+    margin-top: 3.3em;
+}
+
+
+@media (max-width:767px) {
+  .main {
+        margin-top: 3.2em;
+    }
 }
 
 .engFont {

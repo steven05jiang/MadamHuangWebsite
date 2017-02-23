@@ -17,6 +17,7 @@ section .description-center{
   text-align: center;
 }
 
+
 #beauty{
   background-color: #fff;
   min-height: 10em;
@@ -26,6 +27,10 @@ section .description-center{
 }
 #contact {
   background-color: #F6F6F6;
+}
+
+.main {
+  margin-top: 3.8em;
 }
 
 .badge {
@@ -100,6 +105,10 @@ section .description-center{
 
 
 @media(max-width:860px){
+    .main {
+        margin-top: 3.3em;
+    }
+
   .carousel-inner {
     height: 25em;
   }
@@ -124,18 +133,22 @@ section .description-center{
 }
 
 @media(max-width:767px){
+    .main {
+        margin-top: 3.2em;
+    }
   #contactInfo {
     margin-top: 3em;
   }
 }
 
 @media(max-width:612px){
+
   .carousel-inner {
     height: 15em;
   }
 
   .carousel-caption-custom {
-    top:25%;
+    top:2em;
   }
 
   .carousel-caption-custom > h1 {

@@ -77,6 +77,10 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#8a0023', end
         margin-right: 0;
         margin-left: 0;
     }
+
+    .navbar-custom .navbar-brand > img{
+        height: 2.5em;
+    }
 }
 
 @media(max-width:767px){
