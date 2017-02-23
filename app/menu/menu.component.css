@@ -32,6 +32,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#8a0023', end
 .navbar-custom .navbar-brand > img{
     height: 3em;
     width: auto;
+    margin-bottom: 0.1em;
 }
 
 .navbar-custom .navbar-toggler {
