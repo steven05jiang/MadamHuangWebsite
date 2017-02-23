@@ -95,7 +95,7 @@ export class AdminComponent implements OnInit {
     		this.router.navigate(['login']);
     	}else if(!$event.user.isAdmin) {
 	        this.user = $event.user;
-	        this.router.navigate(['home']);
+	        this.router.navigate(['']);
       }
       this.message = $event.message;
 

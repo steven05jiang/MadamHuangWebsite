@@ -32,7 +32,7 @@ var LoginComponent = (function () {
             if ($event.user) {
                 _this.user = $event.user;
                 _this.loginUser = _this.user;
-                _this.router.navigate(['home']);
+                _this.router.navigate(['']);
             }
             _this.message = $event.message;
         });

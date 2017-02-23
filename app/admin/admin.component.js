@@ -71,7 +71,7 @@ var AdminComponent = (function () {
             }
             else if (!$event.user.isAdmin) {
                 _this.user = $event.user;
-                _this.router.navigate(['home']);
+                _this.router.navigate(['']);
             }
             _this.message = $event.message;
         });

@@ -41,7 +41,7 @@ export class LoginComponent implements OnInit {
           if($event.user) {
             this.user = $event.user;
             this.loginUser = this.user;
-            this.router.navigate(['home']);
+            this.router.navigate(['']);
           }
           this.message = $event.message;
 

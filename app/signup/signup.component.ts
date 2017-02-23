@@ -39,13 +39,13 @@ export class SignupComponent implements OnInit {
       this.passwordHelper = {};
       this.passwordHelper.confirmPassword = '';
 
-      console.log('loginComponent: constructor called');
+      //console.log('loginComponent: constructor called');
       this.subscription = this.loginService.getStatusChangeEmitter()
         .subscribe(($event:any) => {
           if($event.user) {
             this.user = $event.user;
             this.newUser = this.user;
-            this.router.navigate(['home']);
+            this.router.navigate(['']);
           }
           this.message = $event.message;
         } );
