@@ -52,7 +52,6 @@ section .description-center{
   max-width: 10em;
   height: auto;
 }
-
 .carousel-inner {
     height: 40em;
 }
@@ -136,18 +135,19 @@ section .description-center{
   }
 
   .carousel-caption-custom {
-    top:32%;
+    top:25%;
   }
 
   .carousel-caption-custom > h1 {
-    margin-bottom: 1.2em;
-    font-size: 1.8rem;
+    margin-bottom: 1em;
+    font-size: 1.2rem;
   }
   .carousel-caption-custom > h2 {
-    display: none !important;
+    margin-bottom: 0.5em;
+    font-size: 0.8rem;
   }
 
   .carousel-caption-custom > p {
-    display: none !important;
+    font-size: 0.5rem;
   }
 }

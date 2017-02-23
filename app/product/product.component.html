@@ -7,13 +7,20 @@
 	</div>
 	<div class="container" *ngIf="objects">
 		<div class="card-columns card-custom">
+			<div class="card">
+			<img src="image/QR_MadamHuang3.png" class="card-img-top img-fluid" alt="Card image cap">
+				<div class="card-block">
+					<h4 class="card-title">更多產品</h4>
+					<p class="card-text">想了解更多美麗產品麼？掃碼這裡的二維碼或者點擊下面的按鈕，就可以看到我們為您挑選的更多產品。在Jeunesse的頁面註冊為會員，可以獲得更多的優惠，趕緊行動起來吧！</p>
+					<button class="btn btn-sm btn-confirm"><a href="http://madamhuang.jeunesseglobal.com" target="_blank">了解更多產品</a></button>
+				</div>
+			</div>
 			<div class="card" *ngFor="let product of objects">
 			<img *ngIf="product.imageLink" class="card-img-top img-fluid" [src]="defaultImage" [lazyLoad]="product.imageLink" alt="Card image cap">
 				<div class="card-block">
 					<h4 class="card-title">{{product.title}}</h4>
 					<p class="card-text">{{product.description}}</p>
 					<button *ngIf="product.article" class="btn btn-sm btn-confirm" (click)="openArticle(product)">Learn More</button>
-					<p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
 				</div>
 			</div>
 		</div>
