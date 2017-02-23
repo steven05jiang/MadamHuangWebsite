@@ -23,10 +23,11 @@ import { ChangePasswordComponent }  from './user/user-change-password.component'
 
 
 const routes: Routes = [
-  { path: '', redirectTo: '/home', pathMatch: 'full'},
+  //{ path: '', redirectTo: '/home', pathMatch: 'full'},
+  { path: '', component: HomeComponent},
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
-  { path: 'home', component: HomeComponent},
+  //{ path: 'home', component: HomeComponent},
   { path: 'about', component: AboutComponent},
   { path: 'activity', component: ActivityComponent},
   { path: 'beauty', component: BeautyComponent},

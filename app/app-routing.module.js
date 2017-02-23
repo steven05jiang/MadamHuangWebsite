@@ -24,10 +24,11 @@ var user_profile_component_1 = require("./user/user-profile.component");
 var user_edit_component_1 = require("./user/user-edit.component");
 var user_change_password_component_1 = require("./user/user-change-password.component");
 var routes = [
-    { path: '', redirectTo: '/home', pathMatch: 'full' },
+    //{ path: '', redirectTo: '/home', pathMatch: 'full'},
+    { path: '', component: home_component_1.HomeComponent },
     { path: 'login', component: login_component_1.LoginComponent },
     { path: 'signup', component: signup_component_1.SignupComponent },
-    { path: 'home', component: home_component_1.HomeComponent },
+    //{ path: 'home', component: HomeComponent},
     { path: 'about', component: about_component_1.AboutComponent },
     { path: 'activity', component: activity_component_1.ActivityComponent },
     { path: 'beauty', component: beauty_component_1.BeautyComponent },
