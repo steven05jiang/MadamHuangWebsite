@@ -1,4 +1,5 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 var config_1 = require("../common/config");
 exports.USER_IMAGE = [
     config_1.Config.user_header_folder + '/aurora.jpg',

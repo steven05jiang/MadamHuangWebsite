@@ -21,13 +21,6 @@ import { UserProfileComponent }  from './user/user-profile.component';
 import { UserEditComponent }  from './user/user-edit.component';
 import { ChangePasswordComponent }  from './user/user-change-password.component';
 
-import { CustomerDetailComponent }  from './customer/customer-detail.component';
-import { CustomerEditComponent }  from './customer/customer-edit.component';
-import { CustomersComponent }       from './customer/customers.component';
-
-import { InvoiceDetailComponent }  from './invoice/invoice-detail.component';
-import { InvoiceEditComponent }  from './invoice/invoice-edit.component';
-import { InvoicesComponent }       from './invoice/invoices.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -46,15 +39,7 @@ const routes: Routes = [
   { path: 'admin', component: AdminComponent, canActivate: [AuthGuard]},
   { path: 'profile', component: UserProfileComponent, canActivate: [AuthGuard]},
   { path: 'user-edit', component: UserEditComponent, canActivate: [AuthGuard]},
-  { path: 'user-change-password', component: ChangePasswordComponent, canActivate: [AuthGuard]},
-
-  { path: 'customer-detail/:id', component: CustomerDetailComponent, canActivate: [AuthGuard] },
-  { path: 'customer-edit/:id', component: CustomerEditComponent, canActivate: [AuthGuard] },
-  { path: 'customers', component: CustomersComponent, canActivate: [AuthGuard] },
-
-  { path: 'invoice-detail/:id', component: InvoiceDetailComponent, canActivate: [AuthGuard] },
-  { path: 'invoice-edit/:id/:customer_id', component: InvoiceEditComponent, canActivate: [AuthGuard] },
-  { path: 'invoices/:customer_id', component: InvoicesComponent, canActivate: [AuthGuard] }
+  { path: 'user-change-password', component: ChangePasswordComponent, canActivate: [AuthGuard]}
 ];
 
 @NgModule({

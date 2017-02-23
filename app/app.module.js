@@ -5,9 +5,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
+Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var platform_browser_1 = require("@angular/platform-browser");
 var forms_1 = require("@angular/forms");
@@ -38,19 +36,10 @@ var classroom_service_1 = require("./classroom/classroom.service");
 var user_profile_component_1 = require("./user/user-profile.component");
 var user_edit_component_1 = require("./user/user-edit.component");
 var user_change_password_component_1 = require("./user/user-change-password.component");
-var invoice_detail_component_1 = require("./invoice/invoice-detail.component");
-var invoice_edit_component_1 = require("./invoice/invoice-edit.component");
-var invoices_component_1 = require("./invoice/invoices.component");
-var invoice_service_1 = require("./invoice/invoice.service");
 var menu_component_1 = require("./menu/menu.component");
 var footer_component_1 = require("./footer/footer.component");
-var customer_detail_component_1 = require("./customer/customer-detail.component");
-var customer_edit_component_1 = require("./customer/customer-edit.component");
-var customers_component_1 = require("./customer/customers.component");
-var customer_service_1 = require("./customer/customer.service");
-var pagination_component_1 = require("./ui/pagination.component");
 var app_routing_module_1 = require("./app-routing.module");
-var my_date_picker_module_1 = require("mydatepicker/dist/my-date-picker.module");
+//import { MyDatePickerModule } from 'mydatepicker/dist/my-date-picker.module';
 var ng2_lazyload_image_1 = require("ng2-lazyload-image");
 var WINDOW_PROVIDER = {
     provide: Window,
@@ -69,7 +58,7 @@ AppModule = __decorate([
             http_1.HttpModule,
             app_routing_module_1.AppRoutingModule,
             ng_bootstrap_1.NgbModule.forRoot(),
-            my_date_picker_module_1.MyDatePickerModule,
+            // MyDatePickerModule,
             ng2_lazyload_image_1.LazyLoadImageModule
         ],
         declarations: [
@@ -87,16 +76,9 @@ AppModule = __decorate([
             classroom_component_1.ClassroomComponent,
             menu_component_1.MenuComponent,
             footer_component_1.FooterComponent,
-            customer_detail_component_1.CustomerDetailComponent,
-            customer_edit_component_1.CustomerEditComponent,
-            customers_component_1.CustomersComponent,
             user_profile_component_1.UserProfileComponent,
             user_edit_component_1.UserEditComponent,
             user_change_password_component_1.ChangePasswordComponent,
-            invoice_detail_component_1.InvoiceDetailComponent,
-            invoice_edit_component_1.InvoiceEditComponent,
-            invoices_component_1.InvoicesComponent,
-            pagination_component_1.PaginationComponent,
             myPipe_1.IdDscdPipe
         ],
         providers: [
@@ -108,16 +90,14 @@ AppModule = __decorate([
             article_service_1.ArticleService,
             product_service_1.ProductService,
             classroom_service_1.ClassroomService,
-            customer_service_1.CustomerService,
-            invoice_service_1.InvoiceService,
             activity_service_1.ActivityService,
             WINDOW_PROVIDER
         ],
         bootstrap: [
             app_component_1.AppComponent
+            //  ,MenuComponent
         ]
-    }),
-    __metadata("design:paramtypes", [])
+    })
 ], AppModule);
 exports.AppModule = AppModule;
 //# sourceMappingURL=app.module.js.map

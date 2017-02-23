@@ -8,6 +8,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var http_1 = require("@angular/http");
 var config_1 = require("../common/config");
@@ -41,6 +42,7 @@ var LoginService = (function () {
                 _this.user = response.json().body;
                 console.log('Token: ' + token);
                 _this.emitStatusChangeEvent(_this.user, '');
+                // response.json().body;
             }
             else {
                 localStorage.setItem('token', '');
@@ -73,6 +75,7 @@ var LoginService = (function () {
                 _this.user = response.json().body;
                 console.log('Token: ' + token);
                 _this.emitStatusChangeEvent(_this.user, '');
+                // response.json().body;
             }
             else {
                 localStorage.setItem('token', '');
@@ -106,6 +109,7 @@ var LoginService = (function () {
                 console.log('Token: ' + token);
                 //this.emitStatusChangeEvent(this.user, '');
                 return _this.user;
+                // response.json().body;
             }
             else if (response.json().code == '403') {
                 localStorage.setItem('token', '');
@@ -144,6 +148,7 @@ var LoginService = (function () {
                 console.log('Token: ' + token);
                 //this.emitStatusChangeEvent(this.user, '');
                 return _this.user;
+                // response.json().body;
             }
             else if (response.json().code == '403') {
                 localStorage.setItem('token', '');

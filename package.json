@@ -40,7 +40,7 @@
     "animate.css": "^3.5.2",
     "core-js": "^2.4.1",
     "jquery": "^3.1.1",
-    "mydatepicker": "^1.0.36",
+    "mydatepicker": "^1.6.18",
     "ng2-image-lazy-load": "^2.0.9",
     "ng2-lazyload-image": "^2.3.2",
     "reflect-metadata": "^0.1.8",

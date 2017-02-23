@@ -8,6 +8,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
 var router_2 = require("@angular/router");
@@ -26,6 +27,7 @@ var ClassroomComponent = (function () {
         this.subscription = this.classroomService.getStatusChangeEmitter()
             .subscribe(function ($event) {
             if ($event.object instanceof event_1.Event && $event.object.type == event_1.Event.RELOAD) {
+                //this.ngOnInit();
             }
             _this.message = $event.message;
         });

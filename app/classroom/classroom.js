@@ -1,4 +1,5 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 var Classroom = (function () {
     function Classroom(name, title, description, apiRequest) {
         this.name = name;

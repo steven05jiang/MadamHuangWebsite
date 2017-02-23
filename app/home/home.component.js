@@ -11,6 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
+Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var platform_browser_1 = require("@angular/platform-browser");
 var contact_1 = require("../contact/contact");
@@ -18,7 +19,9 @@ var contact_service_1 = require("../contact/contact.service");
 var http_1 = require("@angular/http");
 //declare var jQuery:JQueryStatic;
 var HomeComponent = (function () {
-    function HomeComponent(contactService, http, document) {
+    function HomeComponent(contactService, http, document
+        //private window: Window
+    ) {
         var _this = this;
         this.contactService = contactService;
         this.http = http;
@@ -108,7 +111,9 @@ HomeComponent = __decorate([
     __param(2, core_1.Inject(platform_browser_1.DOCUMENT)),
     __metadata("design:paramtypes", [contact_service_1.ContactService,
         http_1.Http,
-        Document])
+        Document
+        //private window: Window
+    ])
 ], HomeComponent);
 exports.HomeComponent = HomeComponent;
 //# sourceMappingURL=home.component.js.map
