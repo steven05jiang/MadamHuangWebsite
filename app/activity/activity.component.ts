@@ -5,10 +5,13 @@ import { ActivatedRoute, Params }   from '@angular/router';
 import { Config } from '../common/config';
 import { Event } from '../common/event';
 
-import { APIResponse } from '../common/api-response';
-
 import { Activity } from './activity';
 import { ActivityService } from './activity.service';
+
+import { APIRequest } from '../common/api-request';
+import { APIResponse } from '../common/api-response';
+import { Injectable, EventEmitter } from '@angular/core';
+import { Headers, Http, Response } from '@angular/http';
  
 
 @Component({
@@ -29,19 +32,22 @@ export class ActivityComponent implements OnInit {
 	page: number;
 	size: number;
 
+	private headers = new Headers({'Content-Type': 'application/json'});
+
 	constructor(
 		private router: Router,
 		private activatedRoute: ActivatedRoute,
 		private service: ActivityService,
+		private http: Http
 		) {
 		this.size = 9;
 		this.page = 0;
 		this.message = this.service.message;
 		this.subscription = this.service.getStatusChangeEmitter()
 		.subscribe(($event:any) => {
-			//if($event.object instanceof Event && $event.object.type == Event.RELOAD) {
-			//	this.ngOnInit();
-			//}
+			if($event.object instanceof Event && $event.object.type == Event.RELOAD) {
+				this.ngOnInit();
+			}
 			this.message = $event.message;
 		} );
 	}
@@ -50,12 +56,35 @@ export class ActivityComponent implements OnInit {
 	}
 
 	getActivities(page: number){
-		let response = this.service.getActivities(page, this.size).then(
+		/*
+		this.service.getActivities(page, this.size).then(
 		apiResponse => {
 				this.apiResponse = apiResponse;
 				this.objects = apiResponse.body as Activity[];
 			}
 		);
+		*/
+	let apiRequest = <APIRequest>({
+          apiKey: '',
+          operator: '',
+          token: Config.getToken(),
+          page: this.page,
+          size: this.size
+      });
+      const url = Config.api_host + '/activities';
+      console.log(JSON.stringify(apiRequest));
+
+      this.http.post(url, JSON.stringify(apiRequest), {headers: this.headers})
+      .toPromise()
+      .then(response => {
+        let token = response.json().token;
+        localStorage.setItem('token', token);
+        if(response.json().code == '200') {
+          this.objects =  response.json().body as Activity[];
+        }
+        
+        });
+		
 	}
 
 	openArticle(activity: Activity): void{

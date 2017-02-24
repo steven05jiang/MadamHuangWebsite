@@ -14,6 +14,7 @@ import 'rxjs/add/operator/toPromise';
 export class ActivityService {
 
   message: string;
+  //apiResponse: APIResponse;
   size: number = Config.PAGE_NUM;
   statusChange: EventEmitter<({object:any, message:string})> = new EventEmitter();
 
@@ -52,7 +53,7 @@ export class ActivityService {
   }
   */
 
-  getActivities(page: number, size: number): Promise<APIResponse> {
+  getActivities(page: number, size: number): APIResponse {
       let apiRequest = <APIRequest>({
           apiKey: '',
           operator: '',
@@ -63,7 +64,9 @@ export class ActivityService {
       const url = Config.api_host + '/activities';
       console.log(JSON.stringify(apiRequest));
 
-      return this.http.post(url, JSON.stringify(apiRequest), {headers: this.headers})
+      let apiResponse = null;
+
+      this.http.post(url, JSON.stringify(apiRequest), {headers: this.headers})
       .toPromise()
       .then(response => {
         let token = response.json().token;
@@ -72,9 +75,10 @@ export class ActivityService {
           this.message = Text.val(500);
           this.emitStatusChangeEvent(null, this.message);
         }
-        return response.json() as APIResponse;
+        apiResponse =  response.json() as APIResponse;
         })
         .catch((ex) => this.handleError(ex));
+      return apiResponse;
   }
 
   // TODO: search/return one record by primary key using service.ts

@@ -16,6 +16,7 @@ require("rxjs/add/operator/toPromise");
 var ActivityService = (function () {
     function ActivityService(http) {
         this.http = http;
+        //apiResponse: APIResponse;
         this.size = config_1.Config.PAGE_NUM;
         this.statusChange = new core_1.EventEmitter();
         this.headers = new http_1.Headers({ 'Content-Type': 'application/json' });
@@ -60,7 +61,8 @@ var ActivityService = (function () {
         });
         var url = config_1.Config.api_host + '/activities';
         console.log(JSON.stringify(apiRequest));
-        return this.http.post(url, JSON.stringify(apiRequest), { headers: this.headers })
+        var apiResponse = null;
+        this.http.post(url, JSON.stringify(apiRequest), { headers: this.headers })
             .toPromise()
             .then(function (response) {
             var token = response.json().token;
@@ -69,9 +71,10 @@ var ActivityService = (function () {
                 _this.message = config_1.Text.val(500);
                 _this.emitStatusChangeEvent(null, _this.message);
             }
-            return response.json();
+            apiResponse = response.json();
         })
             .catch(function (ex) { return _this.handleError(ex); });
+        return apiResponse;
     };
     // TODO: search/return one record by primary key using service.ts
     /*
