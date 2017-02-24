@@ -11,7 +11,6 @@ var platform_browser_1 = require("@angular/platform-browser");
 var forms_1 = require("@angular/forms");
 var http_1 = require("@angular/http");
 var angular2_jwt_1 = require("angular2-jwt");
-var ng_bootstrap_1 = require("@ng-bootstrap/ng-bootstrap");
 var app_component_1 = require("./app.component");
 var login_component_1 = require("./login/login.component");
 var login_service_1 = require("./login/login.service");
@@ -56,8 +55,6 @@ AppModule = __decorate([
             forms_1.FormsModule,
             http_1.HttpModule,
             app_routing_module_1.AppRoutingModule,
-            ng_bootstrap_1.NgbModule.forRoot(),
-            // MyDatePickerModule,
             ng2_lazyload_image_1.LazyLoadImageModule
         ],
         declarations: [

@@ -4,7 +4,6 @@ import { FormsModule }            from '@angular/forms';
 import { RouterModule }           from '@angular/router';
 import { HttpModule }             from '@angular/http';
 import { AUTH_PROVIDERS }         from 'angular2-jwt';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 import { AppComponent }           from './app.component';
 
@@ -67,8 +66,6 @@ const WINDOW_PROVIDER: ValueProvider = {
   FormsModule,
   HttpModule,
   AppRoutingModule,
-  NgbModule.forRoot(),
- // MyDatePickerModule,
   LazyLoadImageModule
   ],
   declarations: [
