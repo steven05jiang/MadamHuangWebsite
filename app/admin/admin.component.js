@@ -79,7 +79,7 @@ var AdminComponent = (function () {
     AdminComponent.prototype.ngOnInit = function () {
         this.getArticles(this.adminHelper.articlePage);
         this.getContacts(this.adminHelper.contactPage);
-        //this.getActivities(this.adminHelper.activityPage);
+        this.getActivities(this.adminHelper.activityPage);
         this.getProducts(this.adminHelper.productPage);
         this.getClassroomItems(this.adminHelper.classroomItemPage);
     };
@@ -205,30 +205,28 @@ var AdminComponent = (function () {
             }
         });
     };
-    /*
-        getActivities(page: number){
-            if(page < 0 || (this.adminHelper.activityTotalPage != null && page >= this.adminHelper.activityTotalPage)){
-                alert('No more articles.');
+    AdminComponent.prototype.getActivities = function (page) {
+        var _this = this;
+        if (page < 0 || (this.adminHelper.activityTotalPage != null && page >= this.adminHelper.activityTotalPage)) {
+            alert('No more articles.');
+            return;
+        }
+        this.activityService.getActivities(page, this.adminHelper.activitySize).then(function (response) {
+            //console.log(response);
+            if (response.token == null) {
+                _this.loginService.signout();
                 return;
             }
-            this.activityService.getActivities(page, this.adminHelper.activitySize).then(
-                response => {
-                    //console.log(response);
-                    if(response.token == null) {
-                        this.loginService.signout();
-                        return;
-                    }
-                    if(response.code == '200'){
-                        this.adminHelper.activityPage = page;
-                        this.adminHelper.activityTotalPage = response.totalPages;
-                        this.activities = response.body as Activity[];
-                    }else{
-                        this.adminHelper.activityMessage = response.message;
-                    }
-    
-            });
-        }
-    */
+            if (response.code == '200') {
+                _this.adminHelper.activityPage = page;
+                _this.adminHelper.activityTotalPage = response.totalPages;
+                _this.activities = response.body;
+            }
+            else {
+                _this.adminHelper.activityMessage = response.message;
+            }
+        });
+    };
     AdminComponent.prototype.editActivity = function () {
         this.adminHelper.activityEditMode = true;
     };

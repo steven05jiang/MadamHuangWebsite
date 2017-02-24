@@ -12,19 +12,15 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
 var router_2 = require("@angular/router");
-var config_1 = require("../common/config");
 var event_1 = require("../common/event");
 var activity_service_1 = require("./activity.service");
-var http_1 = require("@angular/http");
 var ActivityComponent = (function () {
-    function ActivityComponent(router, activatedRoute, service, http) {
+    function ActivityComponent(router, activatedRoute, service) {
         var _this = this;
         this.router = router;
         this.activatedRoute = activatedRoute;
         this.service = service;
-        this.http = http;
         this.defaultImage = 'image/loading.png';
-        this.headers = new http_1.Headers({ 'Content-Type': 'application/json' });
         this.size = 9;
         this.page = 0;
         this.message = this.service.message;
@@ -41,31 +37,9 @@ var ActivityComponent = (function () {
     };
     ActivityComponent.prototype.getActivities = function (page) {
         var _this = this;
-        /*
-        this.service.getActivities(page, this.size).then(
-        apiResponse => {
-                this.apiResponse = apiResponse;
-                this.objects = apiResponse.body as Activity[];
-            }
-        );
-        */
-        var apiRequest = ({
-            apiKey: '',
-            operator: '',
-            token: config_1.Config.getToken(),
-            page: this.page,
-            size: this.size
-        });
-        var url = config_1.Config.api_host + '/activities';
-        console.log(JSON.stringify(apiRequest));
-        this.http.post(url, JSON.stringify(apiRequest), { headers: this.headers })
-            .toPromise()
-            .then(function (response) {
-            var token = response.json().token;
-            localStorage.setItem('token', token);
-            if (response.json().code == '200') {
-                _this.objects = response.json().body;
-            }
+        this.service.getActivities(page, this.size).then(function (apiResponse) {
+            _this.apiResponse = apiResponse;
+            _this.objects = apiResponse.body;
         });
     };
     ActivityComponent.prototype.openArticle = function (activity) {
@@ -83,8 +57,7 @@ ActivityComponent = __decorate([
     }),
     __metadata("design:paramtypes", [router_1.Router,
         router_2.ActivatedRoute,
-        activity_service_1.ActivityService,
-        http_1.Http])
+        activity_service_1.ActivityService])
 ], ActivityComponent);
 exports.ActivityComponent = ActivityComponent;
 //# sourceMappingURL=activity.component.js.map

@@ -105,7 +105,7 @@ export class AdminComponent implements OnInit {
   	ngOnInit(): void {
   		this.getArticles(this.adminHelper.articlePage);
   		this.getContacts(this.adminHelper.contactPage);
-  		//this.getActivities(this.adminHelper.activityPage);
+  		this.getActivities(this.adminHelper.activityPage);
   		this.getProducts(this.adminHelper.productPage);
   		this.getClassroomItems(this.adminHelper.classroomItemPage);
 	}
@@ -243,7 +243,7 @@ export class AdminComponent implements OnInit {
 
   		});
 	}
-/*
+	
 	getActivities(page: number){
 		if(page < 0 || (this.adminHelper.activityTotalPage != null && page >= this.adminHelper.activityTotalPage)){
 			alert('No more articles.');
@@ -266,7 +266,7 @@ export class AdminComponent implements OnInit {
 
   		});
 	}
-*/
+
 	editActivity(){
 		this.adminHelper.activityEditMode = true;
 	}

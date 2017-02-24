@@ -53,7 +53,7 @@ export class ActivityService {
   }
   */
 
-  getActivities(page: number, size: number): APIResponse {
+  getActivities(page: number, size: number): Promise<APIResponse> {
       let apiRequest = <APIRequest>({
           apiKey: '',
           operator: '',
@@ -64,9 +64,7 @@ export class ActivityService {
       const url = Config.api_host + '/activities';
       console.log(JSON.stringify(apiRequest));
 
-      let apiResponse = null;
-
-      this.http.post(url, JSON.stringify(apiRequest), {headers: this.headers})
+      return this.http.post(url, JSON.stringify(apiRequest), {headers: this.headers})
       .toPromise()
       .then(response => {
         let token = response.json().token;
@@ -75,10 +73,9 @@ export class ActivityService {
           this.message = Text.val(500);
           this.emitStatusChangeEvent(null, this.message);
         }
-        apiResponse =  response.json() as APIResponse;
+        return response.json() as APIResponse;
         })
         .catch((ex) => this.handleError(ex));
-      return apiResponse;
   }
 
   // TODO: search/return one record by primary key using service.ts

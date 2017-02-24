@@ -44,8 +44,7 @@ var HomeComponent = (function () {
         });
     }
     HomeComponent.prototype.ngOnInit = function () {
-        var _this = this;
-        setTimeout(function () { _this.addBeautyAnimation(); }, 500);
+        //setTimeout(() => {this.addBeautyAnimation()}, 500);
     };
     HomeComponent.prototype.ngOnDestroy = function () {
         this.subscription.unsubscribe();
@@ -53,6 +52,7 @@ var HomeComponent = (function () {
     HomeComponent.prototype.addBeautyAnimation = function () {
         this.animationHelper.beauty = true;
     };
+    //@HostListener('window:scroll', []) 
     HomeComponent.prototype.listenScrollAnimation = function () {
         var _this = this;
         var height = window.innerHeight;
@@ -95,12 +95,6 @@ __decorate([
     core_1.ViewChild('about'),
     __metadata("design:type", core_1.ElementRef)
 ], HomeComponent.prototype, "about", void 0);
-__decorate([
-    core_1.HostListener('window:scroll', []),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", []),
-    __metadata("design:returntype", void 0)
-], HomeComponent.prototype, "listenScrollAnimation", null);
 HomeComponent = __decorate([
     core_1.Component({
         moduleId: module.id,
