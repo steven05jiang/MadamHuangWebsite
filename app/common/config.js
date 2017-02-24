@@ -15,7 +15,7 @@ var Config = (function () {
     };
     return Config;
 }());
-Config.api_host = 'http://34.193.150.19:9000/api';
+Config.api_host = 'http://madamhuang.com:9000/api';
 Config.user_header_folder = 'image/headImage';
 //public static api_host: string = 'http://10.7.40.108:9000';
 //public static api_host: string = 'http://api.pureilab.com:9000';

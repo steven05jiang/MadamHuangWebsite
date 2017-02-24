@@ -48,7 +48,7 @@ export class HomeComponent implements OnInit {
   }
 
 	ngOnInit(): void {
-    //setTimeout(() => {this.addBeautyAnimation()}, 500);
+    setTimeout(() => {this.addBeautyAnimation()}, 500);
 	}
 
 	ngOnDestroy() {
@@ -59,7 +59,7 @@ export class HomeComponent implements OnInit {
     this.animationHelper.beauty = true;
   }
 
-  //@HostListener('window:scroll', []) 
+  @HostListener('window:scroll', []) 
   listenScrollAnimation(){
 
 
