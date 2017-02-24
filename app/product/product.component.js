@@ -46,6 +46,9 @@ var ProductComponent = (function () {
         console.log('Ready to nav to article ' + product.articleId);
         this.router.navigate(['/article', product.articleId]);
     };
+    ProductComponent.prototype.ngOnDestroy = function () {
+        this.subscription.unsubscribe();
+    };
     return ProductComponent;
 }());
 ProductComponent = __decorate([

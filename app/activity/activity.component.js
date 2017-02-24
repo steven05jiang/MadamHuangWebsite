@@ -46,6 +46,9 @@ var ActivityComponent = (function () {
         console.log('Ready to nav to article ' + activity.articleId);
         this.router.navigate(['/article', activity.articleId]);
     };
+    ActivityComponent.prototype.ngOnDestroy = function () {
+        this.subscription.unsubscribe();
+    };
     return ActivityComponent;
 }());
 ActivityComponent = __decorate([

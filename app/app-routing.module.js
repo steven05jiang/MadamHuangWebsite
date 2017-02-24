@@ -14,7 +14,6 @@ var signup_component_1 = require("./signup/signup.component");
 var home_component_1 = require("./home/home.component");
 var about_component_1 = require("./about/about.component");
 var activity_component_1 = require("./activity/activity.component");
-var beauty_component_1 = require("./beauty/beauty.component");
 var product_component_1 = require("./product/product.component");
 var contact_component_1 = require("./contact/contact.component");
 var admin_component_1 = require("./admin/admin.component");
@@ -31,7 +30,6 @@ var routes = [
     //{ path: 'home', component: HomeComponent},
     { path: 'about', component: about_component_1.AboutComponent },
     { path: 'activity', component: activity_component_1.ActivityComponent },
-    { path: 'beauty', component: beauty_component_1.BeautyComponent },
     { path: 'product', component: product_component_1.ProductComponent },
     { path: 'contact', component: contact_component_1.ContactComponent },
     { path: 'article/:id', component: article_component_1.ArticleComponent },

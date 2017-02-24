@@ -64,4 +64,8 @@ export class ProductComponent implements OnInit {
 		this.router.navigate(['/article', product.articleId]);
 	}
 
+ngOnDestroy() {
+    this.subscription.unsubscribe();
+  }
+
 }

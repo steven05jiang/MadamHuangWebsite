@@ -17,7 +17,6 @@ import { AuthGuard }            from './common/auth.guard';
 
 import { HomeComponent }       from './home/home.component';
 import { AboutComponent }       from './about/about.component';
-import { BeautyComponent }            from './beauty/beauty.component';
 
 import { AdminComponent }            from './admin/admin.component';
 import { AdminService }            from './admin/admin.service';
@@ -82,7 +81,6 @@ const WINDOW_PROVIDER: ValueProvider = {
   ContactComponent,
   ActivityComponent,
   ArticleComponent,
-  BeautyComponent,
   ProductComponent,
   ClassroomComponent,
   MenuComponent,

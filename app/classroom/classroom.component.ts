@@ -73,4 +73,8 @@ export class ClassroomComponent implements OnInit {
 		this.router.navigate(['/article', classroomItem.articleId]);
 	}
 
+	ngOnDestroy() {
+    this.subscription.unsubscribe();
+  }
+
 }

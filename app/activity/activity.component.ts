@@ -22,6 +22,7 @@ export class ActivityComponent implements OnInit {
 	message: string;
 	subscription: any;
 	defaultImage = 'image/loading.png';
+	dummy: string;
 
 	apiResponse: APIResponse;
 	page: number;
@@ -60,5 +61,8 @@ export class ActivityComponent implements OnInit {
 		console.log('Ready to nav to article '+activity.articleId);
 		this.router.navigate(['/article', activity.articleId]);
 	}
+ngOnDestroy() {
+    this.subscription.unsubscribe();
+  }
 
 }

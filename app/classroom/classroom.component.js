@@ -53,6 +53,9 @@ var ClassroomComponent = (function () {
         console.log('Ready to nav to article ' + classroomItem.articleId);
         this.router.navigate(['/article', classroomItem.articleId]);
     };
+    ClassroomComponent.prototype.ngOnDestroy = function () {
+        this.subscription.unsubscribe();
+    };
     return ClassroomComponent;
 }());
 ClassroomComponent = __decorate([

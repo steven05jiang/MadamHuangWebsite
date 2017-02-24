@@ -7,7 +7,6 @@ import { SignupComponent }       from './signup/signup.component';
 import { HomeComponent }            from './home/home.component';
 import { AboutComponent }            from './about/about.component';
 import { ActivityComponent }            from './activity/activity.component';
-import { BeautyComponent }            from './beauty/beauty.component';
 import { ProductComponent }            from './product/product.component';
 import { ContactComponent }            from './contact/contact.component';
 
@@ -30,7 +29,6 @@ const routes: Routes = [
   //{ path: 'home', component: HomeComponent},
   { path: 'about', component: AboutComponent},
   { path: 'activity', component: ActivityComponent},
-  { path: 'beauty', component: BeautyComponent},
   { path: 'product', component: ProductComponent},
   { path: 'contact', component: ContactComponent},
 

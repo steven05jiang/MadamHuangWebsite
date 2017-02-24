@@ -19,7 +19,6 @@ var signup_component_1 = require("./signup/signup.component");
 var auth_guard_1 = require("./common/auth.guard");
 var home_component_1 = require("./home/home.component");
 var about_component_1 = require("./about/about.component");
-var beauty_component_1 = require("./beauty/beauty.component");
 var admin_component_1 = require("./admin/admin.component");
 var admin_service_1 = require("./admin/admin.service");
 var myPipe_1 = require("./pipes/myPipe");
@@ -71,7 +70,6 @@ AppModule = __decorate([
             contact_component_1.ContactComponent,
             activity_component_1.ActivityComponent,
             article_component_1.ArticleComponent,
-            beauty_component_1.BeautyComponent,
             product_component_1.ProductComponent,
             classroom_component_1.ClassroomComponent,
             menu_component_1.MenuComponent,
