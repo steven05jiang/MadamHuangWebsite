@@ -12,7 +12,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
 var router_2 = require("@angular/router");
-var event_1 = require("../common/event");
 var activity_service_1 = require("./activity.service");
 var ActivityComponent = (function () {
     function ActivityComponent(router, activatedRoute, service) {
@@ -26,9 +25,9 @@ var ActivityComponent = (function () {
         this.message = this.service.message;
         this.subscription = this.service.getStatusChangeEmitter()
             .subscribe(function ($event) {
-            if ($event.object instanceof event_1.Event && $event.object.type == event_1.Event.RELOAD) {
-                _this.ngOnInit();
-            }
+            //if($event.object instanceof Event && $event.object.type == Event.RELOAD) {
+            //	this.ngOnInit();
+            //}
             _this.message = $event.message;
         });
     }

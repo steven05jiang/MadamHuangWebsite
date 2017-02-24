@@ -39,9 +39,9 @@ export class ActivityComponent implements OnInit {
 		this.message = this.service.message;
 		this.subscription = this.service.getStatusChangeEmitter()
 		.subscribe(($event:any) => {
-			if($event.object instanceof Event && $event.object.type == Event.RELOAD) {
-				this.ngOnInit();
-			}
+			//if($event.object instanceof Event && $event.object.type == Event.RELOAD) {
+			//	this.ngOnInit();
+			//}
 			this.message = $event.message;
 		} );
 	}
