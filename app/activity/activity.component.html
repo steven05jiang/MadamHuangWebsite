@@ -8,7 +8,11 @@
 	<div class="container" *ngIf="objects">
 		<div class="card-columns card-custom">
 			<div class="card" *ngFor="let activity of objects">
+			
 			<img *ngIf="activity.imageLink" class="card-img-top img-fluid" [src]="defaultImage" [lazyLoad]="activity.imageLink" alt="Image">
+			<!--
+			<img *ngIf="activity.imageLink" class="card-img-top img-fluid" src="{{activity.imageLink}}" alt="Image">
+			-->
 				<div class="card-block">
 					<h4 class="card-title">{{activity.title}}</h4>
 					<p class="card-text">{{activity.description}}</p>

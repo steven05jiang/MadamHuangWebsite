@@ -37,7 +37,7 @@ var ActivityComponent = (function () {
     };
     ActivityComponent.prototype.getActivities = function (page) {
         var _this = this;
-        this.service.getActivities(page, this.size).then(function (apiResponse) {
+        var response = this.service.getActivities(page, this.size).then(function (apiResponse) {
             _this.apiResponse = apiResponse;
             _this.objects = apiResponse.body;
         });

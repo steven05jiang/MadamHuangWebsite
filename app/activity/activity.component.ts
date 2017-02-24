@@ -50,7 +50,7 @@ export class ActivityComponent implements OnInit {
 	}
 
 	getActivities(page: number){
-		this.service.getActivities(page, this.size).then(
+		let response = this.service.getActivities(page, this.size).then(
 		apiResponse => {
 				this.apiResponse = apiResponse;
 				this.objects = apiResponse.body as Activity[];
