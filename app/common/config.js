@@ -17,6 +17,7 @@ var Config = (function () {
 }());
 Config.api_host = 'http://madamhuang.com:9000/api';
 Config.user_header_folder = 'image/headImage';
+Config.applicationId = 'sandbox-sq0idp-ZLC5q6ns15LA8q6vDJY1Hg';
 //public static api_host: string = 'http://10.7.40.108:9000';
 //public static api_host: string = 'http://api.pureilab.com:9000';
 Config.PAGE_NUM = 50;

@@ -9,6 +9,7 @@ import { AboutComponent }            from './about/about.component';
 import { ActivityComponent }            from './activity/activity.component';
 import { ProductComponent }            from './product/product.component';
 import { ContactComponent }            from './contact/contact.component';
+import { PaymentComponent }            from './payment/payment.component';
 
 import { AdminComponent }            from './admin/admin.component';
 
@@ -31,6 +32,7 @@ const routes: Routes = [
   { path: 'activity', component: ActivityComponent},
   { path: 'product', component: ProductComponent},
   { path: 'contact', component: ContactComponent},
+  { path: 'payment', component: PaymentComponent},
 
   { path: 'article/:id', component: ArticleComponent},
   //{ path: 'classroom/:name', component: ClassroomComponent},

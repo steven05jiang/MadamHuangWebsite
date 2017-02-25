@@ -31,6 +31,7 @@ var contact_component_1 = require("./contact/contact.component");
 var contact_service_1 = require("./contact/contact.service");
 var classroom_component_1 = require("./classroom/classroom.component");
 var classroom_service_1 = require("./classroom/classroom.service");
+var payment_component_1 = require("./payment/payment.component");
 var user_profile_component_1 = require("./user/user-profile.component");
 var user_edit_component_1 = require("./user/user-edit.component");
 var user_change_password_component_1 = require("./user/user-change-password.component");
@@ -74,6 +75,7 @@ AppModule = __decorate([
             user_profile_component_1.UserProfileComponent,
             user_edit_component_1.UserEditComponent,
             user_change_password_component_1.ChangePasswordComponent,
+            payment_component_1.PaymentComponent,
             myPipe_1.IdDscdPipe
         ],
         providers: [

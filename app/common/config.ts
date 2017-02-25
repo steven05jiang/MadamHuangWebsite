@@ -3,6 +3,7 @@ export class Config {
 
   public static api_host: string = 'http://madamhuang.com:9000/api';
   public static user_header_folder: string = 'image/headImage';
+  public static applicationId = 'sandbox-sq0idp-ZLC5q6ns15LA8q6vDJY1Hg';
   //public static api_host: string = 'http://10.7.40.108:9000';
   //public static api_host: string = 'http://api.pureilab.com:9000';
 

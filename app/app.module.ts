@@ -36,6 +36,8 @@ import { ContactService }            from './contact/contact.service';
 import { ClassroomComponent }            from './classroom/classroom.component';
 import { ClassroomService }            from './classroom/classroom.service';
 
+import { PaymentComponent }            from './payment/payment.component';
+
 
 
 import { UserProfileComponent }  from './user/user-profile.component';
@@ -85,6 +87,7 @@ const WINDOW_PROVIDER: ValueProvider = {
   UserProfileComponent,
   UserEditComponent,
   ChangePasswordComponent,
+  PaymentComponent,
   IdDscdPipe
   ],
   providers: [
