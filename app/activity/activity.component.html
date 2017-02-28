@@ -7,8 +7,15 @@
 	</div>
 	<div class="container" *ngIf="objects">
 		<div class="card-columns card-custom">
+		<div class="card">
+			<img [src]="defaultImage" [lazyLoad]="'image/activityImg.jpg'" class="card-img-top img-fluid" alt="Card image cap">
+				<div class="card-block">
+					<h4 class="card-title">關於美麗聚會</h4>
+					<p class="card-text">我們定期會舉辦不同主題的美麗聚會，邀請各方面美麗專家為您講解美麗知識。加入美麗聚會需要購買入場券，如果您還不是網站用戶，請申請賬戶后再來購買入場券。在黃夫人俱樂部網站購買商品超過100美元的用戶，即刻升級為黃夫人尊享會員，參加美麗聚會享受特惠票價。現在就加入我們吧！</p>
+					<button class="btn btn-sm btn-confirm">了解更多</button>
+				</div>
+			</div>
 			<div class="card" *ngFor="let activity of objects">
-			
 			<img *ngIf="activity.imageLink" class="card-img-top img-fluid" [src]="defaultImage" [lazyLoad]="activity.imageLink" alt="Image">
 			<!--
 			<img *ngIf="activity.imageLink" class="card-img-top img-fluid" src="{{activity.imageLink}}" alt="Image">
@@ -16,8 +23,9 @@
 				<div class="card-block">
 					<h4 class="card-title">{{activity.title}}</h4>
 					<p class="card-text">{{activity.description}}</p>
-					<button *ngIf="activity.articleId" class="btn btn-sm btn-confirm" (click)="openArticle(activity)">Learn More</button>
-					<p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+					<button *ngIf="activity.articleId" class="btn btn-sm btn-cancel" (click)="openArticle(activity)">了解更多</button>
+					<button class="btn btn-sm btn-confirm" (click)="openPurchase(activity)">加入我們</button>
+					<p class="card-text" *ngIf="activity.startDate"><small class="text-muted">活動日期：{{activity.startDate}}</small></p>
 				</div>
 			</div>
 		</div>

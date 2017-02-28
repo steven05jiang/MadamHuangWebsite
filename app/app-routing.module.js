@@ -16,7 +16,9 @@ var about_component_1 = require("./about/about.component");
 var activity_component_1 = require("./activity/activity.component");
 var product_component_1 = require("./product/product.component");
 var contact_component_1 = require("./contact/contact.component");
-var payment_component_1 = require("./payment/payment.component");
+var purchase_component_1 = require("./purchase/purchase.component");
+var purchase_confirm_component_1 = require("./purchase/purchase-confirm.component");
+var purchase_result_component_1 = require("./purchase/purchase-result.component");
 var admin_component_1 = require("./admin/admin.component");
 var article_component_1 = require("./article/article.component");
 var classroom_component_1 = require("./classroom/classroom.component");
@@ -33,7 +35,10 @@ var routes = [
     { path: 'activity', component: activity_component_1.ActivityComponent },
     { path: 'product', component: product_component_1.ProductComponent },
     { path: 'contact', component: contact_component_1.ContactComponent },
-    { path: 'payment', component: payment_component_1.PaymentComponent },
+    { path: 'purchase/product/:id', component: purchase_component_1.PurchaseComponent },
+    { path: 'purchase/activity/:id', component: purchase_component_1.PurchaseComponent },
+    { path: 'purchase/confirmation', component: purchase_confirm_component_1.PurchaseConfirmationComponent, canActivate: [auth_guard_1.AuthGuard] },
+    { path: 'purchase/result/:status', component: purchase_result_component_1.PurchaseResultComponent, canActivate: [auth_guard_1.AuthGuard] },
     { path: 'article/:id', component: article_component_1.ArticleComponent },
     //{ path: 'classroom/:name', component: ClassroomComponent},
     { path: 'classroom', component: classroom_component_1.ClassroomComponent },

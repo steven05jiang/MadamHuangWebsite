@@ -49,9 +49,28 @@ var ProductService = (function () {
     // TODO: search/return one record by primary key using service.ts
     ProductService.prototype.getObject = function (id) {
         var _this = this;
-        return this.getObjects(0, 1000)
-            .then(function (objects) { return objects.body.find(function (object) { return object.id == id; }); }).then(function (obj) {
-            return obj;
+        var apiRequest = ({
+            apiKey: '',
+            operator: '',
+            token: config_1.Config.getToken(),
+            body: {
+                'id': id
+            }
+        });
+        var url = config_1.Config.api_host + '/product';
+        //console.log(JSON.stringify(apiRequest));
+        return this.http.post(url, JSON.stringify(apiRequest), { headers: this.headers })
+            .toPromise()
+            .then(function (response) {
+            console.log(JSON.stringify(response));
+            var token = response.json().token;
+            localStorage.setItem('token', token);
+            if (response.json().code != '200') {
+                _this.message = config_1.Text.val(500);
+                _this.emitStatusChangeEvent(null, _this.message);
+                return null;
+            }
+            return response.json().body;
         })
             .catch(function (ex) { return _this.handleError(ex); });
     };

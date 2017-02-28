@@ -49,6 +49,7 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
+    this.clearMessage();
     this.loginService.signin(this.loginUser);
   }
 

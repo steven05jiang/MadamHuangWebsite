@@ -6,6 +6,7 @@ export class Product {
   description:      string;
   imageLink:	string;
   price:	number;
+  detail: string;
   articleId: number;
 
   constructor() {

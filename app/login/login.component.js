@@ -38,6 +38,7 @@ var LoginComponent = (function () {
         });
     }
     LoginComponent.prototype.login = function () {
+        this.clearMessage();
         this.loginService.signin(this.loginUser);
     };
     LoginComponent.prototype.clearMessage = function () {

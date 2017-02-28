@@ -9,7 +9,9 @@ import { AboutComponent }            from './about/about.component';
 import { ActivityComponent }            from './activity/activity.component';
 import { ProductComponent }            from './product/product.component';
 import { ContactComponent }            from './contact/contact.component';
-import { PaymentComponent }            from './payment/payment.component';
+import { PurchaseComponent }            from './purchase/purchase.component';
+import { PurchaseConfirmationComponent }            from './purchase/purchase-confirm.component';
+import { PurchaseResultComponent }            from './purchase/purchase-result.component';
 
 import { AdminComponent }            from './admin/admin.component';
 
@@ -32,7 +34,10 @@ const routes: Routes = [
   { path: 'activity', component: ActivityComponent},
   { path: 'product', component: ProductComponent},
   { path: 'contact', component: ContactComponent},
-  { path: 'payment', component: PaymentComponent},
+  { path: 'purchase/product/:id', component: PurchaseComponent},
+  { path: 'purchase/activity/:id', component: PurchaseComponent},
+  { path: 'purchase/confirmation', component: PurchaseConfirmationComponent, canActivate: [AuthGuard]},
+  { path: 'purchase/result/:status', component: PurchaseResultComponent, canActivate: [AuthGuard]},
 
   { path: 'article/:id', component: ArticleComponent},
   //{ path: 'classroom/:name', component: ClassroomComponent},

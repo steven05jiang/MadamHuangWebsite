@@ -7,14 +7,16 @@ import { Event } from '../common/event';
 
 import { APIResponse } from '../common/api-response';
 
+//import { PurchaseService }   from '../purchase/purchase.service';
+import { ProductService }   from '../product/product.service';
+
 import { Product } from './product';
-import { ProductService } from './product.service';
 
 @Component({
-    moduleId: module.id,
-    selector: 'my-product',
-    templateUrl: 'product.component.html',
-    styleUrls: [ 'product.component.css' ]
+	moduleId: module.id,
+	selector: 'my-product',
+	templateUrl: 'product.component.html',
+	styleUrls: [ 'product.component.css' ]
 })
 
 export class ProductComponent implements OnInit {
@@ -32,7 +34,7 @@ export class ProductComponent implements OnInit {
 	constructor(
 		private router: Router,
 		private activatedRoute: ActivatedRoute,
-		private service: ProductService,
+		private service: ProductService
 		) {
 		this.size = 9;
 		this.page = 0;
@@ -46,26 +48,31 @@ export class ProductComponent implements OnInit {
 		} );
 	}
 
-  ngOnInit(): void {
-  	this.getProducts(this.page);
-  }
+	ngOnInit(): void {
+		this.getProducts(this.page);
+	}
+	ngOnDestroy() {
+		this.subscription.unsubscribe();
+	}
 
-  getProducts(page: number){
+	getProducts(page: number){
 		this.service.getObjects(page, this.size).then(
 			apiResponse => {
 				this.apiResponse = apiResponse;
 				this.objects = apiResponse.body as Product[];
 			}
-		);
-  }
+			);
+	}
 
-  	openArticle(product: Product): void{
+
+	openArticle(product: Product): void{
 		console.log('Ready to nav to article '+product.articleId);
 		this.router.navigate(['/article', product.articleId]);
 	}
 
-ngOnDestroy() {
-    this.subscription.unsubscribe();
-  }
+	openPurchase(product: Product){
+		//this.purchaseService.serviceHelper.purchaseObject = product;
+		this.router.navigate(['/purchase/product/', product.id]);
+	}
 
 }

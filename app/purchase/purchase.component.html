@@ -1,0 +1,199 @@
+<div class="main">
+  <div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <h1 class="display-3">產品信息 「 Product Information 」</h1>
+      <p class="lead">下面是產品信息，輸入支付信息點擊確認訂單進行購買</p>
+    </div>
+  </div>
+  <div class="container" [hidden]="purchaseObject == null">
+    <div class="row">
+      <div class="col-lg-8 col-sm-12" *ngIf="purchaseObject">
+        <div class="productInfo">
+          <h1>{{purchaseObject.title}}<span *ngIf="purchaseCategory=='activity'"> —— 聚會入場券</span></h1>
+            <div *ngIf="!user">
+              <button type="button" routerLink="/login" class="btn btn-md btn-confirm btn-row">登錄購買</button>
+              <button type="button" routerLink="/signup" class="btn btn-md btn-cancel">新用戶購買</button>
+            </div>
+          <p id="priceTage">價格: {{parsePrice(purchaseObject.price)}} USD</p>
+          <div class="form-group row">
+            <label for="name" class="col-lg-4 col-form-label"><span *ngIf="purchaseCategory=='activity'">非會員入場券</span>購買數量:</label>
+            <div class="col-lg-2">
+              <input type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" [(ngModel)]="productInfo.baseQuantity" name="name" placeholder="Enter Quantity" required>
+            </div>
+          </div>
+          <div *ngIf="purchaseCategory=='activity'">
+            <p id="priceTage">會員價格: {{parsePrice(purchaseObject.memberPrice)}} USD</p>
+            <div class="form-group row">
+              <label for="name" class="col-lg-5 col-form-label">購買會員入場券（專供）: </label>
+              <div class="col-lg-4">
+                <div class="form-check form-check-inline">
+                  <label class="form-check-label">
+                    <input class="form-check-input" type="radio" [value]="1" [(ngModel)]="productInfo.memberQuantity" [disabled]="!user || user.isMember == false"> 購買
+                  </label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <label class="form-check-label">
+                    <input class="form-check-input" type="radio" [value]="0" [(ngModel)]="productInfo.memberQuantity" [disabled]="!user || user.isMember == false"> 不購買
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <p>描述: {{purchaseObject.description}}</p>
+          <img src="{{purchaseObject.imageLink}}" alt="Image" *ngIf="purchaseObject.imageLink" class="img-fluid">
+          <div *ngIf="purchaseCategory=='product'" id="productDetail">
+            <p>商品細節：</p>
+            <p>{{purchaseObject.detail}}</p>
+          </div>
+
+        </div>
+      </div>
+      <div class="col-lg-4 col-sm-12">
+    <!--
+    These div elements are the placeholder elements that are replaced by the
+    SqPaymentForm's iframes.
+  -->
+  <form (ngSubmit)="onSubmit()">
+  <h4>收貨人姓名</h4>
+  <div class="form-group">
+    <input type="text" class="form-control" id="name" placeholder="Enter name" name="name" [(ngModel)]="paymentHelper.receiverName" required>
+  </div>
+
+  <div class="form-group row">
+    <label for="example-email-input" class="col-lg-6 col-md-3 col-form-label"><h4>Email</h4></label>
+    <div class="col-3">
+      <button type="button" class="btn btn-confirm" (click)="putMyEmail()" [disabled]="!user">使用我的Email</button>
+    </div>
+  </div>
+  <div class="form-group">
+    <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email" name="email" [(ngModel)]="squareCharge.buyer_email_address" required>
+  </div>
+
+      <div class="form-group row">
+        <label for="example-email-input" class="col-lg-6 col-md-3 col-form-label"><h4>送貨地址</h4></label>
+        <div class="col-3">
+          <button type="button" class="btn btn-confirm" (click)="putMyAddr()" [disabled]="!user">使用我的地址</button>
+        </div>
+      </div>
+    <div class="form-group">
+      <input type="text" class="form-control" placeholder="Address Line 1" name="shippingline1" [(ngModel)]="squareCharge.shipping_address.address_line_1" required>
+    </div>
+    <div class="form-group">
+      <input type="text" class="form-control" placeholder="Address Line 2" name="shippingline2" [(ngModel)]="squareCharge.shipping_address.address_line_2">
+    </div>
+    <div class="row">
+      <div class="col-lg-6 col-md-6 col-sm-6">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="City" name="shippingcity" [(ngModel)]="squareCharge.shipping_address.locality" required>
+        </div>
+      </div>
+      <div class="col-lg-6 col-md-6 col-sm-6">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="State" name="shippingstate" [(ngModel)]="squareCharge.shipping_address.administrative_district_level_1" required>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-6 col-md-6">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Zipcode" name="shippingzipcode" [(ngModel)]="squareCharge.shipping_address.postal_code" required>
+        </div>
+      </div>
+      <div class="col-lg-6 col-md-6">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Country" name="shippingcountry" [(ngModel)]="squareCharge.shipping_address.country" required>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group row">
+        <label for="example-email-input" class="col-lg-6 col-md-3 col-form-label"><h4>賬單地址</h4></label>
+        <div class="col-3">
+          <button type="button" class="btn btn-confirm" (click)="copyShipAddrToBillAddr()" [disabled]="!user">使用送货地址</button>
+        </div>
+      </div>
+    <div class="form-group">
+      <input type="text" class="form-control" placeholder="Address Line 1" name="billingline1" [(ngModel)]="squareCharge.billing_address.address_line_1" required>
+    </div>
+    <div class="form-group">
+      <input type="text" class="form-control" placeholder="Address Line 2" name="billingline2" [(ngModel)]="squareCharge.billing_address.address_line_2">
+    </div>
+    <div class="row">
+      <div class="col-lg-6 col-md-6 col-sm-6">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="City" name="billingcity" [(ngModel)]="squareCharge.billing_address.locality" required>
+        </div>
+      </div>
+      <div class="col-lg-6 col-md-6 col-sm-6">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="State" name="billingstate" [(ngModel)]="squareCharge.billing_address.administrative_district_level_1" required>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-6 col-md-6">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Zipcode" name="billingzipcode" [(ngModel)]="squareCharge.billing_address.postal_code" required>
+        </div>
+      </div>
+      <div class="col-lg-6 col-md-6">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Country" name="billingcountry" [(ngModel)]="squareCharge.billing_address.country" required>
+        </div>
+      </div>
+    </div>
+
+      <h4>留言</h4>
+        <div class="form-group">
+          <textarea class="form-control" id="exampleTextarea" rows="3" name="comment" [(ngModel)]="productInfo.comment"></textarea>
+        </div>
+      <button type="submit" id="submitButton" [hidden]="true"></button>
+  </form>
+
+
+
+  <h4>支付信息</h4>
+  <label>卡號</label>
+  <div id="sq-card-number"></div>
+  <label>CVV</label>
+  <div id="sq-cvv"></div>
+  <label>截止日期</label>
+  <div id="sq-expiration-date"></div>
+  <label>郵政編碼</label>
+  <div id="sq-postal-code"></div>
+
+
+  <!--
+    After the SqPaymentForm generates a card nonce, *this* form POSTs the generated
+    card nonce to your application's server.
+
+    You should replace the action attribute of the form with the path of
+    the URL you want to POST the nonce to (for example, "/process-card")
+  -->
+  <form id="nonce-form" novalidate>
+
+    <!--
+      Whenever a nonce is generated, it's assigned as the value of this hidden
+      input field.
+    -->
+    <input type="hidden" id="card-nonce" name="nonce" #cardNonce>
+    <input type="hidden" id="card-data" name="data" #cardData>
+    <!-- Detail card data -->
+    <input type="hidden" id="card-brand" name="cardBrand" #cardBrand>
+    <input type="hidden" id="last-4" name="last4" #last4>
+    <input type="hidden" id="exp-month" name="expMonth" #expMonth>
+    <input type="hidden" id="exp-year" name="expYear" #expYear>
+    <input type="hidden" id="billing-postal-code" name="billingPostalCode" #billingPostalCode>
+
+    <!--
+      Clicking this Submit button kicks off the process to generate a card nonce
+      from the buyer's card information.
+    -->
+    <button type="button" class="btn btn-confirm" (click)="requestCardNonce(event)" [disabled]="!user">確認訂單</button>
+  </form>
+</div>
+</div>
+
+
+<div>
+</div>

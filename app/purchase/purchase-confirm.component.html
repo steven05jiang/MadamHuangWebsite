@@ -1,0 +1,81 @@
+<div class="main">
+  <div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <h1 class="display-3">訂單信息 「 Order Information 」</h1>
+      <p class="lead">下面是訂單信息，確認無誤后點擊確認提交。</p>
+    </div>
+  </div>
+	<div class="container">
+		<table class="table table-striped table-bordered">
+		  <thead>
+		    <tr>
+		      <th>選項</th>
+		      <th>內容</th>
+		    </tr>
+		  </thead>
+		  <tbody>
+		    <tr>
+		      <td>商品名稱</td>
+		      <td>{{purchaseObject.title}}<span *ngIf="purchaseCategory == 'activity'"> —— 聚會入場券</span></td>
+		    </tr>
+		    <tr>
+		      <td>單價</td>
+		      <td>{{parsePrice(purchaseObject.price)}}</td>
+		    </tr>
+		    <tr>
+		      <td>數量</td>
+		      <td>{{productInfo.baseQuantity}}</td>
+		    </tr>
+		    <tr [hidden]="purchaseCategory == 'product'">
+		      <td>會員票價</td>
+		      <td>{{parsePrice(purchaseObject.memberPrice)}}</td>
+		    </tr>
+		    <tr [hidden]="purchaseCategory == 'product'">
+		      <td>會員票數量</td>
+		      <td>{{productInfo.memberQuantity}}</td>
+		    </tr>
+		    <tr>
+		      <td>總價（未包含手續費）</td>
+		      <td>{{parsePrice(squareCharge.amount_money.amount)}}</td>
+		    </tr>
+		    <tr>
+		      <td>收件人名稱</td>
+		      <td>{{paymentHelper.receiverName}}</td>
+		    </tr>
+		    <tr>
+		      <td>Email</td>
+		      <td>{{squareCharge.buyer_email_address}}</td>
+		    </tr>
+		    <tr>
+		      <td>送貨地址</td>
+		      <td>
+		      	{{squareCharge.shipping_address.address_line_1}}<br>
+		      		{{squareCharge.shipping_address.address_line_2}}<br>
+		      		{{squareCharge.shipping_address.locality}}, {{squareCharge.shipping_address.administrative_district_level_1}} {{squareCharge.shipping_address.postal_code}}, {{squareCharge.shipping_address.country}}
+		      </td>
+		    </tr>
+		    <tr>
+		      <td>賬單地址</td>
+		      <td>{{squareCharge.billing_address.address_line_1}}<br>
+		      		{{squareCharge.billing_address.address_line_2}}<br>
+		      		{{squareCharge.billing_address.locality}}, {{squareCharge.billing_address.administrative_district_level_1}} {{squareCharge.billing_address.postal_code}}, {{squareCharge.billing_address.country}}
+		      </td>
+		    </tr>
+		    <tr>
+		      <td>留言</td>
+		      <td>{{productInfo.comment}}</td>
+		    </tr>
+		    <tr>
+		      <td>支付方式</td>
+		      <td>類型: {{paymentHelper.cardData.cardBrand}}<br>
+		      	最後4位: {{paymentHelper.cardData.cardFour}}<br>
+		      	截止日期: {{paymentHelper.cardData.cardMonth}}/{{paymentHelper.cardData.cardYear}}<br>
+		      	郵政編碼: {{paymentHelper.cardData.cardPostCode}}
+		      </td>
+		    </tr>
+		  </tbody>
+		</table>
+		<button type="submit" (click)="onSubmit()" class="btn btn-md btn-confirm btn-row">確認訂單</button>
+		<button type="button" (click)="onModify()" class="btn btn-md btn-cancel">修改訂單</button>
+	</div>
+</div>

@@ -7,11 +7,11 @@
 	</div>
 	<div class="container" *ngIf="objects">
 		<div class="card-columns card-custom">
-			<div class="card">
-			<img src="image/QR_MadamHuang3.png" class="card-img-top img-fluid" alt="Card image cap">
+		<div class="card">
+			<img [src]="defaultImage" [lazyLoad]="'image/carsl4.jpg'" class="card-img-top img-fluid" alt="Card image cap">
 				<div class="card-block">
-					<h4 class="card-title">更多產品</h4>
-					<p class="card-text">想了解更多美麗產品麼？掃碼這裡的二維碼或者點擊下面的按鈕，就可以看到我們為您挑選的更多產品。在Jeunesse的頁面註冊為會員，可以獲得更多的優惠，趕緊行動起來吧！</p>
+					<h4 class="card-title">關於美麗產品</h4>
+					<p class="card-text">在這裡我們為您精心挑選了美麗的產品，為您的美麗助力！如果您想購買我們的產品，可以先註冊成為我們的用戶再進行購買。現在，您只需要在這裡購買超過100美元的商品，即刻成為黃夫人俱樂部的尊貴會員。黃夫人俱樂部會員可以享受多種美麗優惠，參加美麗聚會時享受特價優惠。如果您還想了解更多的產品，可以點擊下方按鈕。還在等待什麼，現在就加入我們吧！</p>
 					<button class="btn btn-sm btn-confirm"><a href="http://madamhuang.jeunesseglobal.com" target="_blank">了解更多產品</a></button>
 				</div>
 			</div>
@@ -20,7 +20,16 @@
 				<div class="card-block">
 					<h4 class="card-title">{{product.title}}</h4>
 					<p class="card-text">{{product.description}}</p>
-					<button *ngIf="product.article" class="btn btn-sm btn-confirm" (click)="openArticle(product)">Learn More</button>
+					<button *ngIf="product.article" class="btn btn-sm btn-confirm" (click)="openArticle(product)">了解更多</button>
+					<button class="btn btn-sm btn-cancel" (click)="openPurchase(product)">購買產品</button>
+				</div>
+			</div>
+			<div class="card">
+			<img src="image/QR_MadamHuang3.png" class="card-img-top img-fluid" alt="Card image cap">
+				<div class="card-block">
+					<h4 class="card-title">更多產品</h4>
+					<p class="card-text">想了解更多美麗產品麼？掃碼這裡的二維碼或者點擊下面的按鈕，就可以看到我們為您挑選的更多產品。在Jeunesse的頁面註冊為會員，可以獲得更多的優惠，趕緊行動起來吧！</p>
+					<button class="btn btn-sm btn-confirm"><a href="http://madamhuang.jeunesseglobal.com" target="_blank">了解更多產品</a></button>
 				</div>
 			</div>
 		</div>

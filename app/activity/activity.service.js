@@ -21,35 +21,33 @@ var ActivityService = (function () {
         this.statusChange = new core_1.EventEmitter();
         this.headers = new http_1.Headers({ 'Content-Type': 'application/json' });
     }
-    // TODO: change get request to POST request using APIRequest
-    // TODO: add token to the request
-    /*
-    getObjects(page: number, size: number): Promise<APIResponse> {
-        let apiRequest = <APIRequest>({
+    ActivityService.prototype.getObject = function (id) {
+        var _this = this;
+        var apiRequest = ({
             apiKey: '',
             operator: '',
-            token: Config.getToken(),
-            page: page,
-            size: size
-        });
-        const url = Config.api_host + '/activities';
-        console.log(JSON.stringify(apiRequest));
-  
-        return this.http.post(url, JSON.stringify(apiRequest), {headers: this.headers})
-        .toPromise()
-        .then(response => {
-          let token = response.json().token;
-          localStorage.setItem('token', token);
-            if(response.json().code == '200') {
-              return response.json() as APIResponse;
-            } else {
-              this.message = Text.val(500);
-              this.emitStatusChangeEvent(null, this.message);
+            token: config_1.Config.getToken(),
+            body: {
+                'id': id
             }
-          })
-          .catch((ex) => this.handleError(ex));
-    }
-    */
+        });
+        var url = config_1.Config.api_host + '/activity';
+        console.log(JSON.stringify(apiRequest));
+        return this.http.post(url, JSON.stringify(apiRequest), { headers: this.headers })
+            .toPromise()
+            .then(function (response) {
+            //console.log(JSON.stringify(response));
+            var token = response.json().token;
+            localStorage.setItem('token', token);
+            if (response.json().code != '200') {
+                _this.message = config_1.Text.val(500);
+                _this.emitStatusChangeEvent(null, _this.message);
+                return null;
+            }
+            return response.json().body;
+        })
+            .catch(function (ex) { return _this.handleError(ex); });
+    };
     ActivityService.prototype.getActivities = function (page, size) {
         var _this = this;
         var apiRequest = ({

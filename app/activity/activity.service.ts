@@ -22,36 +22,33 @@ export class ActivityService {
 
   constructor(private http: Http) {}
 
-
-  // TODO: change get request to POST request using APIRequest
-  // TODO: add token to the request
-  /*
-  getObjects(page: number, size: number): Promise<APIResponse> {
+  getObject(id:number): Promise<Activity> {
       let apiRequest = <APIRequest>({
           apiKey: '',
           operator: '',
           token: Config.getToken(),
-          page: page,
-          size: size
+          body: {
+            'id': id
+          }
       });
-      const url = Config.api_host + '/activities';
+      const url = Config.api_host + '/activity';
       console.log(JSON.stringify(apiRequest));
 
       return this.http.post(url, JSON.stringify(apiRequest), {headers: this.headers})
       .toPromise()
       .then(response => {
+        //console.log(JSON.stringify(response));
         let token = response.json().token;
         localStorage.setItem('token', token);
-          if(response.json().code == '200') {
-            return response.json() as APIResponse;
-          } else {
+          if(response.json().code != '200') {
             this.message = Text.val(500);
-            this.emitStatusChangeEvent(null, this.message);
+            this.emitStatusChangeEvent(null, this.message); 
+            return null;
           }
+          return response.json().body as Activity;
         })
         .catch((ex) => this.handleError(ex));
   }
-  */
 
   getActivities(page: number, size: number): Promise<APIResponse> {
       let apiRequest = <APIRequest>({

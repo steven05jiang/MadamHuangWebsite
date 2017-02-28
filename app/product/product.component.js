@@ -13,7 +13,8 @@ var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
 var router_2 = require("@angular/router");
 var event_1 = require("../common/event");
-var product_service_1 = require("./product.service");
+//import { PurchaseService }   from '../purchase/purchase.service';
+var product_service_1 = require("../product/product.service");
 var ProductComponent = (function () {
     function ProductComponent(router, activatedRoute, service) {
         var _this = this;
@@ -35,6 +36,9 @@ var ProductComponent = (function () {
     ProductComponent.prototype.ngOnInit = function () {
         this.getProducts(this.page);
     };
+    ProductComponent.prototype.ngOnDestroy = function () {
+        this.subscription.unsubscribe();
+    };
     ProductComponent.prototype.getProducts = function (page) {
         var _this = this;
         this.service.getObjects(page, this.size).then(function (apiResponse) {
@@ -46,8 +50,9 @@ var ProductComponent = (function () {
         console.log('Ready to nav to article ' + product.articleId);
         this.router.navigate(['/article', product.articleId]);
     };
-    ProductComponent.prototype.ngOnDestroy = function () {
-        this.subscription.unsubscribe();
+    ProductComponent.prototype.openPurchase = function (product) {
+        //this.purchaseService.serviceHelper.purchaseObject = product;
+        this.router.navigate(['/purchase/product/', product.id]);
     };
     return ProductComponent;
 }());

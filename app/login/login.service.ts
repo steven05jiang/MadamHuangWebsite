@@ -190,12 +190,6 @@ export class LoginService {
       .catch((ex) => this.handleError(ex));
   }
 
-  onSubmit() {
-     this.user = null;
-    //this.emitStatusChangeEvent('You have successfully logged out!');
-    this.message = "You have succesfully logged out!";
-    this.emitStatusChangeEvent(null, this.message);
-  }
   signout() {
     localStorage.setItem('token', '');
     this.user = null;

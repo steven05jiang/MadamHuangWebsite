@@ -36,9 +36,10 @@ import { ContactService }            from './contact/contact.service';
 import { ClassroomComponent }            from './classroom/classroom.component';
 import { ClassroomService }            from './classroom/classroom.service';
 
-import { PaymentComponent }            from './payment/payment.component';
-
-
+import { PurchaseComponent }            from './purchase/purchase.component';
+import { PurchaseService }            from './purchase/purchase.service';
+import { PurchaseConfirmationComponent }            from './purchase/purchase-confirm.component';
+import { PurchaseResultComponent }            from './purchase/purchase-result.component';
 
 import { UserProfileComponent }  from './user/user-profile.component';
 import { UserEditComponent }  from './user/user-edit.component';
@@ -87,7 +88,9 @@ const WINDOW_PROVIDER: ValueProvider = {
   UserProfileComponent,
   UserEditComponent,
   ChangePasswordComponent,
-  PaymentComponent,
+  PurchaseComponent,
+  PurchaseConfirmationComponent,
+  PurchaseResultComponent,
   IdDscdPipe
   ],
   providers: [
@@ -100,6 +103,7 @@ const WINDOW_PROVIDER: ValueProvider = {
   ProductService,
   ClassroomService,
   ActivityService,
+  PurchaseService,
   WINDOW_PROVIDER
   ],
   bootstrap: [

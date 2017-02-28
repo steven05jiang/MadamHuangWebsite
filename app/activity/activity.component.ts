@@ -50,19 +50,22 @@ export class ActivityComponent implements OnInit {
 
 	getActivities(page: number){
 		this.service.getActivities(page, this.size).then(
-		apiResponse => {
+			apiResponse => {
 				this.apiResponse = apiResponse;
 				this.objects = apiResponse.body as Activity[];
 			}
-		);
+			);
 	}
 
 	openArticle(activity: Activity): void{
 		console.log('Ready to nav to article '+activity.articleId);
 		this.router.navigate(['/article', activity.articleId]);
 	}
-ngOnDestroy() {
-    this.subscription.unsubscribe();
-  }
+	ngOnDestroy() {
+		this.subscription.unsubscribe();
+	}
+	openPurchase(activity: Activity){
+		this.router.navigate(['/purchase/activity/', activity.id]);
+	}
 
 }

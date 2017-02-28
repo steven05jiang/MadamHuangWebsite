@@ -7,6 +7,7 @@ export class Activity {
   startDate:        Date;
   endDate:        Date;
   price:	number;
+  memberPrice: number;
   articleId: number;
 
   constructor() {

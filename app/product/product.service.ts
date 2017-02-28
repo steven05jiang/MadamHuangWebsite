@@ -50,16 +50,32 @@ export class ProductService {
   }
 
   // TODO: search/return one record by primary key using service.ts
-  getObject(id: number): Promise<Product> {
-    return this.getObjects(0, 1000)
-      .then(
-        objects => (objects.body as Product[]).find(object => object.id == id)
-      ).then(
-        obj => {
-          return obj;
-        }
-      )
-      .catch((ex) => this.handleError(ex));
+  getObject(id:number): Promise<Product> {
+      let apiRequest = <APIRequest>({
+          apiKey: '',
+          operator: '',
+          token: Config.getToken(),
+          body: {
+            'id': id
+          }
+      });
+      const url = Config.api_host + '/product';
+      //console.log(JSON.stringify(apiRequest));
+
+      return this.http.post(url, JSON.stringify(apiRequest), {headers: this.headers})
+      .toPromise()
+      .then(response => {
+        console.log(JSON.stringify(response));
+        let token = response.json().token;
+        localStorage.setItem('token', token);
+          if(response.json().code != '200') {
+            this.message = Text.val(500);
+            this.emitStatusChangeEvent(null, this.message); 
+            return null;
+          }
+          return response.json().body as Product;
+        })
+        .catch((ex) => this.handleError(ex));
   }
 
   private handleError(error: any) {

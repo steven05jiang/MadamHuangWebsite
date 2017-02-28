@@ -166,12 +166,6 @@ var LoginService = (function () {
         })
             .catch(function (ex) { return _this.handleError(ex); });
     };
-    LoginService.prototype.onSubmit = function () {
-        this.user = null;
-        //this.emitStatusChangeEvent('You have successfully logged out!');
-        this.message = "You have succesfully logged out!";
-        this.emitStatusChangeEvent(null, this.message);
-    };
     LoginService.prototype.signout = function () {
         localStorage.setItem('token', '');
         this.user = null;

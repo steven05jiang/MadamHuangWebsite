@@ -49,6 +49,9 @@ var ActivityComponent = (function () {
     ActivityComponent.prototype.ngOnDestroy = function () {
         this.subscription.unsubscribe();
     };
+    ActivityComponent.prototype.openPurchase = function (activity) {
+        this.router.navigate(['/purchase/activity/', activity.id]);
+    };
     return ActivityComponent;
 }());
 ActivityComponent = __decorate([
