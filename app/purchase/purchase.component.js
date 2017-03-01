@@ -32,12 +32,14 @@ var PurchaseComponent = (function () {
         this.productService = productService;
         this.applicationId = config_1.Config.applicationId;
         this.paymentHelper = {};
-        //this.paymentHelper.receiverName = null;
-        this.user = this.loginService.user;
         this.subscription = this.loginService.getStatusChangeEmitter()
             .subscribe(function ($event) {
             _this.user = $event.user;
         });
+        this.user = this.loginService.user;
+        if (this.user) {
+            this.loginService.refreshToken(config_1.Config.getToken());
+        }
     }
     PurchaseComponent.prototype.ngOnInit = function () {
         this.getPurchaseObject();
@@ -61,6 +63,7 @@ var PurchaseComponent = (function () {
                         _this.purchaseObject = response;
                         _this.productInfo.note = 'Purchase product: ' + _this.purchaseObject.title;
                         _this.productInfo.productCategory = 1;
+                        _this.detailContainer.nativeElement.innerHTML = _this.purchaseObject.detail;
                     }
                     else {
                         _this.router.navigate(['']);
@@ -195,6 +198,11 @@ var PurchaseComponent = (function () {
         if (this.purchaseCategory == 'activity') {
             squareMoney.amount = squareMoney.amount + this.productInfo.memberQuantity * this.purchaseObject.memberPrice;
         }
+        this.purchaseService.serviceHelper.preTaxNFeeTotalPrice = squareMoney.amount;
+        //Add tax
+        squareMoney.amount = Math.round(1.0625 * squareMoney.amount);
+        //Add transaction fee
+        squareMoney.amount = Math.round((squareMoney.amount + 30) / 0.971);
         this.squareCharge.amount_money = squareMoney;
         this.squareCharge.card_nonce = this.nonce.nativeElement.value;
         if (this.purchaseCategory == 'activity') {
@@ -203,7 +211,7 @@ var PurchaseComponent = (function () {
         else {
             this.squareCharge.note = 'P:';
         }
-        this.squareCharge.note = this.squareCharge.note + this.purchaseObject.title + ",ID:" + this.purchaseObject.id + ",BQ:" + this.productInfo.baseQuantity + ",MQ:" + this.productInfo.memberQuantity + ",NAME:" + this.paymentHelper.receiverName;
+        this.squareCharge.note = this.squareCharge.note + this.purchaseObject.title + ",ID:" + this.purchaseObject.id + ",BQ:" + this.productInfo.baseQuantity + ",MQ:" + this.productInfo.memberQuantity + ",NM:" + this.paymentHelper.receiverName;
     };
     PurchaseComponent.prototype.isValidForm = function () {
         if (this.productInfo.baseQuantity < 0) {
@@ -310,6 +318,10 @@ __decorate([
     core_1.ViewChild('billingPostalCode'),
     __metadata("design:type", core_1.ElementRef)
 ], PurchaseComponent.prototype, "cardPostCode", void 0);
+__decorate([
+    core_1.ViewChild('detailContainer'),
+    __metadata("design:type", core_1.ElementRef)
+], PurchaseComponent.prototype, "detailContainer", void 0);
 PurchaseComponent = __decorate([
     core_1.Component({
         moduleId: module.id,

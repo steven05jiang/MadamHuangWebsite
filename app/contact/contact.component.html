@@ -13,23 +13,29 @@
         <form (ngSubmit)="onSubmit()">
           <div class="form-group">
             <label for="name">您的名字</label>
-            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" [(ngModel)]="msg.senderName" name="name" placeholder="Enter your name" (input)="clearMessage()" required>
+            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" [(ngModel)]="msg.senderName" name="name" placeholder="Enter your name" (input)="clearMessage()" maxlength="45" required>
           </div>
           <div class="form-group">
             <label for="email">電子郵箱地址</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" [(ngModel)]="msg.senderEmail" name="email" placeholder="Enter email" (input)="clearMessage()" required>
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" [(ngModel)]="msg.senderEmail" name="email" placeholder="Enter email" (input)="clearMessage()" maxlength="45" required>
             <small id="emailHelp" class="form-text text-muted">我們保證不洩露您的電子郵箱地址給任何人</small>
           </div>
           <div class="form-group">
             <label for="tel">電話號碼</label>
-            <input type="tel" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" [(ngModel)]="msg.senderTel" name="tel" placeholder="Enter telephone number" (input)="clearMessage()">
+            <input type="tel" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" [(ngModel)]="msg.senderTel" name="tel" placeholder="Enter telephone number" (input)="clearMessage()" maxlength="20">
             <small class="form-text text-muted">我們保證不洩露您的電話號碼給任何人</small>
           </div>
           <div class="form-group">
             <label for="content">我們有什麼可以幫助您的嗎？請在下面告訴我們。</label>
-            <textarea class="form-control" id="exampleTextarea" rows="3" [(ngModel)]="msg.content" name="content" (input)="clearMessage()" placeholder="Enter questions here" required></textarea>
+            <textarea class="form-control" id="exampleTextarea" rows="3" [(ngModel)]="msg.content" name="content" (input)="clearMessage()" placeholder="Enter questions here" maxlength="360" required></textarea>
           </div>
-              <button type="submit" class="btn btn-confirm">提交</button>
+          <div id="requiredMessage">
+            If you see this, leave this form field blank 
+            and invest in CSS support.
+            <label for="requiredMessage">Username</label>
+            <input type="text" name="requiredMessage" [(ngModel)]="messageHelper.requiredMessage"/>
+          </div>
+              <button type="submit" class="btn btn-confirm" [disabled]="messageHelper.isWaiting">提交</button>
         </form>
     <div *ngIf="message" class="alert alert-info">
      {{ message }}

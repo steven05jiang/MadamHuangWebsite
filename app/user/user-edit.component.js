@@ -22,6 +22,8 @@ var UserEditComponent = (function () {
         this.activatedRoute = activatedRoute;
         this.loginService = loginService;
         this.defaultImage = 'image/loading.png';
+        this.editHelper = {};
+        this.editHelper.isWaiting = false;
         this.headImages = user_image_1.USER_IMAGE;
         this.user = this.loginService.user;
         this.updatedUser = Object.assign({}, this.user);
@@ -38,6 +40,7 @@ var UserEditComponent = (function () {
                 _this.user = null;
             }
             // TODO: message is not used for now.
+            _this.editHelper.isWaiting = false;
             _this.message = $event.message;
         });
     }
@@ -49,6 +52,7 @@ var UserEditComponent = (function () {
     UserEditComponent.prototype.onSubmit = function () {
         var _this = this;
         this.clearMessage();
+        this.editHelper.isWaiting = true;
         this.loginService.updateProfile(this.updatedUser).then(function (user) { return _this.router.navigate(['/profile']); });
     };
     UserEditComponent.prototype.onCancel = function () {

@@ -17,15 +17,12 @@
 			</div>
 			<div class="card" *ngFor="let activity of objects">
 			<img *ngIf="activity.imageLink" class="card-img-top img-fluid" [src]="defaultImage" [lazyLoad]="activity.imageLink" alt="Image">
-			<!--
-			<img *ngIf="activity.imageLink" class="card-img-top img-fluid" src="{{activity.imageLink}}" alt="Image">
-			-->
 				<div class="card-block">
 					<h4 class="card-title">{{activity.title}}</h4>
 					<p class="card-text">{{activity.description}}</p>
-					<button *ngIf="activity.articleId" class="btn btn-sm btn-cancel" (click)="openArticle(activity)">了解更多</button>
 					<button class="btn btn-sm btn-confirm" (click)="openPurchase(activity)">加入我們</button>
-					<p class="card-text" *ngIf="activity.startDate"><small class="text-muted">活動日期：{{activity.startDate}}</small></p>
+					<button *ngIf="activity.articleId" class="btn btn-sm btn-cancel" (click)="openArticle(activity)">了解更多</button>
+					<p class="card-text" *ngIf="activity.startDate"><small class="text-muted">活動日期：{{activity.startDate | date:"MM/dd/yy"}}</small></p>
 				</div>
 			</div>
 		</div>

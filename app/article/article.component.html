@@ -3,11 +3,10 @@
 <div class="jumbotron jumbotron-fluid" *ngIf="article">
   <div class="container">
     <h1 class="display-3">{{article.title}}</h1>
-    <p class="lead" *ngIf="article.createdDate">Created on {{article.createdDate | date:"MM/dd/yy"}}</p>
+    <p class="lead" *ngIf="article.updatedDate">編輯于 {{article.updatedDate | date:"MM/dd/yy"}}</p>
   </div>
 </div>
 
 <div class="container">
 		<div #dataContainer></div>
-		<div id="content"></div>
 </div>

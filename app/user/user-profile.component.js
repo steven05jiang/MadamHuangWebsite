@@ -21,10 +21,6 @@ var UserProfileComponent = (function () {
         this.activatedRoute = activatedRoute;
         this.loginService = loginService;
         this.defaultImage = 'image/loading.png';
-        this.user = this.loginService.user;
-        if (!this.user.imageLink) {
-            this.user.imageLink = config_1.Config.user_header_folder + '/book.jpg';
-        }
         this.subscription = this.loginService.getStatusChangeEmitter()
             .subscribe(function ($event) {
             if ($event.user) {
@@ -36,8 +32,26 @@ var UserProfileComponent = (function () {
             // TODO: message is not used for now.
             //this.message = $event.message;
         });
+        this.user = this.loginService.user;
+        if (!this.user) {
+            this.router.navigate(['login']);
+        }
+        else {
+            if (!this.user.imageLink) {
+                this.user.imageLink = config_1.Config.user_header_folder + '/book.jpg';
+            }
+            this.loginService.refreshToken(config_1.Config.getToken());
+        }
     }
     UserProfileComponent.prototype.ngOnInit = function () {
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip();
+            //$('.tooltip-arrow').css('background', 'rgb(138,0,35)');
+            //$('[data-toggle="tooltip"]').hover(()=>{
+            //$('.tooltip-inner').css('background', 'rgb(138,0,35)');
+            //$('.tooltip.top-right .tooltip-arrow').css('background', 'rgb(138,0,35)');
+            //});
+        });
     };
     UserProfileComponent.prototype.ngOnDestroy = function () {
         this.subscription.unsubscribe();

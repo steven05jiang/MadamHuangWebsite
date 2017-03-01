@@ -25,6 +25,7 @@ export class PurchaseResultComponent implements OnInit {
 
 	status: string;
 	message: string;
+	invoice: any;
 
 	constructor(
 		private router: Router,
@@ -39,7 +40,8 @@ export class PurchaseResultComponent implements OnInit {
 	  			this.router.navigate(['']);
 	  		}
 	  		this.status = pathArray[3];
-			this.message = this.purchaseService.serviceHelper.result;
+			this.message = this.purchaseService.serviceHelper.result.message;
+			this.invoice = this.purchaseService.serviceHelper.result.invoice;
 			this.purchaseService.serviceHelper.isRefresh = true;
 		}
 	}

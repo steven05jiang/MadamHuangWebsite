@@ -19,6 +19,7 @@ export class HomeComponent implements OnInit {
 	message: string;
   animationHelper: any;
   timer: any;
+  messageHelper: any;
 
   @ViewChild('badge1') badge1: ElementRef;
   @ViewChild('about') about: ElementRef;
@@ -29,6 +30,8 @@ export class HomeComponent implements OnInit {
     @Inject(DOCUMENT) private document: Document
     //private window: Window
     ) {
+    this.messageHelper = {};
+    this.messageHelper.isWaiting = false;
     this.animationHelper = {};
     this.animationHelper.badge1 = false;
     this.animationHelper.badge2 = false;
@@ -43,6 +46,7 @@ export class HomeComponent implements OnInit {
        	if($event.object != null){
             this.msg = new Message();
           }
+          this.messageHelper.isWaiting = false;
           this.message = $event.message;
         });
   }
@@ -89,12 +93,18 @@ export class HomeComponent implements OnInit {
 
 
 
-    clearMessage() {
+   clearMessage() {
     this.message = '';
   }
 
-	  onSubmit() {
-  	this.contactService.sendMessage(this.msg);
+	onSubmit() {
+    this.messageHelper.isWaiting = true;
+    if(!this.messageHelper.requiredMessage){
+      this.contactService.sendMessage(this.msg);
+    }else{
+      this.messageHelper.isWaiting = false;
+      this.msg = new Message();
+    }
   }
 
 }

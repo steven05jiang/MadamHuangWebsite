@@ -23,12 +23,16 @@ export class LoginComponent implements OnInit {
   loginUser: User;
   message: string;
   subscription: any;
+  loginHelper: any;
 
   constructor(
     private loginService: LoginService,
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private http: Http) {
+
+      this.loginHelper = {};
+      this.loginHelper.isWaiting = false;
 
       this.loginUser = new User();
       this.loginUser.username = '';
@@ -43,6 +47,7 @@ export class LoginComponent implements OnInit {
             this.loginUser = this.user;
             this.router.navigate(['']);
           }
+          this.loginHelper.isWaiting = false;
           this.message = $event.message;
 
         } );
@@ -50,6 +55,7 @@ export class LoginComponent implements OnInit {
 
   login() {
     this.clearMessage();
+    this.loginHelper.isWaiting = true;
     this.loginService.signin(this.loginUser);
   }
 

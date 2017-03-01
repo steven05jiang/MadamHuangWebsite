@@ -52,6 +52,7 @@ export class ProductInfo{
 	totalPrice: number
 	comment: string;
 	createdDate: Date;
+	transactionId: string;
 
 	constructor(){}
 }

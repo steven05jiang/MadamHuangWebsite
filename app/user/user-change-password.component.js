@@ -23,6 +23,7 @@ var ChangePasswordComponent = (function () {
         this.http = http;
         console.log('loginComponent: constructor called');
         this.passwordHelper = {};
+        this.passwordHelper.isWaiting = false;
         this.passwordHelper.oldPassword = '';
         this.passwordHelper.confirmPassword = '';
         this.passwordHelper.newPassword = '';
@@ -36,6 +37,7 @@ var ChangePasswordComponent = (function () {
             else {
                 _this.router.navigate(['login']);
             }
+            _this.passwordHelper.isWaiting = false;
             _this.message = $event.message;
         });
     }
@@ -45,6 +47,7 @@ var ChangePasswordComponent = (function () {
             this.message = '輸入密碼不一致';
         }
         else {
+            this.passwordHelper.isWaiting = true;
             this.loginService.changePassword(this.passwordHelper).then(function (user) { return _this.router.navigate(['/profile']); });
         }
     };

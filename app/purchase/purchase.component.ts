@@ -44,6 +44,7 @@ export class PurchaseComponent implements OnInit {
 	@ViewChild('expMonth') cardMonth: ElementRef;
 	@ViewChild('expYear') cardYear: ElementRef;
 	@ViewChild('billingPostalCode') cardPostCode: ElementRef;
+	@ViewChild('detailContainer') detailContainer: ElementRef;
 
   	constructor(
   		private router: Router,
@@ -54,12 +55,15 @@ export class PurchaseComponent implements OnInit {
 		private productService: ProductService
 		) {
   		this.paymentHelper = {};
-  		//this.paymentHelper.receiverName = null;
-  		this.user = this.loginService.user;
+
   		this.subscription = this.loginService.getStatusChangeEmitter()
       	.subscribe(($event:any) => {
       		this.user = $event.user;
       	});
+		this.user = this.loginService.user;
+      	if(this.user){
+      		this.loginService.refreshToken(Config.getToken());
+      	}
 	}
 
 	ngOnInit(): void {
@@ -86,6 +90,7 @@ export class PurchaseComponent implements OnInit {
 	  						this.purchaseObject = response as Product;
 	  						this.productInfo.note = 'Purchase product: '+this.purchaseObject.title;
 		  					this.productInfo.productCategory = 1;
+		  					this.detailContainer.nativeElement.innerHTML = this.purchaseObject.detail;
 	  					}else{
 	  						this.router.navigate(['']);
 	  					}
@@ -234,6 +239,11 @@ export class PurchaseComponent implements OnInit {
 		if(this.purchaseCategory == 'activity'){
 			squareMoney.amount = squareMoney.amount + this.productInfo.memberQuantity * this.purchaseObject.memberPrice;
 		}
+		this.purchaseService.serviceHelper.preTaxNFeeTotalPrice = squareMoney.amount;
+		//Add tax
+		squareMoney.amount = Math.round(1.0625*squareMoney.amount);
+		//Add transaction fee
+		squareMoney.amount = Math.round((squareMoney.amount+30)/0.971);
 		this.squareCharge.amount_money = squareMoney;
 		this.squareCharge.card_nonce = this.nonce.nativeElement.value;
 		if(this.purchaseCategory == 'activity'){
@@ -241,7 +251,7 @@ export class PurchaseComponent implements OnInit {
 		}else{
 			this.squareCharge.note = 'P:';
 		}
-		this.squareCharge.note = this.squareCharge.note+this.purchaseObject.title+",ID:"+this.purchaseObject.id+",BQ:"+this.productInfo.baseQuantity+",MQ:"+this.productInfo.memberQuantity+",NAME:"+this.paymentHelper.receiverName;
+		this.squareCharge.note = this.squareCharge.note+this.purchaseObject.title+",ID:"+this.purchaseObject.id+",BQ:"+this.productInfo.baseQuantity+",MQ:"+this.productInfo.memberQuantity+",NM:"+this.paymentHelper.receiverName;
 	}	
 
 	isValidForm(): boolean{

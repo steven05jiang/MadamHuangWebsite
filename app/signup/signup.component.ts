@@ -24,6 +24,7 @@ export class SignupComponent implements OnInit {
   passwordHelper:	any;
   message: string;
   subscription: any;
+  signupHelper: any;
 
   constructor(
     private loginService: LoginService,
@@ -38,6 +39,8 @@ export class SignupComponent implements OnInit {
 
       this.passwordHelper = {};
       this.passwordHelper.confirmPassword = '';
+      this.signupHelper = {};
+      this.signupHelper.isWaiting = false;
 
       //console.log('loginComponent: constructor called');
       this.subscription = this.loginService.getStatusChangeEmitter()
@@ -47,6 +50,7 @@ export class SignupComponent implements OnInit {
             this.newUser = this.user;
             this.router.navigate(['']);
           }
+          this.signupHelper.isWaiting = false;
           this.message = $event.message;
         } );
   }
@@ -55,6 +59,7 @@ export class SignupComponent implements OnInit {
   	if(this.newUser.password != this.passwordHelper.confirmPassword) {
   		this.message = '輸入密碼不一致';
   	}else {
+      this.signupHelper.isWaiting = true;
     	this.loginService.signup(this.newUser);
     }
   }
@@ -64,10 +69,6 @@ export class SignupComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // this.activatedRoute.params.forEach((params: Params) => {
-    //   let code = +params['code'];
-    //   this.message = Text.val(code); //code.toString();
-    // });
   }
 
   ngOnDestroy() {

@@ -27,11 +27,15 @@ export class UserEditComponent implements OnInit {
 	headImages: string[];
 	selectedImage: string;
 
+	editHelper: any;
+
 	constructor(
 		private router: Router,
 		private activatedRoute: ActivatedRoute,
 		private loginService:LoginService
 		) {
+		this.editHelper = {};
+		this.editHelper.isWaiting = false;
 	this.headImages = USER_IMAGE;
     this.user = this.loginService.user;
     this.updatedUser=Object.assign({},this.user);
@@ -47,6 +51,7 @@ export class UserEditComponent implements OnInit {
             this.user = null;
           }
           // TODO: message is not used for now.
+          this.editHelper.isWaiting = false;
           this.message = $event.message;
     } );
 	}
@@ -59,6 +64,7 @@ export class UserEditComponent implements OnInit {
 
   	onSubmit(): void{
   		this.clearMessage();
+  		this.editHelper.isWaiting = true;
 		this.loginService.updateProfile(this.updatedUser).then(
 				user => this.router.navigate(['/profile'])
 			);

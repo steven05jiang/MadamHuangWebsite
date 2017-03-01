@@ -21,6 +21,7 @@ var ClassroomComponent = (function () {
         this.router = router;
         this.activatedRoute = activatedRoute;
         this.size = 9;
+        this.defaultImage = 'image/loading.png';
         //this.classroom = new Classroom('', '美麗課堂','','');
         this.curPage = 0;
         this.message = this.classroomService.message;

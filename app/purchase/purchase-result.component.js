@@ -27,7 +27,8 @@ var PurchaseResultComponent = (function () {
                 this.router.navigate(['']);
             }
             this.status = pathArray[3];
-            this.message = this.purchaseService.serviceHelper.result;
+            this.message = this.purchaseService.serviceHelper.result.message;
+            this.invoice = this.purchaseService.serviceHelper.result.invoice;
             this.purchaseService.serviceHelper.isRefresh = true;
         }
     }

@@ -29,6 +29,11 @@ section .description-center{
   background-color: #F6F6F6;
 }
 
+#requiredMessage{
+  position: absolute;
+  top: -300em;
+}
+
 .main {
   margin-top: 3.8em;
 }

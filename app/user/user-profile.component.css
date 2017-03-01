@@ -19,6 +19,30 @@
 	margin-right: 1em;
 }
 
+/*
+.tooltip.top .tooltip-inner{
+	background: rgb(138,0,35) !important;
+}
+
+.tooltip.right .tooltip-arrow{
+	background: rgb(138,0,35) !important;;
+}
+
+.tooltip.top .tooltip-inner: hover{
+	background: rgb(138,0,35) !important;;
+}
+
+.tooltip.right .tooltip-arrow: hover{
+	background: rgb(138,0,35) !important;;
+}
+*/
+
+#memberStar img{
+	width: 0.6em;
+	height: auto;
+	vertical-align: initial;
+}
+
 @media (max-width: 767px){
 	.card {
 		margin-top: 1em;

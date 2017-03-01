@@ -24,6 +24,7 @@ var PurchaseConfirmationComponent = (function () {
         this.purchaseService = purchaseService;
         this.loginService = loginService;
         this.paymentHelper = {};
+        this.paymentHelper.isWaiting = false;
         if (this.purchaseService.serviceHelper.isRefresh) {
             this.router.navigate(['']);
         }
@@ -33,6 +34,8 @@ var PurchaseConfirmationComponent = (function () {
             this.productInfo = this.purchaseService.serviceHelper.productInfo;
             this.paymentHelper.receiverName = this.purchaseService.serviceHelper.receiverName;
             this.paymentHelper.cardData = this.purchaseService.serviceHelper.cardData;
+            this.paymentHelper.preTaxNFeeTotalPrice = this.purchaseService.serviceHelper.preTaxNFeeTotalPrice;
+            this.paymentHelper.preFeeTotalPrice = Math.round(this.paymentHelper.preTaxNFeeTotalPrice * 1.0625);
             this.purchaseCategory = this.purchaseService.serviceHelper.purchaseCategory;
             this.purchaseService.serviceHelper.isRefresh = true;
         }
@@ -49,14 +52,16 @@ var PurchaseConfirmationComponent = (function () {
     };
     PurchaseConfirmationComponent.prototype.onSubmit = function () {
         var _this = this;
+        this.paymentHelper.isWaiting = true;
         this.purchaseService.sendPurchase(this.squareCharge, this.productInfo).then(function (response) {
-            _this.purchaseService.serviceHelper.result = response.message;
+            _this.purchaseService.serviceHelper.result.message = response.message;
             _this.purchaseService.serviceHelper.isRefresh = false;
             if (response.code == '200') {
+                _this.purchaseService.serviceHelper.result.invoice = response.body;
                 _this.router.navigate(['purchase/result/success']);
             }
             else if (response.code == '510') {
-                _this.router.navigate(['purchase/result/problem']);
+                _this.router.navigate(['purchase/result/error']);
             }
             else {
                 _this.router.navigate(['purchase/result/fail']);
@@ -64,6 +69,7 @@ var PurchaseConfirmationComponent = (function () {
         });
     };
     PurchaseConfirmationComponent.prototype.parsePrice = function (price) {
+        price = Math.round(price);
         return parseFloat(price) / 100;
     };
     PurchaseConfirmationComponent.prototype.onModify = function () {

@@ -7,21 +7,21 @@
   </div>
   <div class="container" [hidden]="purchaseObject == null">
     <div class="row">
-      <div class="col-lg-8 col-sm-12" *ngIf="purchaseObject">
+      <div class="col-lg-8 col-sm-12">
         <div class="productInfo">
-          <h1>{{purchaseObject.title}}<span *ngIf="purchaseCategory=='activity'"> —— 聚會入場券</span></h1>
+          <h1 *ngIf="purchaseObject">{{purchaseObject.title}}<span *ngIf="purchaseCategory=='activity'"> —— 聚會入場券</span></h1>
             <div *ngIf="!user">
               <button type="button" routerLink="/login" class="btn btn-md btn-confirm btn-row">登錄購買</button>
               <button type="button" routerLink="/signup" class="btn btn-md btn-cancel">新用戶購買</button>
             </div>
-          <p id="priceTage">價格: {{parsePrice(purchaseObject.price)}} USD</p>
-          <div class="form-group row">
+          <p id="priceTage" *ngIf="purchaseObject">價格: {{parsePrice(purchaseObject.price)}} USD</p>
+          <div class="form-group row" *ngIf="productInfo">
             <label for="name" class="col-lg-4 col-form-label"><span *ngIf="purchaseCategory=='activity'">非會員入場券</span>購買數量:</label>
             <div class="col-lg-2">
-              <input type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" [(ngModel)]="productInfo.baseQuantity" name="name" placeholder="Enter Quantity" required>
+              <input type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" [(ngModel)]="productInfo.baseQuantity" name="name" placeholder="Enter Quantity" min="0" required>
             </div>
           </div>
-          <div *ngIf="purchaseCategory=='activity'">
+          <div *ngIf="purchaseCategory=='activity'&&purchaseObject">
             <p id="priceTage">會員價格: {{parsePrice(purchaseObject.memberPrice)}} USD</p>
             <div class="form-group row">
               <label for="name" class="col-lg-5 col-form-label">購買會員入場券（專供）: </label>
@@ -39,11 +39,11 @@
               </div>
             </div>
           </div>
-          <p>描述: {{purchaseObject.description}}</p>
-          <img src="{{purchaseObject.imageLink}}" alt="Image" *ngIf="purchaseObject.imageLink" class="img-fluid">
-          <div *ngIf="purchaseCategory=='product'" id="productDetail">
+          <p *ngIf="purchaseObject">描述: {{purchaseObject.description}}</p>
+          <img src="{{purchaseObject.imageLink}}" alt="Image" *ngIf="purchaseObject&&purchaseObject.imageLink" class="img-fluid">
+          <div [hidden]="purchaseCategory=='activity'" id="productDetail">
             <p>商品細節：</p>
-            <p>{{purchaseObject.detail}}</p>
+            <div #detailContainer></div>
           </div>
 
         </div>
@@ -56,7 +56,7 @@
   <form (ngSubmit)="onSubmit()">
   <h4>收貨人姓名</h4>
   <div class="form-group">
-    <input type="text" class="form-control" id="name" placeholder="Enter name" name="name" [(ngModel)]="paymentHelper.receiverName" required>
+    <input type="text" class="form-control" id="name" placeholder="Enter name" name="name" [(ngModel)]="paymentHelper.receiverName" maxlength="20" required>
   </div>
 
   <div class="form-group row">
@@ -145,7 +145,7 @@
 
       <h4>留言</h4>
         <div class="form-group">
-          <textarea class="form-control" id="exampleTextarea" rows="3" name="comment" [(ngModel)]="productInfo.comment"></textarea>
+          <textarea class="form-control" id="exampleTextarea" rows="3" name="comment" [(ngModel)]="productInfo.comment" maxlength="120"></textarea>
         </div>
       <button type="submit" id="submitButton" [hidden]="true"></button>
   </form>

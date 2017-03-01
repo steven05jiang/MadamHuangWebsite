@@ -3,3 +3,56 @@
   background-size: 100% auto;
   color: #fff;
 }
+
+#payment-result h1{
+	font-size: 4.5em;
+}
+
+#payment-result h2{
+	font-size: 3em;
+}
+
+#payment-result p{
+	margin-top: 1em;
+}
+
+@media(max-width:991px){
+	#payment-result h1{
+		font-size: 3.5em;
+	}
+
+	#payment-result h2{
+		font-size: 2.5em;
+	}
+}
+	
+
+@media(max-width:767px){
+	#payment-result h1{
+		font-size: 2.5em;
+	}
+
+	#payment-result h2{
+		font-size: 1.8em;
+	}
+
+	.display-3 {
+		font-size: 2em;
+	}
+
+	.lead {
+		font-size: 1em;
+	}
+}
+
+
+@media(max-width:575px){
+	#payment-result h1{
+		font-size: 1.5em;
+	}
+
+	#payment-result h2{
+		font-size: 1em;
+	}
+}
+

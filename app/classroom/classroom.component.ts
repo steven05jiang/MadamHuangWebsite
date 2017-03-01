@@ -30,6 +30,8 @@ export class ClassroomComponent implements OnInit {
 
 	message: string;
 	subscription: any;
+
+	defaultImage = 'image/loading.png';
 	constructor(
 		private classroomService: ClassroomService,
 		private router: Router,

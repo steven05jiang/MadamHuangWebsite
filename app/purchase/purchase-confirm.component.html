@@ -35,6 +35,14 @@
 		      <td>{{productInfo.memberQuantity}}</td>
 		    </tr>
 		    <tr>
+		      <td>消費稅（6.25%）</td>
+		      <td>{{parsePrice(paymentHelper.preTaxNFeeTotalPrice*0.0625)}}</td>
+		    </tr>
+		    <tr>
+		      <td>交易手續費（NO REFUNDABLE）</td>
+		      <td>{{parsePrice(squareCharge.amount_money.amount-paymentHelper.preFeeTotalPrice)}}</td>
+		    </tr>
+		    <tr>
 		      <td>總價（未包含手續費）</td>
 		      <td>{{parsePrice(squareCharge.amount_money.amount)}}</td>
 		    </tr>
@@ -75,7 +83,7 @@
 		    </tr>
 		  </tbody>
 		</table>
-		<button type="submit" (click)="onSubmit()" class="btn btn-md btn-confirm btn-row">確認訂單</button>
+		<button type="submit" (click)="onSubmit()" class="btn btn-md btn-confirm btn-row" [disabled]="paymentHelper.isWaiting">確認訂單</button>
 		<button type="button" (click)="onModify()" class="btn btn-md btn-cancel">修改訂單</button>
 	</div>
 </div>

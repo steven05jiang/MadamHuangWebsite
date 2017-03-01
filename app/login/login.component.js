@@ -22,6 +22,8 @@ var LoginComponent = (function () {
         this.router = router;
         this.activatedRoute = activatedRoute;
         this.http = http;
+        this.loginHelper = {};
+        this.loginHelper.isWaiting = false;
         this.loginUser = new user_1.User();
         this.loginUser.username = '';
         this.loginUser.password = '';
@@ -34,11 +36,13 @@ var LoginComponent = (function () {
                 _this.loginUser = _this.user;
                 _this.router.navigate(['']);
             }
+            _this.loginHelper.isWaiting = false;
             _this.message = $event.message;
         });
     }
     LoginComponent.prototype.login = function () {
         this.clearMessage();
+        this.loginHelper.isWaiting = true;
         this.loginService.signin(this.loginUser);
     };
     LoginComponent.prototype.clearMessage = function () {

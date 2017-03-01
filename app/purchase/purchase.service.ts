@@ -33,9 +33,10 @@ export class PurchaseService {
     this.serviceHelper.productInfo = null;
     this.serviceHelper.purchaseObject = null;
     this.serviceHelper.receiverName = null;
+    this.serviceHelper.preTaxNFeeTotalPrice = null;
     this.serviceHelper.cardData = {};
-    this.serviceHelper.result = null;
     this.serviceHelper.purchaseCategory = null;
+    this.serviceHelper.result = {};
   }
 
   sendPurchase(charge: SquareCharge, info: ProductInfo): Promise<APIResponse> {

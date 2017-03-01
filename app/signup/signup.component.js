@@ -27,6 +27,8 @@ var SignupComponent = (function () {
         });
         this.passwordHelper = {};
         this.passwordHelper.confirmPassword = '';
+        this.signupHelper = {};
+        this.signupHelper.isWaiting = false;
         //console.log('loginComponent: constructor called');
         this.subscription = this.loginService.getStatusChangeEmitter()
             .subscribe(function ($event) {
@@ -35,6 +37,7 @@ var SignupComponent = (function () {
                 _this.newUser = _this.user;
                 _this.router.navigate(['']);
             }
+            _this.signupHelper.isWaiting = false;
             _this.message = $event.message;
         });
     }
@@ -43,6 +46,7 @@ var SignupComponent = (function () {
             this.message = '輸入密碼不一致';
         }
         else {
+            this.signupHelper.isWaiting = true;
             this.loginService.signup(this.newUser);
         }
     };
@@ -50,10 +54,6 @@ var SignupComponent = (function () {
         this.message = '';
     };
     SignupComponent.prototype.ngOnInit = function () {
-        // this.activatedRoute.params.forEach((params: Params) => {
-        //   let code = +params['code'];
-        //   this.message = Text.val(code); //code.toString();
-        // });
     };
     SignupComponent.prototype.ngOnDestroy = function () {
         this.subscription.unsubscribe();

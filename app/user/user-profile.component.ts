@@ -27,11 +27,7 @@ export class UserProfileComponent implements OnInit {
 		private activatedRoute: ActivatedRoute,
 		private loginService:LoginService
 		) {
-    this.user = this.loginService.user;
-    if(!this.user.imageLink){
-    	this.user.imageLink = Config.user_header_folder+'/book.jpg';
-    }
-    this.subscription = this.loginService.getStatusChangeEmitter()
+	this.subscription = this.loginService.getStatusChangeEmitter()
       .subscribe(($event:any) => {
         if($event.user) {
           this.user = $event.user;
@@ -41,8 +37,26 @@ export class UserProfileComponent implements OnInit {
           // TODO: message is not used for now.
           //this.message = $event.message;
     } );
+    this.user = this.loginService.user;
+    if(!this.user){
+    	this.router.navigate(['login']);
+    }else{
+    	if(!this.user.imageLink){
+	    	this.user.imageLink = Config.user_header_folder+'/book.jpg';
+	    }
+    	this.loginService.refreshToken(Config.getToken());
+    }
+
 	}
 	ngOnInit(): void {
+		$(() => {
+		  $('[data-toggle="tooltip"]').tooltip();
+		  //$('.tooltip-arrow').css('background', 'rgb(138,0,35)');
+		  //$('[data-toggle="tooltip"]').hover(()=>{
+		    //$('.tooltip-inner').css('background', 'rgb(138,0,35)');
+		    //$('.tooltip.top-right .tooltip-arrow').css('background', 'rgb(138,0,35)');
+			//});
+		});
 	}
 
 	ngOnDestroy() {

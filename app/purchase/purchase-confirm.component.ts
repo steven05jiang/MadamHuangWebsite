@@ -40,6 +40,7 @@ export class PurchaseConfirmationComponent implements OnInit {
 		private loginService:LoginService
 		) {
 			this.paymentHelper = {};
+			this.paymentHelper.isWaiting = false;
 			if(this.purchaseService.serviceHelper.isRefresh){
 				this.router.navigate(['']);
 			}else{
@@ -48,6 +49,8 @@ export class PurchaseConfirmationComponent implements OnInit {
 		  		this.productInfo = this.purchaseService.serviceHelper.productInfo;
 		  		this.paymentHelper.receiverName = this.purchaseService.serviceHelper.receiverName;
 		  		this.paymentHelper.cardData = this.purchaseService.serviceHelper.cardData
+		  		this.paymentHelper.preTaxNFeeTotalPrice = this.purchaseService.serviceHelper.preTaxNFeeTotalPrice;
+		  		this.paymentHelper.preFeeTotalPrice = Math.round(this.paymentHelper.preTaxNFeeTotalPrice*1.0625);
 		  		this.purchaseCategory = this.purchaseService.serviceHelper.purchaseCategory;
 		  		this.purchaseService.serviceHelper.isRefresh = true;
 			}
@@ -67,14 +70,16 @@ export class PurchaseConfirmationComponent implements OnInit {
   	}
 
   	onSubmit(){
+  	this.paymentHelper.isWaiting = true;
   	this.purchaseService.sendPurchase(this.squareCharge, this.productInfo).then(
       	response => {
-      		this.purchaseService.serviceHelper.result = response.message;
+      		this.purchaseService.serviceHelper.result.message = response.message;
       		this.purchaseService.serviceHelper.isRefresh = false;
       		if(response.code == '200'){
+      			this.purchaseService.serviceHelper.result.invoice = response.body;
       			this.router.navigate(['purchase/result/success']);
       		}else if(response.code == '510'){
-      			this.router.navigate(['purchase/result/problem']);
+      			this.router.navigate(['purchase/result/error']);
       		}else{
       			this.router.navigate(['purchase/result/fail']);
       		}
@@ -82,6 +87,7 @@ export class PurchaseConfirmationComponent implements OnInit {
   	}
 
   	parsePrice(price: any){
+  		price = Math.round(price);
 		return parseFloat(price)/100;
 	}
 

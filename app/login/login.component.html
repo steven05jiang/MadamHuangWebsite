@@ -5,18 +5,18 @@
    <form>
    <div class="form-group">
      <label for="username">用戶名</label>
-     <input type="text" class="form-control" [(ngModel)]="loginUser.username" name="username" placeholder="Username" required 
+     <input type="text" class="form-control" [(ngModel)]="loginUser.username" name="username" placeholder="Username" maxlength="20" required 
      (input)="clearMessage()"/>
    </div>
    <div class="form-group">
      <label for="password">密碼</label>
-     <input type="password" class="form-control" [(ngModel)]="loginUser.password" name="password" placeholder="Password" required
+     <input type="password" class="form-control" [(ngModel)]="loginUser.password" name="password" placeholder="Password" maxlength="45" required
      (input)="clearMessage()"/>
    </div>
    <div *ngIf="message" class="alert alert-danger">
      {{ message }}
    </div>
-   <button type="submit" class="btn btn-confirm btn-md btn-block" (click)="login()">Submit</button>
+   <button type="submit" class="btn btn-confirm btn-md btn-block" (click)="login()" [disabled]="loginHelper.isWaiting">Submit</button>
    </form>
      &copy; All Rights Reserved.
 </div>

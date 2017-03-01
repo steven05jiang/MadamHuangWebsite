@@ -3,3 +3,13 @@
   background-size: 100% auto;
   color: #fff;
 }
+
+@media (max-width:767px) {
+	.display-3 {
+		font-size: 2em;
+	}
+
+	.lead {
+		font-size: 1em;
+	}
+}

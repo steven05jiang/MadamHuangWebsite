@@ -15,14 +15,20 @@ export class ContactComponent implements OnInit{
 	msg: Message;
 	subscription: any;
 	message: string;
+  messageHelper: any;
+
+
 
   constructor(private contactService: ContactService,private http: Http) {
-  	this.msg = new Message();
+  	this.messageHelper = {};
+    this.messageHelper.isWaiting = false;
+    this.msg = new Message();
   	this.subscription = this.contactService.getStatusChangeEmitter()
         .subscribe(($event:any) => {
           if($event.object != null){
             this.msg = new Message();
           }
+          this.messageHelper.isWaiting = false;
           this.message = $event.message;
         });
   }
@@ -30,15 +36,21 @@ export class ContactComponent implements OnInit{
   ngOnInit(): void {
 	}
 
-	 ngOnDestroy() {
+	ngOnDestroy() {
     this.subscription.unsubscribe();
   }
 
-    clearMessage() {
+  clearMessage() {
     this.message = '';
   }
 
   onSubmit() {
-  	this.contactService.sendMessage(this.msg);
+    this.messageHelper.isWaiting = true;
+    if(!this.messageHelper.requiredMessage){
+      this.contactService.sendMessage(this.msg);
+    }else{
+      this.messageHelper.isWaiting = false;
+      this.msg = new Message();
+    }
   }
 }

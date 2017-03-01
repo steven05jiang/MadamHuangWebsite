@@ -42,7 +42,7 @@
 							<p class="card-text">您的信息</p>
 
 							<div class="btn-group" role="group">
-								<div><button type="submit" (click)="onSubmit()" class="btn btn-md btn-confirm btn-row">確認更改</button></div>
+								<div><button type="submit" (click)="onSubmit()" class="btn btn-md btn-confirm btn-row" [disabled]="editHelper.isWaiting">確認更改</button></div>
 								<div><button type="button" (click)="onCancel()" class="btn btn-md btn-cancel">取消更改</button></div>
 							</div>
 						</div>
@@ -57,7 +57,7 @@
 							<div class="card-block">
 								<h4 class="card-title">「 名 」 First Name</h4>
 								<div class="form-group card-text">
-									<input type="text" class="form-control" name="firstName" [(ngModel)]="updatedUser.firstName"/>
+									<input type="text" class="form-control" name="firstName" [(ngModel)]="updatedUser.firstName" maxlength="20"/>
 								</div>
 							</div>
 						</div>
@@ -65,7 +65,7 @@
 							<div class="card-block">
 								<h4 class="card-title">「 姓 」 Last Name</h4>
 								<div class="form-group card-text">
-									<input type="text" class="form-control" name="lastName" [(ngModel)]="updatedUser.lastName"/>
+									<input type="text" class="form-control" name="lastName" [(ngModel)]="updatedUser.lastName" maxlength="20"/>
 								</div>
 							</div>
 						</div>
@@ -73,7 +73,7 @@
 							<div class="card-block">
 								<h4 class="card-title">「 電子郵件 」 Email</h4>
 								<div class="form-group card-text">
-									<input type="email" class="form-control" name="email" [(ngModel)]="updatedUser.email"/>
+									<input type="email" class="form-control" name="email" [(ngModel)]="updatedUser.email" maxlength="45" required/>
 								</div>
 							</div>
 						</div>
@@ -81,7 +81,7 @@
 							<div class="card-block">
 								<h4 class="card-title">「 電話號碼 」 Telephone</h4>
 								<div class="form-group card-text">
-									<input type="tel" class="form-control" name="tel" [(ngModel)]="updatedUser.tel" placeholder="Enter telephone"/>
+									<input type="tel" class="form-control" name="tel" [(ngModel)]="updatedUser.tel" placeholder="Enter telephone" maxlength="20"/>
 								</div>
 							</div>
 						</div>
@@ -89,7 +89,7 @@
 							<div class="card-block">
 								<h4 class="card-title">「 地址第一行 」 Address Line 1</h4>
 								<div class="form-group card-text">
-									<input type="text" class="form-control" name="addr1" [(ngModel)]="updatedUser.addressLine1"/>
+									<input type="text" class="form-control" name="addr1" [(ngModel)]="updatedUser.addressLine1" maxlength="45"/>
 								</div>
 							</div>
 						</div>
@@ -97,7 +97,7 @@
 							<div class="card-block">
 								<h4 class="card-title">「 地址第二行 」 Address Line 2</h4>
 								<div class="form-group card-text">
-									<input type="text" class="form-control" name="addr2" [(ngModel)]="updatedUser.addressLine2"/>
+									<input type="text" class="form-control" name="addr2" [(ngModel)]="updatedUser.addressLine2" maxlength="45"/>
 								</div>
 							</div>
 						</div>
@@ -107,7 +107,7 @@
 									<div class="card-block">
 										<h4 class="card-title">「 城市 」 City</h4>
 										<div class="form-group card-text">
-											<input type="text" class="form-control" name="city" [(ngModel)]="updatedUser.city"/>
+											<input type="text" class="form-control" name="city" [(ngModel)]="updatedUser.city" maxlength="20"/>
 										</div>
 									</div>
 								</div>
@@ -117,7 +117,7 @@
 									<div class="card-block">
 										<h4 class="card-title">「 州/省 」 State</h4>
 										<div class="form-group card-text">
-											<input type="text" class="form-control" name="state" [(ngModel)]="updatedUser.state"/>
+											<input type="text" class="form-control" name="state" [(ngModel)]="updatedUser.state" maxlength="20"/>
 										</div>
 									</div>
 								</div>
@@ -129,7 +129,7 @@
 									<div class="card-block">
 										<h4 class="card-title">「 郵編 」 Zip Code</h4>
 										<div class="form-group card-text">
-											<input type="text" class="form-control" name="zipCode" [(ngModel)]="updatedUser.zipCode"/>
+											<input type="text" class="form-control" name="zipCode" [(ngModel)]="updatedUser.zipCode" maxlength="10"/>
 										</div>
 									</div>
 								</div>
@@ -139,7 +139,7 @@
 									<div class="card-block">
 										<h4 class="card-title">「 國家 」 Country</h4>
 										<div class="form-group card-text">
-											<input type="text" class="form-control" name="country" [(ngModel)]="updatedUser.country"/>
+											<input type="text" class="form-control" name="country" [(ngModel)]="updatedUser.country" maxlength="20"/>
 										</div>
 									</div>
 								</div>

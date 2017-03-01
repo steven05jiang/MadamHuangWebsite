@@ -1,7 +1,9 @@
 <div class="main" *ngIf="user">
 	<div class="jumbotron jumbotron-fluid">
 		<div class="container">
-			<h1 class="display-3">{{user.username}}</h1>
+			<h1 class="display-3">{{user.username}}
+			 <span id="memberStar" data-toggle="tooltip" data-placement="right" title="黃夫人俱樂部的尊貴會員" *ngIf="user.isMember"><img src="image/star.png"></span>
+			</h1>
 			<p class="lead">歡迎來到您的信息中心，在這裡您可以隨時更改您的相關信息</p>
 		</div>
 	</div>
@@ -11,7 +13,7 @@
 				<div class="card card-profile">
 					<img class="card-img-top img-fluid" [src]="defaultImage" [lazyLoad]="user.imageLink" alt="Image">
 					<div class="card-block">
-						<h4 class="card-title">你好{{user.username}}！</h4>
+						<h4 class="card-title">您好 {{user.username}}！</h4>
 						<p class="card-text">您可以點擊「 修改資料 」更新您的信息，或者點擊「 修改密碼 」更改密碼信息</p>
 						<div class="btn-group" role="group">
 							<div><button routerLink="/user-edit" class="btn btn-md btn-confirm btn-row">修改資料</button></div>

@@ -17,6 +17,11 @@
 	margin-top: 1em;
 }
 
+#requiredMessage{
+  position: absolute;
+  top: -100em;
+}
+
 
 @media(max-width:767px){
   #contactInfo {

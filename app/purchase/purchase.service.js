@@ -24,9 +24,10 @@ var PurchaseService = (function () {
         this.serviceHelper.productInfo = null;
         this.serviceHelper.purchaseObject = null;
         this.serviceHelper.receiverName = null;
+        this.serviceHelper.preTaxNFeeTotalPrice = null;
         this.serviceHelper.cardData = {};
-        this.serviceHelper.result = null;
         this.serviceHelper.purchaseCategory = null;
+        this.serviceHelper.result = {};
     }
     PurchaseService.prototype.sendPurchase = function (charge, info) {
         var _this = this;

@@ -32,6 +32,7 @@ export class ChangePasswordComponent implements OnInit {
 
       console.log('loginComponent: constructor called');
       this.passwordHelper = {};
+      this.passwordHelper.isWaiting = false;
       this.passwordHelper.oldPassword = '';
       this.passwordHelper.confirmPassword = '';
       this.passwordHelper.newPassword = '';
@@ -44,6 +45,7 @@ export class ChangePasswordComponent implements OnInit {
           }else{
             this.router.navigate(['login']);
           }
+          this.passwordHelper.isWaiting = false;
           this.message = $event.message;
         } );
   }
@@ -52,6 +54,7 @@ export class ChangePasswordComponent implements OnInit {
     if(this.passwordHelper.newPassword != this.passwordHelper.confirmPassword) {
       this.message = '輸入密碼不一致';
     }else {
+      this.passwordHelper.isWaiting = true;
       this.loginService.changePassword(this.passwordHelper).then(
         user => this.router.navigate(['/profile'])
       );

@@ -26,6 +26,8 @@ var HomeComponent = (function () {
         this.contactService = contactService;
         this.http = http;
         this.document = document;
+        this.messageHelper = {};
+        this.messageHelper.isWaiting = false;
         this.animationHelper = {};
         this.animationHelper.badge1 = false;
         this.animationHelper.badge2 = false;
@@ -40,6 +42,7 @@ var HomeComponent = (function () {
             if ($event.object != null) {
                 _this.msg = new contact_1.Message();
             }
+            _this.messageHelper.isWaiting = false;
             _this.message = $event.message;
         });
     }
@@ -83,7 +86,14 @@ var HomeComponent = (function () {
         this.message = '';
     };
     HomeComponent.prototype.onSubmit = function () {
-        this.contactService.sendMessage(this.msg);
+        this.messageHelper.isWaiting = true;
+        if (!this.messageHelper.requiredMessage) {
+            this.contactService.sendMessage(this.msg);
+        }
+        else {
+            this.messageHelper.isWaiting = false;
+            this.msg = new contact_1.Message();
+        }
     };
     return HomeComponent;
 }());

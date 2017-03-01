@@ -18,12 +18,15 @@ var ContactComponent = (function () {
         var _this = this;
         this.contactService = contactService;
         this.http = http;
+        this.messageHelper = {};
+        this.messageHelper.isWaiting = false;
         this.msg = new contact_1.Message();
         this.subscription = this.contactService.getStatusChangeEmitter()
             .subscribe(function ($event) {
             if ($event.object != null) {
                 _this.msg = new contact_1.Message();
             }
+            _this.messageHelper.isWaiting = false;
             _this.message = $event.message;
         });
     }
@@ -36,7 +39,14 @@ var ContactComponent = (function () {
         this.message = '';
     };
     ContactComponent.prototype.onSubmit = function () {
-        this.contactService.sendMessage(this.msg);
+        this.messageHelper.isWaiting = true;
+        if (!this.messageHelper.requiredMessage) {
+            this.contactService.sendMessage(this.msg);
+        }
+        else {
+            this.messageHelper.isWaiting = false;
+            this.msg = new contact_1.Message();
+        }
     };
     return ContactComponent;
 }());
