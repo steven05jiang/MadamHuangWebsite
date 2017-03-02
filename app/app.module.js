@@ -38,6 +38,7 @@ var purchase_result_component_1 = require("./purchase/purchase-result.component"
 var user_profile_component_1 = require("./user/user-profile.component");
 var user_edit_component_1 = require("./user/user-edit.component");
 var user_change_password_component_1 = require("./user/user-change-password.component");
+var user_service_1 = require("./user/user.service");
 var menu_component_1 = require("./menu/menu.component");
 var footer_component_1 = require("./footer/footer.component");
 var app_routing_module_1 = require("./app-routing.module");
@@ -94,6 +95,7 @@ AppModule = __decorate([
             classroom_service_1.ClassroomService,
             activity_service_1.ActivityService,
             purchase_service_1.PurchaseService,
+            user_service_1.UserService,
             WINDOW_PROVIDER
         ],
         bootstrap: [

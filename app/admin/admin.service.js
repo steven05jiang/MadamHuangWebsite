@@ -102,6 +102,26 @@ var AdminService = (function () {
         })
             .catch(function (ex) { return _this.handleError(ex); });
     };
+    AdminService.prototype.getInvoices = function (page, size) {
+        var _this = this;
+        var apiRequest = ({
+            apiKey: '',
+            operator: '',
+            token: config_1.Config.getToken(),
+            page: page,
+            size: size
+        });
+        var url = config_1.Config.api_host + '/invoices';
+        //console.log(JSON.stringify(apiRequest));
+        return this.http.post(url, JSON.stringify(apiRequest), { headers: this.headers })
+            .toPromise()
+            .then(function (response) {
+            var token = response.json().token;
+            localStorage.setItem('token', token);
+            return response.json();
+        })
+            .catch(function (ex) { return _this.handleError(ex); });
+    };
     AdminService.prototype.updateActivity = function (activity) {
         //console.log('API Host: ' + Config.api_host);
         var _this = this;

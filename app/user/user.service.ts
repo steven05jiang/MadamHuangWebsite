@@ -11,7 +11,7 @@ import { APIResponse } from '../common/api-response';
 import 'rxjs/add/operator/toPromise';
 
 @Injectable()
-export class ArticleService {
+export class UserService {
 
   message: string;
   size: number = Config.PAGE_NUM;
@@ -21,31 +21,27 @@ export class ArticleService {
 
   constructor(private http: Http) {}
 
-
-  // TODO: change get request to POST request using APIRequest
-  // TODO: add token to the request
-  getObject(username: string): Promise<APIResponse> {
+   getMyInvoices(page: number, size: number): Promise<APIResponse> {
       let apiRequest = <APIRequest>({
           apiKey: '',
           operator: '',
-          token: '',
-          body: {'username':username}
+          token: Config.getToken(),
+          page: page,
+          size: size
       });
-      const url = Config.api_host + '/myprofile';
+      const url = Config.api_host + '/invoices-user';
       //console.log(JSON.stringify(apiRequest));
 
       return this.http.post(url, JSON.stringify(apiRequest), {headers: this.headers})
       .toPromise()
       .then(response => {
-          if(response.json().code == '200') {
-            return response.json() as APIResponse;
-          } else {
-            this.message = Text.val(500);
-            this.emitStatusChangeEvent(null, this.message);
-          }
+        let token = response.json().token;
+        localStorage.setItem('token', token);
+        return response.json() as APIResponse;
         })
         .catch((ex) => this.handleError(ex));
   }
+
 
   private handleError(error: any) {
     this.emitStatusChangeEvent(null, Text.val(500));

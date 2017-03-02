@@ -123,6 +123,72 @@
 
 	<hr>
 	<section>
+			<h4>Invoices</h4>
+				<button (click)="getInvoices(adminHelper.invoicePage-1)" class="btn btn-confirm">Previous</button>
+				<button (click)="getInvoices(adminHelper.invoicePage+1)" class="btn btn-confirm">Next</button>
+				Current Page: {{adminHelper.invoicePage+1}} | Total Pages: {{adminHelper.invoiceTotalPage}}
+			<div>
+				<table class="table table-bordered table-hover table-condensed">
+					<tr>
+						<th>Invoice#</th>
+						<th>Created Date</th>
+						<th>Name</th>
+						<th>Type</th>
+						<th>Product Id</th>
+						<th>Price</th>
+						<th>Quantity</th>
+						<th>M-Price</th>
+						<th>M-Quantity</th>
+						<th>Total(+Tax+Fee)</th>
+						<th>Comment</th>
+						<th>Transaction Id</th>
+					</tr>
+					<ng-container *ngIf="invoices">
+					<tr *ngFor="let invoice of (invoices | idDscd)">
+						<td align="center">
+							{{invoice.id}}
+						</td>
+						<td align="center">
+							{{invoice.createdDate | date:"MM/dd/yy"}}
+						</td>
+						<td>
+							{{invoice.note}}
+						</td>
+						<td>
+							{{invoice.productCategory}}
+						</td>
+						<td>
+							{{invoice.productId}}
+						</td>
+						<td>
+							{{invoice.basePrice}}
+						</td>
+						<td>
+							{{invoice.baseQuantity}}
+						</td>
+						<td>
+							{{invoice.memberPrice}}
+						</td>
+						<td>
+							{{invoice.memberQuantity}}
+						</td>
+						<td>
+							{{invoice.totalPrice}}
+						</td>
+						<td>
+							{{invoice.comment}}
+						</td>
+						<td>
+							{{invoice.transactionId}}
+						</td>
+				</tr>
+				</ng-container>
+			</table>
+		</div>
+	</section>
+
+	<hr>
+	<section>
 			<h4>Classroom Items</h4>
 			<button (click)="newClassroomItem()" class="btn btn-confirm">New Item</button>
 				<button (click)="getClassroomItems(adminHelper.classroomItemPage-1)" class="btn btn-confirm">Previous</button>

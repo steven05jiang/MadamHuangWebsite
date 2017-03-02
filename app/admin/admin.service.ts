@@ -126,6 +126,27 @@ export class AdminService {
         .catch((ex) => this.handleError(ex));
   }
 
+   getInvoices(page: number, size: number): Promise<APIResponse> {
+      let apiRequest = <APIRequest>({
+          apiKey: '',
+          operator: '',
+          token: Config.getToken(),
+          page: page,
+          size: size
+      });
+      const url = Config.api_host + '/invoices';
+      //console.log(JSON.stringify(apiRequest));
+
+      return this.http.post(url, JSON.stringify(apiRequest), {headers: this.headers})
+      .toPromise()
+      .then(response => {
+        let token = response.json().token;
+        localStorage.setItem('token', token);
+        return response.json() as APIResponse;
+        })
+        .catch((ex) => this.handleError(ex));
+  }
+
   updateActivity(activity: Activity): Promise<APIResponse> {
 
     //console.log('API Host: ' + Config.api_host);

@@ -63,6 +63,10 @@ var AdminComponent = (function () {
         this.adminHelper.contactPage = 0;
         this.adminHelper.contactTotalPage = 1;
         this.adminHelper.contactMessage = '';
+        this.adminHelper.invoiceSize = 10;
+        this.adminHelper.invoicePage = 0;
+        this.adminHelper.invoiceTotalPage = 1;
+        this.adminHelper.invoiceMessage = '';
         this.subscription = this.loginService.getStatusChangeEmitter()
             .subscribe(function ($event) {
             if (!$event.user) {
@@ -79,6 +83,7 @@ var AdminComponent = (function () {
     AdminComponent.prototype.ngOnInit = function () {
         this.getArticles(this.adminHelper.articlePage);
         this.getContacts(this.adminHelper.contactPage);
+        this.getInvoices(this.adminHelper.invoicePage);
         this.getActivities(this.adminHelper.activityPage);
         this.getProducts(this.adminHelper.productPage);
         this.getClassroomItems(this.adminHelper.classroomItemPage);
@@ -202,6 +207,27 @@ var AdminComponent = (function () {
             }
             else {
                 _this.adminHelper.contactMessage = response.message;
+            }
+        });
+    };
+    AdminComponent.prototype.getInvoices = function (page) {
+        var _this = this;
+        if (page < 0 || (this.adminHelper.invoiceTotalPage != null && page >= this.adminHelper.invoiceTotalPage)) {
+            alert('No more invoices.');
+            return;
+        }
+        this.adminService.getInvoices(page, this.adminHelper.invoiceSize).then(function (response) {
+            if (response.token == null) {
+                _this.loginService.signout();
+                return;
+            }
+            if (response.code == '200') {
+                _this.adminHelper.invoicePage = page;
+                _this.adminHelper.invoiceTotalPage = response.totalPages;
+                _this.invoices = response.body;
+            }
+            else {
+                _this.adminHelper.invoiceMessage = response.message;
             }
         });
     };

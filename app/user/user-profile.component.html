@@ -76,5 +76,40 @@
 				</div>
 			</div>
 		</div>
+				<div>
+				<hr>
+					<button (click)="getMyInvoices(invoiceHelper.invoicePage)" class="btn btn-confirm" [disabled]="invoices != null">查看購買記錄</button>
+					<span [hidden]="invoices==null">
+					<button (click)="getMyInvoices(invoiceHelper.invoicePage-1)" class="btn btn-confirm">上一頁</button>
+					<button (click)="getMyInvoices(invoiceHelper.invoicePage+1)" class="btn btn-confirm">下一頁</button>
+					<br>當前頁數: {{invoiceHelper.invoicePage+1}} | 頁數: {{invoiceHelper.invoiceTotalPage}}
+					</span>
+				<div [hidden]="invoices==null">
+					<table class="table table-bordered table-hover table-condensed">
+						<tr>
+							<th>Name</th>
+							<th>Created Date</th>
+							<th>Total(+Tax+Fee)</th>
+							<th>Transaction Id</th>
+						</tr>
+						<ng-container *ngIf="invoices">
+						<tr *ngFor="let invoice of (invoices | idDscd)">
+							<td>
+								{{invoice.note}}
+							</td>
+							<td>
+								{{invoice.createdDate | date:"MM/dd/yy"}}
+							</td>
+							<td>
+								{{invoice.totalPrice}}
+							</td>
+							<td>
+								{{invoice.transactionId}}
+							</td>
+					</tr>
+					</ng-container>
+				</table>
+			</div>
+		</div>
 	</div>
 </div>

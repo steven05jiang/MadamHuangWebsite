@@ -44,6 +44,7 @@ import { PurchaseResultComponent }            from './purchase/purchase-result.c
 import { UserProfileComponent }  from './user/user-profile.component';
 import { UserEditComponent }  from './user/user-edit.component';
 import { ChangePasswordComponent }  from './user/user-change-password.component';
+import { UserService } from './user/user.service'
 
 import { MenuComponent }          from './menu/menu.component';
 import { FooterComponent }          from './footer/footer.component';
@@ -104,6 +105,7 @@ const WINDOW_PROVIDER: ValueProvider = {
   ClassroomService,
   ActivityService,
   PurchaseService,
+  UserService,
   WINDOW_PROVIDER
   ],
   bootstrap: [

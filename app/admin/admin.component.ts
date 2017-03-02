@@ -15,6 +15,7 @@ import { ActivityService }    from '../activity/activity.service';
 import { LoginService }    from '../login/login.service';
 import { AdminService }    from './admin.service';
 import { ClassroomService }           from '../classroom/classroom.service';
+import { ProductInfo } from '../purchase/purchase'
 
 
 
@@ -36,6 +37,7 @@ export class AdminComponent implements OnInit {
 	productNew: Product;
 	classroomItems: ClassroomItem[];
 	classroomItemNew: ClassroomItem;
+	invoices: ProductInfo[];
 
 	adminHelper: any;
 	user: User;
@@ -88,6 +90,11 @@ export class AdminComponent implements OnInit {
   	this.adminHelper.contactTotalPage = 1;
   	this.adminHelper.contactMessage = '';
 
+  	this.adminHelper.invoiceSize = 10;
+  	this.adminHelper.invoicePage = 0;
+  	this.adminHelper.invoiceTotalPage = 1;
+  	this.adminHelper.invoiceMessage = '';
+
 	this.subscription = this.loginService.getStatusChangeEmitter()
     .subscribe(($event:any) => {
     	if(!$event.user){
@@ -105,6 +112,7 @@ export class AdminComponent implements OnInit {
   	ngOnInit(): void {
   		this.getArticles(this.adminHelper.articlePage);
   		this.getContacts(this.adminHelper.contactPage);
+  		this.getInvoices(this.adminHelper.invoicePage);
   		this.getActivities(this.adminHelper.activityPage);
   		this.getProducts(this.adminHelper.productPage);
   		this.getClassroomItems(this.adminHelper.classroomItemPage);
@@ -239,6 +247,28 @@ export class AdminComponent implements OnInit {
 					this.contacts = response.body as Message[];
 				}else{
 					this.adminHelper.contactMessage = response.message;
+				}
+
+  		});
+	}
+
+	getInvoices(page: number){
+		if(page < 0 || (this.adminHelper.invoiceTotalPage != null && page >= this.adminHelper.invoiceTotalPage)){
+			alert('No more invoices.');
+			return;
+		}
+		this.adminService.getInvoices(page, this.adminHelper.invoiceSize).then(
+  			response => {
+  				if(response.token == null) {
+					this.loginService.signout();
+					return;
+				}
+				if(response.code == '200'){
+					this.adminHelper.invoicePage = page;
+					this.adminHelper.invoiceTotalPage = response.totalPages;
+					this.invoices = response.body as ProductInfo[];
+				}else{
+					this.adminHelper.invoiceMessage = response.message;
 				}
 
   		});

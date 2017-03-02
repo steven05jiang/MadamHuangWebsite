@@ -14,13 +14,20 @@ var router_1 = require("@angular/router");
 var router_2 = require("@angular/router");
 var config_1 = require("../common/config");
 var login_service_1 = require("../login/login.service");
+var user_service_1 = require("./user.service");
 var UserProfileComponent = (function () {
-    function UserProfileComponent(router, activatedRoute, loginService) {
+    function UserProfileComponent(router, activatedRoute, loginService, userService) {
         var _this = this;
         this.router = router;
         this.activatedRoute = activatedRoute;
         this.loginService = loginService;
+        this.userService = userService;
         this.defaultImage = 'image/loading.png';
+        this.invoiceHelper = {};
+        this.invoiceHelper.invoiceSize = 10;
+        this.invoiceHelper.invoicePage = 0;
+        this.invoiceHelper.invoiceTotalPage = 1;
+        this.invoiceHelper.invoiceMessage = '';
         this.subscription = this.loginService.getStatusChangeEmitter()
             .subscribe(function ($event) {
             if ($event.user) {
@@ -56,6 +63,27 @@ var UserProfileComponent = (function () {
     UserProfileComponent.prototype.ngOnDestroy = function () {
         this.subscription.unsubscribe();
     };
+    UserProfileComponent.prototype.getMyInvoices = function (page) {
+        var _this = this;
+        if (page < 0 || (this.invoiceHelper.invoiceTotalPage != null && page >= this.invoiceHelper.invoiceTotalPage)) {
+            alert('No more invoices.');
+            return;
+        }
+        this.userService.getMyInvoices(page, this.invoiceHelper.invoiceSize).then(function (response) {
+            if (response.token == null) {
+                _this.loginService.signout();
+                return;
+            }
+            if (response.code == '200') {
+                _this.invoiceHelper.invoicePage = page;
+                _this.invoiceHelper.invoiceTotalPage = response.totalPages;
+                _this.invoices = response.body;
+            }
+            else {
+                _this.invoiceHelper.invoiceMessage = response.message;
+            }
+        });
+    };
     return UserProfileComponent;
 }());
 UserProfileComponent = __decorate([
@@ -67,7 +95,8 @@ UserProfileComponent = __decorate([
     }),
     __metadata("design:paramtypes", [router_1.Router,
         router_2.ActivatedRoute,
-        login_service_1.LoginService])
+        login_service_1.LoginService,
+        user_service_1.UserService])
 ], UserProfileComponent);
 exports.UserProfileComponent = UserProfileComponent;
 //# sourceMappingURL=user-profile.component.js.map

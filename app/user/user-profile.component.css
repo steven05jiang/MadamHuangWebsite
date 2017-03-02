@@ -43,6 +43,27 @@
 	vertical-align: initial;
 }
 
+table {
+	margin-top: 1em;
+	margin-bottom: 1em;
+	table-layout: fixed;
+    width: 100%;
+}
+
+table td {
+    word-wrap: break-word;         /* All browsers since IE 5.5+ */
+    overflow-wrap: break-word;     /* Renamed property in CSS3 draft spec */
+}
+
+table th {
+    word-wrap: break-word;         /* All browsers since IE 5.5+ */
+    overflow-wrap: break-word;     /* Renamed property in CSS3 draft spec */
+}
+
+button {
+	margin-bottom: 1em;
+}
+
 @media (max-width: 767px){
 	.card {
 		margin-top: 1em;
@@ -54,4 +75,9 @@
 	.lead {
 		font-size: 1em;
 	}
+
+	button {
+		font-size: 0.8em;
+	}
+
 }

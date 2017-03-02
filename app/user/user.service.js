@@ -13,53 +13,48 @@ var core_1 = require("@angular/core");
 var http_1 = require("@angular/http");
 var config_1 = require("../common/config");
 require("rxjs/add/operator/toPromise");
-var ArticleService = (function () {
-    function ArticleService(http) {
+var UserService = (function () {
+    function UserService(http) {
         this.http = http;
         this.size = config_1.Config.PAGE_NUM;
         this.statusChange = new core_1.EventEmitter();
         this.headers = new http_1.Headers({ 'Content-Type': 'application/json' });
     }
-    // TODO: change get request to POST request using APIRequest
-    // TODO: add token to the request
-    ArticleService.prototype.getObject = function (username) {
+    UserService.prototype.getMyInvoices = function (page, size) {
         var _this = this;
         var apiRequest = ({
             apiKey: '',
             operator: '',
-            token: '',
-            body: { 'username': username }
+            token: config_1.Config.getToken(),
+            page: page,
+            size: size
         });
-        var url = config_1.Config.api_host + '/myprofile';
+        var url = config_1.Config.api_host + '/invoices-user';
         //console.log(JSON.stringify(apiRequest));
         return this.http.post(url, JSON.stringify(apiRequest), { headers: this.headers })
             .toPromise()
             .then(function (response) {
-            if (response.json().code == '200') {
-                return response.json();
-            }
-            else {
-                _this.message = config_1.Text.val(500);
-                _this.emitStatusChangeEvent(null, _this.message);
-            }
+            var token = response.json().token;
+            localStorage.setItem('token', token);
+            return response.json();
         })
             .catch(function (ex) { return _this.handleError(ex); });
     };
-    ArticleService.prototype.handleError = function (error) {
+    UserService.prototype.handleError = function (error) {
         this.emitStatusChangeEvent(null, config_1.Text.val(500));
         //return Promise.reject(error.message || error);
     };
-    ArticleService.prototype.emitStatusChangeEvent = function (object, message) {
+    UserService.prototype.emitStatusChangeEvent = function (object, message) {
         this.statusChange.emit({ object: object, message: message });
     };
-    ArticleService.prototype.getStatusChangeEmitter = function () {
+    UserService.prototype.getStatusChangeEmitter = function () {
         return this.statusChange;
     };
-    return ArticleService;
+    return UserService;
 }());
-ArticleService = __decorate([
+UserService = __decorate([
     core_1.Injectable(),
     __metadata("design:paramtypes", [http_1.Http])
-], ArticleService);
-exports.ArticleService = ArticleService;
+], UserService);
+exports.UserService = UserService;
 //# sourceMappingURL=user.service.js.map
