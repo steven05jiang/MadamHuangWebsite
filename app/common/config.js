@@ -15,7 +15,7 @@ var Config = (function () {
     };
     return Config;
 }());
-Config.api_host = 'http://localhost:9000/api/v1';
+Config.api_host = 'https://madamhuang.com/api/v1:9000';
 Config.user_header_folder = 'image/headImage';
 Config.applicationId = 'sq0idp-ZLC5q6ns15LA8q6vDJY1Hg';
 //public static api_host: string = 'http://10.7.40.108:9000';
@@ -52,10 +52,4 @@ var Text = (function () {
     return Text;
 }());
 exports.Text = Text;
-//export const TEXTS: {[key:number]:string}[] = [
-//{[0]:'test'},
-//{[100]:'test'},
-//{[200]:'test'},
-//{[300]:'Failed - invalid user name or password!'}
-//];
 //# sourceMappingURL=config.js.map

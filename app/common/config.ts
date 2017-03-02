@@ -1,7 +1,7 @@
 
 export class Config {
 
-  public static api_host: string = 'http://madamhuang.com/api/v1';
+  public static api_host: string = 'https://madamhuang.com/api/v1:9000';
   public static user_header_folder: string = 'image/headImage';
   public static applicationId = 'sq0idp-ZLC5q6ns15LA8q6vDJY1Hg';
   //public static api_host: string = 'http://10.7.40.108:9000';
