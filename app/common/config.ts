@@ -14,7 +14,7 @@ export class Config {
     let date = new Date();
     let seconds = parseInt(secondStr);
     date.setTime(seconds);
-    console.log("ISO Time String: " + date.toISOString());
+    //console.log("ISO Time String: " + date.toISOString());
     return date.toISOString();
   }
 

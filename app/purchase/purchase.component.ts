@@ -170,10 +170,10 @@ export class PurchaseComponent implements OnInit {
 	          console.log("Encountered errors:");
 
 	          // This logs all errors encountered during nonce generation to the
-	          // Javascript console.
+	          // Javascript //console.
 	          alert(errors[0].message);
 	          errors.forEach((error:any) => {
-	            console.log('  ' + error.message);
+	           console.log('  ' + error.message);
 	          });
 	        } else {
 	          document.getElementById('card-nonce').value = nonce;
@@ -300,7 +300,7 @@ export class PurchaseComponent implements OnInit {
 
 	putMyAddr(){
 		if(this.user){
-			console.log("Start copy");
+			//console.log("Start copy");
 			this.squareCharge.shipping_address.address_line_1 = this.user.addressLine1;
 			this.squareCharge.shipping_address.address_line_2 = this.user.addressLine2;
 			this.squareCharge.shipping_address.locality = this.user.city;

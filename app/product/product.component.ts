@@ -66,7 +66,7 @@ export class ProductComponent implements OnInit {
 
 
 	openArticle(product: Product): void{
-		console.log('Ready to nav to article '+product.articleId);
+		//console.log('Ready to nav to article '+product.articleId);
 		this.router.navigate(['/article', product.articleId]);
 	}
 

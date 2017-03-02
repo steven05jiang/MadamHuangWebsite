@@ -29,7 +29,7 @@ var ArticleService = (function () {
             body: { 'id': id }
         });
         var url = config_1.Config.api_host + '/article';
-        console.log(JSON.stringify(apiRequest));
+        //console.log(JSON.stringify(apiRequest));
         return this.http.post(url, JSON.stringify(apiRequest), { headers: this.headers })
             .toPromise()
             .then(function (response) {
@@ -57,7 +57,7 @@ var ArticleService = (function () {
             size: size
         });
         var url = config_1.Config.api_host + '/articles';
-        console.log(JSON.stringify(apiRequest));
+        //console.log(JSON.stringify(apiRequest));
         return this.http.post(url, JSON.stringify(apiRequest), { headers: this.headers })
             .toPromise()
             .then(function (response) {

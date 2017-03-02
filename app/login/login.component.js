@@ -27,7 +27,7 @@ var LoginComponent = (function () {
         this.loginUser = new user_1.User();
         this.loginUser.username = '';
         this.loginUser.password = '';
-        console.log('loginComponent: constructor called');
+        //console.log('loginComponent: constructor called');
         this.message = this.loginService.message;
         this.subscription = this.loginService.getStatusChangeEmitter()
             .subscribe(function ($event) {

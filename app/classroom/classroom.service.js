@@ -32,14 +32,14 @@ var ClassroomService = (function () {
             size: size
         });
         var url = config_1.Config.api_host + '/classroomitems';
-        console.log(JSON.stringify(apiRequest));
+        //console.log(JSON.stringify(apiRequest));
         return this.http.post(url, JSON.stringify(apiRequest), { headers: this.headers })
             .toPromise()
             .then(function (response) {
             var token = response.json().token;
             localStorage.setItem('token', token);
             if (response.json().code == '200') {
-                //console.log(JSON.stringify(response.json()));
+                ////console.log(JSON.stringify(response.json()));
                 return response.json();
             }
             else {

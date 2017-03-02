@@ -33,7 +33,7 @@ export class ProductService {
           size: size
       });
       const url = Config.api_host + '/products';
-      console.log(JSON.stringify(apiRequest));
+      //console.log(JSON.stringify(apiRequest));
 
       return this.http.post(url, JSON.stringify(apiRequest), {headers: this.headers})
       .toPromise()
@@ -60,12 +60,12 @@ export class ProductService {
           }
       });
       const url = Config.api_host + '/product';
-      //console.log(JSON.stringify(apiRequest));
+      ////console.log(JSON.stringify(apiRequest));
 
       return this.http.post(url, JSON.stringify(apiRequest), {headers: this.headers})
       .toPromise()
       .then(response => {
-        console.log(JSON.stringify(response));
+        //console.log(JSON.stringify(response));
         let token = response.json().token;
         localStorage.setItem('token', token);
           if(response.json().code != '200') {

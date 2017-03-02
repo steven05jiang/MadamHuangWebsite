@@ -30,7 +30,7 @@ export class ArticleService {
           body: {'id':id}
       });
       const url = Config.api_host + '/article';
-      console.log(JSON.stringify(apiRequest));
+      //console.log(JSON.stringify(apiRequest));
 
       return this.http.post(url, JSON.stringify(apiRequest), {headers: this.headers})
       .toPromise()
@@ -58,7 +58,7 @@ export class ArticleService {
           size: size
       });
       const url = Config.api_host + '/articles';
-      console.log(JSON.stringify(apiRequest));
+      //console.log(JSON.stringify(apiRequest));
 
       return this.http.post(url, JSON.stringify(apiRequest), {headers: this.headers})
       .toPromise()

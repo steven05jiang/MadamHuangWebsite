@@ -22,8 +22,8 @@ var LoginService = (function () {
         this.headers = new http_1.Headers({ 'Content-Type': 'application/json' });
     }
     LoginService.prototype.signin = function (user) {
+        //console.log('API Host: ' + Config.api_host);
         var _this = this;
-        console.log('API Host: ' + config_1.Config.api_host);
         var url = config_1.Config.api_host + '/login';
         var apiRequest = ({
             apiKey: '',
@@ -31,16 +31,16 @@ var LoginService = (function () {
             token: '',
             body: user
         });
-        console.log(JSON.stringify(apiRequest));
+        //console.log(JSON.stringify(apiRequest));
         this.http.post(url, JSON.stringify(apiRequest), { headers: this.headers })
             .toPromise()
             .then(function (response) {
-            console.log(response);
+            //console.log(response);
             if (response.json().code == '200') {
                 var token = response.json().token;
                 localStorage.setItem('token', token);
                 _this.user = response.json().body;
-                console.log('Token: ' + token);
+                //console.log('Token: ' + token);
                 _this.emitStatusChangeEvent(_this.user, '');
                 // response.json().body;
             }
@@ -55,8 +55,8 @@ var LoginService = (function () {
             .catch(function (ex) { return _this.handleError(ex); });
     };
     LoginService.prototype.signup = function (user) {
+        //console.log('API Host: ' + Config.api_host);
         var _this = this;
-        console.log('API Host: ' + config_1.Config.api_host);
         var url = config_1.Config.api_host + '/signup';
         var apiRequest = ({
             apiKey: '',
@@ -64,16 +64,16 @@ var LoginService = (function () {
             token: '',
             body: user
         });
-        console.log(JSON.stringify(apiRequest));
+        //console.log(JSON.stringify(apiRequest));
         this.http.post(url, JSON.stringify(apiRequest), { headers: this.headers })
             .toPromise()
             .then(function (response) {
-            console.log(response);
+            //console.log(response);
             if (response.json().code == '200') {
                 var token = response.json().token;
                 localStorage.setItem('token', token);
                 _this.user = response.json().body;
-                console.log('Token: ' + token);
+                //console.log('Token: ' + token);
                 _this.emitStatusChangeEvent(_this.user, '');
                 // response.json().body;
             }
@@ -88,8 +88,8 @@ var LoginService = (function () {
             .catch(function (ex) { return _this.handleError(ex); });
     };
     LoginService.prototype.updateProfile = function (user) {
+        //console.log('API Host: ' + Config.api_host);
         var _this = this;
-        console.log('API Host: ' + config_1.Config.api_host);
         var url = config_1.Config.api_host + '/user-update';
         var apiRequest = ({
             apiKey: '',
@@ -97,16 +97,16 @@ var LoginService = (function () {
             token: config_1.Config.getToken(),
             body: user
         });
-        console.log(JSON.stringify(apiRequest));
+        //console.log(JSON.stringify(apiRequest));
         return this.http.post(url, JSON.stringify(apiRequest), { headers: this.headers })
             .toPromise()
             .then(function (response) {
-            console.log(response);
+            //console.log(response);
             if (response.json().code == '200') {
                 var token = response.json().token;
                 localStorage.setItem('token', token);
                 _this.user = response.json().body;
-                console.log('Token: ' + token);
+                //console.log('Token: ' + token);
                 //this.emitStatusChangeEvent(this.user, '');
                 return _this.user;
                 // response.json().body;
@@ -127,8 +127,8 @@ var LoginService = (function () {
             .catch(function (ex) { return _this.handleError(ex); });
     };
     LoginService.prototype.changePassword = function (passwordHelper) {
+        //console.log('API Host: ' + Config.api_host);
         var _this = this;
-        console.log('API Host: ' + config_1.Config.api_host);
         var url = config_1.Config.api_host + '/user-update-password';
         var apiRequest = ({
             apiKey: '',
@@ -136,16 +136,16 @@ var LoginService = (function () {
             token: config_1.Config.getToken(),
             body: passwordHelper
         });
-        console.log(JSON.stringify(apiRequest));
+        //console.log(JSON.stringify(apiRequest));
         return this.http.post(url, JSON.stringify(apiRequest), { headers: this.headers })
             .toPromise()
             .then(function (response) {
-            console.log(response);
+            //console.log(response);
             if (response.json().code == '200') {
                 var token = response.json().token;
                 localStorage.setItem('token', token);
                 _this.user = response.json().body;
-                console.log('Token: ' + token);
+                //console.log('Token: ' + token);
                 //this.emitStatusChangeEvent(this.user, '');
                 return _this.user;
                 // response.json().body;

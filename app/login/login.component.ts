@@ -38,7 +38,7 @@ export class LoginComponent implements OnInit {
       this.loginUser.username = '';
       this.loginUser.password = '';
 
-      console.log('loginComponent: constructor called');
+      //console.log('loginComponent: constructor called');
       this.message = this.loginService.message;
       this.subscription = this.loginService.getStatusChangeEmitter()
         .subscribe(($event:any) => {

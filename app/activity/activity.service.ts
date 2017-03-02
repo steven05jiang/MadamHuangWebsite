@@ -32,7 +32,7 @@ export class ActivityService {
           }
       });
       const url = Config.api_host + '/activity';
-      console.log(JSON.stringify(apiRequest));
+      //console.log(JSON.stringify(apiRequest));
 
       return this.http.post(url, JSON.stringify(apiRequest), {headers: this.headers})
       .toPromise()
@@ -59,7 +59,7 @@ export class ActivityService {
           size: size
       });
       const url = Config.api_host + '/activities';
-      console.log(JSON.stringify(apiRequest));
+      //console.log(JSON.stringify(apiRequest));
 
       return this.http.post(url, JSON.stringify(apiRequest), {headers: this.headers})
       .toPromise()

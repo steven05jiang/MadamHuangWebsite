@@ -25,7 +25,7 @@ export class LoginService {
 
   signin(user: User): any {
 
-    console.log('API Host: ' + Config.api_host);
+    //console.log('API Host: ' + Config.api_host);
 
     const url = Config.api_host + '/login';
     let apiRequest = <APIRequest>({
@@ -35,19 +35,19 @@ export class LoginService {
         body: user
     });
 
-    console.log(JSON.stringify(apiRequest));
+    //console.log(JSON.stringify(apiRequest));
 
     this.http.post(url, JSON.stringify(apiRequest), {headers: this.headers})
       .toPromise()
       .then(
         response => {
-        console.log(response);
+        //console.log(response);
           if(response.json().code == '200') {
             let token = response.json().token;
             localStorage.setItem('token', token);
 
             this.user = response.json().body as User;
-            console.log('Token: ' + token);
+            //console.log('Token: ' + token);
             this.emitStatusChangeEvent(this.user, '');
             // response.json().body;
           } else {
@@ -64,7 +64,7 @@ export class LoginService {
 
   signup(user: User): any {
 
-    console.log('API Host: ' + Config.api_host);
+    //console.log('API Host: ' + Config.api_host);
 
     const url = Config.api_host + '/signup';
     let apiRequest = <APIRequest>({
@@ -74,19 +74,19 @@ export class LoginService {
         body: user
     });
 
-    console.log(JSON.stringify(apiRequest));
+    //console.log(JSON.stringify(apiRequest));
 
     this.http.post(url, JSON.stringify(apiRequest), {headers: this.headers})
       .toPromise()
       .then(
         response => {
-        console.log(response);
+        //console.log(response);
           if(response.json().code == '200') {
             let token = response.json().token;
             localStorage.setItem('token', token);
 
             this.user = response.json().body as User;
-            console.log('Token: ' + token);
+            //console.log('Token: ' + token);
             this.emitStatusChangeEvent(this.user, '');
             // response.json().body;
           } else {
@@ -103,7 +103,7 @@ export class LoginService {
 
   updateProfile(user: User): Promise<User> {
 
-    console.log('API Host: ' + Config.api_host);
+    //console.log('API Host: ' + Config.api_host);
 
     const url = Config.api_host + '/user-update';
     let apiRequest = <APIRequest>({
@@ -113,19 +113,19 @@ export class LoginService {
         body: user
     });
 
-    console.log(JSON.stringify(apiRequest));
+    //console.log(JSON.stringify(apiRequest));
 
     return this.http.post(url, JSON.stringify(apiRequest), {headers: this.headers})
       .toPromise()
       .then(
         response => {
-        console.log(response);
+        //console.log(response);
           if(response.json().code == '200') {
             let token = response.json().token;
             localStorage.setItem('token', token);
 
             this.user = response.json().body as User;
-            console.log('Token: ' + token);
+            //console.log('Token: ' + token);
             //this.emitStatusChangeEvent(this.user, '');
             return this.user;
             // response.json().body;
@@ -147,7 +147,7 @@ export class LoginService {
 
   changePassword(passwordHelper: any): Promise<User> {
 
-    console.log('API Host: ' + Config.api_host);
+    //console.log('API Host: ' + Config.api_host);
 
     const url = Config.api_host + '/user-update-password';
     let apiRequest = <APIRequest>({
@@ -157,19 +157,19 @@ export class LoginService {
         body: passwordHelper
     });
 
-    console.log(JSON.stringify(apiRequest));
+    //console.log(JSON.stringify(apiRequest));
 
     return this.http.post(url, JSON.stringify(apiRequest), {headers: this.headers})
       .toPromise()
       .then(
         response => {
-        console.log(response);
+        //console.log(response);
           if(response.json().code == '200') {
             let token = response.json().token;
             localStorage.setItem('token', token);
 
             this.user = response.json().body as User;
-            console.log('Token: ' + token);
+            //console.log('Token: ' + token);
             //this.emitStatusChangeEvent(this.user, '');
             return this.user;
             // response.json().body;

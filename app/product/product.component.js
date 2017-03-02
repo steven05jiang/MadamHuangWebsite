@@ -47,7 +47,7 @@ var ProductComponent = (function () {
         });
     };
     ProductComponent.prototype.openArticle = function (product) {
-        console.log('Ready to nav to article ' + product.articleId);
+        //console.log('Ready to nav to article '+product.articleId);
         this.router.navigate(['/article', product.articleId]);
     };
     ProductComponent.prototype.openPurchase = function (product) {

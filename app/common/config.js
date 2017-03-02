@@ -7,7 +7,7 @@ var Config = (function () {
         var date = new Date();
         var seconds = parseInt(secondStr);
         date.setTime(seconds);
-        console.log("ISO Time String: " + date.toISOString());
+        //console.log("ISO Time String: " + date.toISOString());
         return date.toISOString();
     };
     Config.getToken = function () {

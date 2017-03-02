@@ -51,7 +51,7 @@ var ClassroomComponent = (function () {
         });
     };
     ClassroomComponent.prototype.openArticle = function (classroomItem) {
-        console.log('Ready to nav to article ' + classroomItem.articleId);
+        //console.log('Ready to nav to article '+classroomItem.articleId);
         this.router.navigate(['/article', classroomItem.articleId]);
     };
     ClassroomComponent.prototype.ngOnDestroy = function () {

@@ -32,7 +32,7 @@ export class ArticleService {
           body: {'username':username}
       });
       const url = Config.api_host + '/myprofile';
-      console.log(JSON.stringify(apiRequest));
+      //console.log(JSON.stringify(apiRequest));
 
       return this.http.post(url, JSON.stringify(apiRequest), {headers: this.headers})
       .toPromise()

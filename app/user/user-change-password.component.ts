@@ -30,7 +30,7 @@ export class ChangePasswordComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private http: Http) {
 
-      console.log('loginComponent: constructor called');
+      //console.log('loginComponent: constructor called');
       this.passwordHelper = {};
       this.passwordHelper.isWaiting = false;
       this.passwordHelper.oldPassword = '';

@@ -33,7 +33,7 @@ export class AdminService {
 
   updateArticle(article: Article): Promise<APIResponse> {
 
-    console.log('API Host: ' + Config.api_host);
+    //console.log('API Host: ' + Config.api_host);
 
     const url = Config.api_host + '/article-update';
     let apiRequest = <APIRequest>({
@@ -43,13 +43,13 @@ export class AdminService {
         body: article
     });
 
-    console.log(JSON.stringify(apiRequest));
+    //console.log(JSON.stringify(apiRequest));
 
     return this.http.post(url, JSON.stringify(apiRequest), {headers: this.headers})
       .toPromise()
       .then(
         response => {
-        console.log(response);
+        //console.log(response);
           let token = response.json().token;
           localStorage.setItem('token', token);
           return response.json() as APIResponse;
@@ -60,7 +60,7 @@ export class AdminService {
 
    addArticle(article: Article): Promise<APIResponse> {
 
-    console.log('API Host: ' + Config.api_host);
+    //console.log('API Host: ' + Config.api_host);
 
     const url = Config.api_host + '/article-add';
     let apiRequest = <APIRequest>({
@@ -70,13 +70,13 @@ export class AdminService {
         body: article
     });
 
-    console.log(JSON.stringify(apiRequest));
+    //console.log(JSON.stringify(apiRequest));
 
     return this.http.post(url, JSON.stringify(apiRequest), {headers: this.headers})
       .toPromise()
       .then(
         response => {
-        console.log(response);
+        //console.log(response);
           let token = response.json().token;
           localStorage.setItem('token', token);
           return response.json() as APIResponse;
@@ -93,7 +93,7 @@ export class AdminService {
           body: {'id':id}
       });
       const url = Config.api_host + '/article-delete';
-      console.log(JSON.stringify(apiRequest));
+      //console.log(JSON.stringify(apiRequest));
 
       return this.http.post(url, JSON.stringify(apiRequest), {headers: this.headers})
       .toPromise()
@@ -114,7 +114,7 @@ export class AdminService {
           size: size
       });
       const url = Config.api_host + '/messages';
-      console.log(JSON.stringify(apiRequest));
+      //console.log(JSON.stringify(apiRequest));
 
       return this.http.post(url, JSON.stringify(apiRequest), {headers: this.headers})
       .toPromise()
@@ -128,7 +128,7 @@ export class AdminService {
 
   updateActivity(activity: Activity): Promise<APIResponse> {
 
-    console.log('API Host: ' + Config.api_host);
+    //console.log('API Host: ' + Config.api_host);
 
     const url = Config.api_host + '/activity-update';
     let apiRequest = <APIRequest>({
@@ -138,13 +138,13 @@ export class AdminService {
         body: activity
     });
 
-    console.log(JSON.stringify(apiRequest));
+    //console.log(JSON.stringify(apiRequest));
 
     return this.http.post(url, JSON.stringify(apiRequest), {headers: this.headers})
       .toPromise()
       .then(
         response => {
-        console.log(response);
+        //console.log(response);
           let token = response.json().token;
           localStorage.setItem('token', token);
           return response.json() as APIResponse;
@@ -155,7 +155,7 @@ export class AdminService {
 
    addActivity(activity: Activity): Promise<APIResponse> {
 
-    console.log('API Host: ' + Config.api_host);
+    //console.log('API Host: ' + Config.api_host);
 
     const url = Config.api_host + '/activity-add';
     let apiRequest = <APIRequest>({
@@ -165,13 +165,13 @@ export class AdminService {
         body: activity
     });
 
-    console.log(JSON.stringify(apiRequest));
+    //console.log(JSON.stringify(apiRequest));
 
     return this.http.post(url, JSON.stringify(apiRequest), {headers: this.headers})
       .toPromise()
       .then(
         response => {
-        console.log(response);
+        //console.log(response);
           let token = response.json().token;
           localStorage.setItem('token', token);
           return response.json() as APIResponse;
@@ -188,7 +188,7 @@ export class AdminService {
           body: {'id':id}
       });
       const url = Config.api_host + '/activity-delete';
-      console.log(JSON.stringify(apiRequest));
+      //console.log(JSON.stringify(apiRequest));
 
       return this.http.post(url, JSON.stringify(apiRequest), {headers: this.headers})
       .toPromise()
@@ -202,7 +202,7 @@ export class AdminService {
 
   updateClassroomItem(classroomItem: ClassroomItem): Promise<APIResponse> {
 
-    console.log('API Host: ' + Config.api_host);
+    //console.log('API Host: ' + Config.api_host);
 
     const url = Config.api_host + '/classroom-item-update';
     let apiRequest = <APIRequest>({
@@ -212,13 +212,13 @@ export class AdminService {
         body: classroomItem
     });
 
-    console.log(JSON.stringify(apiRequest));
+    //console.log(JSON.stringify(apiRequest));
 
     return this.http.post(url, JSON.stringify(apiRequest), {headers: this.headers})
       .toPromise()
       .then(
         response => {
-        console.log(response);
+        //console.log(response);
           let token = response.json().token;
           localStorage.setItem('token', token);
           return response.json() as APIResponse;
@@ -229,7 +229,7 @@ export class AdminService {
 
    addClassroomItem(classroomItem: ClassroomItem): Promise<APIResponse> {
 
-    console.log('API Host: ' + Config.api_host);
+    //console.log('API Host: ' + Config.api_host);
 
     const url = Config.api_host + '/classroom-item-add';
     let apiRequest = <APIRequest>({
@@ -239,13 +239,13 @@ export class AdminService {
         body: classroomItem
     });
 
-    console.log(JSON.stringify(apiRequest));
+    //console.log(JSON.stringify(apiRequest));
 
     return this.http.post(url, JSON.stringify(apiRequest), {headers: this.headers})
       .toPromise()
       .then(
         response => {
-        console.log(response);
+        //console.log(response);
           let token = response.json().token;
           localStorage.setItem('token', token);
           return response.json() as APIResponse;
@@ -262,7 +262,7 @@ export class AdminService {
           body: {'id':id}
       });
       const url = Config.api_host + '/classroom-item-delete';
-      console.log(JSON.stringify(apiRequest));
+      //console.log(JSON.stringify(apiRequest));
 
       return this.http.post(url, JSON.stringify(apiRequest), {headers: this.headers})
       .toPromise()
@@ -276,7 +276,7 @@ export class AdminService {
 
     updateProduct(product: Product): Promise<APIResponse> {
 
-    console.log('API Host: ' + Config.api_host);
+    //console.log('API Host: ' + Config.api_host);
 
     const url = Config.api_host + '/product-update';
     let apiRequest = <APIRequest>({
@@ -286,13 +286,13 @@ export class AdminService {
         body: product
     });
 
-    console.log(JSON.stringify(apiRequest));
+    //console.log(JSON.stringify(apiRequest));
 
     return this.http.post(url, JSON.stringify(apiRequest), {headers: this.headers})
       .toPromise()
       .then(
         response => {
-        console.log(response);
+        //console.log(response);
           let token = response.json().token;
           localStorage.setItem('token', token);
           return response.json() as APIResponse;
@@ -303,7 +303,7 @@ export class AdminService {
 
    addProduct(product: Product): Promise<APIResponse> {
 
-    console.log('API Host: ' + Config.api_host);
+    //console.log('API Host: ' + Config.api_host);
 
     const url = Config.api_host + '/product-add';
     let apiRequest = <APIRequest>({
@@ -313,13 +313,13 @@ export class AdminService {
         body: product
     });
 
-    console.log(JSON.stringify(apiRequest));
+    //console.log(JSON.stringify(apiRequest));
 
     return this.http.post(url, JSON.stringify(apiRequest), {headers: this.headers})
       .toPromise()
       .then(
         response => {
-        console.log(response);
+        //console.log(response);
           let token = response.json().token;
           localStorage.setItem('token', token);
           return response.json() as APIResponse;
@@ -336,7 +336,7 @@ export class AdminService {
           body: {'id':id}
       });
       const url = Config.api_host + '/product-delete';
-      console.log(JSON.stringify(apiRequest));
+      //console.log(JSON.stringify(apiRequest));
 
       return this.http.post(url, JSON.stringify(apiRequest), {headers: this.headers})
       .toPromise()

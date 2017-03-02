@@ -136,7 +136,7 @@ var PurchaseComponent = (function () {
                     if (errors) {
                         console.log("Encountered errors:");
                         // This logs all errors encountered during nonce generation to the
-                        // Javascript console.
+                        // Javascript //console.
                         alert(errors[0].message);
                         errors.forEach(function (error) {
                             console.log('  ' + error.message);
@@ -259,7 +259,7 @@ var PurchaseComponent = (function () {
     };
     PurchaseComponent.prototype.putMyAddr = function () {
         if (this.user) {
-            console.log("Start copy");
+            //console.log("Start copy");
             this.squareCharge.shipping_address.address_line_1 = this.user.addressLine1;
             this.squareCharge.shipping_address.address_line_2 = this.user.addressLine2;
             this.squareCharge.shipping_address.locality = this.user.city;

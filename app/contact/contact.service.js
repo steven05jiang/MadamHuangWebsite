@@ -31,11 +31,11 @@ var ContactService = (function () {
             token: '',
             body: msg
         });
-        console.log(JSON.stringify(apiRequest));
+        //console.log(JSON.stringify(apiRequest));
         this.http.post(url, JSON.stringify(apiRequest), { headers: this.headers })
             .toPromise()
             .then(function (response) {
-            console.log(response);
+            //console.log(response);
             if (response.json().code == '200') {
                 _this.emitStatusChangeEvent(_this.msg, response.json().message);
                 // response.json().body;
@@ -47,8 +47,8 @@ var ContactService = (function () {
             .catch(function (ex) { return _this.handleError(ex); });
     };
     ContactService.prototype.getMessages = function (user) {
+        //console.log('API Host: ' + Config.api_host);
         var _this = this;
-        console.log('API Host: ' + config_1.Config.api_host);
         var url = config_1.Config.api_host + '/messages';
         var apiRequest = ({
             apiKey: '',
@@ -56,11 +56,11 @@ var ContactService = (function () {
             token: config_1.Config.getToken(),
             body: user
         });
-        console.log(JSON.stringify(apiRequest));
+        //console.log(JSON.stringify(apiRequest));
         return this.http.post(url, JSON.stringify(apiRequest), { headers: this.headers })
             .toPromise()
             .then(function (response) {
-            console.log(response);
+            //console.log(response);
             if (response.json().code == '200') {
                 var token = response.json().token;
                 localStorage.setItem('token', token);

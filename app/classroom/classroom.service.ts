@@ -33,7 +33,7 @@ export class ClassroomService {
           size: size
       });
       const url = Config.api_host + '/classroomitems';
-      console.log(JSON.stringify(apiRequest));
+      //console.log(JSON.stringify(apiRequest));
 
       return this.http.post(url, JSON.stringify(apiRequest), {headers: this.headers})
       .toPromise()
@@ -41,7 +41,7 @@ export class ClassroomService {
         let token = response.json().token;
         localStorage.setItem('token', token);
           if(response.json().code == '200') {
-          	//console.log(JSON.stringify(response.json()));
+          	////console.log(JSON.stringify(response.json()));
             return response.json() as APIResponse;
           } else {
             this.message = Text.val(500);

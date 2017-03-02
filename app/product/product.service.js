@@ -32,7 +32,7 @@ var ProductService = (function () {
             size: size
         });
         var url = config_1.Config.api_host + '/products';
-        console.log(JSON.stringify(apiRequest));
+        //console.log(JSON.stringify(apiRequest));
         return this.http.post(url, JSON.stringify(apiRequest), { headers: this.headers })
             .toPromise()
             .then(function (response) {
@@ -58,11 +58,11 @@ var ProductService = (function () {
             }
         });
         var url = config_1.Config.api_host + '/product';
-        //console.log(JSON.stringify(apiRequest));
+        ////console.log(JSON.stringify(apiRequest));
         return this.http.post(url, JSON.stringify(apiRequest), { headers: this.headers })
             .toPromise()
             .then(function (response) {
-            console.log(JSON.stringify(response));
+            //console.log(JSON.stringify(response));
             var token = response.json().token;
             localStorage.setItem('token', token);
             if (response.json().code != '200') {

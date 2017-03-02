@@ -58,7 +58,7 @@ export class ActivityComponent implements OnInit {
 	}
 
 	openArticle(activity: Activity): void{
-		console.log('Ready to nav to article '+activity.articleId);
+		//console.log('Ready to nav to article '+activity.articleId);
 		this.router.navigate(['/article', activity.articleId]);
 	}
 	ngOnDestroy() {

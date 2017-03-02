@@ -21,7 +21,7 @@ var ChangePasswordComponent = (function () {
         this.router = router;
         this.activatedRoute = activatedRoute;
         this.http = http;
-        console.log('loginComponent: constructor called');
+        //console.log('loginComponent: constructor called');
         this.passwordHelper = {};
         this.passwordHelper.isWaiting = false;
         this.passwordHelper.oldPassword = '';

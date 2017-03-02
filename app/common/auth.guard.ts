@@ -20,14 +20,14 @@ export class AuthGuard implements CanActivate {
   canActivate() {
 
     let jwt = localStorage.getItem('token');
-
-    console.log("JWT: = " + jwt);
+    
+    //console.log("JWT: = " + jwt);
     //if (tokenNotExpired() || true) {
     if(jwt != null && jwt != '' && jwt != 'null'
       && !this.jwtHelper.isTokenExpired(jwt)) {
 
       //console.log("JWT-Decode: " + this.jwtHelper.decodeToken(jwt));
-      console.log("JWT-Expiration Date: " + this.jwtHelper.getTokenExpirationDate(jwt));
+      //console.log("JWT-Expiration Date: " + this.jwtHelper.getTokenExpirationDate(jwt));
 
       // TODO - client: validate JWT token and expiration
       // TODO - server: refresh and renew token

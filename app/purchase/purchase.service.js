@@ -41,7 +41,7 @@ var PurchaseService = (function () {
             }
         });
         var url = config_1.Config.api_host + '/purchase';
-        console.log(JSON.stringify(apiRequest));
+        //console.log(JSON.stringify(apiRequest));
         return this.http.post(url, JSON.stringify(apiRequest), { headers: this.headers })
             .toPromise()
             .then(function (response) {

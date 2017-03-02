@@ -43,7 +43,7 @@ var ActivityComponent = (function () {
         });
     };
     ActivityComponent.prototype.openArticle = function (activity) {
-        console.log('Ready to nav to article ' + activity.articleId);
+        //console.log('Ready to nav to article '+activity.articleId);
         this.router.navigate(['/article', activity.articleId]);
     };
     ActivityComponent.prototype.ngOnDestroy = function () {

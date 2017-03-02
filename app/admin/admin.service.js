@@ -22,8 +22,8 @@ var AdminService = (function () {
         this.headers = new http_1.Headers({ 'Content-Type': 'application/json' });
     }
     AdminService.prototype.updateArticle = function (article) {
+        //console.log('API Host: ' + Config.api_host);
         var _this = this;
-        console.log('API Host: ' + config_1.Config.api_host);
         var url = config_1.Config.api_host + '/article-update';
         var apiRequest = ({
             apiKey: '',
@@ -31,11 +31,11 @@ var AdminService = (function () {
             token: config_1.Config.getToken(),
             body: article
         });
-        console.log(JSON.stringify(apiRequest));
+        //console.log(JSON.stringify(apiRequest));
         return this.http.post(url, JSON.stringify(apiRequest), { headers: this.headers })
             .toPromise()
             .then(function (response) {
-            console.log(response);
+            //console.log(response);
             var token = response.json().token;
             localStorage.setItem('token', token);
             return response.json();
@@ -43,8 +43,8 @@ var AdminService = (function () {
             .catch(function (ex) { return _this.handleError(ex); });
     };
     AdminService.prototype.addArticle = function (article) {
+        //console.log('API Host: ' + Config.api_host);
         var _this = this;
-        console.log('API Host: ' + config_1.Config.api_host);
         var url = config_1.Config.api_host + '/article-add';
         var apiRequest = ({
             apiKey: '',
@@ -52,11 +52,11 @@ var AdminService = (function () {
             token: config_1.Config.getToken(),
             body: article
         });
-        console.log(JSON.stringify(apiRequest));
+        //console.log(JSON.stringify(apiRequest));
         return this.http.post(url, JSON.stringify(apiRequest), { headers: this.headers })
             .toPromise()
             .then(function (response) {
-            console.log(response);
+            //console.log(response);
             var token = response.json().token;
             localStorage.setItem('token', token);
             return response.json();
@@ -72,7 +72,7 @@ var AdminService = (function () {
             body: { 'id': id }
         });
         var url = config_1.Config.api_host + '/article-delete';
-        console.log(JSON.stringify(apiRequest));
+        //console.log(JSON.stringify(apiRequest));
         return this.http.post(url, JSON.stringify(apiRequest), { headers: this.headers })
             .toPromise()
             .then(function (response) {
@@ -92,7 +92,7 @@ var AdminService = (function () {
             size: size
         });
         var url = config_1.Config.api_host + '/messages';
-        console.log(JSON.stringify(apiRequest));
+        //console.log(JSON.stringify(apiRequest));
         return this.http.post(url, JSON.stringify(apiRequest), { headers: this.headers })
             .toPromise()
             .then(function (response) {
@@ -103,8 +103,8 @@ var AdminService = (function () {
             .catch(function (ex) { return _this.handleError(ex); });
     };
     AdminService.prototype.updateActivity = function (activity) {
+        //console.log('API Host: ' + Config.api_host);
         var _this = this;
-        console.log('API Host: ' + config_1.Config.api_host);
         var url = config_1.Config.api_host + '/activity-update';
         var apiRequest = ({
             apiKey: '',
@@ -112,11 +112,11 @@ var AdminService = (function () {
             token: config_1.Config.getToken(),
             body: activity
         });
-        console.log(JSON.stringify(apiRequest));
+        //console.log(JSON.stringify(apiRequest));
         return this.http.post(url, JSON.stringify(apiRequest), { headers: this.headers })
             .toPromise()
             .then(function (response) {
-            console.log(response);
+            //console.log(response);
             var token = response.json().token;
             localStorage.setItem('token', token);
             return response.json();
@@ -124,8 +124,8 @@ var AdminService = (function () {
             .catch(function (ex) { return _this.handleError(ex); });
     };
     AdminService.prototype.addActivity = function (activity) {
+        //console.log('API Host: ' + Config.api_host);
         var _this = this;
-        console.log('API Host: ' + config_1.Config.api_host);
         var url = config_1.Config.api_host + '/activity-add';
         var apiRequest = ({
             apiKey: '',
@@ -133,11 +133,11 @@ var AdminService = (function () {
             token: config_1.Config.getToken(),
             body: activity
         });
-        console.log(JSON.stringify(apiRequest));
+        //console.log(JSON.stringify(apiRequest));
         return this.http.post(url, JSON.stringify(apiRequest), { headers: this.headers })
             .toPromise()
             .then(function (response) {
-            console.log(response);
+            //console.log(response);
             var token = response.json().token;
             localStorage.setItem('token', token);
             return response.json();
@@ -153,7 +153,7 @@ var AdminService = (function () {
             body: { 'id': id }
         });
         var url = config_1.Config.api_host + '/activity-delete';
-        console.log(JSON.stringify(apiRequest));
+        //console.log(JSON.stringify(apiRequest));
         return this.http.post(url, JSON.stringify(apiRequest), { headers: this.headers })
             .toPromise()
             .then(function (response) {
@@ -164,8 +164,8 @@ var AdminService = (function () {
             .catch(function (ex) { return _this.handleError(ex); });
     };
     AdminService.prototype.updateClassroomItem = function (classroomItem) {
+        //console.log('API Host: ' + Config.api_host);
         var _this = this;
-        console.log('API Host: ' + config_1.Config.api_host);
         var url = config_1.Config.api_host + '/classroom-item-update';
         var apiRequest = ({
             apiKey: '',
@@ -173,11 +173,11 @@ var AdminService = (function () {
             token: config_1.Config.getToken(),
             body: classroomItem
         });
-        console.log(JSON.stringify(apiRequest));
+        //console.log(JSON.stringify(apiRequest));
         return this.http.post(url, JSON.stringify(apiRequest), { headers: this.headers })
             .toPromise()
             .then(function (response) {
-            console.log(response);
+            //console.log(response);
             var token = response.json().token;
             localStorage.setItem('token', token);
             return response.json();
@@ -185,8 +185,8 @@ var AdminService = (function () {
             .catch(function (ex) { return _this.handleError(ex); });
     };
     AdminService.prototype.addClassroomItem = function (classroomItem) {
+        //console.log('API Host: ' + Config.api_host);
         var _this = this;
-        console.log('API Host: ' + config_1.Config.api_host);
         var url = config_1.Config.api_host + '/classroom-item-add';
         var apiRequest = ({
             apiKey: '',
@@ -194,11 +194,11 @@ var AdminService = (function () {
             token: config_1.Config.getToken(),
             body: classroomItem
         });
-        console.log(JSON.stringify(apiRequest));
+        //console.log(JSON.stringify(apiRequest));
         return this.http.post(url, JSON.stringify(apiRequest), { headers: this.headers })
             .toPromise()
             .then(function (response) {
-            console.log(response);
+            //console.log(response);
             var token = response.json().token;
             localStorage.setItem('token', token);
             return response.json();
@@ -214,7 +214,7 @@ var AdminService = (function () {
             body: { 'id': id }
         });
         var url = config_1.Config.api_host + '/classroom-item-delete';
-        console.log(JSON.stringify(apiRequest));
+        //console.log(JSON.stringify(apiRequest));
         return this.http.post(url, JSON.stringify(apiRequest), { headers: this.headers })
             .toPromise()
             .then(function (response) {
@@ -225,8 +225,8 @@ var AdminService = (function () {
             .catch(function (ex) { return _this.handleError(ex); });
     };
     AdminService.prototype.updateProduct = function (product) {
+        //console.log('API Host: ' + Config.api_host);
         var _this = this;
-        console.log('API Host: ' + config_1.Config.api_host);
         var url = config_1.Config.api_host + '/product-update';
         var apiRequest = ({
             apiKey: '',
@@ -234,11 +234,11 @@ var AdminService = (function () {
             token: config_1.Config.getToken(),
             body: product
         });
-        console.log(JSON.stringify(apiRequest));
+        //console.log(JSON.stringify(apiRequest));
         return this.http.post(url, JSON.stringify(apiRequest), { headers: this.headers })
             .toPromise()
             .then(function (response) {
-            console.log(response);
+            //console.log(response);
             var token = response.json().token;
             localStorage.setItem('token', token);
             return response.json();
@@ -246,8 +246,8 @@ var AdminService = (function () {
             .catch(function (ex) { return _this.handleError(ex); });
     };
     AdminService.prototype.addProduct = function (product) {
+        //console.log('API Host: ' + Config.api_host);
         var _this = this;
-        console.log('API Host: ' + config_1.Config.api_host);
         var url = config_1.Config.api_host + '/product-add';
         var apiRequest = ({
             apiKey: '',
@@ -255,11 +255,11 @@ var AdminService = (function () {
             token: config_1.Config.getToken(),
             body: product
         });
-        console.log(JSON.stringify(apiRequest));
+        //console.log(JSON.stringify(apiRequest));
         return this.http.post(url, JSON.stringify(apiRequest), { headers: this.headers })
             .toPromise()
             .then(function (response) {
-            console.log(response);
+            //console.log(response);
             var token = response.json().token;
             localStorage.setItem('token', token);
             return response.json();
@@ -275,7 +275,7 @@ var AdminService = (function () {
             body: { 'id': id }
         });
         var url = config_1.Config.api_host + '/product-delete';
-        console.log(JSON.stringify(apiRequest));
+        //console.log(JSON.stringify(apiRequest));
         return this.http.post(url, JSON.stringify(apiRequest), { headers: this.headers })
             .toPromise()
             .then(function (response) {

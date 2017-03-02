@@ -50,7 +50,7 @@ export class PurchaseService {
           }
       });
       const url = Config.api_host + '/purchase';
-      console.log(JSON.stringify(apiRequest));
+      //console.log(JSON.stringify(apiRequest));
 
       return this.http.post(url, JSON.stringify(apiRequest), {headers: this.headers})
       .toPromise()

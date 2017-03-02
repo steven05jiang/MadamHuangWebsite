@@ -36,13 +36,13 @@ export class ContactService {
         body: msg
     });
 
-    console.log(JSON.stringify(apiRequest));
+    //console.log(JSON.stringify(apiRequest));
 
     this.http.post(url, JSON.stringify(apiRequest), {headers: this.headers})
       .toPromise()
       .then(
         response => {
-        console.log(response);
+        //console.log(response);
           if(response.json().code == '200') {
             this.emitStatusChangeEvent(this.msg, response.json().message);
             // response.json().body;
@@ -56,7 +56,7 @@ export class ContactService {
 
   getMessages(user: User): Promise<APIResponse> {
 
-    console.log('API Host: ' + Config.api_host);
+    //console.log('API Host: ' + Config.api_host);
 
     const url = Config.api_host + '/messages';
     let apiRequest = <APIRequest>({
@@ -66,13 +66,13 @@ export class ContactService {
         body: user
     });
 
-    console.log(JSON.stringify(apiRequest));
+    //console.log(JSON.stringify(apiRequest));
 
     return this.http.post(url, JSON.stringify(apiRequest), {headers: this.headers})
       .toPromise()
       .then(
         response => {
-        console.log(response);
+        //console.log(response);
           if(response.json().code == '200') {
             let token = response.json().token;
             localStorage.setItem('token', token);
