@@ -16,10 +16,10 @@ var Config = (function () {
     return Config;
 }());
 Config.api_host = 'https://madamhuang.com:9000/api/v1';
+//public static api_host: string = 'http://localhost:9000/api/v1';
 Config.user_header_folder = 'image/headImage';
+//public static applicationId = 'sandbox-sq0idp-ZLC5q6ns15LA8q6vDJY1Hg';
 Config.applicationId = 'sq0idp-ZLC5q6ns15LA8q6vDJY1Hg';
-//public static api_host: string = 'http://10.7.40.108:9000';
-//public static api_host: string = 'http://api.pureilab.com:9000';
 Config.PAGE_NUM = 50;
 exports.Config = Config;
 exports.TEXTS = [
