@@ -24,6 +24,7 @@ var ClassroomComponent = (function () {
         this.defaultImage = 'image/loading.png';
         //this.classroom = new Classroom('', '美麗課堂','','');
         this.curPage = 0;
+        this.totalPage = 1;
         this.message = this.classroomService.message;
         this.subscription = this.classroomService.getStatusChangeEmitter()
             .subscribe(function ($event) {
@@ -41,11 +42,16 @@ var ClassroomComponent = (function () {
         this.classroom = this.classroomType.map[params['name']];
         */
         //})
-        this.getArticles(this.curPage);
+        this.getClassroonItems(this.curPage);
     };
-    ClassroomComponent.prototype.getArticles = function (page) {
+    ClassroomComponent.prototype.getClassroonItems = function (page) {
         var _this = this;
+        if (page < 0 || (this.totalPage != null && page >= this.totalPage)) {
+            alert('No more classroom items.');
+            return;
+        }
         this.classroomService.getObjects(page, this.size).then(function (apiResponse) {
+            _this.curPage = page;
             _this.totalPage = apiResponse.totalPages;
             _this.items = apiResponse.body;
         });

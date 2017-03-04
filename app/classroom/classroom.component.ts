@@ -39,6 +39,7 @@ export class ClassroomComponent implements OnInit {
 		){
 		//this.classroom = new Classroom('', '美麗課堂','','');
 		this.curPage = 0;
+		this.totalPage = 1;
 		this.message = this.classroomService.message;
 		this.subscription = this.classroomService.getStatusChangeEmitter()
 		.subscribe(($event:any) => {
@@ -58,12 +59,17 @@ export class ClassroomComponent implements OnInit {
     	this.classroom = this.classroomType.map[params['name']];
     	*/
     //})
-    	this.getArticles(this.curPage);
+    	this.getClassroonItems(this.curPage);
 	}
 
-	getArticles(page:number){
+	getClassroonItems(page:number){
+		if(page < 0 || (this.totalPage != null && page >= this.totalPage)){
+			alert('No more classroom items.');
+			return;
+		}
 		this.classroomService.getObjects(page, this.size).then(
 			apiResponse => {
+				this.curPage = page;
 				this.totalPage = apiResponse.totalPages;
 				this.items = apiResponse.body as ClassroomItem[];
 			}

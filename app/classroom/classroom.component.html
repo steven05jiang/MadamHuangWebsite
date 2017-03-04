@@ -17,5 +17,9 @@
 				</div>
 			</div>
 		</div>
+		<span [hidden]="totalPage <= 1">
+			<button (click)="getClassroonItems(curPage-1)" class="btn btn-confirm">上一頁</button>
+			<button (click)="getClassroonItems(curPage+1)" class="btn btn-confirm">下一頁</button> 當前頁數: {{curPage+1}} | 頁數: {{totalPage}}
+		</span>
 	</div>
 </div>
