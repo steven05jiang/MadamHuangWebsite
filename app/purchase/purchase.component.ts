@@ -111,11 +111,7 @@ export class PurchaseComponent implements OnInit {
 	  					
 	  				}
 	  			);
-	  			if(this.user == null || this.user.isMember == false){
-	  				this.productInfo.memberQuantity = 0;
-	  			}else{
-	  				this.productInfo.memberQuantity = 1;
-	  			}
+	  			this.productInfo.memberQuantity = 0;
 	  		}
 	  		this.productInfo.productId = this.purchaseId;
 	  		this.productInfo.baseQuantity = 0;
@@ -247,11 +243,11 @@ export class PurchaseComponent implements OnInit {
 		this.squareCharge.amount_money = squareMoney;
 		this.squareCharge.card_nonce = this.nonce.nativeElement.value;
 		if(this.purchaseCategory == 'activity'){
-			this.squareCharge.note = 'A:';
+			this.squareCharge.note = 'A';
 		}else{
-			this.squareCharge.note = 'P:';
+			this.squareCharge.note = 'P';
 		}
-		this.squareCharge.note = this.squareCharge.note+this.purchaseObject.title+",ID:"+this.purchaseObject.id+",BQ:"+this.productInfo.baseQuantity+",MQ:"+this.productInfo.memberQuantity+",NM:"+this.paymentHelper.receiverName;
+		this.squareCharge.note = this.squareCharge.note+"ID:"+this.purchaseObject.id+",BQ:"+this.productInfo.baseQuantity+",MQ:"+this.productInfo.memberQuantity+",NM:"+this.paymentHelper.receiverName;
 	}	
 
 	isValidForm(): boolean{
