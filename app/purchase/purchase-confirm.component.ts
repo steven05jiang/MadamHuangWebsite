@@ -57,7 +57,9 @@ export class PurchaseConfirmationComponent implements OnInit {
 			this.user = this.loginService.user;
 			this.subscription = this.loginService.getStatusChangeEmitter()
       			.subscribe(($event:any) => {
-      				this.router.navigate(['']);
+      				if(!$event.user){
+      					this.router.navigate(['']);
+      				}
       			});
 
 	}
