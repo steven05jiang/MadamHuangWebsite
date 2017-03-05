@@ -42,7 +42,7 @@ var PurchaseConfirmationComponent = (function () {
         this.user = this.loginService.user;
         this.subscription = this.loginService.getStatusChangeEmitter()
             .subscribe(function ($event) {
-            _this.user = $event.user;
+            _this.router.navigate(['']);
         });
     }
     PurchaseConfirmationComponent.prototype.ngOnInit = function () {
