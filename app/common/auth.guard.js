@@ -34,6 +34,8 @@ var AuthGuard = (function () {
             return true;
         }
         else {
+            this.loginService.user = null;
+            this.loginService.emitStatusChangeEvent(null, 'Login required.');
             this.router.navigate(['/login']);
             return false;
         }

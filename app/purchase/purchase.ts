@@ -52,6 +52,10 @@ export class ProductInfo{
 	totalPrice: number
 	comment: string;
 	createdDate: Date;
+	receiver: string;
+	email: string;
+	shippingAddr: string;
+	billingAddr: string;
 	transactionId: string;
 
 	constructor(){}

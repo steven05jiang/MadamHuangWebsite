@@ -278,8 +278,14 @@ export class PurchaseComponent implements OnInit {
       	return true;
 	}
 
+	assembleProductInfo(){
+		this.productInfo.receiver = this.paymentHelper.receiverName;
+      	this.productInfo.email = this.squareCharge.buyer_email_address;
+	}
+
 	onSubmit(){
       this.assembleCharge();
+      this.assembleProductInfo();
       if(!this.isValidForm()){
       	return;
       }

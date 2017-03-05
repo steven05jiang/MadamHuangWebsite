@@ -238,8 +238,13 @@ var PurchaseComponent = (function () {
         }
         return true;
     };
+    PurchaseComponent.prototype.assembleProductInfo = function () {
+        this.productInfo.receiver = this.paymentHelper.receiverName;
+        this.productInfo.email = this.squareCharge.buyer_email_address;
+    };
     PurchaseComponent.prototype.onSubmit = function () {
         this.assembleCharge();
+        this.assembleProductInfo();
         if (!this.isValidForm()) {
             return;
         }

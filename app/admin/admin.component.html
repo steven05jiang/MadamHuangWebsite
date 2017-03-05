@@ -132,15 +132,19 @@
 					<tr>
 						<th>Invoice#</th>
 						<th>Created Date</th>
-						<th>Name</th>
+						<th>Note</th>
 						<th>Type</th>
 						<th>Product Id</th>
-						<th>Price</th>
-						<th>Quantity</th>
-						<th>M-Price</th>
-						<th>M-Quantity</th>
+						<th>P</th>
+						<th>Q</th>
+						<th>M-P</th>
+						<th>M-Q</th>
 						<th>Total(+Tax+Fee)</th>
 						<th>Comment</th>
+						<th>Receiver</th>
+						<th>Email</th>
+						<th>S-Addr</th>
+						<th>B-Addr</th>
 						<th>Transaction Id</th>
 					</tr>
 					<ng-container *ngIf="invoices">
@@ -177,6 +181,18 @@
 						</td>
 						<td>
 							{{invoice.comment}}
+						</td>
+						<td>
+							{{invoice.receiver}}
+						</td>
+						<td>
+							{{invoice.email}}
+						</td>
+						<td>
+							{{invoice.shippingAddr}}
+						</td>
+						<td>
+							{{invoice.billingAddr}}
 						</td>
 						<td>
 							{{invoice.transactionId}}
