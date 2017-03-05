@@ -98,4 +98,9 @@ export class UserProfileComponent implements OnInit {
   		});
 	}
 
+	parsePrice(price: any){
+  		price = Math.round(price);
+		return parseFloat(price)/100;
+	}
+
 }

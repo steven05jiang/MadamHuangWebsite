@@ -357,12 +357,12 @@
 						</td>
 						<td>
 							<div class="form-group">
-						     <input type="text" class="form-control" [(ngModel)]="activityNew.price" name="activityNewPrice" placeholder="Enter Activity Price" required/>
+						     <input type="number" class="form-control" [(ngModel)]="activityNew.price" name="activityNewPrice" placeholder="Enter Activity Price" min="0" required/>
 						   </div>
 						</td>
 						<td>
 							<div class="form-group">
-						     <input type="text" class="form-control" [(ngModel)]="activityNew.memberPrice" name="activityNewMemberPrice" placeholder="Enter Member Price" required/>
+						     <input type="number" class="form-control" [(ngModel)]="activityNew.memberPrice" name="activityNewMemberPrice" placeholder="Enter Member Price" min="0" required/>
 						   </div>
 						</td>
 						<td>
@@ -423,7 +423,7 @@
 						<span [hidden]="adminHelper.activityEditMode">{{activity.price}}</span>
 							<span [hidden]="!adminHelper.activityEditMode">
 							<div class="form-group">
-						     <input type="text" class="form-control" [(ngModel)]="activity.price" name="activityPrice" placeholder="Enter Activity Price"/>
+						     <input type="number" class="form-control" [(ngModel)]="activity.price" name="activityPrice" placeholder="Enter Activity Price" min="0" required/>
 						   </div>
 						   </span>
 						</td>
@@ -431,7 +431,7 @@
 						<span [hidden]="adminHelper.activityEditMode">{{activity.memberPrice}}</span>
 							<span [hidden]="!adminHelper.activityEditMode">
 							<div class="form-group">
-						     <input type="text" class="form-control" [(ngModel)]="activity.memberPrice" name="activityMemberPrice" placeholder="Enter Member Price"/>
+						     <input type="number" class="form-control" [(ngModel)]="activity.memberPrice" name="activityMemberPrice" placeholder="Enter Member Price" min="0" required/>
 						   </div>
 						   </span>
 						</td>
@@ -515,7 +515,7 @@
 						</td>
 						<td>
 							<div class="form-group">
-						     <input type="text" class="form-control" [(ngModel)]="productNew.price" name="productNewPrice" placeholder="Enter product Price" required/>
+						     <input type="number" class="form-control" [(ngModel)]="productNew.price" name="productNewPrice" placeholder="Enter product Price" min="0" required/>
 						   </div>
 						</td>
 						<td>
@@ -568,7 +568,7 @@
 						<span [hidden]="adminHelper.productEditMode">{{product.price}}</span>
 							<span [hidden]="!adminHelper.productEditMode">
 							<div class="form-group">
-						     <input type="text" class="form-control" [(ngModel)]="product.price" name="productPrice" placeholder="Enter product Price"/>
+						     <input type="number" class="form-control" [(ngModel)]="product.price" name="productPrice" placeholder="Enter product Price" min="0" required/>
 						   </div>
 						   </span>
 						</td>

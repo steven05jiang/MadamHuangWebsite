@@ -101,7 +101,7 @@
 								{{invoice.createdDate | date:"MM/dd/yy"}}
 							</td>
 							<td>
-								{{invoice.totalPrice}}
+								{{parsePrice(invoice.totalPrice)}}
 							</td>
 							<td>
 								{{invoice.transactionId}}

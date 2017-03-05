@@ -84,6 +84,10 @@ var UserProfileComponent = (function () {
             }
         });
     };
+    UserProfileComponent.prototype.parsePrice = function (price) {
+        price = Math.round(price);
+        return parseFloat(price) / 100;
+    };
     return UserProfileComponent;
 }());
 UserProfileComponent = __decorate([
