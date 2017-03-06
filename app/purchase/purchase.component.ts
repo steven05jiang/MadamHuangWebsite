@@ -7,9 +7,11 @@ import { SquareCharge } from './purchase';
 import { SquareMoney } from './purchase';
 import { SquareAddress } from './purchase';
 import { ProductInfo } from './purchase';
+import { Discount } from './purchase';
 import { User } from '../user/user';
 import { Product } from '../product/product';
 import { Activity } from '../activity/activity';
+
 
 import { PurchaseService }   from './purchase.service';
 import { LoginService }   from '../login/login.service';
@@ -232,6 +234,13 @@ export class PurchaseComponent implements OnInit {
 	assembleCharge(){
 		let squareMoney = new SquareMoney();
 		squareMoney.amount = this.productInfo.baseQuantity * this.purchaseObject.price;
+		if(this.purchaseCategory == 'product' && this.purchaseObject.discounts != null){
+			this.purchaseObject.discounts.forEach((discount: Discount) => {
+				if(discount.isEnable && discount.discountPrice < this.purchaseObject.price && discount.minQuantity <= this.productInfo.baseQuantity){
+					squareMoney.amount = discount.discountPrice*this.productInfo.baseQuantity;
+				}
+			});
+		}
 		if(this.purchaseCategory == 'activity'){
 			squareMoney.amount = squareMoney.amount + this.productInfo.memberQuantity * this.purchaseObject.memberPrice;
 		}

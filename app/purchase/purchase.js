@@ -25,4 +25,10 @@ var ProductInfo = (function () {
     return ProductInfo;
 }());
 exports.ProductInfo = ProductInfo;
+var Discount = (function () {
+    function Discount() {
+    }
+    return Discount;
+}());
+exports.Discount = Discount;
 //# sourceMappingURL=purchase.js.map

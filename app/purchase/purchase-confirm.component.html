@@ -35,6 +35,10 @@
 		      <td>{{productInfo.memberQuantity}}</td>
 		    </tr>
 		    <tr>
+		    	<td>總價（折扣后價格，不包含消費稅和手續費）</td>
+		    	<td>{{parsePrice(paymentHelper.preTaxNFeeTotalPrice)}}</td>
+		    </tr>
+		    <tr>
 		      <td>消費稅（6.25%）</td>
 		      <td>{{parsePrice(paymentHelper.preTaxNFeeTotalPrice*0.0625)}}</td>
 		    </tr>
@@ -43,7 +47,7 @@
 		      <td>{{parsePrice(squareCharge.amount_money.amount-paymentHelper.preFeeTotalPrice)}}</td>
 		    </tr>
 		    <tr>
-		      <td>總價（未包含手續費）</td>
+		      <td>總價（包含消費稅和手續費）</td>
 		      <td>{{parsePrice(squareCharge.amount_money.amount)}}</td>
 		    </tr>
 		    <tr>

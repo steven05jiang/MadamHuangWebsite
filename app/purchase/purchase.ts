@@ -57,6 +57,16 @@ export class ProductInfo{
 	shippingAddr: string;
 	billingAddr: string;
 	transactionId: string;
+	discounts: Discount[];
+
+	constructor(){}
+}
+
+export class Discount{
+	id: number;
+	minQuantity: number;
+	discountPrice: number;
+	isEnable: boolean;
 
 	constructor(){}
 }

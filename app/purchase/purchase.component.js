@@ -188,8 +188,16 @@ var PurchaseComponent = (function () {
         this.subscription.unsubscribe();
     };
     PurchaseComponent.prototype.assembleCharge = function () {
+        var _this = this;
         var squareMoney = new purchase_2.SquareMoney();
         squareMoney.amount = this.productInfo.baseQuantity * this.purchaseObject.price;
+        if (this.purchaseCategory == 'product' && this.purchaseObject.discounts != null) {
+            this.purchaseObject.discounts.forEach(function (discount) {
+                if (discount.isEnable && discount.discountPrice < _this.purchaseObject.price && discount.minQuantity <= _this.productInfo.baseQuantity) {
+                    squareMoney.amount = discount.discountPrice * _this.productInfo.baseQuantity;
+                }
+            });
+        }
         if (this.purchaseCategory == 'activity') {
             squareMoney.amount = squareMoney.amount + this.productInfo.memberQuantity * this.purchaseObject.memberPrice;
         }
