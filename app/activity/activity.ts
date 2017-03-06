@@ -9,7 +9,6 @@ export class Activity {
   price:	number;
   memberPrice: number;
   articleId: number;
-  isMemberProduct: boolean;
 
   constructor() {
     this.id = -1;

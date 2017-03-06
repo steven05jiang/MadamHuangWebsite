@@ -15,13 +15,13 @@
               <button type="button" routerLink="/signup" class="btn btn-md btn-cancel">新用戶購買</button>
             </div>
           <p id="priceTage" *ngIf="purchaseObject">價格: {{parsePrice(purchaseObject.price)}} USD</p>
-          <div class="form-group row" *ngIf="productInfo&&purchaseObject&&(purchaseCategory=='product'||(purchaseCategory=='activity'&&!purchaseObject.isMemberProduct))">
+          <div class="form-group row" *ngIf="productInfo&&((purchaseCategory=='product'&&purchaseId!=152)||purchaseCategory=='activity')">
             <label for="name" class="col-lg-4 col-form-label"><span *ngIf="purchaseCategory=='activity'">非會員入場券</span>購買數量:</label>
             <div class="col-lg-2">
               <input type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" [(ngModel)]="productInfo.baseQuantity" name="name" placeholder="Enter Quantity" min="0" required>
             </div>
           </div>
-          <div class="form-group row" *ngIf="purchaseCategory=='activity'&&productInfo&&purchaseObject&&purchaseObject.isMemberProduct">
+          <div class="form-group row" *ngIf="purchaseCategory=='product'&&productInfo&&purchaseId==152">
             <label for="name" class="col-lg-5 col-form-label">購買黃夫人俱樂部會員: </label>
             <div class="col-lg-4">
               <div class="form-check form-check-inline">
@@ -39,7 +39,7 @@
 
 
 
-          <div *ngIf="purchaseCategory=='activity'&&purchaseObject&&!purchaseObject.isMemberProduct">
+          <div *ngIf="purchaseCategory=='activity'&&purchaseObject">
             <p id="priceTage">會員價格: {{parsePrice(purchaseObject.memberPrice)}} USD</p>
             <div class="form-group row">
               <label for="name" class="col-lg-5 col-form-label">購買會員入場券（專供）: </label>

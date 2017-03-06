@@ -67,5 +67,8 @@ export class ActivityComponent implements OnInit {
 	openPurchase(activity: Activity){
 		this.router.navigate(['/purchase/activity/', activity.id]);
 	}
+	openPurchaseMember(){
+		this.router.navigate(['/purchase/product/', '152']);
+	}
 
 }

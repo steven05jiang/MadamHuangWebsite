@@ -52,6 +52,9 @@ var ActivityComponent = (function () {
     ActivityComponent.prototype.openPurchase = function (activity) {
         this.router.navigate(['/purchase/activity/', activity.id]);
     };
+    ActivityComponent.prototype.openPurchaseMember = function () {
+        this.router.navigate(['/purchase/product/', '152']);
+    };
     return ActivityComponent;
 }());
 ActivityComponent = __decorate([

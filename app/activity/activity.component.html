@@ -15,6 +15,13 @@
 					<button class="btn btn-sm btn-confirm">了解更多</button>
 				</div>
 			</div>
+			<div class="card">
+				<div class="card-block">
+					<h4 class="card-title">成為黃夫人俱樂部尊貴會員</h4>
+					<p class="card-text">迫不及待成為黃夫人俱樂部會員了嗎？您只需要在這裡支付會員費用，即刻成為黃夫人俱樂部會員。現在就加入我們吧！</p>
+					<button class="btn btn-sm btn-confirm" (click)="openPurchaseMember()">成為會員</button>
+				</div>
+			</div>
 			<div class="card" *ngFor="let activity of objects">
 			<img *ngIf="activity.imageLink" class="card-img-top img-fluid" [src]="defaultImage" [lazyLoad]="activity.imageLink" alt="Image">
 				<div class="card-block">
