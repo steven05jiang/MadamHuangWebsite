@@ -12,7 +12,7 @@
 				<div class="card-block">
 					<h4 class="card-title">{{item.title}}</h4>
 					<p class="card-text">{{item.description}}</p>
-					<button *ngIf="item.articleId" class="btn btn-sm btn-confirm" (click)="openArticle(item)">Learn More</button>
+					<button *ngIf="item.articleId" class="btn btn-sm btn-confirm" (click)="openArticle(item)">了解更多</button>
 					<p class="card-text" *ngIf="item.updatedDate"><small class="text-muted">更新日期：{{item.updatedDate | date:"MM/dd/yy"}}</small></p>
 				</div>
 			</div>

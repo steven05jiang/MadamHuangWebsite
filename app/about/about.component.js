@@ -10,10 +10,17 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
+var router_1 = require("@angular/router");
 var AboutComponent = (function () {
-    function AboutComponent() {
+    function AboutComponent(route) {
+        this.route = route;
     }
     AboutComponent.prototype.ngOnInit = function () {
+        this.route.fragment.subscribe(function (f) {
+            var element = document.querySelector("#" + f);
+            if (element)
+                element.scrollIntoView(element);
+        });
     };
     return AboutComponent;
 }());
@@ -24,7 +31,7 @@ AboutComponent = __decorate([
         templateUrl: 'about.component.html',
         styleUrls: ['about.component.css']
     }),
-    __metadata("design:paramtypes", [])
+    __metadata("design:paramtypes", [router_1.ActivatedRoute])
 ], AboutComponent);
 exports.AboutComponent = AboutComponent;
 //# sourceMappingURL=about.component.js.map
