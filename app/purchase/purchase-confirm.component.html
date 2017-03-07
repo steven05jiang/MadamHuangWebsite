@@ -34,8 +34,12 @@
 		      <td>會員票數量</td>
 		      <td>{{productInfo.memberQuantity}}</td>
 		    </tr>
+		    <tr [hidden]="purchaseCategory == 'activity'">
+		    	<td>折前總價（不包含消費稅和手續費）</td>
+		    	<td>{{parsePrice(productInfo.baseQuantity*purchaseObject.price)}}</td>
+		    </tr>
 		    <tr>
-		    	<td>總價（折扣后價格，不包含消費稅和手續費）</td>
+		    	<td>總價（折後價格，不包含消費稅和手續費）</td>
 		    	<td>{{parsePrice(paymentHelper.preTaxNFeeTotalPrice)}}</td>
 		    </tr>
 		    <tr>
