@@ -330,6 +330,7 @@
 						<th>Start Time</th>
 						<th>End Time</th>
 						<th>Article Id</th>
+						<th>Enable</th>
 						<th>Edit</th>
 						<th>Delete</th>
 					</tr>
@@ -378,6 +379,14 @@
 						<td>
 							<div class="form-group">
 						     <input type="text" class="form-control" [(ngModel)]="activityNew.articleId" name="activityNewArticle" placeholder="Enter Article Id" required/>
+						   </div>
+						</td>
+						<td>
+							<div class="form-check">
+							<!--
+						     <input type="text" class="form-control" [(ngModel)]="activityNew.isEnable" name="activityNewEnable" placeholder="Enter is enbale" required/>
+						    -->
+						     <input type="checkbox" [(ngModel)]="activityNew.isEnable">
 						   </div>
 						</td>
 						<td align="center">
@@ -456,6 +465,17 @@
 							<span [hidden]="!adminHelper.activityEditMode">
 							<div class="form-group">
 						     <input type="text" class="form-control" [(ngModel)]="activity.articleId" name="activityArticle" placeholder="Enter Article Id"/>
+						   </div>
+						   </span>
+						</td>
+						<td>
+						<span [hidden]="adminHelper.activityEditMode">{{activity.isEnable}}</span>
+							<span [hidden]="!adminHelper.activityEditMode">
+							<div class="form-check">
+							<!--
+						     <input type="text" class="form-control" [(ngModel)]="activity.isEnable" name="activityIsEnable" placeholder="Enter is enable"/>
+						    -->
+						     <input type="checkbox" [(ngModel)]="activity.isEnable">
 						   </div>
 						   </span>
 						</td>

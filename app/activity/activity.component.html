@@ -1,8 +1,9 @@
 <div class="main">
 	<div class="jumbotron jumbotron-fluid">
 		<div class="container">
-			<h1 class="display-3">美麗聚會 「 Beauty Parties 」</h1>
-			<p class="lead">結識美麗的人，結識美麗的知識。我們定期舉行美麗聚會活動，讓愛美的人不錯過每個更美麗的機會。</p>
+			<h1 class="display-3">美麗聚會</h1>
+			<h1 class="display-4">Beauty Parties</h1>
+			<p class="lead">結識美麗的人，結識美麗的知識。我們定期舉行美麗聚會活動，讓愛美的人不錯過每個更美麗的機會<br>We regularly hold a beauty party, so that you would not miss the opportunity to be more beautiful</p>
 		</div>
 	</div>
 	<div class="container" *ngIf="objects">
@@ -10,24 +11,26 @@
 		<div class="card">
 			<img [src]="defaultImage" [lazyLoad]="'image/activityImg.jpg'" class="card-img-top img-fluid" alt="Card image cap">
 				<div class="card-block">
-					<h4 class="card-title">關於美麗聚會</h4>
+					<h4 class="card-title engFont">關於美麗聚會 About Parties</h4>
 					<p class="card-text">我們定期會舉辦不同主題的美麗聚會，邀請各方面美麗專家為您講解美麗知識。加入美麗聚會需要購買入場券，如果您還不是網站用戶，請申請賬戶后再來購買入場券。在黃夫人俱樂部網站購買商品超過100美元的用戶，即刻升級為黃夫人尊享會員，參加美麗聚會享受特惠票價。</p>
+					<p class="engFont">We will regularly hold a different theme of the beauty party, inviting all aspects of beautiful experts to explain the beautiful knowledge for you. Joining a beautiful party need a ticket, if you are not a website user, please apply for an account and then buy tickets. In Madamhuang Club website, buying products more than 100 US dollars at once, you will immediately upgrade to Madamhuang Club membership, and enjoy lower ticket price</p>
 					<button class="btn btn-sm btn-confirm">了解更多</button>
 				</div>
 			</div>
 			<div class="card">
 				<div class="card-block">
-					<h4 class="card-title">成為黃夫人俱樂部尊貴會員</h4>
+					<h4 class="card-title engFont">成為黃夫人俱樂部尊貴會員 Join Membership</h4>
 					<p class="card-text">迫不及待成為黃夫人俱樂部會員了嗎？您只需要在這裡支付會員費用，即刻成為黃夫人俱樂部會員。現在就加入我們吧！</p>
+					<p class="engFont">Can not wait to be a member of Madamhuang club? Purchase membership here, and immediately become member of Madamhuang club. Join us now!</p>
 					<button class="btn btn-sm btn-confirm" (click)="openPurchaseMember()">成為會員</button>
 				</div>
 			</div>
 			<div class="card" *ngFor="let activity of objects">
 			<img *ngIf="activity.imageLink" class="card-img-top img-fluid" [src]="defaultImage" [lazyLoad]="activity.imageLink" alt="Image">
 				<div class="card-block">
-					<h4 class="card-title">{{activity.title}}</h4>
-					<p class="card-text">{{activity.description}}</p>
-					<button class="btn btn-sm btn-confirm" (click)="openPurchase(activity)">加入我們</button>
+					<h4 class="card-title engFont">{{activity.title}}</h4>
+					<p class="card-text engFont">{{activity.description}}</p>
+					<button class="btn btn-sm btn-confirm" (click)="openPurchase(activity)" [hidden]="!activity.isEnable">加入我們</button>
 					<button *ngIf="activity.articleId" class="btn btn-sm btn-cancel" (click)="openArticle(activity)">了解更多</button>
 					<p class="card-text" *ngIf="activity.startDate"><small class="text-muted">活動日期：{{activity.startDate | date:"MM/dd/yy"}}</small></p>
 				</div>

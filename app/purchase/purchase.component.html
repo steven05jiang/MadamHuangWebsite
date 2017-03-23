@@ -1,8 +1,9 @@
 <div class="main">
   <div class="jumbotron jumbotron-fluid">
     <div class="container">
-      <h1 class="display-3">商品信息 「 Product Information 」</h1>
-      <p class="lead">下面是商品信息，輸入支付信息點擊確認訂單進行購買</p>
+      <h1 class="display-3">商品信息</h1>
+      <h1 class="display-4">Product Information</h1>
+      <p class="lead">下面是商品信息，輸入支付信息點擊確認訂單進行購買<br>Enter order and payment information to purchase</p>
     </div>
   </div>
   <div class="container" [hidden]="purchaseObject == null">
@@ -74,7 +75,7 @@
   <form (ngSubmit)="onSubmit()">
   <h4>收貨人姓名</h4>
   <div class="form-group">
-    <input type="text" class="form-control" id="name" placeholder="Enter name" name="name" [(ngModel)]="paymentHelper.receiverName" maxlength="20" required>
+    <input type="text" class="form-control" id="name" placeholder="Enter receiver name" name="name" [(ngModel)]="paymentHelper.receiverName" maxlength="20" required>
   </div>
 
   <div class="form-group row">
@@ -84,7 +85,7 @@
     </div>
   </div>
   <div class="form-group">
-    <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email" name="email" [(ngModel)]="squareCharge.buyer_email_address" required>
+    <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter your email" name="email" [(ngModel)]="squareCharge.buyer_email_address" required>
   </div>
 
       <div class="form-group row">
@@ -94,10 +95,10 @@
         </div>
       </div>
     <div class="form-group">
-      <input type="text" class="form-control" placeholder="Address Line 1" name="shippingline1" [(ngModel)]="squareCharge.shipping_address.address_line_1" required>
+      <input type="text" class="form-control" placeholder="Shipping Address Line 1" name="shippingline1" [(ngModel)]="squareCharge.shipping_address.address_line_1" required>
     </div>
     <div class="form-group">
-      <input type="text" class="form-control" placeholder="Address Line 2" name="shippingline2" [(ngModel)]="squareCharge.shipping_address.address_line_2">
+      <input type="text" class="form-control" placeholder="Shipping Address Line 2" name="shippingline2" [(ngModel)]="squareCharge.shipping_address.address_line_2">
     </div>
     <div class="row">
       <div class="col-lg-6 col-md-6 col-sm-6">
@@ -131,10 +132,10 @@
         </div>
       </div>
     <div class="form-group">
-      <input type="text" class="form-control" placeholder="Address Line 1" name="billingline1" [(ngModel)]="squareCharge.billing_address.address_line_1" required>
+      <input type="text" class="form-control" placeholder="Billing Address Line 1" name="billingline1" [(ngModel)]="squareCharge.billing_address.address_line_1" required>
     </div>
     <div class="form-group">
-      <input type="text" class="form-control" placeholder="Address Line 2" name="billingline2" [(ngModel)]="squareCharge.billing_address.address_line_2">
+      <input type="text" class="form-control" placeholder="Billing Address Line 2" name="billingline2" [(ngModel)]="squareCharge.billing_address.address_line_2">
     </div>
     <div class="row">
       <div class="col-lg-6 col-md-6 col-sm-6">
@@ -163,7 +164,7 @@
 
       <h4>留言</h4>
         <div class="form-group">
-          <textarea class="form-control" id="exampleTextarea" rows="3" name="comment" [(ngModel)]="productInfo.comment" maxlength="120"></textarea>
+          <textarea class="form-control" id="exampleTextarea" rows="3" name="comment" [(ngModel)]="productInfo.comment" maxlength="120" placeholder="Enter your comment for this order"></textarea>
         </div>
       <button type="submit" id="submitButton" [hidden]="true"></button>
   </form>
@@ -171,13 +172,13 @@
 
 
   <h4>支付信息</h4>
-  <label>卡號</label>
+  <label>卡號 Card No.</label>
   <div id="sq-card-number"></div>
   <label>CVV</label>
   <div id="sq-cvv"></div>
-  <label>截止日期</label>
+  <label>截止日期 Exp Date</label>
   <div id="sq-expiration-date"></div>
-  <label>郵政編碼</label>
+  <label>郵政編碼 Zip Code</label>
   <div id="sq-postal-code"></div>
 
 
@@ -207,7 +208,7 @@
       Clicking this Submit button kicks off the process to generate a card nonce
       from the buyer's card information.
     -->
-    <button type="button" class="btn btn-confirm" (click)="requestCardNonce(event)" [disabled]="!user">確認訂單</button>
+    <button type="button" class="btn btn-confirm" (click)="requestCardNonce(event)" [disabled]="!user">確認訂單 - Confirm</button>
   </form>
 </div>
 </div>

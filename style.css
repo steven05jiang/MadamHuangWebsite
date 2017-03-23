@@ -104,7 +104,7 @@ button.btn-cancel{
 }
 
 .engFont {
-  font-family: "Comic Sans MS", cursive, sans-serif !important;
+  font-family: "Comic Sans MS", "Microsoft YaHei", "黑体", "宋体", cursive, sans-serif !important;
 }
 
 </style>

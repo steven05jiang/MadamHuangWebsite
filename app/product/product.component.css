@@ -26,11 +26,13 @@ button > a: hover {
 	.card-columns {
 		column-count: 1;
 	}
-	.display-3 {
-		font-size: 2em;
-	}
-
-	.lead {
-		font-size: 1em;
-	}
+  .display-3 {
+    font-size: 2em;
+  }
+  .display-4 {
+    font-size: 1.5em;
+  }
+  .lead {
+    font-size: 1em;
+  }
 }

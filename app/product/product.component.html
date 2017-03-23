@@ -1,8 +1,9 @@
 <div class="main">
 	<div class="jumbotron jumbotron-fluid">
 		<div class="container">
-			<h1 class="display-3">美麗產品 「 Beauty Products 」</h1>
-			<p class="lead">精心為您挑選的美麗產品</p>
+			<h1 class="display-3">美麗產品</h1>
+			<h1 class="display-4">Beauty Products</h1>
+			<p class="lead">精心為您挑選的美麗產品<br>We carefully select beauty products for you</p>
 		</div>
 	</div>
 	<div class="container" *ngIf="objects">
@@ -10,16 +11,17 @@
 		<div class="card">
 			<img [src]="defaultImage" [lazyLoad]="'image/carsl4.jpg'" class="card-img-top img-fluid" alt="Card image cap">
 				<div class="card-block">
-					<h4 class="card-title">關於美麗產品</h4>
+					<h4 class="card-title engFont">關於美麗產品 About Poducts</h4>
 					<p class="card-text">在這裡我們為您精心挑選了美麗的產品，為您的美麗助力！如果您想購買我們的產品，可以先註冊成為我們的用戶再進行購買。現在，您只需要在這裡購買超過100美元的商品，即刻成為黃夫人俱樂部的尊貴會員。黃夫人俱樂部會員可以享受多種美麗優惠，參加美麗聚會時享受特價優惠。如果您還想了解更多的產品，可以點擊下方按鈕。還在等待什麼，現在就加入我們吧！</p>
+					<p class="engFont">We have carefully selected beauty products for you. If you want to buy our products, you could firstly register as our user then purchase. Now, you will immediately become a member of the Madamhuang club, if purchase more than 100 US dollars at once. Madamhuang Club members would enjoy a variety of benefits, such as participating in beauty parties with lower price. If you would like to know more about our products, please click the button below. Join us today!</p>
 					<button class="btn btn-sm btn-confirm"><a href="http://madamhuang.jeunesseglobal.com" target="_blank">了解更多產品</a></button>
 				</div>
 			</div>
 			<div class="card" *ngFor="let product of objects">
 			<img *ngIf="product.imageLink" class="card-img-top img-fluid" [src]="defaultImage" [lazyLoad]="product.imageLink" alt="Card image cap">
 				<div class="card-block">
-					<h4 class="card-title">{{product.title}}</h4>
-					<p class="card-text">{{product.description}}</p>
+					<h4 class="card-title engFont">{{product.title}}</h4>
+					<p class="card-text engFont">{{product.description}}</p>
 					<button *ngIf="product.article" class="btn btn-sm btn-confirm" (click)="openArticle(product)">了解更多</button>
 					<button class="btn btn-sm btn-cancel" (click)="openPurchase(product)">購買產品</button>
 				</div>
@@ -27,8 +29,9 @@
 			<div class="card">
 			<img src="image/QR_MadamHuang3.png" class="card-img-top img-fluid" alt="Card image cap">
 				<div class="card-block">
-					<h4 class="card-title">更多產品</h4>
+					<h4 class="card-title engFont">更多產品 More Products</h4>
 					<p class="card-text">想了解更多美麗產品麼？掃碼這裡的二維碼或者點擊下面的按鈕，就可以看到我們為您挑選的更多產品。在Jeunesse的頁面註冊為會員，可以獲得更多的優惠，趕緊行動起來吧！</p>
+					<p class="engFont">Want to know more selected products? Scan the QR code here or click on the button below, you will see more wonderful products. In Jeunesse's page registered as a member, you will get more benefits!</p>
 					<button class="btn btn-sm btn-confirm"><a href="http://madamhuang.jeunesseglobal.com" target="_blank">了解更多產品</a></button>
 				</div>
 			</div>

@@ -32,7 +32,9 @@ outline: 5px auto rgb(255, 97, 97);
   .display-3 {
     font-size: 2em;
   }
-
+  .display-4 {
+    font-size: 1.5em;
+  }
   .lead {
     font-size: 1em;
   }
