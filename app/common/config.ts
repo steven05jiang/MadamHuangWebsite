@@ -1,8 +1,8 @@
 
 export class Config {
 
-  //public static api_host: string = 'https://madamhuang.com:9000/api/v1';
-  public static api_host: string = 'http://localhost:9000/api/v1';
+  public static api_host: string = 'https://madamhuang.com:9000/api/v1';
+  //public static api_host: string = 'http://localhost:9000/api/v1';
   public static user_header_folder: string = 'image/headImage';
   //public static applicationId = 'sandbox-sq0idp-ZLC5q6ns15LA8q6vDJY1Hg';
   public static applicationId = 'sq0idp-ZLC5q6ns15LA8q6vDJY1Hg';
