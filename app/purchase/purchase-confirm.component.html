@@ -17,7 +17,7 @@
 		  <tbody>
 		    <tr>
 		      <td>商品名稱</td>
-		      <td>{{purchaseObject.title}}<span *ngIf="purchaseCategory == 'activity'"> —— 聚會入場券</span></td>
+		      <td><span [innerHTML]="purchaseObject.title"></span><span *ngIf="purchaseCategory == 'activity'"> —— 聚會入場券</span></td>
 		    </tr>
 		    <tr>
 		      <td>單價</td>
