@@ -7,36 +7,22 @@
   <!-- Collect the nav links, forms, and other content for toggling -->
   <div class="collapse navbar-collapse" id="navContent">
     <ul id="leftNav" class="nav navbar-nav mr-auto">
-
-
-      <li class="nav-item"><a class="nav-link" routerLink=""> 主頁 </a></li>
-      <li class="nav-item"><a class="nav-link" routerLink="/about"> 關於我們 </a></li>
-      <li class="nav-item dropdown">
-        <a class="nav-link" routerLink="/classroom"> 美麗課堂 </a>
-        <!--
-        <a class="nav-link dropdown-toggle" data-toggle="dropdown"> 美麗課堂 <span class="caret"></span>
-        </a>
-        <div class="dropdown-menu" role="menu">
-          <a class="dropdown-item dropdown-item-custom" routerLink="/classroom/taste">審美課堂</a>
-          <a class="dropdown-item dropdown-item-custom" routerLink="/classroom/insight">心美課堂</a>
-          <a class="dropdown-item dropdown-item-custom" routerLink="/classroom/figure">體美課堂</a>
-          <a class="dropdown-item dropdown-item-custom" routerLink="/classroom/skin">膚美課堂</a>
-        </div>
-        -->
-      </li>
-      <li class="nav-item"><a class="nav-link" routerLink="/activity"> 美麗聚會 </a></li>
-      <li class="nav-item"><a class="nav-link" routerLink="/product"> 美麗產品 </a></li>
-      <li class="nav-item"><a class="nav-link" routerLink="/contact"> 聯繫我們 </a></li>
+      <li class="nav-item"><a class="nav-link" routerLink="">主頁<br><span class="smallText">Home</span></a></li>
+      <li class="nav-item"><a class="nav-link" routerLink="/about">關於我們<br><span class="smallText">About Us</span></a></li>
+      <li class="nav-item"><a class="nav-link" routerLink="/classroom">美麗課堂<br><span class="smallText">Classroom</span></a></li>
+      <li class="nav-item"><a class="nav-link" routerLink="/activity">美麗聚會<br><span class="smallText">Parties</span></a></li>
+      <li class="nav-item"><a class="nav-link" routerLink="/product">美麗產品<br><span class="smallText">Products</span></a></li>
+      <li class="nav-item"><a class="nav-link" routerLink="/contact">聯繫我們<br><span class="smallText">Contact</span></a></li>
     </ul>
 
     <ul class="navbar-nav">
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" data-toggle="#logContent" href="/login" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-        > 用戶 <span class="caret"></span>
+        ><span class="login-dropdown-content"><i class="fa fa-user-circle-o fa-2x" aria-hidden="true"></i><span class="caret"></span></span>
         </a>
         <div class="dropdown-menu dropdown-menu-out" role="menu" *ngIf="!user" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item dropdown-item-custom" routerLink="/login">登錄</a>
-          <a class="dropdown-item dropdown-item-custom" routerLink="/signup">註冊</a>
+          <a class="dropdown-item dropdown-item-custom" routerLink="/login">登錄<br><span class="smallText">Login</span></a>
+          <a class="dropdown-item dropdown-item-custom" routerLink="/signup">註冊<br><span class="smallText">Signup</span></a>
         </div>
         <div class="dropdown-menu dropdown-menu-in" role="menu" *ngIf="user" aria-labelledby="navbarDropdownMenuLink">
          <div class="card">
@@ -47,9 +33,9 @@
            </p>
          </div>
       </div>
-          <a routerLink="/profile" class="dropdown-item dropdown-item-custom">我的信息</a>
+          <a routerLink="/profile" class="dropdown-item dropdown-item-custom">我的信息<br><span class="smallText">Profile</span></a>
           <a *ngIf="user && user.isAdmin == true" routerLink="/admin" class="dropdown-item dropdown-item-custom">網站管理</a>
-         <a (click)="signout($event)" class="dropdown-item dropdown-item-custom">登出</a>
+         <a (click)="signout($event)" class="dropdown-item dropdown-item-custom">登出<br><span class="smallText">Logout</span></a>
     </div>
   </li>
     </ul>

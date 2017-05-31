@@ -44,9 +44,9 @@ section .description-center{
 }
 
 .badge-box {
-    position: absolute;    
+    position: absolute;
     height: 110%;
-    text-align: center;    
+    text-align: center;
     width: 90%;
 }
 .badge-box:before {
@@ -109,7 +109,7 @@ section .description-center{
 }
 
 
-@media(max-width:860px){
+@media(max-width:898px){
     .main {
         margin-top: 3.3em;
     }

@@ -68,7 +68,18 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#8a0023', end
     text-decoration: none;
 }
 
-@media(max-width:860px){
+.smallText {
+  font-size: 10pt;
+  padding-bottom: 0;
+}
+
+.nav-link {
+  line-height: 1.1em;
+  text-align: center;
+  padding-bottom: 0;
+}
+
+@media(max-width:898px){
     #leftNav {
         margin-right: 0 !important;
     }
@@ -80,6 +91,11 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#8a0023', end
 
     .navbar-custom .navbar-brand > img{
         height: 2.5em;
+    }
+
+    .nav-link {
+      text-align: left;
+      padding-bottom: auto;
     }
 }
 
