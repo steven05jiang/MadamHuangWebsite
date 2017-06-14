@@ -53,7 +53,7 @@ var ActivityComponent = (function () {
         this.router.navigate(['/purchase/activity/', activity.id]);
     };
     ActivityComponent.prototype.openPurchaseMember = function () {
-        this.router.navigate(['/purchase/product/', '152']);
+        this.router.navigate(['/purchase/product/', '1']);
     };
     return ActivityComponent;
 }());
